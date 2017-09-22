@@ -78,4 +78,4 @@ ___________
 
 * ### Architectural and Design Pattern: 
 	* To efficiently conduct standups and maintain the sprint progress, Austin needs to pass messages across the server and the database. The standup inputs received from a user should be persisted in the database and the data should also be retrieved to enable progress tracking. This would require following an **Object Oriented approach** with a **Call and Return** design.
-
+	* In order to generate user or team report, Austin needs to have a context of which user it is interacting with and where this interaction is taking place. The **Space Reactor** design pattern fits this purpose perfectly. Using this pattern, Austin will have no memory of its own, but it will maintain a context of where it is and which user it is interacting with.
