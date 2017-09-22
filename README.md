@@ -10,4 +10,4 @@ Our Team consist of following people:
 * **Danish Suri** 
 * **Udit Deshmukh**
 * **Prashant Srivastav**
-* **Sandeep Pilani**
+* **Sandeep Pilania**
