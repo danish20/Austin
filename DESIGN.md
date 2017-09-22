@@ -7,7 +7,7 @@ Keeping all the advantages of asynchronous stand-up meetings in mind, we propose
 
 ## Bot Description
 There are two major tasks that our bot carries out: 
-* **Sprint Management:** and conducting stand up meeting. Our bot allows the product owner to add stories and tasks, assign tasks to users, and assign hours to stories. 
+* **Sprint Management:** Our bot allows the product owner to add stories and tasks, assign tasks to users, and assign hours to stories. 
 * **Conducting stand-up meetings:** While conducting stand-up meeting, our bot will ask three questions: 
 	* What did you do yesterday? The bot will list out the tasks assigned to the user. The user has to select which task did he work 	on and for how many hours. There will also be an option for listing activities which are not included in the list of tasks.
 	* What will you do today? Again, the tasks assigned to the user will be listed.
