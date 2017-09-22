@@ -41,6 +41,8 @@ ___________
 
 ## Architecture Design
 
+![ComponentDiagram](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/ComponentDiagram.png)
+
 * **Constraints:**
 	* **Missing User Authentication:** As out bot is based on Slack, which allows any member of the team to creat and edit a sprint without requiring any authentication model based on the role of user in that organization.
 
