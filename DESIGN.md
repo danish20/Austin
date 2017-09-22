@@ -25,10 +25,10 @@ ___________
 * Wireframe:
 
 
-![Wireframe Image 1]()
+![Wireframe Image 1](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/wireframe1.PNG)
 
 
-![Wireframe Image 2]() 
+![Wireframe Image 2](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/wireframe2.PNG) 
 
 
 * StoryBoard:
