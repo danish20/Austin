@@ -50,13 +50,15 @@ ___________
 
 	* **Database System** Database will be the backbone of our system. We will store user responses and sprint details in the database which will provide an interface for our server to query it. Database will be based on NoSQL using MongoDB.
 
-
-* ### Architectural Pattern: 
-To efficiently conduct standups and maintain the sprint progress, Austin needs to pass messages across the server and the database. The standup inputs received from a user should be persisted in the database and the data should also be retrieved to enable progress tracking. This would require following an **Object Oriented approach** with a **Call and Return** design.
-
 * ### Constraints:
 	* **Missing User Authentication:** As out bot is based on Slack, which allows any member of the team to creat and edit a sprint without requiring any authentication model based on the role of user in that organization.
 
 	* **Limitation of Report Questions:** To evaluate the report each user is asked certain fixed set of questions which are limited in their approach to fetch detailed information regarding to the progress of the sprint.
+
+
+* ### Architectural Pattern: 
+To efficiently conduct standups and maintain the sprint progress, Austin needs to pass messages across the server and the database. The standup inputs received from a user should be persisted in the database and the data should also be retrieved to enable progress tracking. This would require following an **Object Oriented approach** with a **Call and Return** design.
+
+
 
 
