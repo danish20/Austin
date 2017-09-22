@@ -44,7 +44,12 @@ ___________
 ![ComponentDiagram](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/ComponentDiagram.png)
 
 * ### Architectural Components:
-	* **User:**
+	* **Slack:** It will be used as primary interface to interact with the bot. Users will have slack channels for sprints where daily updates will be posted and bot will fetch daily report from user through chat windows. 
+
+	* **Scrum Master Bot** This is the central component of our bot which will be a server running node. Through this all the communication between slack and database will be made. Server will be configured to continuously listen through the slack for any updates and will also be programmed to post messages to slack channels, user's direct message windows and provide detailed performance analysis.
+
+	* **Database System** Database will be the backbone of our system. We will store user responses and sprint details in the database which will provide an interface for our server to query it. Database will be based on NoSQL using MongoDB.
+
 
 * ### Constraints:
 	* **Missing User Authentication:** As out bot is based on Slack, which allows any member of the team to creat and edit a sprint without requiring any authentication model based on the role of user in that organization.
