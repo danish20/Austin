@@ -1,4 +1,4 @@
-### Use Cases
+## Use Cases
 
 * **Use Case 1: Setup Sprint:** Before the start of every sprint Product Owner will create a new channel to setup the sprint where daily status of each member will be posted. To setup the Sprint Product Owner will provide following parameters:
 	* **Sprint Name:** It can be anything based on the discretion of Product Owner. Usually Sprint N format is used or Sprint <DATE> and SPRINT <PURPOSE> is used.
@@ -20,7 +20,7 @@ Once user provide answer to these question, their response will be posted in the
 
 ___________
 
-### Design Sketches
+## Design Sketches
 
 * **Wireframe:**
 
@@ -37,3 +37,13 @@ ___________
 ![Storyboard 1](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/storyboard1.PNG)
 
 ![Storyboard 2](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/storyboard2.PNG)
+
+
+## Architecture Design
+
+* **Constraints:**
+	* **Missing User Authentication:** As out bot is based on Slack, which allows any member of the team to creat and edit a sprint without requiring any authentication model based on the role of user in that organization.
+
+	* **Limitation of Report Questions:** To evaluate the report each user is asked certain fixed set of questions which are limited in their approach to fetch detailed information regarding to the progress of the sprint.
+
+
