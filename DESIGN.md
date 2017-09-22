@@ -1,5 +1,9 @@
 ## Problem Statement
-Scrum is one of the leading agile development methodologies used by numerous development teams worldwide. 
+Scrum is one of the leading agile development methodologies used by numerous development teams worldwide. There are two major activities in Scrum: sprint planning, which defines work to be broken down into cycles and daily stand-up meetings, which are time-boxed meetings to keep the other members of the development team updated. However, there are a few issues with conducting daily stand-up meetings. If the team size is large, stand-ups can go over time. Stand-up meetings can be difficult to co-ordinate if team members are working remotely or in different time zones. Also, if a member misses a meeting, there is no history of the meeting for reference. In order to overcome the shortcomings of synchronous  stand-up meetings, we propose a slack bot for conducting asynchronous stand-up meetings and sprint management. In asynchronous stand-up meetings, users will be notified at a specified time to answer the three stand-up questions. The users have the freedom of setting this time for notification. There are a few advantages of having asynchronous stand-up meetings.
+* It is convenient for remote teams working together. 
+* Since a history is maintained, it is possible for anyone who missed a meeting or a new member of the team to get up to speed.
+
+Keeping all the advantages of asynchronous stand-up meetings in mind, we propose a slack bot AUSTIN, which achieves all the above mentioned objectives. 
 
 ## Use Cases
 
