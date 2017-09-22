@@ -1,3 +1,6 @@
+## Problem Statement
+Scrum is one of the leading agile development methodologies used by numerous development teams worldwide. 
+
 ## Use Cases
 
 * **Use Case 1: Setup Sprint:** Before the start of every sprint Product Owner will create a new channel to setup the sprint where daily status of each member will be posted. To setup the Sprint Product Owner will provide following parameters:
