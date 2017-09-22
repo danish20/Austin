@@ -19,3 +19,19 @@ Once user provide answer to these question, their response will be posted in the
 * **Use Case 3: Generate Sprint Summary:** Users will have the functionality to view summary of each Sprint and see how the team is progressing. To use this feature user will ask bot to provide summary with a Sprint name and based on that request user will be provided options to choose the format in which they want summary. User may choose to have summary in text format, bar/line graph or summary of an individual team member and summary of whole team. 
 
 
+### Design Sketches
+_________
+* **Wireframe:
+
+
+![Wireframe Image 1]()
+
+
+![Wireframe Image 2]() 
+
+
+* **StoryBoard:
+
+![Storyboard 1](Milestone1/storyboard1.png)
+
+![Storyboard 2](Milestone1/storyboard1.png)
