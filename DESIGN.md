@@ -23,7 +23,8 @@ ___________
 ### Design Sketches
 
 * **Wireframe:**
-__
+
+__________
 
 
 ![Wireframe Image 1](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/wireframe1.PNG)
@@ -33,7 +34,8 @@ __
 
 
 * **StoryBoard:**
-__
+
+___________
 
 ![Storyboard 1](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/storyboard1.PNG)
 
