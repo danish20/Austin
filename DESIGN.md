@@ -33,6 +33,6 @@ ___________
 
 * StoryBoard:
 
-![Storyboard 1](Milestone1/storyboard1.png)
+![Storyboard 1](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/storyboard1.PNG)
 
-![Storyboard 2](Milestone1/storyboard1.png)
+![Storyboard 2](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/storyboard2.PNG)
