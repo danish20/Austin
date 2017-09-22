@@ -58,6 +58,8 @@ ___________
 
 ## Architecture Design
 
+* ### Component Diagram:
+
 ![ComponentDiagram](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/ComponentDiagram.png)
 
 * ### Architectural Components:
