@@ -6,6 +6,8 @@
 	* **User Stories** A user story is a tool used in Agile software development to capture a description of a software feature from an end-user perspective. The user story describes the type of user, what they want and why. A user story helps to create a simplified description of a requirement. This will be defined at the start of Sprint Planning while creating a new Sprint.
 	* **Team Members** Team members include the participants in Scrum sprint which can be a part of single team working on a particular project. 
 
+Once the user enter these details a slack channel will be created where reports of each user will be posted based on their daily work report.
+
 * #### Conduct Stand-Up: 
 
 * #### Generate Sprint Summary: 
