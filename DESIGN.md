@@ -8,7 +8,13 @@
 
 Once the user enter these details a slack channel will be created where reports of each user will be posted based on their daily work report.
 
-* #### Conduct Stand-Up: 
+* **Conduct Stand-Up:** After the Sprint has been setup, each team member will receive a message from our bot at a designated time with the following questions:
+
+	* What did you do yesterday?
+	* What will you do today?
+	* Do you have any road blocks?
+
+Once user provide answer to these question, their response will be posted in the Sprint channel to update everyone else on the team. Users will also have the facility to schedule their own sprint time and can snooze the Sprint reporting reminder upto 3 times with a maximum duration of 30 mins.
 
 * #### Generate Sprint Summary: 
 
