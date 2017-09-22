@@ -1,4 +1,4 @@
-### Use Case:
+### Use Cases
 
 * **Use Case 1: Setup Sprint:** Before the start of every sprint Product Owner will create a new channel to setup the sprint where daily status of each member will be posted. To setup the Sprint Product Owner will provide following parameters:
 	* **Sprint Name:** It can be anything based on the discretion of Product Owner. Usually Sprint N format is used or Sprint <DATE> and SPRINT <PURPOSE> is used.
