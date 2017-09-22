@@ -1,10 +1,3 @@
-## Problem Statement
-Scrum is one of the leading agile development methodologies used by numerous development teams worldwide. There are two major activities in Scrum: sprint planning, which defines work to be broken down into cycles and daily stand-up meetings, which are time-boxed meetings to keep the other members of the development team updated. However, there are a few issues with conducting daily stand-up meetings. If the team size is large, stand-ups can go over time. Stand-up meetings can be difficult to co-ordinate if team members are working remotely or in different time zones. Also, if a member misses a meeting, there is no history of the meeting for reference. In order to overcome the shortcomings of synchronous  stand-up meetings, we propose a slack bot for conducting asynchronous stand-up meetings and sprint management. In asynchronous stand-up meetings, users will be notified at a specified time to answer the three stand-up questions. The users have the freedom of setting this time for notification. There are a few advantages of having asynchronous stand-up meetings.
-* It is convenient for remote teams working together. 
-* Since a history is maintained, it is possible for anyone who missed a meeting or a new member of the team to get up to speed.
-
-Keeping all the advantages of asynchronous stand-up meetings in mind, we propose a slack bot AUSTIN, which achieves all the above mentioned objectives. 
-
 ## Use Cases
 
 * **Use Case 1: Setup Sprint:** Before the start of every sprint Product Owner will create a new channel to setup the sprint where daily status of each member will be posted. To setup the Sprint Product Owner will provide following parameters:
@@ -52,6 +45,8 @@ ___________
 
 * ### Architectural Components:
 	* **User:**
+
+* ### Architectural Pattern: To efficiently conduct standups and maintain the sprint progress, Austin needs to pass messages across the server and the database. The standup inputs received from a user should be persisted in the database and the data should also be retrieved to enable progress tracking. This would require following an **Object Oriented approach** with a **Call and Return** design.
 
 * ### Constraints:
 	* **Missing User Authentication:** As out bot is based on Slack, which allows any member of the team to creat and edit a sprint without requiring any authentication model based on the role of user in that organization.
