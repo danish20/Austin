@@ -17,4 +17,4 @@ Our Team consist of following people:
 
 ### Design Document
 
-Design document for our project can be fount [here](https://github.ncsu.edu/dsuri/Austin/blob/master/DESIGN.md)
+Design document for our project can be found [here](https://github.ncsu.edu/dsuri/Austin/blob/master/DESIGN.md)
