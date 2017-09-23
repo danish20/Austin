@@ -7,7 +7,17 @@ The bot is created to help Agile teams conduct Scrum meetings in an asynchrounou
 ### Team
 Our Team consist of following people:
 
-* **Danish Suri** 
+|Name|Unity ID|
+|----|--------|
+|Danish Suri|dsuri|
+
+
+* **Danish Suri**
 * **Udit Deshmukh**
 * **Prashant Srivastav**
 * **Sandeep Pilania**
+
+
+### Design Document
+
+Design document for our project can be fount [here](https://github.ncsu.edu/dsuri/Austin/blob/master/DESIGN.md)
