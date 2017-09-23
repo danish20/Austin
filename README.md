@@ -10,12 +10,9 @@ Our Team consist of following people:
 |Name|Unity ID|
 |----|--------|
 |Danish Suri|dsuri|
-
-
-* **Danish Suri**
-* **Udit Deshmukh**
-* **Prashant Srivastav**
-* **Sandeep Pilania**
+|Udit Deshmukh|udeshmu|
+|Prashant Srivastav|pmsrivas|
+|Sandeep Pilania|spilani|
 
 
 ### Design Document
