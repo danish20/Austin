@@ -3,17 +3,15 @@ Scrum is one of the leading agile development methodologies used by numerous dev
 * It is convenient for remote teams working together. 
 * Since a history is maintained, it is possible for anyone who missed a meeting or a new member of the team to get up to speed.
 
-Keeping all the advantages of asynchronous stand-up meetings in mind, we propose a slack bot AUSTIN, which achieves all the above mentioned objectives. 
-
 ## Bot Description
-There are two major tasks that our bot carries out: 
+Keeping all the advantages of asynchronous stand-up meetings in mind, we propose a slack bot named AUSTIN, which achieves all the above mentioned objectives. It would be very difficult for a scrum master to conduct asynchronous stand-up meetings. Hence, automating this process using a bot is a good solution. There are two major tasks that our bot carries out: 
 * **Sprint Management:** Our bot allows the product owner to add stories and tasks, assign tasks to users, and assign hours to stories. 
 * **Conducting stand-up meetings:** While conducting stand-up meeting, our bot will ask three questions: 
 	* What did you do yesterday? The bot will list out the tasks assigned to the user. The user has to select which task did he work 	on and for how many hours. There will also be an option for listing activities which are not included in the list of tasks.
 	* What will you do today? Again, the tasks assigned to the user will be listed.
 	* Any obstacles? The user can mention which team members are dependencies for him.
 	
-The entire stand-up meeting record will be saved in a database. The user also has an option to edit a message, and these changes will be reflected in the database. Once the stand up is complete, the bot will show the status to the user and post summary on a common channel. The obstacles(other team members) will also be notified via this common channel. A new channel will be created for every new sprint. 
+The entire stand-up meeting record will be saved in a database. The user also has an option to edit a message, and these changes will be reflected in the database. Once the stand up is complete, the bot will show the status to the user and post summary on a common channel. The obstacles(other team members) will also be notified via this common channel. A new channel will be created for every new sprint. Based on the data collected, user reports can be generated after the end of every sprint. These reports will include a graphical representation of user's performance, like the tasks completed, the tasks left incomplete, number of hours worked, etc.
 
 ## Use Cases
 
@@ -78,4 +76,4 @@ ___________
 
 * ### Architectural and Design Pattern: 
 	* To efficiently conduct standups and maintain the sprint progress, Austin needs to pass messages across the server and the database. The standup inputs received from a user should be persisted in the database and the data should also be retrieved to enable progress tracking. This would require following an **Object Oriented approach** with a **Call and Return** design.
-
+	* In order to generate user or team report, Austin needs to have a context of which user it is interacting with and where this interaction is taking place. The **Space Reactor** design pattern fits this purpose perfectly. Using this pattern, Austin will have no memory of its own, but it will maintain a context of where it is and which user it is interacting with.
