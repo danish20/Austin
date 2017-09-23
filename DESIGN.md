@@ -4,7 +4,7 @@ Scrum is one of the leading agile development methodologies used by numerous dev
 * Since a history is maintained, it is possible for anyone who missed a meeting or a new member of the team to get up to speed.
 
 ## Bot Description
-Keeping all the advantages of asynchronous stand-up meetings in mind, we propose a slack bot AUSTIN, which achieves all the above mentioned objectives. There are two major tasks that our bot carries out: 
+Keeping all the advantages of asynchronous stand-up meetings in mind, we propose a slack bot named AUSTIN, which achieves all the above mentioned objectives. It would be very difficult for a scrum master to conduct asynchronous stand-up meetings. Hence, automating this process using a bot is a good solution. There are two major tasks that our bot carries out: 
 * **Sprint Management:** Our bot allows the product owner to add stories and tasks, assign tasks to users, and assign hours to stories. 
 * **Conducting stand-up meetings:** While conducting stand-up meeting, our bot will ask three questions: 
 	* What did you do yesterday? The bot will list out the tasks assigned to the user. The user has to select which task did he work 	on and for how many hours. There will also be an option for listing activities which are not included in the list of tasks.
