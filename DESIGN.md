@@ -74,6 +74,8 @@ Once user provide answer to these question, their response will be posted in the
 
 ![Storyboard 2](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/storyboard2.PNG)
 
+![Storyboard 3](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/storyboard3.PNG)
+
 
 ## Architecture Design
 
