@@ -34,7 +34,18 @@ Once user provide answer to these question, their response will be posted in the
 * **Use Case 3: Generate Sprint Summary:** Users will have the functionality to view summary of each Sprint and see how the team is progressing. Bot is capable of providing summary in various formats and related to different aspects of the sprint. Users can query bot for recommendations based on current and previous sprints, compare different metrics of the sprint and can also see various graphs and charts representing progress of each sprint. 
 
 	* **Compare:** This module will be used to provide comparision between different metrics which can be as follow:
-		* **1:**
+		* **1:** Work done in this sprint with past sprints.
+		* **2:** Performance of team with respect to previous sprint performance.
+		* **3:** Who performed the most / Best Performer?
+		* **4:** Performance based on each task and time spent on it.
+
+	* **Charts:** In this user can request to view graphical representation of sprint progress. For this following charts will be provided:
+		* **1:** Burndown Chart
+		* **2:** Individual's performance chart
+		* **3:** Velocity Graph
+		* **4:** Sprint Status
+
+	* **Recommendations and Facts:**
 
 
 ## Design Sketches
