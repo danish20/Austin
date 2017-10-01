@@ -67,6 +67,9 @@ Once user provide answer to these question, their response will be posted in the
 ![Wireframe Image 2](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/wireframe2.PNG) 
 
 
+![Wireframe Image 3](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/wireframe3.PNG) 
+
+
 * ### StoryBoard:
 
 
