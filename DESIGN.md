@@ -45,7 +45,15 @@ Once user provide answer to these question, their response will be posted in the
 		* **3:** Velocity Graph
 		* **4:** Sprint Status
 
-	* **Recommendations and Facts:**
+	* **Recommendations and Facts:** Summary of the sprint can also be presented as recommnedations and facts related to sprint. These may include following: 
+
+	 * **Recommendations**
+	 	* **1** How can you improve performance.
+	 	* **2** How many hours should be alloted for a task based on past trends.
+
+	 * **Facts** 
+	 	* **1** Most Changed File in this sprint.
+	 	* **2** Most no of commits/additions made by a user.
 
 
 ## Design Sketches
