@@ -3,9 +3,11 @@ Scrum is one of the leading agile development methodologies used by numerous dev
 * Sprint planning, which defines work to be broken down into cycles 
 * Daily stand-up meetings, which are time-boxed meetings to keep the other members of the development team updated. 
 * Sprint Analytics, which enables the team to better know about past or present sprint statistics and progress.
+
 There are a few issues with conducting daily stand-up meetings. If the team size is large, stand-ups can go over time. Stand-up meetings can be difficult to co-ordinate if team members are working remotely or in different time zones. If a member misses a meeting, there is no history of the meeting for reference. In order to analyze past sprints and be able to better plan out future sprints, certain statistical and visual aids can be leveraged. However, this can become a tedious job for the scrum master or the product owner.  In order to overcome the shortcomings of synchronous  stand-up meetings and also provide automated sprint analytics reports, we propose a slack bot for conducting asynchronous stand-up meetings and sprint management. In asynchronous stand-up meetings, users will be notified at a specified time to answer the three stand-up questions. The users have the freedom of setting this time for notification. There are a few advantages of having asynchronous stand-up meetings.
 * It is convenient for remote teams working together. 
 * Since a history is maintained, it is possible for anyone who missed a meeting or a new member of the team to get up to speed.
+
 By providing automated analytics report, it reduces the overhead on the scrum master and also helps to better track the progress of sprints and efficiently plan future ones.
 
 ## Bot Description
