@@ -36,7 +36,6 @@ Once user provide answer to these question, their response will be posted in the
 	* **Compare:** This module will be used to provide comparision between different metrics which can be as follow:
 		* **1:**
 
-___________
 
 ## Design Sketches
 
