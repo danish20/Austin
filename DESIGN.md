@@ -42,7 +42,29 @@ Once the user enter these details a slack channel will be created where reports 
 
 Once user provide answer to these question, their response will be posted in the Sprint channel to update everyone else on the team. Users will also have the facility to schedule their own sprint time and can snooze the Sprint reporting reminder upto 3 times with a maximum duration of 30 mins.
 
-* **Use Case 3: Generate Sprint Summary:** Users will have the functionality to view summary of each Sprint and see how the team is progressing. To use this feature user will ask bot to provide summary with a Sprint name and based on that request user will be provided options to choose the format in which they want summary. User may choose to have summary in text format, bar/line graph or summary of an individual team member and summary of whole team. 
+* **Use Case 3: Generate Sprint Summary:** Users will have the functionality to view summary of each Sprint and see how the team is progressing. Bot is capable of providing summary in various formats and related to different aspects of the sprint. Users can query bot for recommendations based on current and previous sprints, compare different metrics of the sprint and can also see various graphs and charts representing progress of each sprint. 
+
+	* **Compare:** This module will be used to provide comparision between different metrics which can be as follow:
+		* **1:** Work done in this sprint with past sprints.
+		* **2:** Performance of team with respect to previous sprint performance.
+		* **3:** Who performed the most / Best Performer?
+		* **4:** Performance based on each task and time spent on it.
+
+	* **Charts:** In this user can request to view graphical representation of sprint progress. For this following charts will be provided:
+		* **1:** Burndown Chart
+		* **2:** Individual's performance chart
+		* **3:** Velocity Graph
+		* **4:** Sprint Status
+
+	* **Recommendations and Facts:** Summary of the sprint can also be presented as recommnedations and facts related to sprint. These may include following: 
+
+	 * **Recommendations**
+	 	* **1** How can you improve performance.
+	 	* **2** How many hours should be alloted for a task based on past trends.
+
+	 * **Facts** 
+	 	* **1** Most Changed File in this sprint.
+	 	* **2** Most no of commits/additions made by a user.
 
 
 ## Design Sketches
@@ -56,12 +78,17 @@ Once user provide answer to these question, their response will be posted in the
 ![Wireframe Image 2](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/wireframe2.PNG) 
 
 
+![Wireframe Image 3](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/wireframe3.PNG) 
+
+
 * ### StoryBoard:
 
 
 ![Storyboard 1](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/storyboard1.PNG)
 
 ![Storyboard 2](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/storyboard2.PNG)
+
+![Storyboard 3](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/storyboard3.PNG)
 
 
 ## Architecture Design
