@@ -25,16 +25,7 @@ We propose a slack bot named AUSTIN, which achieves the above mentioned objectiv
 The entire stand-up meeting record will be saved in a database. The user also has an option to edit a message, and these changes will be reflected in the database. Once the stand up is complete, the bot will show the status to the user and post summary on a common channel. The obstacles(other team members) will also be notified via this common channel. A new channel will be created for every new sprint. Based on the data collected, sprint analytics reports will be generated.
 
 ## Use Cases
-
-* **Use Case 1: Setup Sprint:** Before the start of every sprint Product Owner will create a new channel to setup the sprint where daily status of each member will be posted. To setup the Sprint Product Owner will provide following parameters:
-	* **Sprint Name:** It can be anything based on the discretion of Product Owner. Usually Sprint N format is used or Sprint <DATE> and SPRINT <PURPOSE> is used.
-	* **Sprint Duration** It is the time of each sprint period which is usually 2-3 weeks depending on the team and organization.
-	* **User Stories** A user story is a tool used in Agile software development to capture a description of a software feature from an end-user perspective. The user story describes the type of user, what they want and why. A user story helps to create a simplified description of a requirement. This will be defined at the start of Sprint Planning while creating a new Sprint.
-	* **Team Members** Team members include the participants in Scrum sprint which can be a part of single team working on a particular project. 
-
-Once the user enter these details a slack channel will be created where reports of each user will be posted based on their daily work report.
-
-* **Use Case 2: Conduct Stand-Up:** After the Sprint has been setup, each team member will receive a message from our bot at a designated time with the following questions:
+* **Use Case 1: Conduct Stand-Up:** After the Sprint has been setup, each team member will receive a message from our bot at a designated time with the following questions:
 
 	* What did you do yesterday?
 	* What will you do today?
@@ -42,7 +33,7 @@ Once the user enter these details a slack channel will be created where reports 
 
 Once user provide answer to these question, their response will be posted in the Sprint channel to update everyone else on the team. Users will also have the facility to schedule their own sprint time and can snooze the Sprint reporting reminder upto 3 times with a maximum duration of 30 mins.
 
-* **Use Case 3: Generate Sprint Summary:** Users will have the functionality to view summary of each Sprint and see how the team is progressing. Bot is capable of providing summary in various formats and related to different aspects of the sprint. Users can query bot for recommendations based on current and previous sprints, compare different metrics of the sprint and can also see various graphs and charts representing progress of each sprint. 
+* **Use Case 2: Generate Sprint Summary:** Users will have the functionality to view summary of each Sprint and see how the team is progressing. Bot is capable of providing summary in various formats and related to different aspects of the sprint. Users can query bot for recommendations based on current and previous sprints, compare different metrics of the sprint and can also see various graphs and charts representing progress of each sprint. 
 
 	* **Compare:** This module will be used to provide comparision between different metrics which can be as follow:
 		* **1:** Work done in this sprint with past sprints.
