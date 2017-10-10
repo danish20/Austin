@@ -25,20 +25,21 @@ We propose a slack bot named AUSTIN, which achieves the above mentioned objectiv
 The entire stand-up meeting record will be saved in a database. The user also has an option to edit a message, and these changes will be reflected in the database. Once the stand up is complete, the bot will show the status to the user and post summary on a common channel. The obstacles(other team members) will also be notified via this common channel. A new channel will be created for every new sprint. Based on the data collected, sprint analytics reports will be generated.
 
 ## Use Cases
-* **Use Case 1: Generate Sprint Summary:** Users will have the functionality to view summary of each Sprint and see how the team is progressing. Bot is capable of providing summary in various formats and related to different aspects of the sprint. Users can query bot for recommendations based on current and previous sprints, compare different metrics of the sprint and can also see various graphs and charts representing progress of each sprint. 
-	* **Charts:** In this user can request to view graphical representation of sprint progress. For this following charts will be provided:
+* **Use Case 1: Generate Sprint Summary:** Users will have the functionality to view summary of each Sprint and see how the team is progressing. Bot is capable of providing summary in various formats and related to different aspects of the sprint. Users can query bot for recommendations based on current and previous sprints, compare different metrics of the sprint and can also see various graphs and charts representing progress of each sprint which can be of following types:  
+
 		* **1:** Burndown Chart
 		* **2:** Individual's performance chart
 		* **3:** Velocity Graph
 		* **4:** Sprint Status
 
 * **Use Case 2: Compare:** This module will be used to provide comparision between different metrics which can be as follow:
+
 		* **1:** Work done in this sprint with past sprints.
 		* **2:** Performance of team with respect to previous sprint performance.
 		* **3:** Who performed the most / Best Performer?
 		* **4:** Performance based on each task and time spent on it.
 		
-* **Use Case 3: Recommendations and Facts:** Summary of the sprint can also be presented as recommnedations and facts related to sprint. These may include following: 
+* **Use Case 3: Recommendations and Facts:** Users can also query bot to provide summary of the sprint which can be presented as recommnedations and facts related to sprint. These may include following: 
 
 	 * **Recommendations**
 	 	* **1** How can you improve performance.
