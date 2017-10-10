@@ -27,17 +27,17 @@ The entire stand-up meeting record will be saved in a database. The user also ha
 ## Use Cases
 * **Use Case 1: Generate Sprint Summary:** Users will have the functionality to view summary of each Sprint and see how the team is progressing. Bot is capable of providing summary in various formats and related to different aspects of the sprint. Users can query bot for recommendations based on current and previous sprints, compare different metrics of the sprint and can also see various graphs and charts representing progress of each sprint which can be of following types:  
 
-		* **1:** Burndown Chart
-		* **2:** Individual's performance chart
-		* **3:** Velocity Graph
-		* **4:** Sprint Status
+	* **1:** Burndown Chart
+	* **2:** Individual's performance chart
+	* **3:** Velocity Graph
+	* **4:** Sprint Status
 
-* **Use Case 2: Compare:** This module will be used to provide comparision between different metrics which can be as follow:
+* **Use Case 2: Compare:** Bot can also be used to compare various metrics of the sprint and obtain insights on them. Comparisions can be of following types:
 
-		* **1:** Work done in this sprint with past sprints.
-		* **2:** Performance of team with respect to previous sprint performance.
-		* **3:** Who performed the most / Best Performer?
-		* **4:** Performance based on each task and time spent on it.
+	* **1:** Work done in this sprint with past sprints.
+	* **2:** Performance of team with respect to previous sprint performance.
+	* **3:** Who performed the most / Best Performer?
+	* **4:** Performance based on each task and time spent on it.
 		
 * **Use Case 3: Recommendations and Facts:** Users can also query bot to provide summary of the sprint which can be presented as recommnedations and facts related to sprint. These may include following: 
 
