@@ -49,11 +49,82 @@
                       {"date": "", "work_done":""}
                   ],
                   "status":"Active"
+              },
+            {
+                  "task_id":2,
+                  "excepted_hours": 10,
+                  "user_id": 102,
+                  "daily_progress":
+                  [
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""}
+                  ],
+                  "status":"Active"
+              },
+            {
+                  "task_id":3,
+                  "excepted_hours": 10,
+                  "user_id": 103,
+                  "daily_progress":
+                  [
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""}
+                  ],
+                  "status":"Active"
+              },
+            {
+                  "task_id":4,
+                  "excepted_hours": 104,
+                  "user_id": 100,
+                  "daily_progress":
+                  [
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""}
+                  ],
+                  "status":"Active"
+              },{
+                  "task_id":5,
+                  "excepted_hours": 10,
+                  "user_id": 101,
+                  "daily_progress":
+                  [
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""}
+                  ],
+                  "status":"Active"
               }
           ]
         },
         {
-            "story_id": 1,
+            "story_id": 2,
             "story_name": "",
             "story_hours": 10
         },
