@@ -6,18 +6,127 @@
       "start_date": "",
       "end_date": "",
       "team_member":
-      []
+      [
+          {
+            "user_id": 100,
+            "user_name": "Udit"
+          },
+          {
+            "user_id": 101,
+            "user_name": "Dsuri"
+          },
+          {
+            "user_id": 103,
+            "user_name": "PremBhai"
+          },
+          {
+            "user_id": 104,
+            "user_name": "Sandeep"
+          }
+      ],
       "stories":
       [
         {
           "story_id": 1,
           "story_name": "",
+          "story_hours": 10,
+          "task":
+          [
+              {
+                  "task_id":1,
+                  "excepted_hours": 10,
+                  "user_id": 100,
+                  "daily_progress":
+                  [
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""},
+                      {"date": "", "work_done":""}
+                  ],
+                  "status":"Active"
+              }
+          ]
+        },
+        {
+            "story_id": 1,
+            "story_name": "",
+            "story_hours": 10
+        },
+        {
+            "story_id": 1,
+            "story_name": "",
+            "story_hours": 10
         }
       ]
     },
-    {"name": "b","stargazers_count":8},
-    {"name": "c","stargazers_count":7},
-    {"name": "d","stargazers_count":10},
-    {"name": "e","stargazers_count":1}
+    {
+        "id": 20,
+        "start_date": "",
+        "end_date": "",
+        "team_member":
+        [
+            {
+              "user_id": 100,
+              "user_name": "Udit"
+            },
+            {
+              "user_id": 101,
+              "user_name": "Dsuri"
+            },
+            {
+              "user_id": 103,
+              "user_name": "PremBhai"
+            },
+            {
+              "user_id": 104,
+              "user_name": "Sandeep"
+            }
+        ],
+        "stories":
+        [
+          {
+            "story_id": 1,
+            "story_name": "",
+            "story_hours": 10,
+            "task":
+            [
+                {
+                    "task_id":1,
+                    "excepted_hours": 10,
+                    "user_id": 100,
+                    "daily_progress":
+                    [
+                        {"date": "", "work_done":""},
+                        {"date": "", "work_done":""},
+                        {"date": "", "work_done":""},
+                        {"date": "", "work_done":""},
+                        {"date": "", "work_done":""},
+                        {"date": "", "work_done":""},
+                        {"date": "", "work_done":""},
+                        {"date": "", "work_done":""},
+                        {"date": "", "work_done":""}
+                    ],
+                    "status":"Active"
+                }
+            ]
+          },
+          {
+              "story_id": 1,
+              "story_name": "",
+              "story_hours": 10
+          },
+          {
+              "story_id": 1,
+              "story_name": "",
+              "story_hours": 10
+          }
+        ]
+      }
+    
   ]
 }
