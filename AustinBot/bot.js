@@ -17,18 +17,27 @@ controller.spawn({
   token: process.env.SLACKTOKEN,
 }).startRTM()
 
+
+//BOT HOOKS
 // give the bot something to listen for.
 //controller.hears('string or regex',['direct_message','direct_mention','mention'],function(bot,message) {
-controller.hears('weather',['mention', 'direct_mention','direct_message'], function(bot,message) 
+controller.hears('setup sprint',['mention', 'direct_mention','direct_message'], function(bot,message) 
 {
   console.log(message);
-  getMessage(function(w){
+  getResponse(function(w){
 
     bot.reply(message,w);
 
   });
-  
+});
+controller.hears('new sprint',['mention', 'direct_mention','direct_message'], function(bot,message) 
+{
+  console.log(message);
+  getResponse(function(w){
 
+    bot.reply(message,w);
+
+  });
 });
 
 controller.hears('hello',['mention', 'direct_mention','direct_message'], function(bot,message) 
@@ -37,7 +46,9 @@ controller.hears('hello',['mention', 'direct_mention','direct_message'], functio
   bot.reply(message,'Hello, How are you?');
 });
 
-function getMessage(callback)
+
+// response function
+function getResponse(callback)
 {
   var latitude = "48.208579"
 	var longitude = "16.374124"
@@ -45,7 +56,7 @@ function getMessage(callback)
 	{
       if (err) throw err;
       //console.log('res: ' + JSON.stringify(res));
-      //console.log('data: ' + JSON.stringify(data));
+      console.log('data: ' + JSON.stringify(data));
       var w = data.currently.summary + " and feels like " + data.currently.apparentTemperature;
       callback(w);
    });
