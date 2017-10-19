@@ -11,6 +11,10 @@
   "dependencies": {
     "botkit": "^0.5.8",
     "forecast.io": "0.0.9",
-    "slackbots": "^0.5.1"
+    "slackbots": "^0.5.1",
+    "bluebird": "^3.4.6",
+    "request": "^2.75.0",
+    "underscore": "^1.8.3"
+
   }
 }
