@@ -49,7 +49,7 @@ controller.hears('new sprint',['mention', 'direct_mention','direct_message'], fu
 controller.hears('hello',['mention', 'direct_mention','direct_message'], function(bot,message) 
 {
   console.log(message);
-  bot.reply(message,'Hello, How are you?');
+  bot.reply(message,'## Hello, How are you?');
 });
 
 
@@ -64,7 +64,7 @@ function getResponse(callback)
   {
     console.log("Danish"+results.sprint_count);
     var sp_size = results.sprint_count;
-    callback(sp_size);
+    return callback(sp_size);
   }
 );
 
