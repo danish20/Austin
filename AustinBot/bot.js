@@ -95,10 +95,7 @@ var responseImage = {
 // response function
 function getResponse(callback)
 {
-  var mockService = nock("https://api.austinbot.com")
-  .persist() // This will persist mock interception for lifetime of program.
-  .get("/sprint")
-  .reply(200, JSON.stringify(data.sprint) );
+  
 
 
 

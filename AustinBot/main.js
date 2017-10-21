@@ -9,6 +9,11 @@ var austin = require("./austin.js");
 //function to get the number of sprints
 function findNumberOfSprints()
 {
+	var mockService = nock("https://api.austinbot.com")
+	.persist() // This will persist mock interception for lifetime of program.
+	.get("/sprint")
+	.reply(200, JSON.stringify(data.sprint) );
+	
 	return new Promise(function (resolve, reject) 
 	{
 		// mock data needs list of issues.
