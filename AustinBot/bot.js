@@ -10,7 +10,7 @@ var nock = require("nock");
 
 
 //var childProcess = require("child_process");
-var data = require("../AustinBot/mockData.json");
+
 var controller = Botkit.slackbot({
   debug: false
   //include "log: false" to disable logging
