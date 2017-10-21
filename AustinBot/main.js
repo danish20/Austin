@@ -29,8 +29,25 @@ function findNumberOfSprints()
 	});
 }
 
-function dummy(){
-	
+function getSprint(sprint_id){
+	var mockService = nock("https://api.austinbot.com")
+	.persist() // This will persist mock interception for lifetime of program.
+	.get("/sprint/20")
+	.reply(200, JSON.stringify(data.sprint));
+
+	return new Promise(function (resolve, reject) 
+	{
+		// mock data needs list of issues.
+		austin.getSprint(sprint_id).then(function (sprint) 
+		{
+			console.log("got sprint::"+sprint_id);
+			//console.log(sprints.length);
+			var sprint_data = sprint;
+			console.log(sprint_data);
+			resolve({sprint_data: sprint_data});
+		});
+	});
 }
 
 exports.findNumberOfSprints = findNumberOfSprints;
+exports.getSprint = getSprint;

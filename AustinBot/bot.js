@@ -46,6 +46,16 @@ controller.hears('new sprint',['mention', 'direct_mention','direct_message'], fu
   });
 });
 
+controller.hears('get sprint 20',['mention', 'direct_mention','direct_message'], function(bot,message) 
+{
+  console.log(message);
+  getSprint(sprint_id, function(w){
+
+    bot.reply(message,w);
+
+  });
+});
+
 controller.hears('hello',['mention', 'direct_mention','direct_message'], function(bot,message) 
 {
   var jsonData = {
@@ -95,10 +105,6 @@ var responseImage = {
 // response function
 function getResponse(callback)
 {
-  
-
-
-
   Main.findNumberOfSprints().then(function (results)
   {
     console.log("Danish"+results.sprint_count);
@@ -120,6 +126,15 @@ function getResponse(callback)
 
   
 
+}
+
+function getSprint(sprint_id, callback)
+{
+  Main.getSprint(sprint_id).then(function (results)
+  {
+    var sprint_data = results.sprint_data;
+    return callback(sprint_data);
+  });
 }
 
 
