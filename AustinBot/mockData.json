@@ -2,7 +2,7 @@
     "sprint" :
     [
       {
-        "id": 20,
+        "id": "20",
         "start_date": "07/03/2017",
         "end_date": "07/23/2017",
         "team_member":
@@ -27,13 +27,13 @@
         "stories":
         [
           {
-            "story_id": 1,
+            "story_id": "20_1",
             "story_name": "",
             "story_hours": 240,
             "task":
             [
                 {
-                    "task_id":1,
+                    "task_id":"20_1_1",
                     "excepted_hours": 50,
                     "user_id": 100,
                     "daily_progress":
@@ -50,7 +50,7 @@
                     "status":"Active"
                 },
               {
-                    "task_id":2,
+                    "task_id":"20_1_2",
                     "excepted_hours": 60,
                     "user_id": 102,
                     "daily_progress":
@@ -67,7 +67,7 @@
                     "status":"Active"
                 },
               {
-                    "task_id":3,
+                    "task_id":"20_1_3",
                     "excepted_hours": 70,
                     "user_id": 101,
                     "daily_progress":
@@ -85,7 +85,7 @@
                     "status":"Active"
                 },
               {
-                    "task_id":4,
+                    "task_id":"20_1_4",
                     "excepted_hours": 20,
                     "user_id": 103,
                     "daily_progress":
@@ -97,7 +97,7 @@
                     ],
                     "status":"Active"
                 },{
-                    "task_id":5,
+                    "task_id":"20_1_5",
                     "excepted_hours": 40,
                     "user_id": 103,
                     "daily_progress":
@@ -114,13 +114,13 @@
             ]
           },
           {
-              "story_id": 2,
+              "story_id": "20_2",
               "story_name": "",
               "story_hours": 100,
               "task":
               [
                   {
-                      "task_id":1,
+                      "task_id":"20_2_1",
                       "excepted_hours": 40,
                       "user_id": 100,
                       "daily_progress":
@@ -136,7 +136,7 @@
                       "status":"Active"
                   },
                 {
-                      "task_id":2,
+                      "task_id":"20_2_2",
                       "excepted_hours": 40,
                       "user_id": 102,
                       "daily_progress":
@@ -151,7 +151,7 @@
                       "status":"Active"
                   },
                 {
-                      "task_id":3,
+                      "task_id":"20_2_3",
                       "excepted_hours": 20,
                       "user_id": 101,
                       "daily_progress":
@@ -166,13 +166,13 @@
               ]
           },
           {
-              "story_id": 3,
+              "story_id": "20_3",
               "story_name": "",
               "story_hours": 140,
               "task":
               [
                   {
-                      "task_id":1,
+                      "task_id":"20_3_1",
                       "excepted_hours": 30,
                       "user_id": 100,
                       "daily_progress":
@@ -185,7 +185,7 @@
                       "status":"Active"
                   },
                 {
-                      "task_id":2,
+                      "task_id":"20_3_2",
                       "excepted_hours": 20,
                       "user_id": 102,
                       "daily_progress":
@@ -197,7 +197,7 @@
                       "status":"Active"
                   },
                 {
-                      "task_id":3,
+                      "task_id":"20_3_3",
                       "excepted_hours": 20,
                       "user_id": 101,
                       "daily_progress":
@@ -210,7 +210,7 @@
                       "status":"Active"
                   },
                   {
-                    "task_id":4,
+                    "task_id":"20_3_4",
                     "excepted_hours": 70,
                     "user_id": 103,
                     "daily_progress":
@@ -231,7 +231,7 @@
         ]
       },
       {
-        "id": 21,
+        "id": "21",
         "start_date": "07/24/2017",
         "end_date": "08/13/2017",
         "team_member":
@@ -256,13 +256,13 @@
         "stories":
         [
           {
-            "story_id": 1,
+            "story_id": "21_1",
             "story_name": "",
             "story_hours": 240,
             "task":
             [
                 {
-                    "task_id":1,
+                    "task_id":"21_1_1",
                     "excepted_hours": 50,
                     "user_id": 100,
                     "daily_progress":
@@ -279,7 +279,7 @@
                     "status":"Active"
                 },
               {
-                    "task_id":2,
+                    "task_id":"21_1_2",
                     "excepted_hours": 60,
                     "user_id": 104,
                     "daily_progress":
@@ -296,7 +296,7 @@
                     "status":"Active"
                 },
               {
-                    "task_id":3,
+                    "task_id":"21_1_3",
                     "excepted_hours": 70,
                     "user_id": 101,
                     "daily_progress":
@@ -314,7 +314,7 @@
                     "status":"Active"
                 },
               {
-                    "task_id":4,
+                    "task_id":"21_1_4",
                     "excepted_hours": 20,
                     "user_id": 105,
                     "daily_progress":
@@ -326,7 +326,7 @@
                     ],
                     "status":"Active"
                 },{
-                    "task_id":5,
+                    "task_id":"21_1_5",
                     "excepted_hours": 40,
                     "user_id": 105,
                     "daily_progress":
@@ -343,13 +343,13 @@
             ]
           },
           {
-              "story_id": 2,
+              "story_id": "21_2",
               "story_name": "",
               "story_hours": 100,
               "task":
               [
                   {
-                      "task_id":1,
+                      "task_id":"21_2_1",
                       "excepted_hours": 40,
                       "user_id": 100,
                       "daily_progress":
@@ -365,7 +365,7 @@
                       "status":"Active"
                   },
                 {
-                      "task_id":2,
+                      "task_id":"21_2_2",
                       "excepted_hours": 40,
                       "user_id": 104,
                       "daily_progress":
@@ -380,7 +380,7 @@
                       "status":"Active"
                   },
                 {
-                      "task_id":3,
+                      "task_id":"21_2_3",
                       "excepted_hours": 20,
                       "user_id": 101,
                       "daily_progress":
@@ -395,13 +395,13 @@
               ]
           },
           {
-              "story_id": 3,
+              "story_id": "21_3",
               "story_name": "",
               "story_hours": 140,
               "task":
               [
                   {
-                      "task_id":1,
+                      "task_id":"21_3_1",
                       "excepted_hours": 30,
                       "user_id": 100,
                       "daily_progress":
@@ -414,7 +414,7 @@
                       "status":"Active"
                   },
                 {
-                      "task_id":2,
+                      "task_id":"21_3_2",
                       "excepted_hours": 20,
                       "user_id": 104,
                       "daily_progress":
@@ -426,7 +426,7 @@
                       "status":"Active"
                   },
                 {
-                      "task_id":3,
+                      "task_id":"21_3_3",
                       "excepted_hours": 20,
                       "user_id": 101,
                       "daily_progress":
@@ -439,7 +439,7 @@
                       "status":"Active"
                   },
                   {
-                    "task_id":4,
+                    "task_id":"21_3_4",
                     "excepted_hours": 70,
                     "user_id": 105,
                     "daily_progress":
@@ -458,7 +458,7 @@
               ]
           }
         ]
-      }
+    }
       
     ]
   }
