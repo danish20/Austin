@@ -32,7 +32,7 @@ controller.hears('setup sprint',['mention', 'direct_mention','direct_message'], 
 
   getResponse(function(w){
 
-    bot.reply(message,w);
+    bot.reply(message,w+"");
 
   });
  });
@@ -56,10 +56,7 @@ controller.hears('hello',['mention', 'direct_mention','direct_message'], functio
 // response function
 function getResponse(callback)
 {
-  var mockService = nock("https://api.austinbot.com")
-  .persist() // This will persist mock interception for lifetime of program.
-  .get("/sprint")
-  .reply(200, JSON.stringify(data.sprint) );
+  
 
 
 

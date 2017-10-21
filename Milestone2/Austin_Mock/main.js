@@ -14,8 +14,8 @@ function findNumberOfSprints()
 		// mock data needs list of issues.
 		austin.getSprints().then(function (sprints) 
 		{
-			console.log("hi");
-			console.log(sprints.length);
+			//console.log("hi");
+			//console.log(sprints.length);
             var sprint_count = sprints.length;
 			
 			resolve({sprint_count: sprint_count});
