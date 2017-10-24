@@ -461,6 +461,254 @@
         ]
     }
       
+    ],
+
+    "Austin_repo_stats":
+    [
+        {
+            "total": 9,
+            "weeks": [
+                {
+                    "w": 1505606400,
+                    "a": 31,
+                    "d": 17,
+                    "c": 7
+                },
+                {
+                    "w": 1506211200,
+                    "a": 0,
+                    "d": 0,
+                    "c": 0
+                },
+                {
+                    "w": 1506816000,
+                    "a": 15,
+                    "d": 31,
+                    "c": 2
+                },
+                {
+                    "w": 1507420800,
+                    "a": 0,
+                    "d": 0,
+                    "c": 0
+                },
+                {
+                    "w": 1508025600,
+                    "a": 0,
+                    "d": 0,
+                    "c": 0
+                },
+                {
+                    "w": 1508630400,
+                    "a": 0,
+                    "d": 0,
+                    "c": 0
+                }
+            ],
+            "author": {
+                "login": "udeshmu",
+                "id": 6222,
+                "avatar_url": "https://avatars.github.ncsu.edu/u/6222?",
+                "gravatar_id": "",
+                "url": "https://github.ncsu.edu/api/v3/users/udeshmu",
+                "html_url": "https://github.ncsu.edu/udeshmu",
+                "followers_url": "https://github.ncsu.edu/api/v3/users/udeshmu/followers",
+                "following_url": "https://github.ncsu.edu/api/v3/users/udeshmu/following{/other_user}",
+                "gists_url": "https://github.ncsu.edu/api/v3/users/udeshmu/gists{/gist_id}",
+                "starred_url": "https://github.ncsu.edu/api/v3/users/udeshmu/starred{/owner}{/repo}",
+                "subscriptions_url": "https://github.ncsu.edu/api/v3/users/udeshmu/subscriptions",
+                "organizations_url": "https://github.ncsu.edu/api/v3/users/udeshmu/orgs",
+                "repos_url": "https://github.ncsu.edu/api/v3/users/udeshmu/repos",
+                "events_url": "https://github.ncsu.edu/api/v3/users/udeshmu/events{/privacy}",
+                "received_events_url": "https://github.ncsu.edu/api/v3/users/udeshmu/received_events",
+                "type": "User",
+                "site_admin": false,
+                "ldap_dn": "CN=udeshmu,OU=People,DC=wolftech,DC=ad,DC=ncsu,DC=edu"
+            }
+        },
+        {
+            "total": 11,
+            "weeks": [
+                {
+                    "w": 1505606400,
+                    "a": 0,
+                    "d": 0,
+                    "c": 0
+                },
+                {
+                    "w": 1506211200,
+                    "a": 0,
+                    "d": 0,
+                    "c": 0
+                },
+                {
+                    "w": 1506816000,
+                    "a": 3,
+                    "d": 0,
+                    "c": 6
+                },
+                {
+                    "w": 1507420800,
+                    "a": 210,
+                    "d": 7,
+                    "c": 3
+                },
+                {
+                    "w": 1508025600,
+                    "a": 452,
+                    "d": 190,
+                    "c": 2
+                },
+                {
+                    "w": 1508630400,
+                    "a": 0,
+                    "d": 0,
+                    "c": 0
+                }
+            ],
+            "author": {
+                "login": "spilani",
+                "id": 6120,
+                "avatar_url": "https://avatars.github.ncsu.edu/u/6120?",
+                "gravatar_id": "",
+                "url": "https://github.ncsu.edu/api/v3/users/spilani",
+                "html_url": "https://github.ncsu.edu/spilani",
+                "followers_url": "https://github.ncsu.edu/api/v3/users/spilani/followers",
+                "following_url": "https://github.ncsu.edu/api/v3/users/spilani/following{/other_user}",
+                "gists_url": "https://github.ncsu.edu/api/v3/users/spilani/gists{/gist_id}",
+                "starred_url": "https://github.ncsu.edu/api/v3/users/spilani/starred{/owner}{/repo}",
+                "subscriptions_url": "https://github.ncsu.edu/api/v3/users/spilani/subscriptions",
+                "organizations_url": "https://github.ncsu.edu/api/v3/users/spilani/orgs",
+                "repos_url": "https://github.ncsu.edu/api/v3/users/spilani/repos",
+                "events_url": "https://github.ncsu.edu/api/v3/users/spilani/events{/privacy}",
+                "received_events_url": "https://github.ncsu.edu/api/v3/users/spilani/received_events",
+                "type": "User",
+                "site_admin": false,
+                "ldap_dn": "CN=spilani,OU=People,DC=wolftech,DC=ad,DC=ncsu,DC=edu"
+            }
+        },
+        {
+            "total": 16,
+            "weeks": [
+                {
+                    "w": 1505606400,
+                    "a": 31,
+                    "d": 17,
+                    "c": 14
+                },
+                {
+                    "w": 1506211200,
+                    "a": 0,
+                    "d": 0,
+                    "c": 0
+                },
+                {
+                    "w": 1506816000,
+                    "a": 2,
+                    "d": 0,
+                    "c": 2
+                },
+                {
+                    "w": 1507420800,
+                    "a": 0,
+                    "d": 0,
+                    "c": 0
+                },
+                {
+                    "w": 1508025600,
+                    "a": 0,
+                    "d": 0,
+                    "c": 0
+                },
+                {
+                    "w": 1508630400,
+                    "a": 0,
+                    "d": 0,
+                    "c": 0
+                }
+            ],
+            "author": {
+                "login": "pmsrivas",
+                "id": 5899,
+                "avatar_url": "https://avatars.github.ncsu.edu/u/5899?",
+                "gravatar_id": "",
+                "url": "https://github.ncsu.edu/api/v3/users/pmsrivas",
+                "html_url": "https://github.ncsu.edu/pmsrivas",
+                "followers_url": "https://github.ncsu.edu/api/v3/users/pmsrivas/followers",
+                "following_url": "https://github.ncsu.edu/api/v3/users/pmsrivas/following{/other_user}",
+                "gists_url": "https://github.ncsu.edu/api/v3/users/pmsrivas/gists{/gist_id}",
+                "starred_url": "https://github.ncsu.edu/api/v3/users/pmsrivas/starred{/owner}{/repo}",
+                "subscriptions_url": "https://github.ncsu.edu/api/v3/users/pmsrivas/subscriptions",
+                "organizations_url": "https://github.ncsu.edu/api/v3/users/pmsrivas/orgs",
+                "repos_url": "https://github.ncsu.edu/api/v3/users/pmsrivas/repos",
+                "events_url": "https://github.ncsu.edu/api/v3/users/pmsrivas/events{/privacy}",
+                "received_events_url": "https://github.ncsu.edu/api/v3/users/pmsrivas/received_events",
+                "type": "User",
+                "site_admin": false,
+                "ldap_dn": "CN=pmsrivas,OU=People,DC=wolftech,DC=ad,DC=ncsu,DC=edu"
+            }
+        },
+        {
+            "total": 44,
+            "weeks": [
+                {
+                    "w": 1505606400,
+                    "a": 112,
+                    "d": 48,
+                    "c": 31
+                },
+                {
+                    "w": 1506211200,
+                    "a": 0,
+                    "d": 0,
+                    "c": 0
+                },
+                {
+                    "w": 1506816000,
+                    "a": 25,
+                    "d": 3,
+                    "c": 3
+                },
+                {
+                    "w": 1507420800,
+                    "a": 23,
+                    "d": 40,
+                    "c": 4
+                },
+                {
+                    "w": 1508025600,
+                    "a": 857,
+                    "d": 25,
+                    "c": 6
+                },
+                {
+                    "w": 1508630400,
+                    "a": 0,
+                    "d": 0,
+                    "c": 0
+                }
+            ],
+            "author": {
+                "login": "dsuri",
+                "id": 5970,
+                "avatar_url": "https://avatars.github.ncsu.edu/u/5970?",
+                "gravatar_id": "",
+                "url": "https://github.ncsu.edu/api/v3/users/dsuri",
+                "html_url": "https://github.ncsu.edu/dsuri",
+                "followers_url": "https://github.ncsu.edu/api/v3/users/dsuri/followers",
+                "following_url": "https://github.ncsu.edu/api/v3/users/dsuri/following{/other_user}",
+                "gists_url": "https://github.ncsu.edu/api/v3/users/dsuri/gists{/gist_id}",
+                "starred_url": "https://github.ncsu.edu/api/v3/users/dsuri/starred{/owner}{/repo}",
+                "subscriptions_url": "https://github.ncsu.edu/api/v3/users/dsuri/subscriptions",
+                "organizations_url": "https://github.ncsu.edu/api/v3/users/dsuri/orgs",
+                "repos_url": "https://github.ncsu.edu/api/v3/users/dsuri/repos",
+                "events_url": "https://github.ncsu.edu/api/v3/users/dsuri/events{/privacy}",
+                "received_events_url": "https://github.ncsu.edu/api/v3/users/dsuri/received_events",
+                "type": "User",
+                "site_admin": false,
+                "ldap_dn": "CN=dsuri,OU=People,DC=wolftech,DC=ad,DC=ncsu,DC=edu"
+            }
+        }
     ]
-  }
+}
   

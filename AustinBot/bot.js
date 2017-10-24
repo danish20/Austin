@@ -66,6 +66,16 @@ controller.hears('get burndown 20',['mention', 'direct_mention','direct_message'
   });
 });
 
+controller.hears('get users commits Austin',['mention', 'direct_mention','direct_message'], function(bot,message) 
+{
+  console.log(message);
+  getUsersCommits(repo, function(w){
+
+    bot.reply(message,w);
+
+  });
+});
+
 controller.hears('hello',['mention', 'direct_mention','direct_message'], function(bot,message) 
 {
   var jsonData = {
