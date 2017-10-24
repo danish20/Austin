@@ -26,3 +26,13 @@ Credentials are Username : <username> Password : <password>
 | Create services for fetching facts     | Active  | https://trello.com/c/AoouTBYR     |   Prashant
 
 
+
+### Week 3
+
+| Deliverable   | Status   |  Trello Link |   Assignee
+| ------------- | ------------  |  ------------ |   -----------
+| Create graphs for sprint analytics and host them on S3     | Active  | https://trello.com/c/MFBTdj8N     |   Sandeep, Udit
+| Implement convo in bot     | Active  | https://trello.com/c/fTHqpuDI     |   Danish
+| Python server invocation from node     | Active  | https://trello.com/c/gbHrWL8j     |   Sandeep, Udit
+| Create Help for a bot user     | Todo  | https://trello.com/c/aPgp6RHK     |   Danish, Prashant
+
