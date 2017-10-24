@@ -1,8 +1,6 @@
 
 var Botkit = require('botkit');
-var Forecast = require('forecast.io');
-var options = { APIKey: process.env.FORECASTTOKEN };
-var forecast = new Forecast(options);
+
 var Main = require('../AustinBot/main');
 var nock = require("nock");
 var os = require('os');
@@ -92,33 +90,38 @@ controller.hears('Show Burndown charts', ['mention', 'direct_mention', 'direct_m
 
 
 //USE CASE 1: Show performance of a user in given sprint
-controller.hears('Show performance of a user', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
-  console.log(message + "");
-  var user_id;
-  var sprint_id_conv;
+controller.hears('Show performance of (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+  var name = message.match[1];
+  console.log(name + "HelloW");
   bot.startConversation(message, function (err, convo) {
+
     convo.say("Sure");
-    convo.ask('Whose performance you want to see? Please enter their Name or ID.', function (response, convo) {
-      user_id  = response.text;
-      convo.ask('For which sprint you want to see the performance? Enter Sprint name or ID.', [
-        {
-            pattern: 'Sprint 20',
-            callback: function(response, convo) {
-                sprint_id_conv = response.text.slice(-2);
-                convo.next();
+    convo.ask('For which sprint you want to see the performance? Enter Sprint name or ID.', function (response, convo) {
+      var sprint_id = response.text.slice(-2);
+      getBurndown(sprint_id, function (w) {
+
+        var imageURL = w;
+        var preText = "Your Burndown chart for Sprint " + sprint_id + " is shown below"
+        var titleText = "Burndown Chart"
+        var responsiveChart = "link_here"
+        var burndownImage = {
+          "attachments": [
+            {
+              "pretext": preText,
+              "title": titleText,
+              "title_link": responsiveChart,
+              "image_url": imageURL,
+              "color": "#ffa500"
             }
-        },
-        {
-            default: true,
-            callback: function(response, convo) {
-                convo.repeat();
-                convo.next();
-            }
-        }
-    ]);
+          ]
+        };
+        convo.say(burndownImage);
+        convo.next();
+      });
     });
-    });
-  }); 
+  });
+});
+
 
 //USE CASE 4: Facts about the most number of commits.
 controller.hears('Who has made most number of commits?', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
@@ -318,6 +321,14 @@ function getUsersCommits(repo, callback) {
   Main.getUsersCommits(repo).then(function (results) {
     var msg = results.msg;
     return callback(msg);
+  });
+}
+
+//Service for getting the graph of user performance
+function getUserPerformanceForSprint(userId, sprintId, callback)  {
+  Main.getUserPerformanceForSprint(userId, sprintId).then(function (results) {
+    var perfomance_img_url = results.img_url;
+    return callback(perfomance_img_url);
   });
 }
 
