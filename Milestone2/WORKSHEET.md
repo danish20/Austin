@@ -10,9 +10,17 @@ Credentials are Username : <username> Password : <password>
 
 | Deliverable   | Status   |  Trello Link |   Assignee
 | ------------- | ------------  |  ------------ |   -----------
-| Create mocking data.  | Complete  | https://trello.com/c/RQOieM8n |   Sandeep, Udit
-| Subflow      | 1             |  #33, #38, #78
-| Subflow      | 2             |  [Pivotal Task](https://www.pivotaltracker.com/story/show/114636091)
-| Subflow      | 3             |  [Trello Card](https://trello.com/c/diA1DaMw)
-| Subflow      | &nbsp;        | &nbsp;
-| Selenium Tests| Incomplete    | Get Meeting Availability, error1,...
+| Create mocking data      | Complete  | https://trello.com/c/RQOieM8n     |   Sandeep, Udit
+| Try out sample hooks     | Complete  | https://trello.com/c/3bzvgnIK     |   Danish
+| Create mock services     | Complete  | https://trello.com/c/SBMivGNi     |   Prashant
+
+
+
+### Week 2
+
+| Deliverable   | Status   |  Trello Link |   Assignee
+| ------------- | ------------  |  ------------ |   -----------
+| Start building some analysis     | Complete  | https://trello.com/c/absck1yT     |   Prashant, Sandeep, Udit
+
+
+
