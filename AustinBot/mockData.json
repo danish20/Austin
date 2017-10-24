@@ -17,7 +17,7 @@
             },
             {
               "user_id": 102,
-              "user_name": "Prashant"
+              "user_name": "PremBhai"
             },
             {
               "user_id": 103,
@@ -47,7 +47,7 @@
                         {"date": "07/11/2017", "work_done": 2}
                         
                     ],
-                    "status":"Active"
+                    "status":"Complete"
                 },
               {
                     "task_id":"20_1_2",
@@ -64,7 +64,7 @@
                         {"date": "07/11/2017", "work_done": 8},
                         {"date": "07/12/2017", "work_done": 4}
                     ],
-                    "status":"Active"
+                    "status":"Complete"
                 },
               {
                     "task_id":"20_1_3",
@@ -82,7 +82,7 @@
                         {"date": "07/12/2017", "work_done": 8},
                         {"date": "07/13/2017", "work_done": 6}
                     ],
-                    "status":"Active"
+                    "status":"Complete"
                 },
               {
                     "task_id":"20_1_4",
@@ -95,7 +95,7 @@
                         {"date": "07/05/2017", "work_done": 4}
                         
                     ],
-                    "status":"Active"
+                    "status":"Complete"
                 },{
                     "task_id":"20_1_5",
                     "excepted_hours": 40,
@@ -109,7 +109,7 @@
                         {"date": "07/11/2017", "work_done": 8},
                         {"date": "07/12/2017", "work_done": 4}                    
                     ],
-                    "status":"Active"
+                    "status":"Complete"
                 }
             ]
           },
@@ -133,7 +133,7 @@
                           {"date": "07/18/2017", "work_done": 2}
                           
                       ],
-                      "status":"Active"
+                      "status":"Complete"
                   },
                 {
                       "task_id":"20_2_2",
@@ -148,7 +148,7 @@
                         {"date": "07/18/2017", "work_done": 8},
                         {"date": "07/19/2017", "work_done": 4}
                       ],
-                      "status":"Active"
+                      "status":"Complete"
                   },
                 {
                       "task_id":"20_2_3",
@@ -161,7 +161,7 @@
                           {"date": "07/17/2017", "work_done": 8},
                           {"date": "07/18/2017", "work_done": 2}
                       ],
-                      "status":"Active"
+                      "status":"Complete"
                   }
               ]
           },
@@ -182,7 +182,7 @@
                           {"date": "07/20/2017", "work_done": 8},
                           {"date": "07/21/2017", "work_done": 8}
                       ],
-                      "status":"Active"
+                      "status":"Complete"
                   },
                 {
                       "task_id":"20_3_2",
@@ -194,7 +194,7 @@
                           {"date": "07/20/2017", "work_done": 8},
                           {"date": "07/21/2017", "work_done": 8}
                       ],
-                      "status":"Active"
+                      "status":"Complete"
                   },
                 {
                       "task_id":"20_3_3",
@@ -207,7 +207,7 @@
                           {"date": "07/20/2017", "work_done": 8},
                           {"date": "07/21/2017", "work_done": 8}
                       ],
-                      "status":"Active"
+                      "status":"Complete"
                   },
                   {
                     "task_id":"20_3_4",
@@ -268,12 +268,12 @@
                     "user_id": 100,
                     "daily_progress":
                     [
-                        {"date": "07/24/2017", "work_done": 8},
-                        {"date": "07/25/2017", "work_done": 8},
-                        {"date": "07/26/2017", "work_done": 8},
-                        {"date": "07/27/2017", "work_done": 8},
-                        {"date": "07/28/2017", "work_done": 8},
-                        {"date": "07/31/2017", "work_done": 8},
+                        {"date": "07/24/2017", "work_done": 6},
+                        {"date": "07/25/2017", "work_done": 5},
+                        {"date": "07/26/2017", "work_done": 4},
+                        {"date": "07/27/2017", "work_done": 3},
+                        {"date": "07/28/2017", "work_done": 6},
+                        {"date": "07/31/2017", "work_done": 6},
                         {"date": "08/1/2017", "work_done": 2}
                         
                     ],
@@ -285,13 +285,13 @@
                     "user_id": 104,
                     "daily_progress":
                     [
-                        {"date": "07/24/2017", "work_done": 8},
-                        {"date": "07/25/2017", "work_done": 8},
-                        {"date": "07/26/2017", "work_done": 8},
-                        {"date": "07/27/2017", "work_done": 8},
-                        {"date": "07/28/2017", "work_done": 8},
-                        {"date": "07/31/2017", "work_done": 8},
-                        {"date": "08/1/2017", "work_done": 8},
+                        {"date": "07/24/2017", "work_done": 6},
+                        {"date": "07/25/2017", "work_done": 6},
+                        {"date": "07/26/2017", "work_done": 6},
+                        {"date": "07/27/2017", "work_done": 6},
+                        {"date": "07/28/2017", "work_done": 6},
+                        {"date": "07/31/2017", "work_done": 6},
+                        {"date": "08/1/2017", "work_done": 6},
                         {"date": "08/2/2017", "work_done": 4}
                     ],
                     "status":"Active"
@@ -302,13 +302,13 @@
                     "user_id": 101,
                     "daily_progress":
                     [
-                        {"date": "07/24/2017", "work_done": 8},
-                        {"date": "07/25/2017", "work_done": 8},
-                        {"date": "07/26/2017", "work_done": 8},
-                        {"date": "07/27/2017", "work_done": 8},
-                        {"date": "07/28/2017", "work_done": 8},
-                        {"date": "07/31/2017", "work_done": 8},
-                        {"date": "08/1/2017", "work_done": 8},
+                        {"date": "07/24/2017", "work_done": 6},
+                        {"date": "07/25/2017", "work_done": 6},
+                        {"date": "07/26/2017", "work_done": 6},
+                        {"date": "07/27/2017", "work_done": 6},
+                        {"date": "07/28/2017", "work_done": 6},
+                        {"date": "07/31/2017", "work_done": 6},
+                        {"date": "08/1/2017", "work_done": 6},
                         {"date": "08/2/2017", "work_done": 8},
                         {"date": "08/3/2017", "work_done": 6}
                     ],
@@ -320,8 +320,8 @@
                     "user_id": 105,
                     "daily_progress":
                     [
-                        {"date": "07/24/2017", "work_done": 8},
-                        {"date": "07/25/2017", "work_done": 8},
+                        {"date": "07/24/2017", "work_done": 7},
+                        {"date": "07/25/2017", "work_done": 7},
                         {"date": "07/26/2017", "work_done": 4}
                         
                     ],
@@ -333,10 +333,10 @@
                     "daily_progress":
                     [
                         {"date": "07/26/2017", "work_done": 4},
-                        {"date": "07/27/2017", "work_done": 8},
-                        {"date": "07/28/2017", "work_done": 8},
-                        {"date": "07/31/2017", "work_done": 8},
-                        {"date": "08/1/2017", "work_done": 8},
+                        {"date": "07/27/2017", "work_done": 7},
+                        {"date": "07/28/2017", "work_done": 7},
+                        {"date": "07/31/2017", "work_done": 7},
+                        {"date": "08/1/2017", "work_done": 7},
                         {"date": "08/2/2017", "work_done": 4}                    
                     ],
                     "status":"Active"
@@ -356,10 +356,10 @@
                       "daily_progress":
                       [
                           {"date": "08/1/2017", "work_done": 6},
-                          {"date": "08/2/2017", "work_done": 8},
-                          {"date": "08/3/2017", "work_done": 8},
-                          {"date": "08/4/2017", "work_done": 8},
-                          {"date": "08/7/2017", "work_done": 8},
+                          {"date": "08/2/2017", "work_done": 7},
+                          {"date": "08/3/2017", "work_done": 5},
+                          {"date": "08/4/2017", "work_done": 6},
+                          {"date": "08/7/2017", "work_done": 7},
                           {"date": "08/8/2017", "work_done": 2}
                           
                       ],
@@ -372,10 +372,10 @@
                       "daily_progress":
                       [
                         {"date": "08/2/2017", "work_done": 4},
-                        {"date": "08/3/2017", "work_done": 8},
-                        {"date": "08/4/2017", "work_done": 8},
-                        {"date": "08/7/2017", "work_done": 8},
-                        {"date": "08/8/2017", "work_done": 8},
+                        {"date": "08/3/2017", "work_done": 7},
+                        {"date": "08/4/2017", "work_done": 7},
+                        {"date": "08/7/2017", "work_done": 7},
+                        {"date": "08/8/2017", "work_done": 7},
                         {"date": "08/9/2017", "work_done": 4}
                       ],
                       "status":"Active"
@@ -387,8 +387,8 @@
                       "daily_progress":
                       [
                           {"date": "08/3/2017", "work_done": 2},
-                          {"date": "08/4/2017", "work_done": 8},
-                          {"date": "08/7/2017", "work_done": 8},
+                          {"date": "08/4/2017", "work_done": 7},
+                          {"date": "08/7/2017", "work_done": 7},
                           {"date": "08/8/2017", "work_done": 2}
                       ],
                       "status":"Active"
@@ -408,9 +408,9 @@
                       "daily_progress":
                       [
                           {"date": "08/8/2017", "work_done": 6},
-                          {"date": "08/9/2017", "work_done": 8},
-                          {"date": "08/10/2017", "work_done": 8},
-                          {"date": "08/11/2017", "work_done": 8}
+                          {"date": "08/9/2017", "work_done": 6},
+                          {"date": "08/10/2017", "work_done": 6},
+                          {"date": "08/11/2017", "work_done": 6}
                       ],
                       "status":"Active"
                   },
@@ -421,8 +421,8 @@
                       "daily_progress":
                       [
                           {"date": "08/9/2017", "work_done": 4},
-                          {"date": "08/10/2017", "work_done": 8},
-                          {"date": "08/11/2017", "work_done": 8}
+                          {"date": "08/10/2017", "work_done": 6},
+                          {"date": "08/11/2017", "work_done": 6}
                       ],
                       "status":"Active"
                   },
@@ -433,9 +433,9 @@
                       "daily_progress":
                       [
                           {"date": "08/8/2017", "work_done": 6},
-                          {"date": "08/9/2017", "work_done": 8},
-                          {"date": "08/10/2017", "work_done": 8},
-                          {"date": "08/11/2017", "work_done": 8}
+                          {"date": "08/9/2017", "work_done": 5},
+                          {"date": "08/10/2017", "work_done": 6},
+                          {"date": "08/11/2017", "work_done": 7}
                       ],
                       "status":"Active"
                   },
@@ -446,13 +446,13 @@
                     "daily_progress":
                     [
                         {"date": "08/2/2017", "work_done": 4},
-                        {"date": "08/3/2017", "work_done": 8},
-                        {"date": "08/4/2017", "work_done": 8},
-                        {"date": "08/7/2017", "work_done": 8},
-                        {"date": "08/8/2017", "work_done": 8},
+                        {"date": "08/3/2017", "work_done": 7},
+                        {"date": "08/4/2017", "work_done": 7},
+                        {"date": "08/7/2017", "work_done": 7},
+                        {"date": "08/8/2017", "work_done": 6},
                         {"date": "08/9/2017", "work_done": 8},
-                        {"date": "08/10/2017", "work_done": 8},
-                        {"date": "08/11/2017", "work_done": 8}
+                        {"date": "08/10/2017", "work_done": 6},
+                        {"date": "08/11/2017", "work_done": 5}
                     ],
                     "status":"Active"
                 }
