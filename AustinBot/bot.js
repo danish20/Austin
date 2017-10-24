@@ -86,11 +86,13 @@ controller.hears('hello',['mention', 'direct_mention','direct_message'], functio
     ]
 };
 
+
+
 var imageURL = "https://s3.us-east-2.amazonaws.com/austinbot/plot_image.png";
 var preText = "Your Burndown chart for this sprint is shown below"
 var titleText = "Burndown Chart"
 var responsiveChart = "link_here"
-var responseImage = {
+var burndownImage = {
   "attachments": [
       {
           "pretext": preText,
@@ -101,7 +103,7 @@ var responseImage = {
       }
   ]
 };
-  bot.reply(message,responseImage);
+  bot.reply(message,burndownImage);
 });
 
 
