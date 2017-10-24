@@ -7,6 +7,7 @@ import plotly
 import json
 from pprint import pprint
 import os
+import s3
 
 current_path = os.path.dirname(os.path.realpath("__file__"))
 
@@ -58,3 +59,4 @@ def plot_burndown(x, y):
 
 [x,y] = parse_json_for_burndown(20)
 fig=plot_burndown(x,y)
+s3.save_file_to_s3('burndown.png')
