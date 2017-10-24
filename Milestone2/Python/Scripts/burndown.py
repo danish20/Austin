@@ -12,7 +12,8 @@ import s3
 current_path = os.path.dirname(os.path.realpath("__file__"))
 
 def parse_json_for_burndown(query_id):
-    file = open(os.path.join(current_path,'../../Austin_Mock/mockData.json'), 'r')
+    current_path = os.path.dirname(os.path.realpath("__file__"))
+    file = open(os.path.join(current_path,'../../../AustinBot/mockData.json'), 'r')
     mock = json.load(file)
     sprints = mock["sprint"]
     for sprint in sprints:
@@ -42,21 +43,34 @@ def parse_json_for_burndown(query_id):
         y.append(hours_left)
     #print(x)
     #print(y)
-    return [x,y]
+    each_day = total_hours/len(x)
+    hours_left = total_hours
+    y_ideal = []
+    for i in x:
+        hours_left -= each_day
+        y_ideal.append(hours_left)
+    return [x,y, y_ideal]
 
-def plot_burndown(x, y):
+def plot_burndown(x, y, y_ideal):
     plotly.tools.set_credentials_file(username='udeshmu', api_key='qIyD3uwDHJdtNvjSsFyS')
     trace1 = go.Scatter(
         x = x,
         y = y,
-        name = '<b>No</b> Gaps', # Style name/legend entry with html tags
+        name = '<b>Burndown</b>', # Style name/legend entry with html tags
         connectgaps=True
     )
-    data = [trace1]
+    trace2 = go.Scatter(
+        x = x,
+        y = y_ideal,
+        name = '<b>Ideal</b>', # Style name/legend entry with html tags
+        connectgaps=True,
+        line = dict(color = ('rgb(205, 12, 24)'),width = 4)
+    )
+    data = [trace1, trace2]
     fig = dict(data=data)
     py.image.save_as(fig, filename=os.path.join(current_path,'../Plots/burndown.png'))
     return fig
 
-[x,y] = parse_json_for_burndown(20)
-fig=plot_burndown(x,y)
+[x,y,y_ideal] = parse_json_for_burndown("21")
+fig=plot_burndown(x,y,y_ideal)
 s3.save_file_to_s3('burndown.png')
