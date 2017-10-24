@@ -47,10 +47,10 @@ function getSprint(sprint_id)
     });
 }
 
-<<<<<<< HEAD
+
 exports.getSprints = getSprints;
 exports.getSprint = getSprint;
-=======
+
 //get burndown chart of a particular sprint by sprint_id
 function getBurndown(sprint_id)
 {
@@ -97,4 +97,3 @@ exports.getSprints = getSprints;
 exports.getSprint = getSprint;
 exports.getBurndown = getBurndown;
 exports.getUsersCommits = getUsersCommits;
->>>>>>> 029d5997b08c3c462d4c430819d591735956b73d
