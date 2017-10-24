@@ -56,12 +56,29 @@ controller.hears('get sprint 20',['mention', 'direct_mention','direct_message'],
   });
 });
 
-controller.hears('get burndown 20',['mention', 'direct_mention','direct_message'], function(bot,message) 
+controller.hears('Show Burndown charts',['mention', 'direct_mention','direct_message'], function(bot,message) 
 {
-  console.log(message);
+  console.log(message+"");
+  var sprint_id = 20;
   getBurndown(sprint_id, function(w){
 
-    bot.reply(message,w);
+    var imageURL = w;
+    var preText = "Your Burndown chart for Sprint"+sprint_id+" is shown below"
+    var titleText = "Burndown Chart"
+    var responsiveChart = "link_here"
+    var burndownImage = {
+      "attachments": [
+          {
+              "pretext": preText,
+              "title": titleText,
+              "title_link": responsiveChart,
+              "image_url": imageURL,
+              "color": "#ffa500"
+          }
+      ]
+    };
+
+    bot.reply(message,burndownImage);
 
   });
 });
