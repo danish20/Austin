@@ -56,6 +56,16 @@ controller.hears('get sprint 20',['mention', 'direct_mention','direct_message'],
   });
 });
 
+controller.hears('get burndown 20',['mention', 'direct_mention','direct_message'], function(bot,message) 
+{
+  console.log(message);
+  getBurndown(sprint_id, function(w){
+
+    bot.reply(message,w);
+
+  });
+});
+
 controller.hears('hello',['mention', 'direct_mention','direct_message'], function(bot,message) 
 {
   var jsonData = {
@@ -142,4 +152,12 @@ function getSprint(sprint_id, callback)
   });
 }
 
+function getBurndown(sprint_id, callback)
+{
+  Main.getBurndown(sprint_id).then(function (results)
+  {
+    var burndown_img_url = results.burndown_img_url;
+    return callback(burndown_img_url);
+  });
+}
 
