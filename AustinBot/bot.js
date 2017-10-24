@@ -92,19 +92,20 @@ controller.hears('Show Burndown charts', ['mention', 'direct_mention', 'direct_m
 //USE CASE 1: Show performance of a user in given sprint
 controller.hears('Show performance of (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   var name = message.match[1];
-  console.log(name + "HelloW");
+  //console.log(name + "HelloW");
   bot.startConversation(message, function (err, convo) {
 
     convo.say("Sure");
     convo.ask('For which sprint you want to see the performance? Enter Sprint name or ID.', function (response, convo) {
       var sprint_id = response.text.slice(-2);
-      getBurndown(sprint_id, function (w) {
+      getUserPerformanceForSprint(name,sprint_id, function (w) {
 
         var imageURL = w;
-        var preText = "Your Burndown chart for Sprint " + sprint_id + " is shown below"
-        var titleText = "Burndown Chart"
+        console.log(w + "HelloW");
+        var preText = "Performance of "+name+" for Sprint "+ sprint_id + " is shown below"
+        var titleText = "Performance Chart"
         var responsiveChart = "link_here"
-        var burndownImage = {
+        var perfImage = {
           "attachments": [
             {
               "pretext": preText,
@@ -115,7 +116,7 @@ controller.hears('Show performance of (.*)', ['mention', 'direct_mention', 'dire
             }
           ]
         };
-        convo.say(burndownImage);
+        convo.say(perfImage);
         convo.next();
       });
     });
@@ -327,7 +328,7 @@ function getUsersCommits(repo, callback) {
 //Service for getting the graph of user performance
 function getUserPerformanceForSprint(userId, sprintId, callback)  {
   Main.getUserPerformanceForSprint(userId, sprintId).then(function (results) {
-    var perfomance_img_url = results.img_url;
+    var perfomance_img_url = results.performance_chart_url;
     return callback(perfomance_img_url);
   });
 }

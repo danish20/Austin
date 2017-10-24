@@ -123,6 +123,7 @@ function getUserPerformanceForSprint(userId, sprintId) {
 			var sprint_data = sprint;
 			console.log(sprint_data);
 			var sprint_20_sandeep_performance_url = sprint_data[0].team_member[3].performance_chart_url;
+			console.log(sprint_20_sandeep_performance_url+"HelloW");
 			resolve({performance_chart_url: sprint_20_sandeep_performance_url});
 		});
 	});	
