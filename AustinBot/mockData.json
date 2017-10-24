@@ -289,16 +289,16 @@
                     "user_id": 104,
                     "daily_progress":
                     [
-                        {"date": "07/24/2017", "work_done": 6},
-                        {"date": "07/25/2017", "work_done": 6},
-                        {"date": "07/26/2017", "work_done": 6},
-                        {"date": "07/27/2017", "work_done": 6},
-                        {"date": "07/28/2017", "work_done": 6},
-                        {"date": "07/31/2017", "work_done": 6},
-                        {"date": "08/1/2017", "work_done": 6},
+                        {"date": "07/24/2017", "work_done": 8},
+                        {"date": "07/25/2017", "work_done": 8},
+                        {"date": "07/26/2017", "work_done": 8},
+                        {"date": "07/27/2017", "work_done": 8},
+                        {"date": "07/28/2017", "work_done": 8},
+                        {"date": "07/31/2017", "work_done": 8},
+                        {"date": "08/1/2017", "work_done": 8},
                         {"date": "08/2/2017", "work_done": 4}
                     ],
-                    "status":"Active"
+                    "status":"Complete"
                 },
               {
                     "task_id":"21_1_3",
@@ -306,17 +306,17 @@
                     "user_id": 101,
                     "daily_progress":
                     [
-                        {"date": "07/24/2017", "work_done": 6},
-                        {"date": "07/25/2017", "work_done": 6},
-                        {"date": "07/26/2017", "work_done": 6},
-                        {"date": "07/27/2017", "work_done": 6},
-                        {"date": "07/28/2017", "work_done": 6},
-                        {"date": "07/31/2017", "work_done": 6},
-                        {"date": "08/1/2017", "work_done": 6},
+                        {"date": "07/24/2017", "work_done": 8},
+                        {"date": "07/25/2017", "work_done": 8},
+                        {"date": "07/26/2017", "work_done": 8},
+                        {"date": "07/27/2017", "work_done": 8},
+                        {"date": "07/28/2017", "work_done": 8},
+                        {"date": "07/31/2017", "work_done": 8},
+                        {"date": "08/1/2017", "work_done": 8},
                         {"date": "08/2/2017", "work_done": 8},
                         {"date": "08/3/2017", "work_done": 6}
                     ],
-                    "status":"Active"
+                    "status":"Complete"
                 },
               {
                     "task_id":"21_1_4",
@@ -324,12 +324,12 @@
                     "user_id": 105,
                     "daily_progress":
                     [
-                        {"date": "07/24/2017", "work_done": 7},
-                        {"date": "07/25/2017", "work_done": 7},
+                        {"date": "07/24/2017", "work_done": 8},
+                        {"date": "07/25/2017", "work_done": 8},
                         {"date": "07/26/2017", "work_done": 4}
                         
                     ],
-                    "status":"Active"
+                    "status":"Complete"
                 },{
                     "task_id":"21_1_5",
                     "excepted_hours": 40,
