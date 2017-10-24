@@ -93,7 +93,28 @@ function getUsersCommits(repo)
     });
 }
 
+function getUserPerformanceForSprint(userId, sprintId) 
+{
+    var options = {
+        url: urlRoot + "/performance/" + userId + "/" + sprintId,
+        method: "GET",
+        headers: {
+            "content-type": "application/json"
+        }
+    };
+
+    return new Promise(function (resolve, reject){
+        request(options, function(error, response, body)
+        {
+            var obj = JSON.parse(body);
+            console.log(obj);
+            resolve(obj);
+        });
+    });
+}
+
 exports.getSprints = getSprints;
 exports.getSprint = getSprint;
 exports.getBurndown = getBurndown;
 exports.getUsersCommits = getUsersCommits;
+exports.getUserPerformanceForSprint = getUserPerformanceForSprint;

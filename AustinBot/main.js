@@ -107,7 +107,29 @@ function getUsersCommits(repo){
 	});
 }
 
+function getUserPerformanceForSprint(userId, sprintId) {
+	var mockService = nock("https://api.austinbot.com")
+	.persist() // This will persist mock interception for lifetime of program.
+	.get("/performance/sandeep/20")
+	.reply(200, JSON.stringify(data.sprint));
+
+	return new Promise(function (resolve, reject) 
+	{
+		// mock data needs list of issues.
+		austin.getUserPerformanceForSprint(userId, sprintId).then(function (sprint) 
+		{
+			console.log("got sprint for perfomance::"+sprintId);
+
+			var sprint_data = sprint;
+			console.log(sprint_data);
+			var sprint_20_sandeep_performance_url = sprint_data[0].team_member[3].performance_chart_url;
+			resolve({performance_chart_url: sprint_20_sandeep_performance_url});
+		});
+	});	
+}
+
 exports.findNumberOfSprints = findNumberOfSprints;
 exports.getSprint = getSprint;
 exports.getBurndown = getBurndown;
 exports.getUsersCommits = getUsersCommits;
+exports.getUserPerformanceForSprint = getUserPerformanceForSprint;
