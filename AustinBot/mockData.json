@@ -9,19 +9,23 @@
         [
             {
               "user_id": 100,
-              "user_name": "Udit"
+              "user_name": "Udit",
+              "performance_chart_url": "https://s3.us-east-2.amazonaws.com/austinbot/user_performance.png"
             },
             {
               "user_id": 101,
-              "user_name": "Dsuri"
+              "user_name": "Dsuri",
+              "performance_chart_url": "https://s3.us-east-2.amazonaws.com/austinbot/user_performance.png"
             },
             {
               "user_id": 102,
-              "user_name": "Prashant"
+              "user_name": "Prashant",
+              "performance_chart_url": "https://s3.us-east-2.amazonaws.com/austinbot/user_performance.png"
             },
             {
               "user_id": 103,
-              "user_name": "Sandeep"
+              "user_name": "Sandeep",
+              "performance_chart_url": "https://s3.us-east-2.amazonaws.com/austinbot/user_performance.png"
             }
         ],
         "stories":

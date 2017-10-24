@@ -321,3 +321,11 @@ function getUsersCommits(repo, callback) {
   });
 }
 
+//Service for getting the graph of user performance
+function getUserPerformanceForSprint(userId, sprintId, callback)  {
+  Main.getUserPerformanceForSprint(userId, sprintId).then(function (results) {
+    var perfomance_img_url = results.img_url;
+    return callback(perfomance_img_url);
+  });
+}
+
