@@ -49,9 +49,9 @@ controller.hears('new sprint',['mention', 'direct_mention','direct_message'], fu
 controller.hears('get sprint 20',['mention', 'direct_mention','direct_message'], function(bot,message) 
 {
   console.log(message);
-  getSprint(sprint_id, function(w){
+  getSprint(20, function(w){
 
-    bot.reply(message,w);
+    bot.reply(message,w+"");
 
   });
 });
@@ -96,15 +96,18 @@ controller.hears('hello',['mention', 'direct_mention','direct_message'], functio
     ]
 };
 
+var imageURL = "https://s3.us-east-2.amazonaws.com/austinbot/plot_image.png";
+var preText = "Your Burndown chart for this sprint is shown below"
+var titleText = "Burndown Chart"
+var responsiveChart = "link_here"
 var responseImage = {
   "attachments": [
       {
-          "fallback": "Network traffic (kb/s): How does this look? @slack-ops - Sent by Julie Dodd - https://datadog.com/path/to/event",
-          "title": "Network traffic (kb/s)",
-          "title_link": "https://datadog.com/path/to/event",
-          "text": "How does this look? @slack-ops - Sent by Julie Dodd",
-          "image_url": "https://d30y9cdsu7xlg0.cloudfront.net/png/327992-200.png",
-          "color": "#764FA5"
+          "pretext": preText,
+          "title": titleText,
+          "title_link": responsiveChart,
+          "image_url": imageURL,
+          "color": "#ffa500"
       }
   ]
 };

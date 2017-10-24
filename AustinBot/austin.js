@@ -48,3 +48,4 @@ function getSprint(sprint_id)
 }
 
 exports.getSprints = getSprints;
+exports.getSprint = getSprint;
