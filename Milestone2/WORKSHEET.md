@@ -1,8 +1,8 @@
 
 ## Milestone 2: BOT
 
-We have used Trello for worksheet and teamwork. Kindly find trello cards at https://trello.com/b/4f9QwYmI/se-project 
-Credentials are Username : <username> Password : <password>
+We have used Trello for worksheet and teamwork. Kindly find trello cards at https://trello.com/b/fYZsi3se/austin-bot  
+Credentials are Username : austinbot510@gmail.com Password : 1qazxsw@3
 
 
 
