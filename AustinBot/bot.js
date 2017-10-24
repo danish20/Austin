@@ -1,10 +1,14 @@
 
 var Botkit = require('botkit');
 var Forecast = require('forecast.io');
-var options = {APIKey:process.env.FORECASTTOKEN};
+var options = { APIKey: process.env.FORECASTTOKEN };
 var forecast = new Forecast(options);
 var Main = require('../AustinBot/main');
 var nock = require("nock");
+var os = require('os');
+
+var spawn = require("child_process").spawn;
+
 
 
 
@@ -26,187 +30,292 @@ controller.spawn({
 //BOT HOOKS
 // give the bot something to listen for.
 //controller.hears('string or regex',['direct_message','direct_mention','mention'],function(bot,message) {
-controller.hears('setup sprint',['mention', 'direct_mention','direct_message'], function(bot,message) 
-{
+controller.hears('setup sprint', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   //console.log(message);
 
-  getResponse(function(w){
 
-    bot.reply(message,w+"");
+  var process = spawn('python', ["path/to/script.py",]);
+  getResponse(function (w) {
+
+    bot.reply(message, w + "");
 
   });
- });
-controller.hears('new sprint',['mention', 'direct_mention','direct_message'], function(bot,message) 
-{
+});
+controller.hears('new sprint', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   console.log(message);
-  getResponse(function(w){
+  getResponse(function (w) {
 
-    bot.reply(message,w);
+    bot.reply(message, w);
 
   });
 });
 
-controller.hears('get sprint 20',['mention', 'direct_mention','direct_message'], function(bot,message) 
-{
+controller.hears('get sprint 20', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   console.log(message);
-  getSprint(20, function(w){
+  getSprint(20, function (w) {
 
-    bot.reply(message,w+"");
+    bot.reply(message, w + "");
 
   });
 });
 
-controller.hears('Show Burndown charts',['mention', 'direct_mention','direct_message'], function(bot,message) 
-{
-  console.log(message+"");
-  bot.startConversation(message, function(err, convo) {
-    convo.ask('For which Sprint? Please type Sprint ID or Sprint name.', function(answer, convo) {
+controller.hears('Show Burndown charts', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+  console.log(message + "");
+  bot.startConversation(message, function (err, convo) {
+    convo.ask('For which Sprint? Please type Sprint ID or Sprint name.', function (answer, convo) {
       var sprint_id = answer.text.slice(-2);
-      getBurndown(sprint_id, function(w){
-    
+      getBurndown(sprint_id, function (w) {
+
         var imageURL = w;
-        var preText = "Your Burndown chart for Sprint"+sprint_id+" is shown below"
+        var preText = "Your Burndown chart for Sprint " + sprint_id + " is shown below"
         var titleText = "Burndown Chart"
         var responsiveChart = "link_here"
         var burndownImage = {
           "attachments": [
-              {
-                  "pretext": preText,
-                  "title": titleText,
-                  "title_link": responsiveChart,
-                  "image_url": imageURL,
-                  "color": "#ffa500"
-              }
+            {
+              "pretext": preText,
+              "title": titleText,
+              "title_link": responsiveChart,
+              "image_url": imageURL,
+              "color": "#ffa500"
+            }
           ]
         };
-      convo.say(burndownImage); 
-      convo.next();
+        convo.say(burndownImage);
+        convo.next();
+      });
     });
-  });
-
-
-   // bot.reply(message,burndownImage);
-
   });
 });
 
-controller.hears('get most commits user Austin',['mention', 'direct_mention','direct_message'], function(bot,message) 
-{
+
+
+
+//USE CASE 1: Show performance of a user in given sprint
+controller.hears('Show performance of a user', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+  console.log(message + "");
+  var user_id;
+  var sprint_id_conv;
+  bot.startConversation(message, function (err, convo) {
+    convo.say("Sure");
+    convo.ask('Whose performance you want to see? Please enter their Name or ID.', function (response, convo) {
+      user_id  = response.text;
+      convo.ask('For which sprint you want to see the performance? Enter Sprint name or ID.', [
+        {
+            pattern: 'Sprint 20',
+            callback: function(response, convo) {
+                sprint_id_conv = response.text.slice(-2);
+                convo.next();
+            }
+        },
+        {
+            default: true,
+            callback: function(response, convo) {
+                convo.repeat();
+                convo.next();
+            }
+        }
+    ]);
+    });
+    });
+  }); 
+
+//USE CASE 4: Facts about the most number of commits.
+controller.hears('Who has made most number of commits?', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   console.log(message);
   var repo = "Austin"
-  getUsersCommits(repo, function(w){
+  getUsersCommits(repo, function (w) {
 
-    bot.reply(message,w);
+    bot.reply(message, w);
 
   });
 });
 
-controller.hears('hello',['mention', 'direct_mention','direct_message'], function(bot,message) 
-{
-  bot.startConversation(message, function(err, convo) {
-    convo.ask('For which Sprint? Please type Sprint ID or Sprint name.', function(answer, convo) {
-      var sprint_num = answer.text.slice(-2);
-      convo.say(sprint_num); 
-      convo.next();
-    });
-  });
+controller.hears('hello', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+  var responseText = {
+    "text": "Would you like to play a game?",
+    "attachments": [
+      {
+        "text": "Choose a game to play",
+        "fallback": "If you could read this message, you'd be choosing something fun to do right now.",
+        "color": "#3AA3E3",
+        // "attachment_type": "default",
+        "callback_id": "game_selection",
+        "actions": [
+          {
+            "name": "games_list",
+            "text": "Pick a game...",
+            "type": "select",
+            "options": [
+              {
+                "text": "Hearts",
+                "value": "hearts"
+              },
+              {
+                "text": "Bridge",
+                "value": "bridge"
+              },
+              {
+                "text": "Checkers",
+                "value": "checkers"
+              },
+              {
+                "text": "Chess",
+                "value": "chess"
+              },
+              {
+                "text": "Poker",
+                "value": "poker"
+              },
+              {
+                "text": "Falken's Maze",
+                "value": "maze"
+              },
+              {
+                "text": "Global Thermonuclear War",
+                "value": "war"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    // "attachments": [
+    //     {
+    //         "text": "Choose a game to play",
+    //         "fallback": "You are unable to choose a game",
+    //         "callback_id": "wopr_game",
+    //         "color": "#3AA3E3",
+    //         "attachment_type": "default",
+    //         "actions": [
+    //             {
+    //                 "name": "game",
+    //                 "text": "Chess",
+    //                 "type": "button",
+    //                 "value": "chess"
+    //             },
+    //             {
+    //                 "name": "game",
+    //                 "text": "Falken's Maze",
+    //                 "type": "button",
+    //                 "value": "maze"
+    //             },
+    //             {
+    //                 "name": "game",
+    //                 "text": "Thermonuclear War",
+    //                 "style": "danger",
+    //                 "type": "button",
+    //                 "value": "war",
+    //                 "confirm": {
+    //                     "title": "Are you sure?",
+    //                     "text": "Wouldn't you prefer a good game of chess?",
+    //                     "ok_text": "Yes",
+    //                     "dismiss_text": "No"
+    //                 }
+    //             }
+    //         ],
+
+
+    //     }
+    // ]
+  };
   var jsonData = {
     "attachments": [
-        {
-            "fallback": "Required plain-text summary of the attachment.",
-            "color": "#36a64f",
-            "pretext": "Optional text that appears above the attachment block",
-            "author_name": "Bobby Tables",
-            "author_link": "http://flickr.com/bobby/",
-            "author_icon": "http://flickr.com/icons/bobby.jpg",
-            "title": "Slack API Documentation",
-            "title_link": "https://api.slack.com/",
-            "text": "Optional text that appears within the attachment",
-            "fields": [
-                {
-                    "title": "Priority",
-                    "value": "High",
-                    "short": false
-                }
-            ],
-            "image_url": "http://my-website.com/path/to/image.jpg",
-            "thumb_url": "http://example.com/path/to/thumb.png",
-            "footer": "Slack API",
-            "footer_icon": "https://platform.slack-edge.com/img/default_application_icon.png",
-            "ts": 123456789
-        }
-    ]
-};
-
-
-
-var imageURL = "https://s3.us-east-2.amazonaws.com/austinbot/plot_image.png";
-var preText = "Your Burndown chart for this sprint is shown below"
-var titleText = "Burndown Chart"
-var responsiveChart = "link_here"
-var burndownImage = {
-  "attachments": [
       {
-          "pretext": preText,
-          "title": titleText,
-          "title_link": responsiveChart,
-          "image_url": imageURL,
-          "color": "#ffa500"
+        "fallback": "Required plain-text summary of the attachment.",
+        "color": "#36a64f",
+        "pretext": "Optional text that appears above the attachment block",
+        "author_name": "Bobby Tables",
+        "author_link": "http://flickr.com/bobby/",
+        "author_icon": "http://flickr.com/icons/bobby.jpg",
+        "title": "Slack API Documentation",
+        "title_link": "https://api.slack.com/",
+        "text": "Optional text that appears within the attachment",
+        "fields": [
+          {
+            "title": "Priority",
+            "value": "High",
+            "short": false
+          }
+        ],
+        "image_url": "http://my-website.com/path/to/image.jpg",
+        "thumb_url": "http://example.com/path/to/thumb.png",
+        "footer": "Slack API",
+        "footer_icon": "https://platform.slack-edge.com/img/default_application_icon.png",
+        "ts": 123456789
       }
-  ]
-};
-  //bot.reply(message,burndownImage);
+    ]
+  };
+
+
+
+  var imageURL = "https://s3.us-east-2.amazonaws.com/austinbot/plot_image.png";
+  var preText = "Your Burndown chart for this sprint is shown below"
+  var titleText = "Burndown Chart"
+  var responsiveChart = "link_here"
+  var burndownImage = {
+    "attachments": [
+      {
+        "pretext": preText,
+        "title": titleText,
+        "title_link": responsiveChart,
+        "image_url": imageURL,
+        "color": "#ffa500"
+      }
+    ]
+  };
+  bot.reply(message, responseText);
 });
 
+controller.hears(['uptime', 'identify yourself', 'who are you', 'what is your name'],
+  'direct_message,direct_mention,mention', function (bot, message) {
 
-// response function
-function getResponse(callback)
-{
-  Main.findNumberOfSprints().then(function (results)
-  {
-    console.log("Danish"+results.sprint_count);
-    var sp_size = results.sprint_count;
-    return callback(sp_size);
+    var hostname = os.hostname();
+    var uptime = formatUptime(process.uptime());
+
+    bot.reply(message,
+      ':robot_face: I am a bot named <@' + bot.identity.name +
+      '>. I have been running for ' + uptime + ' on ' + hostname + '.');
+
+  });
+
+function formatUptime(uptime) {
+  var unit = 'second';
+  if (uptime > 60) {
+    uptime = uptime / 60;
+    unit = 'minute';
   }
-);
+  if (uptime > 60) {
+    uptime = uptime / 60;
+    unit = 'hour';
+  }
+  if (uptime != 1) {
+    unit = unit + 's';
+  }
 
-  // var latitude = "48.208579"
-	// var longitude = "16.374124"
-	// forecast.get(latitude, longitude, function (err, res, data) 
-	// {
-  //     if (err) throw err;
-  //     //console.log('res: ' + JSON.stringify(res));
-  //     console.log('data: ' + JSON.stringify(data));
-  //     var w = data.currently.summary + " and feels like " + data.currently.apparentTemperature;
-  //     callback(w);
-  //  });
-
-  
-
+  uptime = uptime + ' ' + unit;
+  return uptime;
 }
 
-function getSprint(sprint_id, callback)
-{
-  Main.getSprint(sprint_id).then(function (results)
-  {
+
+// Response Functions for mock service
+
+function getSprint(sprint_id, callback) {
+  Main.getSprint(sprint_id).then(function (results) {
     var sprint_data = results.sprint_data;
     return callback(sprint_data);
   });
 }
 
-function getBurndown(sprint_id, callback)
-{
-  Main.getBurndown(sprint_id).then(function (results)
-  {
+function getBurndown(sprint_id, callback) {
+  Main.getBurndown(sprint_id).then(function (results) {
     var burndown_img_url = results.burndown_img_url;
     return callback(burndown_img_url);
   });
 }
 
-function getUsersCommits(repo, callback)
-{
-  Main.getUsersCommits(repo).then(function (results)
-  {
+function getUsersCommits(repo, callback) {
+  Main.getUsersCommits(repo).then(function (results) {
     var msg = results.msg;
     return callback(msg);
   });
