@@ -85,6 +85,13 @@ controller.hears('Show Burndown charts',['mention', 'direct_mention','direct_mes
 
 controller.hears('hello',['mention', 'direct_mention','direct_message'], function(bot,message) 
 {
+  bot.startConversation(message, function(err, convo) {
+    convo.ask('For which Sprint? Please type Sprint ID or Sprint name.', function(answer, convo) {
+      var sprint_num = answer.text.slice(-2);
+      convo.say(sprint_num); 
+      convo.next();
+    });
+  });
   var jsonData = {
     "attachments": [
         {
@@ -130,7 +137,7 @@ var burndownImage = {
       }
   ]
 };
-  bot.reply(message,burndownImage);
+  //bot.reply(message,burndownImage);
 });
 
 
