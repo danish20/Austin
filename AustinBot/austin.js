@@ -68,6 +68,28 @@ function getBurndown(sprint_id)
     });
 }
 
+//get stats for a particular repo
+function getUsersCommits(repo)
+{
+    var options = {
+        url: urlRoot + "/stats/" + repo,
+        method: "GET",
+        headers: {
+            "content-type": "application/json"
+        }
+    };
+
+    return new Promise(function (resolve, reject){
+        request(options, function(error, response, body)
+        {
+            var obj = JSON.parse(body);
+            console.log(obj);
+            resolve(obj);
+        });
+    });
+}
+
 exports.getSprints = getSprints;
 exports.getSprint = getSprint;
 exports.getBurndown = getBurndown;
+exports.getUsersCommits = getUsersCommits;

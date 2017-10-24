@@ -83,9 +83,10 @@ controller.hears('Show Burndown charts',['mention', 'direct_mention','direct_mes
   });
 });
 
-controller.hears('get users commits Austin',['mention', 'direct_mention','direct_message'], function(bot,message) 
+controller.hears('get most commits user Austin',['mention', 'direct_mention','direct_message'], function(bot,message) 
 {
   console.log(message);
+  var repo = "Austin"
   getUsersCommits(repo, function(w){
 
     bot.reply(message,w);
@@ -185,6 +186,15 @@ function getBurndown(sprint_id, callback)
   {
     var burndown_img_url = results.burndown_img_url;
     return callback(burndown_img_url);
+  });
+}
+
+function getUsersCommits(repo, callback)
+{
+  Main.getUsersCommits(repo).then(function (results)
+  {
+    var msg = results.msg;
+    return callback(msg);
   });
 }
 

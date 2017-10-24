@@ -70,6 +70,44 @@ function getBurndown(sprint_id){
 	});
 }
 
+function getUsersCommits(repo){
+	var mockService = nock("https://api.austinbot.com")
+	.persist() // This will persist mock interception for lifetime of program.
+	.get("/stats/Austin")
+	.reply(200, JSON.stringify(data.Austin_repo_stats));
+
+	return new Promise(function (resolve, reject) 
+	{
+		austin.getUsersCommits(repo).then(function (stats) 
+		{
+			console.log("got stats::"+repo);
+			
+			var stats_data = stats;
+			console.log("stats length::"+stats_data.length);
+			var max_user = undefined;
+			var max_commits = 0;
+			for(var i=0;i<stats_data.length;i++){
+				var commits = stats_data[i].total;
+				var user = stats_data[i].author.login;
+
+				if(commits > max_commits){
+					max_commits = commits;
+					max_user = user;
+				}
+			}
+			var msg = "";
+			if(max_user != undefined){
+				msg = max_user + " has most number of commits with " + max_commits + " commits."
+			}else{
+				msg = "Failed to get information";
+			}
+			
+			resolve({msg: msg});
+		});
+	});
+}
+
 exports.findNumberOfSprints = findNumberOfSprints;
 exports.getSprint = getSprint;
 exports.getBurndown = getBurndown;
+exports.getUsersCommits = getUsersCommits;
