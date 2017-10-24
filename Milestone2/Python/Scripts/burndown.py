@@ -53,7 +53,7 @@ def plot_burndown(x, y):
     )
     data = [trace1]
     fig = dict(data=data)
-    py.image.save_as(fig, filename=os.path.join(current_path,'../Plots/burndown_performance.png'))
+    py.image.save_as(fig, filename=os.path.join(current_path,'../Plots/burndown.png'))
     return fig
 
 [x,y] = parse_json_for_burndown(20)
