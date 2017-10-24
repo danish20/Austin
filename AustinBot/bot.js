@@ -59,26 +59,33 @@ controller.hears('get sprint 20',['mention', 'direct_mention','direct_message'],
 controller.hears('Show Burndown charts',['mention', 'direct_mention','direct_message'], function(bot,message) 
 {
   console.log(message+"");
-  var sprint_id = 20;
-  getBurndown(sprint_id, function(w){
+  bot.startConversation(message, function(err, convo) {
+    convo.ask('For which Sprint? Please type Sprint ID or Sprint name.', function(answer, convo) {
+      var sprint_id = answer.text.slice(-2);
+      getBurndown(sprint_id, function(w){
+    
+        var imageURL = w;
+        var preText = "Your Burndown chart for Sprint"+sprint_id+" is shown below"
+        var titleText = "Burndown Chart"
+        var responsiveChart = "link_here"
+        var burndownImage = {
+          "attachments": [
+              {
+                  "pretext": preText,
+                  "title": titleText,
+                  "title_link": responsiveChart,
+                  "image_url": imageURL,
+                  "color": "#ffa500"
+              }
+          ]
+        };
+      convo.say(burndownImage); 
+      convo.next();
+    });
+  });
 
-    var imageURL = w;
-    var preText = "Your Burndown chart for Sprint"+sprint_id+" is shown below"
-    var titleText = "Burndown Chart"
-    var responsiveChart = "link_here"
-    var burndownImage = {
-      "attachments": [
-          {
-              "pretext": preText,
-              "title": titleText,
-              "title_link": responsiveChart,
-              "image_url": imageURL,
-              "color": "#ffa500"
-          }
-      ]
-    };
 
-    bot.reply(message,burndownImage);
+   // bot.reply(message,burndownImage);
 
   });
 });
