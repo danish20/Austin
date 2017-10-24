@@ -49,7 +49,45 @@ controller.hears('new sprint',['mention', 'direct_mention','direct_message'], fu
 controller.hears('get sprint 20',['mention', 'direct_mention','direct_message'], function(bot,message) 
 {
   console.log(message);
-  getSprint(sprint_id, function(w){
+  getSprint(20, function(w){
+
+    bot.reply(message,w+"");
+
+  });
+});
+
+controller.hears('Show Burndown charts',['mention', 'direct_mention','direct_message'], function(bot,message) 
+{
+  console.log(message+"");
+  var sprint_id = 20;
+  getBurndown(sprint_id, function(w){
+
+    var imageURL = w;
+    var preText = "Your Burndown chart for Sprint"+sprint_id+" is shown below"
+    var titleText = "Burndown Chart"
+    var responsiveChart = "link_here"
+    var burndownImage = {
+      "attachments": [
+          {
+              "pretext": preText,
+              "title": titleText,
+              "title_link": responsiveChart,
+              "image_url": imageURL,
+              "color": "#ffa500"
+          }
+      ]
+    };
+
+    bot.reply(message,burndownImage);
+
+  });
+});
+
+controller.hears('get most commits user Austin',['mention', 'direct_mention','direct_message'], function(bot,message) 
+{
+  console.log(message);
+  var repo = "Austin"
+  getUsersCommits(repo, function(w){
 
     bot.reply(message,w);
 
@@ -58,6 +96,13 @@ controller.hears('get sprint 20',['mention', 'direct_mention','direct_message'],
 
 controller.hears('hello',['mention', 'direct_mention','direct_message'], function(bot,message) 
 {
+  bot.startConversation(message, function(err, convo) {
+    convo.ask('For which Sprint? Please type Sprint ID or Sprint name.', function(answer, convo) {
+      var sprint_num = answer.text.slice(-2);
+      convo.say(sprint_num); 
+      convo.next();
+    });
+  });
   var jsonData = {
     "attachments": [
         {
@@ -86,19 +131,24 @@ controller.hears('hello',['mention', 'direct_mention','direct_message'], functio
     ]
 };
 
-var responseImage = {
+
+
+var imageURL = "https://s3.us-east-2.amazonaws.com/austinbot/plot_image.png";
+var preText = "Your Burndown chart for this sprint is shown below"
+var titleText = "Burndown Chart"
+var responsiveChart = "link_here"
+var burndownImage = {
   "attachments": [
       {
-          "fallback": "Network traffic (kb/s): How does this look? @slack-ops - Sent by Julie Dodd - https://datadog.com/path/to/event",
-          "title": "Network traffic (kb/s)",
-          "title_link": "https://datadog.com/path/to/event",
-          "text": "How does this look? @slack-ops - Sent by Julie Dodd",
-          "image_url": "https://d30y9cdsu7xlg0.cloudfront.net/png/327992-200.png",
-          "color": "#764FA5"
+          "pretext": preText,
+          "title": titleText,
+          "title_link": responsiveChart,
+          "image_url": imageURL,
+          "color": "#ffa500"
       }
   ]
 };
-  bot.reply(message,responseImage);
+  //bot.reply(message,burndownImage);
 });
 
 
@@ -137,4 +187,21 @@ function getSprint(sprint_id, callback)
   });
 }
 
+function getBurndown(sprint_id, callback)
+{
+  Main.getBurndown(sprint_id).then(function (results)
+  {
+    var burndown_img_url = results.burndown_img_url;
+    return callback(burndown_img_url);
+  });
+}
+
+function getUsersCommits(repo, callback)
+{
+  Main.getUsersCommits(repo).then(function (results)
+  {
+    var msg = results.msg;
+    return callback(msg);
+  });
+}
 
