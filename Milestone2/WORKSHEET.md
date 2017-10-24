@@ -21,6 +21,8 @@ Credentials are Username : <username> Password : <password>
 | Deliverable   | Status   |  Trello Link |   Assignee
 | ------------- | ------------  |  ------------ |   -----------
 | Start building some analysis     | Complete  | https://trello.com/c/absck1yT     |   Prashant, Sandeep, Udit
-
+| Conversation script for Bot interaction     | Active  | https://trello.com/c/cdlDXHeY     |   Danish, Prashant
+| Try out visualization for data analytics     | Complete  | https://trello.com/c/hbosTKF9     |   Sandeep, Udit
+| Create services for fetching facts     | Active  | https://trello.com/c/AoouTBYR     |   Prashant
 
 
