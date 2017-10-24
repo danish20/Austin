@@ -32,13 +32,13 @@ controller.hears('setup sprint', ['mention', 'direct_mention', 'direct_message']
   //console.log(message);
 
 
-  var process = spawn('python', ["path/to/script.py",]);
-  getResponse(function (w) {
+//   var process = spawn('python', ["path/to/script.py",]);
+//   getResponse(function (w) {
 
-    bot.reply(message, w + "");
+//     bot.reply(message, w + "");
 
-  });
-});
+//   });
+// });
 controller.hears('new sprint', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   console.log(message);
   getResponse(function (w) {
