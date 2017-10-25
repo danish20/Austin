@@ -52,7 +52,7 @@ function getSprint(sprint_id){
 function getBurndown(sprint_id){
 	var mockService = nock("https://api.austinbot.com")
 	.persist() // This will persist mock interception for lifetime of program.
-	.get("/sprint/20")
+	.get("/sprint/21")
 	.reply(200, JSON.stringify(data.sprint));
 
 	return new Promise(function (resolve, reject) 
@@ -64,8 +64,8 @@ function getBurndown(sprint_id){
 			//console.log(sprints.length);
 			var sprint_data = sprint;
 			console.log(sprint_data);
-			var sprint_20_burndown = sprint_data[0].burndown_img_url;
-			resolve({burndown_img_url: sprint_20_burndown});
+			var sprint_21_burndown = sprint_data[1].burndown_img_url;
+			resolve({burndown_img_url: sprint_21_burndown});
 		});
 	});
 }
@@ -129,8 +129,29 @@ function getUserPerformanceForSprint(userId, sprintId) {
 	});	
 }
 
+function getVelocityGraph() {
+	var mockService = nock("https://api.austinbot.com")
+	.persist() // This will persist mock interception for lifetime of program.
+	.get("/velocity")
+	.reply(200, JSON.stringify(data.velocity_graph_url));
+
+	return new Promise(function (resolve, reject) 
+	{
+		// mock data needs list of issues.
+		austin.getVelocityGraph().then(function (velocity_graph_url) 
+		{
+			console.log("got url for velocity graph::"+velocity_graph_url);
+
+			//var velocity_graph_url = "";
+			//console.log(getVelocityGraph+"HelloW");
+			resolve({velocity_graph_url: velocity_graph_url});
+		});
+	});	
+}
+
 exports.findNumberOfSprints = findNumberOfSprints;
 exports.getSprint = getSprint;
 exports.getBurndown = getBurndown;
 exports.getUsersCommits = getUsersCommits;
 exports.getUserPerformanceForSprint = getUserPerformanceForSprint;
+exports.getVelocityGraph = getVelocityGraph;

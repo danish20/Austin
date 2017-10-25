@@ -113,8 +113,30 @@ function getUserPerformanceForSprint(userId, sprintId)
     });
 }
 
+function getVelocityGraph() 
+{
+    var options = {
+        url: urlRoot + "/velocity",
+        method: "GET",
+        headers: {
+            "content-type": "application/json"
+        }
+    };
+
+    return new Promise(function (resolve, reject){
+        request(options, function(error, response, body)
+        {
+
+            //var obj = JSON.parse(body);
+            //console.log(obj);
+            resolve(body);
+        });
+    });
+}
+
 exports.getSprints = getSprints;
 exports.getSprint = getSprint;
 exports.getBurndown = getBurndown;
 exports.getUsersCommits = getUsersCommits;
 exports.getUserPerformanceForSprint = getUserPerformanceForSprint;
+exports.getVelocityGraph = getVelocityGraph;
