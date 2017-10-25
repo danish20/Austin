@@ -127,7 +127,7 @@ function getVelocityGraph()
         request(options, function(error, response, body)
         {
 
-            //var obj = JSON.parse(body);
+            var obj = JSON.parse(body);
             //console.log(obj);
             resolve(body);
         });

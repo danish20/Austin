@@ -144,7 +144,7 @@ function getVelocityGraph() {
 
 			//var velocity_graph_url = "";
 			//console.log(getVelocityGraph+"HelloW");
-			resolve({velocity_graph_url: velocity_graph_url});
+			resolve({velocity_graph_url: velocity_graph_url.url});
 		});
 	});	
 }
