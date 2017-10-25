@@ -131,6 +131,34 @@ controller.hears('Show performance of (.*)', ['mention', 'direct_mention', 'dire
 });
 
 //USE CASE 1: Velocity Chart
+controller.hears(
+  [
+    'Show velocity chart',
+    'show velocity graph',
+    'can you show me velocity chart'
+  ], ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+    //console.log(message);
+    getVelocityGraph(function (w) {
+
+      var imageURL = w;
+      var preText = "Your Velocity chart for all Sprints is shown below"
+      var titleText = "Velocity Chart"
+      var responsiveChart = "link_here"
+      var velocityImage = {
+        "attachments": [
+          {
+            "pretext": preText,
+            "title": titleText,
+            "title_link": responsiveChart,
+            "image_url": imageURL,
+            "color": "#ffa500"
+          }
+        ]
+      };
+      bot.reply(message, imageURL);
+
+    });
+  });
 
 //USE CASE 1: Sprint Status
 
@@ -320,6 +348,7 @@ function formatUptime(uptime) {
   return uptime;
 }
 
+// Help Menu
 controller.hears(['help', 'what can you do', 'help me', 'how to do (.*)'],
   'direct_message,direct_mention,mention', function (bot, message) {
 
