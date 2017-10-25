@@ -155,10 +155,11 @@ controller.hears(
           }
         ]
       };
-      bot.reply(message, imageURL);
+      bot.reply(message, velocityImage);
 
     });
   });
+
 
 //USE CASE 1: Sprint Status
 
@@ -352,7 +353,7 @@ function formatUptime(uptime) {
 controller.hears(['help', 'what can you do', 'help me', 'how to do (.*)'],
   'direct_message,direct_mention,mention', function (bot, message) {
 
-    var colors = ['good','warning','danger'];
+    var colors = ['good', 'warning', 'danger'];
     var count = 0;
 
     //Sprint Status
@@ -360,64 +361,65 @@ controller.hears(['help', 'what can you do', 'help me', 'how to do (.*)'],
 
       "attachments": [
         {
-          "title": "*Burndown Chart*",
-          "pretext": "Generate Sprint Summary",
-          "text": "Show Burndown chart",
-          "color": colors[(count++)%3],
-          "mrkdwn_in": [
-            "text",
-            "pretext",
-            "title"
-          ]
+          "title": "Generate Sprint Summary",
+          "pretext":"I can help you with following tasks.",
+          "fields": [
+            {
+              "title": "Burndown Chart",
+              "value": "Show Burndown chart",
+              "short": false
+            },
+            {
+              "title": "Individual's performance chart",
+              "value": "Show performance of `<teamMemberName>`",
+              "short": false
+            },
+            {
+              "title": "Velocity Graph",
+              "value": "Show velocity graph",
+              "short": false
+            },
+            {
+              "title": "Sprint Status",
+              "value": "What is current Sprint status",
+              "short": false
+            },
+          ],
+          "mrkdwn_in": ["fields","title"],
+          "color": colors[(count++) % 3],
         },
         {
-          "title": "*Individual's performance chart*",
-          "text": "Show Burndown chart",
-          "color": colors[(count++)%3],
-          "mrkdwn_in": [
-            "text",
-            "pretext",
-            "title"
-          ]
-        },
-        {
-          "title": "*Velocity Graph*",
-          "text": "Show performance of Austin",
-          "color": colors[(count++)%3],
-          "mrkdwn_in": [
-            "text",
-            "pretext",
-            "title"
-          ]
-        },
-        {
-          "title": "*Sprint Status*",
-          "text": "What is current Sprint status",
-          "color": colors[(count++)%3],
-          "mrkdwn_in": [
-            "text",
-            "pretext",
-            "title"
-          ]
-        },
-       
-        {
-          "title": "Title",
-          "pretext": "Pretext _supports_ mrkdwn",
-          "text": "Testing *right now!*",
-          "color": colors[(count++)%3],
-          "mrkdwn_in": [
-            "text",
-            "pretext"
-          ]
+          "title": "Compare Sprint Metrics",
+          "fields": [
+            {
+              "title": "Work done in current sprint with other sprint",
+              "value": "Compare work done of sprint with `<sprintName>` or `<sprintID>`",
+              "short": false
+            },
+            {
+              "title": "Individual's performance chart",
+              "value": "Show performance of 'Austin'",
+              "short": false
+            },
+            {
+              "title": "Velocity Graph",
+              "value": "Show velocity graph",
+              "short": false
+            },
+            {
+              "title": "Sprint Status",
+              "value": "What is current Sprint status",
+              "short": false
+            },
+          ],
+          "mrkdwn_in": ["fields"],
+          "color": colors[(count++) % 3],
         },
         
-        
-
       ]
     }
 
-    bot.reply(message,helpMessage);
+    bot.reply(message, helpMessage);
 
   });
 
@@ -472,7 +474,7 @@ function getUserPerformanceForSprint(userId, sprintId, callback) {
 }
 
 //Service for getting the velocity graph of past and current sprints
-function getVelocityGraph(callback)  {
+function getVelocityGraph(callback) {
   Main.getVelocityGraph().then(function (results) {
     var velocity_graph_url = results.velocity_graph_url;
     return callback(velocity_graph_url);
