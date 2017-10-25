@@ -1,8 +1,6 @@
 
 var Botkit = require('botkit');
-var Forecast = require('forecast.io');
-var options = { APIKey: process.env.FORECASTTOKEN };
-var forecast = new Forecast(options);
+
 var Main = require('../AustinBot/main');
 var nock = require("nock");
 var os = require('os');
@@ -34,7 +32,7 @@ controller.hears('setup sprint', ['mention', 'direct_mention', 'direct_message']
   //console.log(message);
 
 
-  var process = spawn('python', ["path/to/script.py",]);
+  //var process = spawn('python', ["path/to/script.py",]);
   getResponse(function (w) {
 
     bot.reply(message, w + "");
@@ -43,13 +41,14 @@ controller.hears('setup sprint', ['mention', 'direct_mention', 'direct_message']
 });
 controller.hears('new sprint', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   console.log(message);
-  getResponse(function (w) {
+  // getResponse(function (w) {
 
-    bot.reply(message, w);
+  //   bot.reply(message, w);
 
-  });
+  // });
 });
 
+// Dummy Functions
 controller.hears('get sprint 20', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   console.log(message);
   getSprint(20, function (w) {
@@ -59,7 +58,16 @@ controller.hears('get sprint 20', ['mention', 'direct_mention', 'direct_message'
   });
 });
 
-controller.hears('Show Burndown charts', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+
+//USE CASE 1: Show burndown chart of a sprint for given sprint name or id.
+controller.hears(
+  [
+    'Show Burndown chart',
+    'burndown chart',
+    'show burn down chat',
+    'burn down graph',
+    'burndown graph'
+  ], ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   console.log(message + "");
   bot.startConversation(message, function (err, convo) {
     convo.ask('For which Sprint? Please type Sprint ID or Sprint name.', function (answer, convo) {
@@ -88,40 +96,48 @@ controller.hears('Show Burndown charts', ['mention', 'direct_mention', 'direct_m
   });
 });
 
-
-
-
 //USE CASE 1: Show performance of a user in given sprint
-controller.hears('Show performance of a user', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
-  console.log(message + "");
-  var user_id;
-  var sprint_id_conv;
+controller.hears('Show performance of (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+  var name = message.match[1];
+  //console.log(name + "HelloW");
   bot.startConversation(message, function (err, convo) {
+
     convo.say("Sure");
-    convo.ask('Whose performance you want to see? Please enter their Name or ID.', function (response, convo) {
-      user_id  = response.text;
-      convo.ask('For which sprint you want to see the performance? Enter Sprint name or ID.', [
-        {
-            pattern: 'Sprint 20',
-            callback: function(response, convo) {
-                sprint_id_conv = response.text.slice(-2);
-                convo.next();
+    convo.ask('For which sprint you want to see the performance? Enter Sprint name or ID.', function (response, convo) {
+      var sprint_id = response.text.slice(-2);
+      getUserPerformanceForSprint(name,sprint_id, function (w) {
+
+        var imageURL = w;
+        console.log(w + "HelloW");
+        var preText = "Performance of "+name+" for Sprint "+ sprint_id + " is shown below"
+        var titleText = "Performance Chart"
+        var responsiveChart = "link_here"
+        var perfImage = {
+          "attachments": [
+            {
+              "pretext": preText,
+              "title": titleText,
+              "title_link": responsiveChart,
+              "image_url": imageURL,
+              "color": "#ffa500"
             }
-        },
-        {
-            default: true,
-            callback: function(response, convo) {
-                convo.repeat();
-                convo.next();
-            }
-        }
-    ]);
+          ]
+        };
+        convo.say(perfImage);
+        convo.next();
+      });
     });
-    });
-  }); 
+  });
+});
+
 
 //USE CASE 4: Facts about the most number of commits.
-controller.hears('Who has made most number of commits?', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+controller.hears(
+  [
+    'Who has made most number of commits?', 
+    'most commits made by',
+    'most commits'
+  ], ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   console.log(message);
   var repo = "Austin"
   getUsersCommits(repo, function (w) {
@@ -131,6 +147,9 @@ controller.hears('Who has made most number of commits?', ['mention', 'direct_men
   });
 });
 
+
+// Dummy Function
+//TODO: Bot interactions will replace this.
 controller.hears('hello', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   var responseText = {
     "text": "Would you like to play a game?",
@@ -324,7 +343,7 @@ function getUsersCommits(repo, callback) {
 //Service for getting the graph of user performance
 function getUserPerformanceForSprint(userId, sprintId, callback)  {
   Main.getUserPerformanceForSprint(userId, sprintId).then(function (results) {
-    var perfomance_img_url = results.img_url;
+    var perfomance_img_url = results.performance_chart_url;
     return callback(perfomance_img_url);
   });
 }
