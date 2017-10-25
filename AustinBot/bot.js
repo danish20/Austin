@@ -68,33 +68,33 @@ controller.hears(
     'burn down graph',
     'burndown graph'
   ], ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
-  console.log(message + "");
-  bot.startConversation(message, function (err, convo) {
-    convo.ask('For which Sprint? Please type Sprint ID or Sprint name.', function (answer, convo) {
-      var sprint_id = answer.text.slice(-2);
-      getBurndown(sprint_id, function (w) {
+    console.log(message + "");
+    bot.startConversation(message, function (err, convo) {
+      convo.ask('For which Sprint? Please type Sprint ID or Sprint name.', function (answer, convo) {
+        var sprint_id = answer.text.slice(-2);
+        getBurndown(sprint_id, function (w) {
 
-        var imageURL = w;
-        var preText = "Your Burndown chart for Sprint " + sprint_id + " is shown below"
-        var titleText = "Burndown Chart"
-        var responsiveChart = "link_here"
-        var burndownImage = {
-          "attachments": [
-            {
-              "pretext": preText,
-              "title": titleText,
-              "title_link": responsiveChart,
-              "image_url": imageURL,
-              "color": "#ffa500"
-            }
-          ]
-        };
-        convo.say(burndownImage);
-        convo.next();
+          var imageURL = w;
+          var preText = "Your Burndown chart for Sprint " + sprint_id + " is shown below"
+          var titleText = "Burndown Chart"
+          var responsiveChart = "link_here"
+          var burndownImage = {
+            "attachments": [
+              {
+                "pretext": preText,
+                "title": titleText,
+                "title_link": responsiveChart,
+                "image_url": imageURL,
+                "color": "#ffa500"
+              }
+            ]
+          };
+          convo.say(burndownImage);
+          convo.next();
+        });
       });
     });
   });
-});
 
 //USE CASE 1: Show performance of a user in given sprint
 controller.hears('Show performance of (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
@@ -105,11 +105,11 @@ controller.hears('Show performance of (.*)', ['mention', 'direct_mention', 'dire
     convo.say("Sure");
     convo.ask('For which sprint you want to see the performance? Enter Sprint name or ID.', function (response, convo) {
       var sprint_id = response.text.slice(-2);
-      getUserPerformanceForSprint(name,sprint_id, function (w) {
+      getUserPerformanceForSprint(name, sprint_id, function (w) {
 
         var imageURL = w;
         console.log(w + "HelloW");
-        var preText = "Performance of "+name+" for Sprint "+ sprint_id + " is shown below"
+        var preText = "Performance of " + name + " for Sprint " + sprint_id + " is shown below"
         var titleText = "Performance Chart"
         var responsiveChart = "link_here"
         var perfImage = {
@@ -130,22 +130,26 @@ controller.hears('Show performance of (.*)', ['mention', 'direct_mention', 'dire
   });
 });
 
+//USE CASE 1: Velocity Chart
+
+//USE CASE 1: Sprint Status
+
 
 //USE CASE 4: Facts about the most number of commits.
 controller.hears(
   [
-    'Who has made most number of commits?', 
+    'Who has made most number of commits?',
     'most commits made by',
     'most commits'
   ], ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
-  console.log(message);
-  var repo = "Austin"
-  getUsersCommits(repo, function (w) {
+    console.log(message);
+    var repo = "Austin"
+    getUsersCommits(repo, function (w) {
 
-    bot.reply(message, w);
+      bot.reply(message, w);
 
+    });
   });
-});
 
 
 // Dummy Function
@@ -316,6 +320,96 @@ function formatUptime(uptime) {
   return uptime;
 }
 
+controller.hears(['help', 'what can you do', 'help me', 'how to do (.*)'],
+  'direct_message,direct_mention,mention', function (bot, message) {
+
+    var colors = ['good','warning','danger'];
+    var count = 0;
+
+    //Sprint Status
+    var helpMessage = {
+
+      "attachments": [
+        {
+          "title": "*Burndown Chart*",
+          "pretext": "Generate Sprint Summary",
+          "text": "Show Burndown chart",
+          "color": colors[(count++)%3],
+          "mrkdwn_in": [
+            "text",
+            "pretext",
+            "title"
+          ]
+        },
+        {
+          "title": "*Individual's performance chart*",
+          "text": "Show Burndown chart",
+          "color": colors[(count++)%3],
+          "mrkdwn_in": [
+            "text",
+            "pretext",
+            "title"
+          ]
+        },
+        {
+          "title": "*Velocity Graph*",
+          "text": "Show performance of Austin",
+          "color": colors[(count++)%3],
+          "mrkdwn_in": [
+            "text",
+            "pretext",
+            "title"
+          ]
+        },
+        {
+          "title": "*Sprint Status*",
+          "text": "What is current Sprint status",
+          "color": colors[(count++)%3],
+          "mrkdwn_in": [
+            "text",
+            "pretext",
+            "title"
+          ]
+        },
+       
+        {
+          "title": "Title",
+          "pretext": "Pretext _supports_ mrkdwn",
+          "text": "Testing *right now!*",
+          "color": colors[(count++)%3],
+          "mrkdwn_in": [
+            "text",
+            "pretext"
+          ]
+        },
+        
+        
+
+      ]
+    }
+
+    bot.reply(message,helpMessage);
+
+  });
+
+function formatUptime(uptime) {
+  var unit = 'second';
+  if (uptime > 60) {
+    uptime = uptime / 60;
+    unit = 'minute';
+  }
+  if (uptime > 60) {
+    uptime = uptime / 60;
+    unit = 'hour';
+  }
+  if (uptime != 1) {
+    unit = unit + 's';
+  }
+
+  uptime = uptime + ' ' + unit;
+  return uptime;
+}
+
 
 // Response Functions for mock service
 
@@ -341,7 +435,7 @@ function getUsersCommits(repo, callback) {
 }
 
 //Service for getting the graph of user performance
-function getUserPerformanceForSprint(userId, sprintId, callback)  {
+function getUserPerformanceForSprint(userId, sprintId, callback) {
   Main.getUserPerformanceForSprint(userId, sprintId).then(function (results) {
     var perfomance_img_url = results.performance_chart_url;
     return callback(perfomance_img_url);
