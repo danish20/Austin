@@ -233,7 +233,7 @@
               ]
           }
         ],
-        "burndown_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/plot_image.png"
+        "burndown_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/burndown.png"
       },
       {
         "id": "21",
@@ -462,10 +462,21 @@
                 }
               ]
           }
-        ]
+        ],
+        "burndown_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/burndown.png"
     }
       
     ],
+
+    "velocity_graph_url": 
+    {
+        "url": "https://s3.us-east-2.amazonaws.com/austinbot/velocity.png" 
+    },
+
+    "sprints_performance_comparison_graph": 
+    {
+        "url": "https://s3.us-east-2.amazonaws.com/austinbot/sprint_performance.png" 
+    },
 
     "Austin_repo_stats":
     [

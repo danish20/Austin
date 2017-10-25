@@ -34,11 +34,11 @@ Credentials are Username : austinbot510@gmail.com Password : 1qazxsw@3
 | Create graphs for sprint analytics for User Performance and host on S3    | Complete  | https://trello.com/c/MFBTdj8N     |   Sandeep, Udit
 | Implement convo in bot     | Active  | https://trello.com/c/fTHqpuDI     |   Danish
 | Python server invocation from node     | Active  | https://trello.com/c/gbHrWL8j     |   Sandeep, Udit
-| Create Help for a bot user     | Todo  | https://trello.com/c/aPgp6RHK     |   Danish, Prashant
-| Create velocity graph and host on S3  | Todo  | https://trello.com/c/C46V2Qnu  |  Udit
-| Create work done in sprint(comparison) graph and host on S3  | Todo  | https://trello.com/c/kupnYLvw  |  Sandeep, Udit
-| Create task based performance graph  | Todo | https://trello.com/c/Y2JruUBM | Sandeep
-| Comparison of user performance  | Todo  | https://trello.com/c/Saq73ezT | Udit
+| Create Help for a bot user     | Active  | https://trello.com/c/aPgp6RHK     |   Danish, Prashant
+| Create velocity graph and host on S3  | Active  | https://trello.com/c/C46V2Qnu  |  Udit
+| Create work done in sprint(comparison) graph and host on S3  | Complete  | https://trello.com/c/kupnYLvw  |  Sandeep, Udit
+| Create task based performance graph  | Active | https://trello.com/c/Y2JruUBM | Sandeep
+| Comparison of user performance  | Active  | https://trello.com/c/Saq73ezT | Udit
 | Create sprint status graph  | Todo | https://trello.com/c/JIBng3ug | Sandeep, Udit
 | Create team performance comparison graph  | Todo | https://trello.com/c/122JowCx | Sandeep, Udit
 
