@@ -234,7 +234,7 @@
           }
         ],
         "burndown_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/burndown.png",
-        "task_performance_img_url": ""
+        "task_performance_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/compare_user_performance.png"
       },
       {
         "id": "21",
@@ -465,7 +465,7 @@
           }
         ],
         "burndown_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/burndown.png",
-        "task_performance_img_url": ""
+        "task_performance_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/compare_user_performance.png"
     }
       
     ],
