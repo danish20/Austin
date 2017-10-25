@@ -391,22 +391,22 @@ controller.hears(['help', 'what can you do', 'help me', 'how to do (.*)'],
           "fields": [
             {
               "title": "Burndown Chart",
-              "value": "Show Burndown chart",
+              "value": "_Show Burndown chart_",
               "short": false
             },
             {
               "title": "Individual's performance chart",
-              "value": "Show performance of `<teamMemberName>`",
+              "value": "_Show performance of `<teamMemberName>`_",
               "short": false
             },
             {
               "title": "Velocity Graph",
-              "value": "Show velocity graph",
+              "value": "_Show velocity graph_",
               "short": false
             },
             {
               "title": "Sprint Status",
-              "value": "What is current Sprint status",
+              "value": "_What is current Sprint status_",
               "short": false
             },
           ],
@@ -418,7 +418,7 @@ controller.hears(['help', 'what can you do', 'help me', 'how to do (.*)'],
           "fields": [
             {
               "title": "Work done in current sprint with other sprint",
-              "value": "Compare work done of sprint with `<sprintName>` or `<sprintID>`",
+              "value": "_Compare work done of sprint with `<sprintName>` or `<sprintID>`_",
               "short": false
             },
             {
