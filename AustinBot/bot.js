@@ -4,12 +4,23 @@ var Botkit = require('botkit');
 var Main = require('../AustinBot/main');
 var nock = require("nock");
 var os = require('os');
+var PythonShell = require('python-shell');
 
-var spawn = require("child_process").spawn;
+var options = {
+ mode: 'text',
+ //pythonPath: '../Milestone2/Python/Scripts/burndown.py',
+ pythonOptions: ['-u'],
+ scriptPath: '../Milestone2/Python/Scripts',
+ args: ['20']
+};
 
+PythonShell.run('burndown.py', options, function (err, results) {
+ if (err) throw err;
+ // results is an array consisting of messages collected during execution 
+ console.log('results: %j', results);
+});
 
-
-
+//var spawn = require("child_process").spawn;
 
 //var childProcess = require("child_process");
 
@@ -69,9 +80,12 @@ controller.hears(
     'burndown graph'
   ], ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
     console.log(message + "");
+    
     bot.startConversation(message, function (err, convo) {
       convo.ask('For which Sprint? Please type Sprint ID or Sprint name.', function (answer, convo) {
         var sprint_id = answer.text.slice(-2);
+        var process = spawn('python',["../Milestone2/Python/Scripts/burndown.py", sprint_id]);
+        console.log(process+"TEST");
         getBurndown(sprint_id, function (w) {
 
           var imageURL = w;
