@@ -479,3 +479,11 @@ function getVelocityGraph(callback)  {
   });
 }
 
+//Service for getting the sprint performance comparison graph for two sprints
+function compareSprintPerformance(sprintId1, sprintId2, callback)  {
+  Main.compareSprintPerformance(sprintId1, sprintId2).then(function (results) {
+    var compare_sprint_perf_url = results.compare_sprint_perf_url;
+    return callback(compare_sprint_perf_url);
+  });
+}
+

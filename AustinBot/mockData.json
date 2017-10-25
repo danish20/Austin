@@ -473,6 +473,11 @@
         "url": "https://s3.us-east-2.amazonaws.com/austinbot/velocity.png" 
     },
 
+    "sprints_performance_comparison_graph": 
+    {
+        "url": "https://s3.us-east-2.amazonaws.com/austinbot/sprint_performance.png" 
+    },
+
     "Austin_repo_stats":
     [
         {

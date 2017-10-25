@@ -134,9 +134,31 @@ function getVelocityGraph()
     });
 }
 
+function compareSprintPerformance(sprintId1, sprintId2) 
+{
+    var options = {
+        url: urlRoot + "/compareSprints?sprintId1=" + sprintId1 + "&sprintId2=" + sprintId2,
+        method: "GET",
+        headers: {
+            "content-type": "application/json"
+        }
+    };
+
+    return new Promise(function (resolve, reject){
+        request(options, function(error, response, body)
+        {
+
+            var obj = JSON.parse(body);
+            //console.log(obj);
+            resolve(obj);
+        });
+    });
+}
+
 exports.getSprints = getSprints;
 exports.getSprint = getSprint;
 exports.getBurndown = getBurndown;
 exports.getUsersCommits = getUsersCommits;
 exports.getUserPerformanceForSprint = getUserPerformanceForSprint;
 exports.getVelocityGraph = getVelocityGraph;
+exports.compareSprintPerformance = compareSprintPerformance;
