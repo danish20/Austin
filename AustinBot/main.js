@@ -137,7 +137,7 @@ function getVelocityGraph() {
 
 	return new Promise(function (resolve, reject) 
 	{
-		// mock data needs list of issues.
+		
 		austin.getVelocityGraph().then(function (velocity_graph_url) 
 		{
 			console.log("got url for velocity graph::"+velocity_graph_url);
@@ -149,9 +149,28 @@ function getVelocityGraph() {
 	});	
 }
 
+function compareSprintPerformance(sprintId1, sprintId2) {
+	var mockService = nock("https://api.austinbot.com")
+	.persist() // This will persist mock interception for lifetime of program.
+	.get("/compareSprints?sprintId1=20&sprintId2=21")
+	.reply(200, JSON.stringify(data.sprints_performance_comparison_graph));
+
+	return new Promise(function (resolve, reject) 
+	{
+		
+		austin.compareSprintPerformance(sprintId1, sprintId2).then(function (results) 
+		{
+			console.log("got obj for graph::"+results);
+
+			resolve({compare_sprint_perf_url: results.url});
+		});
+	});
+}
+
 exports.findNumberOfSprints = findNumberOfSprints;
 exports.getSprint = getSprint;
 exports.getBurndown = getBurndown;
 exports.getUsersCommits = getUsersCommits;
 exports.getUserPerformanceForSprint = getUserPerformanceForSprint;
 exports.getVelocityGraph = getVelocityGraph;
+exports.compareSprintPerformance = compareSprintPerformance;
