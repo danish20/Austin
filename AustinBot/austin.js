@@ -175,6 +175,26 @@ function getTaskPerformance(sprint_id)
     });
 }
 
+function getSprintBestPerformer(sprint_id)
+{
+    var options = {
+        url: urlRoot + "/bestPerformer/" + sprint_id,
+        method: "GET",
+        headers: {
+            "content-type": "application/json"
+        }
+    };
+
+    return new Promise(function (resolve, reject){
+        request(options, function(error, response, body)
+        {
+            var obj = JSON.parse(body);
+            console.log(obj);
+            resolve(obj);
+        });
+    });
+}
+
 exports.getSprints = getSprints;
 exports.getSprint = getSprint;
 exports.getBurndown = getBurndown;

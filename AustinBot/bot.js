@@ -521,3 +521,11 @@ function getTaskPerformance(sprint_id, callback) {
     return callback(task_performance_url);
   });
 }
+
+//Service for getting the best performer in a sprint
+function getSprintBestPerformer(sprint_id, callback) {
+  Main.getSprintBestPerformer(sprint_id).then(function (results) {
+    var sprintBestPerformer_url = results.best_performer_img_url;
+    return callback(sprintBestPerformer_url);
+  });
+}
