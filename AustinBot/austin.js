@@ -129,7 +129,7 @@ function getVelocityGraph()
 
             var obj = JSON.parse(body);
             //console.log(obj);
-            resolve(body);
+            resolve(obj);
         });
     });
 }
