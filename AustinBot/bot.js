@@ -351,7 +351,7 @@ function getUserPerformanceForSprint(userId, sprintId, callback)  {
 //Service for getting the velocity graph of past and current sprints
 function getVelocityGraph(callback)  {
   Main.getVelocityGraph().then(function (results) {
-    var velocity_graph_irl = results.velocity_graph_url;
+    var velocity_graph_url = results.velocity_graph_url;
     return callback(velocity_graph_url);
   });
 }
