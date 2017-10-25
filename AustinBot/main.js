@@ -52,7 +52,7 @@ function getSprint(sprint_id){
 function getBurndown(sprint_id){
 	var mockService = nock("https://api.austinbot.com")
 	.persist() // This will persist mock interception for lifetime of program.
-	.get("/sprint/21")
+	.get("/sprint/20")
 	.reply(200, JSON.stringify(data.sprint));
 
 	return new Promise(function (resolve, reject) 

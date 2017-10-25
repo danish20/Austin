@@ -4,23 +4,10 @@ var Botkit = require('botkit');
 var Main = require('../AustinBot/main');
 var nock = require("nock");
 var os = require('os');
-var PythonShell = require('python-shell');
+var spawn = require('child_process').spawn;
 
-var options = {
- mode: 'text',
- //pythonPath: '../Milestone2/Python/Scripts/burndown.py',
- pythonOptions: ['-u'],
- scriptPath: '../Milestone2/Python/Scripts',
- args: ['20']
-};
 
-PythonShell.run('burndown.py', options, function (err, results) {
- if (err) throw err;
- // results is an array consisting of messages collected during execution 
- console.log('results: %j', results);
-});
 
-//var spawn = require("child_process").spawn;
 
 //var childProcess = require("child_process");
 
@@ -84,7 +71,6 @@ controller.hears(
     bot.startConversation(message, function (err, convo) {
       convo.ask('For which Sprint? Please type Sprint ID or Sprint name.', function (answer, convo) {
         var sprint_id = answer.text.slice(-2);
-        var process = spawn('python',["../Milestone2/Python/Scripts/burndown.py", sprint_id]);
         console.log(process+"TEST");
         getBurndown(sprint_id, function (w) {
 
@@ -181,7 +167,56 @@ controller.hears(
 controller.hears('Compare work done in sprint (.*) with sprint (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   var sprint_one = message.match[1];
   var sprint_two = message.match[2];
-  //console.log(sprint_one+"HELLOW"+sprint_two);
+  compareSprintPerformance(sprint_one, sprint_two, function (w) {
+    var imageURL = w;
+    var preText = "Work comparision of Sprint " + sprint_one + " with Sprint " + sprint_two + " is shown below."
+    var titleText = "Work Done Comparision Chart"
+    var responsiveChart = "link_here"
+    var workCompImage = {
+      "attachments": [
+        {
+          "pretext": preText,
+          "title": titleText,
+          "title_link": responsiveChart,
+          "image_url": imageURL,
+          "color": "#ffa500"
+        }
+      ]
+
+    };
+    bot.reply(message,workCompImage);
+  });
+});
+
+
+//USE CASE 2.4: Compare Task Performance
+controller.hears('Compare task performance in sprint (.*)', ['mention','direct_mention', 'direct_message'], function (bot, message) {
+  var sprint_one = message.match[1];
+  getTaskPerformance(sprint_one, function (w) {
+    var imageURL = w;
+    var preText = "Task performance comparision of Sprint " + sprint_one;
+    var titleText = "Task Performance Comparision Chart"
+    var responsiveChart = "link_here"
+    var taskPerfCompImage = {
+      "attachments": [
+        {
+          "pretext": preText,
+          "title": titleText,
+          "title_link": responsiveChart,
+          "image_url": imageURL,
+          "color": "#ffa500"
+        }
+      ]
+
+    };
+    bot.reply(message,taskPerfCompImage);
+  });
+});
+
+//USE CASE 2: Compare Sprint work done
+controller.hears('Compare work done in sprint (.*) with sprint (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+  var sprint_one = message.match[1];
+  var sprint_two = message.match[2];
   compareSprintPerformance(sprint_one, sprint_two, function (w) {
     var imageURL = w;
     var preText = "Work comparision of Sprint " + sprint_one + " with Sprint " + sprint_two + " is shown below."
@@ -491,13 +526,24 @@ function getSprint(sprint_id, callback) {
 }
 
 function getBurndown(sprint_id, callback) {
-  Main.getBurndown(sprint_id).then(function (results) {
-    var burndown_img_url = results.burndown_img_url;
-    return callback(burndown_img_url);
+  invokeBurndownPy(sprint_id,function(){
+    Main.getBurndown(sprint_id).then(function (results) {
+      var burndown_img_url = results.burndown_img_url;
+      return callback(burndown_img_url);
+    });
   });
+ 
+}
+
+function invokeBurndownPy(sprint_id,callback)
+{
+  console.log("Function chala");
+  var py    = spawn('python', ['../Milestone2/Python/Scripts/burndown.py']);
+  callback();
 }
 
 function getUsersCommits(repo, callback) {
+  
   Main.getUsersCommits(repo).then(function (results) {
     var msg = results.msg;
     return callback(msg);
