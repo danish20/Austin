@@ -4,12 +4,11 @@
   "description": "",
   "main": "bot.js",
   "scripts": {
-    "test": "mocha --exit"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
     "botkit": "^0.5.8",
     "forecast.io": "0.0.9",
     "slackbots": "^0.5.1",
@@ -17,19 +16,5 @@
     "request": "^2.75.0",
     "underscore": "^1.8.3"
 
-||||||| merged common ancestors
-    "botkit": "^0.5.8",
-    "forecast.io": "0.0.9",
-    "slackbots": "^0.5.1"
-=======
-    "chai": "^4.1.2",
-    "mocha": "^4.0.0",
-    "botkit": "^0.6.1",
-    "forecast.io": "0.0.11",
-    "slackbots": "^1.1.0"
-  },
-  "devDependencies": {
-    "mocha": "^4.0.0"
->>>>>>> cf490809f36b9136eba0d53293c669d6be250d84
   }
 }

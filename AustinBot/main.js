@@ -188,6 +188,27 @@ function getTaskPerformance(sprint_id){
 	});
 }
 
+function getSprintBestPerformer(sprint_id){
+	var mockService = nock("https://api.austinbot.com")
+	.persist() // This will persist mock interception for lifetime of program.
+	.get("/bestPerformer/20")
+	.reply(200, JSON.stringify(data.sprint));
+
+	return new Promise(function (resolve, reject) 
+	{
+		
+		austin.getSprintBestPerformer(sprint_id).then(function (sprint) 
+		{
+			console.log("got sprint for best performer::"+sprint_id);
+			//console.log(sprints.length);
+			var sprint_data = sprint;
+			console.log(sprint_data);
+			var sprint_20_taskPerfbestPerformer = sprint_data[0].best_performer_img_url;
+			resolve({best_performer_img_url: sprint_20_taskPerfbestPerformer});
+		});
+	});
+}
+
 exports.findNumberOfSprints = findNumberOfSprints;
 exports.getSprint = getSprint;
 exports.getBurndown = getBurndown;
@@ -196,3 +217,4 @@ exports.getUserPerformanceForSprint = getUserPerformanceForSprint;
 exports.getVelocityGraph = getVelocityGraph;
 exports.compareSprintPerformance = compareSprintPerformance;
 exports.getTaskPerformance = getTaskPerformance;
+exports.getSprintBestPerformer = getSprintBestPerformer;
