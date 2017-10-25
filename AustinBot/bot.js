@@ -514,3 +514,10 @@ function compareSprintPerformance(sprintId1, sprintId2, callback) {
   });
 }
 
+//Service for getting the performance based on each task and time spent on it
+function getTaskPerformance(sprint_id, callback) {
+  Main.getTaskPerformance(sprint_id).then(function (results) {
+    var task_performance_url = results.task_performance_img_url;
+    return callback(task_performance_url);
+  });
+}
