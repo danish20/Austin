@@ -32,22 +32,23 @@ controller.hears('setup sprint', ['mention', 'direct_mention', 'direct_message']
   //console.log(message);
 
 
-//   var process = spawn('python', ["path/to/script.py",]);
-//   getResponse(function (w) {
-
-//     bot.reply(message, w + "");
-
-//   });
-// });
-controller.hears('new sprint', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
-  console.log(message);
+  //var process = spawn('python', ["path/to/script.py",]);
   getResponse(function (w) {
 
-    bot.reply(message, w);
+    bot.reply(message, w + "");
 
   });
 });
+controller.hears('new sprint', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+  console.log(message);
+  // getResponse(function (w) {
 
+  //   bot.reply(message, w);
+
+  // });
+});
+
+// Dummy Functions
 controller.hears('get sprint 20', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   console.log(message);
   getSprint(20, function (w) {
@@ -57,7 +58,16 @@ controller.hears('get sprint 20', ['mention', 'direct_mention', 'direct_message'
   });
 });
 
-controller.hears('Show Burndown charts', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+
+//USE CASE 1: Show burndown chart of a sprint for given sprint name or id.
+controller.hears(
+  [
+    'Show Burndown chart',
+    'burndown chart',
+    'show burn down chat',
+    'burn down graph',
+    'burndown graph'
+  ], ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   console.log(message + "");
   bot.startConversation(message, function (err, convo) {
     convo.ask('For which Sprint? Please type Sprint ID or Sprint name.', function (answer, convo) {
@@ -85,9 +95,6 @@ controller.hears('Show Burndown charts', ['mention', 'direct_mention', 'direct_m
     });
   });
 });
-
-
-
 
 //USE CASE 1: Show performance of a user in given sprint
 controller.hears('Show performance of (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
@@ -125,7 +132,12 @@ controller.hears('Show performance of (.*)', ['mention', 'direct_mention', 'dire
 
 
 //USE CASE 4: Facts about the most number of commits.
-controller.hears('Who has made most number of commits?', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+controller.hears(
+  [
+    'Who has made most number of commits?', 
+    'most commits made by',
+    'most commits'
+  ], ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   console.log(message);
   var repo = "Austin"
   getUsersCommits(repo, function (w) {
@@ -135,6 +147,9 @@ controller.hears('Who has made most number of commits?', ['mention', 'direct_men
   });
 });
 
+
+// Dummy Function
+//TODO: Bot interactions will replace this.
 controller.hears('hello', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   var responseText = {
     "text": "Would you like to play a game?",
