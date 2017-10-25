@@ -163,6 +163,31 @@ controller.hears(
 
 //USE CASE 1: Sprint Status
 
+//USE CASE 2: Compare Sprint work done
+controller.hears('Compare work done in sprint (.*) with sprint (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+  var sprint_one = message.match[1];
+  var sprint_two = message.match[2];
+  //console.log(sprint_one+"HELLOW"+sprint_two);
+  compareSprintPerformance(sprint_one, sprint_two, function (w) {
+    var imageURL = w;
+    var preText = "Work comparision of Sprint " + sprint_one + " with Sprint " + sprint_two + " is shown below."
+    var titleText = "Work Done Comparision Chart"
+    var responsiveChart = "link_here"
+    var workCompImage = {
+      "attachments": [
+        {
+          "pretext": preText,
+          "title": titleText,
+          "title_link": responsiveChart,
+          "image_url": imageURL,
+          "color": "#ffa500"
+        }
+      ]
+
+    };
+    bot.reply(message,workCompImage);
+  });
+});
 
 //USE CASE 4: Facts about the most number of commits.
 controller.hears(
@@ -362,7 +387,7 @@ controller.hears(['help', 'what can you do', 'help me', 'how to do (.*)'],
       "attachments": [
         {
           "title": "Generate Sprint Summary",
-          "pretext":"I can help you with following tasks.",
+          "pretext": "I can help you with following tasks.",
           "fields": [
             {
               "title": "Burndown Chart",
@@ -385,7 +410,7 @@ controller.hears(['help', 'what can you do', 'help me', 'how to do (.*)'],
               "short": false
             },
           ],
-          "mrkdwn_in": ["fields","title"],
+          "mrkdwn_in": ["fields", "title"],
           "color": colors[(count++) % 3],
         },
         {
@@ -415,7 +440,7 @@ controller.hears(['help', 'what can you do', 'help me', 'how to do (.*)'],
           "mrkdwn_in": ["fields"],
           "color": colors[(count++) % 3],
         },
-        
+
       ]
     }
 
@@ -482,7 +507,7 @@ function getVelocityGraph(callback) {
 }
 
 //Service for getting the sprint performance comparison graph for two sprints
-function compareSprintPerformance(sprintId1, sprintId2, callback)  {
+function compareSprintPerformance(sprintId1, sprintId2, callback) {
   Main.compareSprintPerformance(sprintId1, sprintId2).then(function (results) {
     var compare_sprint_perf_url = results.compare_sprint_perf_url;
     return callback(compare_sprint_perf_url);
