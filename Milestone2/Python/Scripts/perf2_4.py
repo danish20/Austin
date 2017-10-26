@@ -11,7 +11,7 @@ import s3
 
 current_path = os.path.dirname(os.path.realpath("__file__"))
 
-def parse_json_for_velocity(sprintId):
+def parse_json_for_taskComp(sprintId):
     file = open(os.path.join(current_path,'../../../AustinBot/mockData.json'), 'r')
     mock = json.load(file)
     sprintIdx = 0
@@ -35,7 +35,7 @@ def parse_json_for_velocity(sprintId):
     y_expected = list(expected.values())
     return [x,y_actual,y_expected]
 
-def plot_velocity(x, y_actual, y_expected):
+def plot_taskComp(x, y_actual, y_expected):
     trace1 = go.Bar(
     x=x,
     y=y_actual,
@@ -56,12 +56,7 @@ def plot_velocity(x, y_actual, y_expected):
 
 sprintId = "20"
 
-[x,y_actual,y_expected] = parse_json_for_velocity(sprintId)
-fig=plot_velocity(x,y_actual,y_expected)
-<<<<<<< HEAD
+[x,y_actual,y_expected] = parse_json_for_taskComp(sprintId)
+fig=plot_taskComp(x,y_actual,y_expected)
 plotly.offline.plot(fig, filename='simple-connectgaps.html', image='png')
 s3.save_file_to_s3('performance2_4.png')
-=======
-#plotly.offline.plot(fig, filename='simple-connectgaps.html', image='png')
-s3.save_file_to_s3('performance2_4.png')
->>>>>>> 1e6913b4d8efcbd5a05717df4427cda18ce29e2f
