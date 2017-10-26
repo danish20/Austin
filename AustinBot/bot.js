@@ -506,7 +506,7 @@ function getVelocityGraph(callback) {
   });
 }
 
-//Service for getting the sprint performance comparison graph for two sprints
+//Service for getting the sprint performance comparison graph for two sprints - usecase 2.1
 function compareSprintPerformance(sprintId1, sprintId2, callback) {
   Main.compareSprintPerformance(sprintId1, sprintId2).then(function (results) {
     var compare_sprint_perf_url = results.compare_sprint_perf_url;
@@ -514,7 +514,7 @@ function compareSprintPerformance(sprintId1, sprintId2, callback) {
   });
 }
 
-//Service for getting the performance based on each task and time spent on it
+//Service for getting the performance based on each task and time spent on it - usecase 2.4
 function getTaskPerformance(sprint_id, callback) {
   Main.getTaskPerformance(sprint_id).then(function (results) {
     var task_performance_url = results.task_performance_img_url;
@@ -522,7 +522,7 @@ function getTaskPerformance(sprint_id, callback) {
   });
 }
 
-//Service for getting the best performer in a sprint
+//Service for getting the best performer in a sprint - usecase 2.3
 function getSprintBestPerformer(sprint_id, callback) {
   Main.getSprintBestPerformer(sprint_id).then(function (results) {
     var sprintBestPerformer_url = results.best_performer_img_url;
