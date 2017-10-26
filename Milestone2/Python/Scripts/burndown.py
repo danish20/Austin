@@ -6,6 +6,8 @@ import json
 import os
 import s3
 import sys
+<<<<<<< HEAD
+=======
 
 
 def read_in():
@@ -13,6 +15,7 @@ def read_in():
     #Since our input would only be having one line, parse our JSON data from that
     return json.loads(lines[0])
 
+>>>>>>> ca105a33dbd18f4a4517ce7f9fbe3ea86b00473c
 
 current_path = os.path.dirname(os.path.realpath("__file__"))
 
@@ -69,13 +72,19 @@ def plot_burndown(x, y, y_ideal):
         y = y_ideal,
         name = '<b>Ideal</b>', # Style name/legend entry with html tags
         connectgaps=True,
-        line = dict(color = ('rgb(205, 12, 24)'),width = 4)
+        line = dict(color = ('rgb(205, 12, 24)'))
     )
     data = [trace1, trace2]
     fig = dict(data=data)
     py.image.save_as(fig, filename=os.path.join(current_path,'../Milestone2/Python/Plots/burndown.png'))
     return fig
 
+<<<<<<< HEAD
+query_id = sys.argv[1]
+[x,y,y_ideal] = parse_json_for_burndown(query_id)
+fig=plot_burndown(x,y,y_ideal)
+s3.save_file_to_s3('burndown.png')
+=======
 def main():
     query_id = "20"
 
@@ -86,3 +95,4 @@ def main():
 
 if __name__ == '__main__':
     main()   
+>>>>>>> ca105a33dbd18f4a4517ce7f9fbe3ea86b00473c

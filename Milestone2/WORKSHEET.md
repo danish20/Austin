@@ -21,9 +21,9 @@ Credentials are Username : austinbot510@gmail.com Password : 1qazxsw@3
 | Deliverable   | Status   |  Trello Link |   Assignee
 | ------------- | ------------  |  ------------ |   -----------
 | Start building some analysis     | Complete  | https://trello.com/c/absck1yT     |   Prashant, Sandeep, Udit
-| Conversation script for Bot interaction     | Active  | https://trello.com/c/cdlDXHeY     |   Danish, Prashant
+| Conversation script for Bot interaction     | Complete  | https://trello.com/c/cdlDXHeY     |   Danish, Prashant
 | Try out visualization for data analytics     | Complete  | https://trello.com/c/hbosTKF9     |   Sandeep, Udit
-| Create services for fetching facts     | Active  | https://trello.com/c/AoouTBYR     |   Prashant
+| Create services for fetching facts     | Complete  | https://trello.com/c/AoouTBYR     |   Prashant
 
 
 
@@ -42,4 +42,5 @@ Credentials are Username : austinbot510@gmail.com Password : 1qazxsw@3
 | Create sprint status graph  | Complete | https://trello.com/c/JIBng3ug | Sandeep, Udit
 | Create team performance comparison graph  | Complete | https://trello.com/c/122JowCx | Sandeep, Udit
 | Create plot for comparison of Performance of team with previous sprint  | Complete | https://trello.com/c/oQBIkQLi | Sandeep, Udit
+| Selenium Testing | Active | https://trello.com/c/rsuilDQy | Prashant
 
