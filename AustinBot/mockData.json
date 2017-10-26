@@ -233,7 +233,9 @@
               ]
           }
         ],
-        "burndown_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/burndown.png"
+        "burndown_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/burndown.png",
+        "task_performance_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/performance2_4.png",
+        "best_performer_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/compare_user_performance.png"
       },
       {
         "id": "21",
@@ -463,7 +465,9 @@
               ]
           }
         ],
-        "burndown_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/burndown.png"
+        "burndown_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/burndown.png",
+        "task_performance_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/performance2_4.png",
+        "best_performer_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/compare_user_performance.png"
     }
       
     ],

@@ -58,5 +58,10 @@ sprintId = "20"
 
 [x,y_actual,y_expected] = parse_json_for_velocity(sprintId)
 fig=plot_velocity(x,y_actual,y_expected)
+<<<<<<< HEAD
 plotly.offline.plot(fig, filename='simple-connectgaps.html', image='png')
 s3.save_file_to_s3('performance2_4.png')
+=======
+#plotly.offline.plot(fig, filename='simple-connectgaps.html', image='png')
+s3.save_file_to_s3('performance2_4.png')
+>>>>>>> 1e6913b4d8efcbd5a05717df4427cda18ce29e2f
