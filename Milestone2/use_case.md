@@ -11,46 +11,44 @@ Bot is capable of providing analytics related to Sprints in various forms and in
 2 Main Flow
    User will request the bot to create one of the following
    
-    * **1:** Burndown Chart
-	  * **2:** Individual's performance chart
-	  * **3:** Velocity Graph
-	  * **4:** Sprint Status
+	1:Burndown Chart
+	2:Individual's performance chart
+	3:Velocity Graph
+	4:Sprint Status
+	
+Upon receiving user's request bot will call helper python script related to the query
+to generate chart based on current data. Once this chart is ready our python script 
+will upload it to a S3 bucket and return the link to uploaded file. Once bot receives 
+a confirmation from python script it will respond to user's query with graph generated. 
     
+3 Alternative Flows
+  User enters a Sprint ID which does not exists. In this case bot will respond with an error
+  and will request to enter a new Sprint ID.
   
-
-
-3 Sub flows
-•	[S1] User 1 will alert the bot. Bot requests for the list of attendees which the user provides
-  (User provides /meeting command with @username1, @username2 list). The user will provide meeting
-  duration and date of the meeting upon bot’s request (Eg. 1 hour, tomorrow).
-•	[S2] The bot finds the most suitable time and location for the meeting and sets up the meeting
-  at the most feasible time as per instructions as waits for confirmation from the user.
-•	[S3] Upon confirmation the bot creates the meeting and send emails/posts link.
-
-4 Alternative Flows
-  [E1] Not able to find suitable because no team members are available or all meeting rooms are booked
-
 ```
 
 
 
-**Use case 2: Add a member to the meeting**
+* **Use Case 2: Compare:** Bot can also be used to compare various metrics of the sprint and obtain insights on them. Comparisions can be of following types:
+
+	* **1:** Work done in this sprint with past sprints.
+	* **2:** Performance of team with respect to previous sprint performance.
+	* **3:** Who performed the most / Best Performer?
+	* **4:** Performance based on each task and time spent on it.
 ```
 1 Preconditions
-   User must have google calendar api tokens in setup in the system and there should be a meeting scheduled already.
+   There should be atleast 2 Sprints or 2 Users present to perform the comparision.
 
 2 Main Flow
-   User will notify bot that he wants to add a new set of attendees to the meeting [S1]. The bot adds this new set of
-   members to the already created meeting and notify all the attendees [S2].
+   User will notify bot that he wants to compare some metric related to the sprint and 
+   upon receiving user's request bot will call helper python script related to the query
+   to generate chart based on current data. Once this chart is ready our python script 
+   will upload it to a S3 bucket and return the link to uploaded file. Once bot receives 
+   a confirmation from python script it will respond to user's query with graph generated.  
 
-3 Sub flows
-•	[S1] The user will tell the bot that he wants to add a new member or a set of members to the meeting which was created
-  earlier. He provides the username of these new attendees. (Eg. Add a new member. @username 3, username 4)
-•	[S2] The bot adds this single member or these members and notify all relevant members.
-
-4 Alternative Flows
-  [E1] Not able to adjust this new member into the meeting because of the schedule clash. Notify the user
-  that the meeting has to rescheduled.
+3 Alternative Flows
+  Unable to compare performance or work done in particular sprint because of invalid input or insufficient data.
+  In this case bot will respond with error message about the situtation. 
 
 ```
 
