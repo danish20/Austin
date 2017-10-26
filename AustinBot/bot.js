@@ -468,7 +468,7 @@ controller.hears(['help', 'what can you do', 'help me', 'how to do (.*)'],
           "fields": [
             {
               "title": "Work done in one sprint with other sprint",
-              "value": "_Compare work done of `<sprint-1-Name/ID>` with `<sprint-1-Name/ID>`_",
+              "value": "_Compare work done in `<sprint-1-Name/ID>` with `<sprint-1-Name/ID>`_",
               "short": false
             },
             {
