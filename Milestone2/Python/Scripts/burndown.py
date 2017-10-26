@@ -8,6 +8,7 @@ import json
 from pprint import pprint
 import os
 import s3
+import sys
 
 current_path = os.path.dirname(os.path.realpath("__file__"))
 
@@ -64,13 +65,14 @@ def plot_burndown(x, y, y_ideal):
         y = y_ideal,
         name = '<b>Ideal</b>', # Style name/legend entry with html tags
         connectgaps=True,
-        line = dict(color = ('rgb(205, 12, 24)'),width = 4)
+        line = dict(color = ('rgb(205, 12, 24)'))
     )
     data = [trace1, trace2]
     fig = dict(data=data)
     py.image.save_as(fig, filename=os.path.join(current_path,'../Plots/burndown.png'))
     return fig
 
-[x,y,y_ideal] = parse_json_for_burndown("21")
+query_id = sys.argv[1]
+[x,y,y_ideal] = parse_json_for_burndown(query_id)
 fig=plot_burndown(x,y,y_ideal)
 s3.save_file_to_s3('burndown.png')
