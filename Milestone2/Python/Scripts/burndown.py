@@ -1,19 +1,24 @@
 import json
-import pandas as pd
-import numpy as np
 import plotly.plotly as py
 import plotly.graph_objs as go
 import plotly
 import json
-from pprint import pprint
 import os
 import s3
+import sys
+
+
+def read_in():
+    lines = sys.stdin.readlines()
+    #Since our input would only be having one line, parse our JSON data from that
+    return json.loads(lines[0])
+
 
 current_path = os.path.dirname(os.path.realpath("__file__"))
 
 def parse_json_for_burndown(query_id):
     current_path = os.path.dirname(os.path.realpath("__file__"))
-    file = open(os.path.join(current_path,'../../../AustinBot/mockData.json'), 'r')
+    file = open(os.path.join(current_path,'mockData.json'), 'r')
     mock = json.load(file)
     sprints = mock["sprint"]
     for sprint in sprints:
@@ -68,9 +73,16 @@ def plot_burndown(x, y, y_ideal):
     )
     data = [trace1, trace2]
     fig = dict(data=data)
-    py.image.save_as(fig, filename=os.path.join(current_path,'../Plots/burndown.png'))
+    py.image.save_as(fig, filename=os.path.join(current_path,'../Milestone2/Python/Plots/burndown.png'))
     return fig
 
-[x,y,y_ideal] = parse_json_for_burndown("21")
-fig=plot_burndown(x,y,y_ideal)
-s3.save_file_to_s3('burndown.png')
+def main():
+    query_id = "20"
+
+    [x,y,y_ideal] = parse_json_for_burndown(query_id)
+    fig=plot_burndown(x,y,y_ideal)
+    s3.save_file_to_s3('burndown.png')
+    print("comp")
+
+if __name__ == '__main__':
+    main()   

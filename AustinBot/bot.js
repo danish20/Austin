@@ -4,9 +4,7 @@ var Botkit = require('botkit');
 var Main = require('../AustinBot/main');
 var nock = require("nock");
 var os = require('os');
-
-var spawn = require("child_process").spawn;
-
+var spawn = require('child_process').spawn;
 
 
 
@@ -59,7 +57,7 @@ controller.hears('get sprint 20', ['mention', 'direct_mention', 'direct_message'
 });
 
 
-//USE CASE 1: Show burndown chart of a sprint for given sprint name or id.
+//USE CASE 1.1: Show burndown chart of a sprint for given sprint name or id.
 controller.hears(
   [
     'Show Burndown chart',
@@ -69,9 +67,11 @@ controller.hears(
     'burndown graph'
   ], ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
     console.log(message + "");
+    
     bot.startConversation(message, function (err, convo) {
       convo.ask('For which Sprint? Please type Sprint ID or Sprint name.', function (answer, convo) {
         var sprint_id = answer.text.slice(-2);
+        console.log(process+"TEST");
         getBurndown(sprint_id, function (w) {
 
           var imageURL = w;
@@ -96,7 +96,7 @@ controller.hears(
     });
   });
 
-//USE CASE 1: Show performance of a user in given sprint
+//USE CASE 1.2: Show performance of a user in given sprint
 controller.hears('Show performance of (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   var name = message.match[1];
   //console.log(name + "HelloW");
@@ -130,7 +130,7 @@ controller.hears('Show performance of (.*)', ['mention', 'direct_mention', 'dire
   });
 });
 
-//USE CASE 1: Velocity Chart
+//USE CASE 1.3: Velocity Chart
 controller.hears(
   [
     'Show velocity chart',
@@ -161,13 +161,12 @@ controller.hears(
   });
 
 
-//USE CASE 1: Sprint Status
+//USE CASE 1.4: Sprint Status
 
-//USE CASE 2: Compare Sprint work done
+//USE CASE 2.1: Compare Sprint work done
 controller.hears('Compare work done in sprint (.*) with sprint (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   var sprint_one = message.match[1];
   var sprint_two = message.match[2];
-  //console.log(sprint_one+"HELLOW"+sprint_two);
   compareSprintPerformance(sprint_one, sprint_two, function (w) {
     var imageURL = w;
     var preText = "Work comparision of Sprint " + sprint_one + " with Sprint " + sprint_two + " is shown below."
@@ -188,6 +187,56 @@ controller.hears('Compare work done in sprint (.*) with sprint (.*)', ['mention'
     bot.reply(message,workCompImage);
   });
 });
+
+//USE CASE 2.3: Compare Individual Perf/ Best Performer
+controller.hears('Compare individual performance in sprint (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+  var sprint_one = message.match[1];
+  getSprintBestPerformer(sprint_one, function (w) {
+    var imageURL = w;
+    var preText = "Individual performance comparision of Sprint " + sprint_one + " is shown below."
+    var titleText = "Individual Performance Comparision Chart"
+    var responsiveChart = "link_here"
+    var indvPerfCompImage = {
+      "attachments": [
+        {
+          "pretext": preText,
+          "title": titleText,
+          "title_link": responsiveChart,
+          "image_url": imageURL,
+          "color": "#ffa500"
+        }
+      ]
+
+    };
+    bot.reply(message,indvPerfCompImage);
+  });
+});
+
+//USE CASE 2.4: Compare Task Performance
+controller.hears('Compare task performance in sprint (.*)', ['mention','direct_mention', 'direct_message'], function (bot, message) {
+  var sprint_one = message.match[1];
+  getTaskPerformance(sprint_one, function (w) {
+    var imageURL = w;
+    var preText = "Task performance comparision of Sprint " + sprint_one;
+    var titleText = "Task Performance Comparision Chart"
+    var responsiveChart = "link_here"
+    var taskPerfCompImage = {
+      "attachments": [
+        {
+          "pretext": preText,
+          "title": titleText,
+          "title_link": responsiveChart,
+          "image_url": imageURL,
+          "color": "#ffa500"
+        }
+      ]
+
+    };
+    bot.reply(message,taskPerfCompImage);
+  });
+});
+
+
 
 //USE CASE 4: Facts about the most number of commits.
 controller.hears(
@@ -399,6 +448,7 @@ controller.hears(['help', 'what can you do', 'help me', 'how to do (.*)'],
               "value": "_Show performance of `<teamMemberName>`_",
               "short": false
             },
+           
             {
               "title": "Velocity Graph",
               "value": "_Show velocity graph_",
@@ -417,29 +467,43 @@ controller.hears(['help', 'what can you do', 'help me', 'how to do (.*)'],
           "title": "Compare Sprint Metrics",
           "fields": [
             {
-              "title": "Work done in current sprint with other sprint",
-              "value": "_Compare work done of sprint with `<sprintName>` or `<sprintID>`_",
-              "short": false
-            },
-            {
-              "title": "Individual's performance chart",
-              "value": "Show performance of 'Austin'",
+              "title": "Work done in one sprint with other sprint",
+              "value": "_Compare work done of `<sprint-1-Name/ID>` with `<sprint-1-Name/ID>`_",
               "short": false
             },
             {
               "title": "Velocity Graph",
-              "value": "Show velocity graph",
+              "value": "_Show velocity graph_",
+              "short": false
+            },
+
+            {
+              "title": "Who Performed the most?",
+              "value": "_Compare Individual Performance in `<sprintName>` or `<sprintID>`_",
               "short": false
             },
             {
-              "title": "Sprint Status",
-              "value": "What is current Sprint status",
+              "title": "Compare Performance based on each task",
+              "value": "_Compare Task Performance in `<sprintName>` or `<sprintID>`_",
               "short": false
-            },
+            }
           ],
           "mrkdwn_in": ["fields"],
           "color": colors[(count++) % 3],
         },
+        {
+          "title": "Recommendations and Facts",
+          "fields": [
+            {
+              "title": "Most no of commits/additions made by a user",
+              "value": "_Who has made most number of commits_",
+              "short": false
+            },
+            
+          ],
+          "mrkdwn_in": ["fields"],
+          "color": colors[(count++) % 3],
+        }
 
       ]
     }
@@ -477,13 +541,24 @@ function getSprint(sprint_id, callback) {
 }
 
 function getBurndown(sprint_id, callback) {
-  Main.getBurndown(sprint_id).then(function (results) {
-    var burndown_img_url = results.burndown_img_url;
-    return callback(burndown_img_url);
+  invokeBurndownPy(sprint_id,function(){
+    Main.getBurndown(sprint_id).then(function (results) {
+      var burndown_img_url = results.burndown_img_url;
+      return callback(burndown_img_url);
+    });
   });
+ 
+}
+
+function invokeBurndownPy(sprint_id,callback)
+{
+  console.log("Function chala");
+  var py    = spawn('python', ['../Milestone2/Python/Scripts/burndown.py']);
+  callback();
 }
 
 function getUsersCommits(repo, callback) {
+  
   Main.getUsersCommits(repo).then(function (results) {
     var msg = results.msg;
     return callback(msg);

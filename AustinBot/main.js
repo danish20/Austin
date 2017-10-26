@@ -191,7 +191,7 @@ function getTaskPerformance(sprint_id){
 function getSprintBestPerformer(sprint_id){
 	var mockService = nock("https://api.austinbot.com")
 	.persist() // This will persist mock interception for lifetime of program.
-	.get("/bestPerformer/20")
+	.get("/bestPerformer/21")
 	.reply(200, JSON.stringify(data.sprint));
 
 	return new Promise(function (resolve, reject) 
@@ -203,7 +203,7 @@ function getSprintBestPerformer(sprint_id){
 			//console.log(sprints.length);
 			var sprint_data = sprint;
 			console.log(sprint_data);
-			var sprint_20_taskPerfbestPerformer = sprint_data[0].best_performer_img_url;
+			var sprint_20_taskPerfbestPerformer = sprint_data[1].best_performer_img_url;
 			resolve({best_performer_img_url: sprint_20_taskPerfbestPerformer});
 		});
 	});
