@@ -468,7 +468,7 @@ controller.hears(['help', 'what can you do', 'help me', 'how to do (.*)'],
           "fields": [
             {
               "title": "Work done in one sprint with other sprint",
-              "value": "_Compare work done of `<sprint-1-Name/ID>` with `<sprint-1-Name/ID>`_",
+              "value": "_Compare work done in `<sprint-1-Name/ID>` with `<sprint-1-Name/ID>`_",
               "short": false
             },
             {
@@ -602,5 +602,21 @@ function getSprintBestPerformer(sprint_id, callback) {
   Main.getSprintBestPerformer(sprint_id).then(function (results) {
     var sprintBestPerformer_url = results.best_performer_img_url;
     return callback(sprintBestPerformer_url);
+  });
+}
+
+//Service for getting the sprint status - usecase 1.4
+function getSprintStatus(sprint_id, callback) {
+  Main.getSprintStatus(sprint_id).then(function (results) {
+    var getSprintStatus_url = results.getSprintStatus_img_url;
+    return callback(getSprintStatus_url);
+  });
+}
+
+//Service for comparing team performance - usecase 2.2
+function compareTeamPerformance( callback) {
+  Main.compareTeamPerformance().then(function (results) {
+    var teamPerformance_url = results.teamPerformance_img_url;
+    return callback(teamPerformance_url);
   });
 }
