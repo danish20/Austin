@@ -25,6 +25,7 @@
 ## Selenium testing of each use case
 
   Please find selenium test script for each use case below :
+  https://github.ncsu.edu/dsuri/Austin/tree/master/Milestone2/Selenium
 	
 ## Task Tracking -- WORKSHEET.md
 
@@ -35,14 +36,14 @@
 
   Please download the screencasts using the links below:
 
-  Use Case 1: 
+  Use Case 1: https://github.ncsu.edu/dsuri/Austin/blob/master/Milestone2/Screencasts/usecase_1.mp4
   
   YOUTUBE LINK : 
 
-  Use Case 2: 
+  Use Case 2: https://github.ncsu.edu/dsuri/Austin/blob/master/Milestone2/Screencasts/usecase_2.mp4
   
   YOUTUBE LINK : 
 
-  Use Case 3: 
+  Use Case 3: https://github.ncsu.edu/dsuri/Austin/blob/master/Milestone2/Screencasts/usecase_3.mp4
   
   YOUTUBE LINK : 
