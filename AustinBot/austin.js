@@ -203,3 +203,4 @@ exports.getUserPerformanceForSprint = getUserPerformanceForSprint;
 exports.getVelocityGraph = getVelocityGraph;
 exports.compareSprintPerformance = compareSprintPerformance;
 exports.getTaskPerformance = getTaskPerformance;
+exports.getSprintBestPerformer = getSprintBestPerformer;
