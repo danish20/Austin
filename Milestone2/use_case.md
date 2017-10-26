@@ -54,20 +54,25 @@ a confirmation from python script it will respond to user's query with graph gen
 
 
 
-**Use case 3: Cancelling the meeting**
+* **Use Case 3: Recommendations and Facts:** Users can also query bot to provide summary of the sprint which can be presented as recommnedations and facts related to sprint. These may include following: 
+
+	 * **Recommendations**
+	 	* **1** How can you improve performance.
+	 	* **2** How many hours should be alloted for a task based on past trends.
+
+	 * **Facts** 
+	 	* **1** Most no of commits/additions made by a user.
 ```
 1 Preconditions
-There should be a meeting scheduled already.
+There should be suffcient data present for recommendation engine to work properly.
 
 2 Main Flow
-   User will request bot to cancel meeting[S1]. The bot cancels the meeting and notify all the relevant members [S3].
+   User will request bot to provide recommendations or facts about sprints. Based on user query bot can either call
+   github api to fetch metrics related to sprint and repository or can call helper service to evaluate recommendations
+   based on past sprint data.
 
-3 Sub flows
-•	[S1] The user will tell the bot that he wants to cancel the meeting and give the bot the meeting id.
-•	[S2] After getting confirmatory yes from the user the bot cancels the meeting and notify all relevant members.
-
-
-4 Alternative Flows
-  [E1] Not able to cancel the meeting since meeting id is invalid (meeting does not exist).
+3 Alternative Flows
+  Insufficient data is present to perform recommendations. In this deliverable we are not giving recommendations as
+  mock data is limited to 2 sprints. This deliverable will be covered in next milestone.
 
 ```
