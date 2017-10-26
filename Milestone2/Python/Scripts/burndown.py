@@ -11,7 +11,7 @@ current_path = os.path.dirname(os.path.realpath("__file__"))
 
 def parse_json_for_burndown(query_id):
     current_path = os.path.dirname(os.path.realpath("__file__"))
-    file = open(os.path.join(current_path,'mockData.json'), 'r')
+    file = open(os.path.join(current_path,'../../../AustinBot/mockData.json'), 'r')
     mock = json.load(file)
     sprints = mock["sprint"]
     for sprint in sprints:
