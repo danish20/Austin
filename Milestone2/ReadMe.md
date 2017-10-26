@@ -38,12 +38,12 @@
 
   Use Case 1: https://github.ncsu.edu/dsuri/Austin/blob/master/Milestone2/Screencasts/usecase_1.mp4
   
-  YOUTUBE LINK : 
+  YOUTUBE LINK : https://youtu.be/DmHsEtWw3Lw
 
   Use Case 2: https://github.ncsu.edu/dsuri/Austin/blob/master/Milestone2/Screencasts/usecase_2.mp4
   
-  YOUTUBE LINK : 
+  YOUTUBE LINK : https://youtu.be/OWtRAb9sxUQ
 
   Use Case 3: https://github.ncsu.edu/dsuri/Austin/blob/master/Milestone2/Screencasts/usecase_3.mp4
   
-  YOUTUBE LINK : 
+  YOUTUBE LINK : https://youtu.be/Tb6_KsgueXc
