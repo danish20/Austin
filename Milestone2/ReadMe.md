@@ -3,8 +3,8 @@
 
 ## 3 Use Cases
 
-###Please find 3 use cases in following file
-####https://github.ncsu.edu/gverma/Azra_MeetingBot/blob/master/Milestone%202/Use%20Cases.md
+### Please find 3 use cases in following file
+#### https://github.ncsu.edu/gverma/Azra_MeetingBot/blob/master/Milestone%202/Use%20Cases.md
 
 ## Mocking
 
