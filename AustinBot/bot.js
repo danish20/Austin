@@ -604,3 +604,19 @@ function getSprintBestPerformer(sprint_id, callback) {
     return callback(sprintBestPerformer_url);
   });
 }
+
+//Service for getting the sprint status - usecase 1.4
+function getSprintStatus(sprint_id, callback) {
+  Main.getSprintStatus(sprint_id).then(function (results) {
+    var getSprintStatus_url = results.getSprintStatus_img_url;
+    return callback(getSprintStatus_url);
+  });
+}
+
+//Service for comparing team performance - usecase 2.2
+function compareTeamPerformance( callback) {
+  Main.compareTeamPerformance().then(function (results) {
+    var teamPerformance_url = results.teamPerformance_img_url;
+    return callback(teamPerformance_url);
+  });
+}

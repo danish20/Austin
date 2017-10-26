@@ -235,7 +235,8 @@
         ],
         "burndown_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/burndown.png",
         "task_performance_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/performance2_4.png",
-        "best_performer_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/compare_user_performance.png"
+        "best_performer_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/compare_user_performance.png",
+        "sprint_status_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/sprint_status.png"
       },
       {
         "id": "21",
@@ -467,7 +468,8 @@
         ],
         "burndown_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/burndown.png",
         "task_performance_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/performance2_4.png",
-        "best_performer_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/compare_user_performance.png"
+        "best_performer_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/compare_user_performance.png",
+        "sprint_status_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/sprint_status.png"
     }
       
     ],
@@ -480,6 +482,11 @@
     "sprints_performance_comparison_graph": 
     {
         "url": "https://s3.us-east-2.amazonaws.com/austinbot/sprint_performance.png" 
+    },
+
+    "teamPerformance_graph_url":
+    {
+        "url": "https://s3.us-east-2.amazonaws.com/austinbot/perf2_2.png"
     },
 
     "Austin_repo_stats":
