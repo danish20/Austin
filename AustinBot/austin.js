@@ -155,6 +155,46 @@ function compareSprintPerformance(sprintId1, sprintId2)
     });
 }
 
+function getTaskPerformance(sprint_id)
+{
+    var options = {
+        url: urlRoot + "/sprintTaskPerformance/" + sprint_id,
+        method: "GET",
+        headers: {
+            "content-type": "application/json"
+        }
+    };
+
+    return new Promise(function (resolve, reject){
+        request(options, function(error, response, body)
+        {
+            var obj = JSON.parse(body);
+            console.log(obj);
+            resolve(obj);
+        });
+    });
+}
+
+function getSprintBestPerformer(sprint_id)
+{
+    var options = {
+        url: urlRoot + "/bestPerformer/" + sprint_id,
+        method: "GET",
+        headers: {
+            "content-type": "application/json"
+        }
+    };
+
+    return new Promise(function (resolve, reject){
+        request(options, function(error, response, body)
+        {
+            var obj = JSON.parse(body);
+            console.log(obj);
+            resolve(obj);
+        });
+    });
+}
+
 exports.getSprints = getSprints;
 exports.getSprint = getSprint;
 exports.getBurndown = getBurndown;
@@ -162,3 +202,5 @@ exports.getUsersCommits = getUsersCommits;
 exports.getUserPerformanceForSprint = getUserPerformanceForSprint;
 exports.getVelocityGraph = getVelocityGraph;
 exports.compareSprintPerformance = compareSprintPerformance;
+exports.getTaskPerformance = getTaskPerformance;
+exports.getSprintBestPerformer = getSprintBestPerformer;

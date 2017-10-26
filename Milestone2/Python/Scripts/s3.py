@@ -25,4 +25,4 @@ def save_file_to_s3(file_name):
     current_path = os.path.dirname(os.path.realpath("__file__"))
     full_key_name = os.path.join(path, key_name)
     k = bucket.new_key(full_key_name)
-    k.set_contents_from_filename(os.path.join(current_path, '../Plots/' + key_name))
+    k.set_contents_from_filename(os.path.join(current_path, '../Milestone2/Python/Plots/' + key_name))
