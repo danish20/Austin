@@ -209,6 +209,44 @@ function getSprintBestPerformer(sprint_id){
 	});
 }
 
+function getSprintStatus(sprint_id){
+	var mockService = nock("https://api.austinbot.com")
+	.persist() // This will persist mock interception for lifetime of program.
+	.get("/sprintStatus/21")
+	.reply(200, JSON.stringify(data.sprint));
+
+	return new Promise(function (resolve, reject) 
+	{
+		
+		austin.getSprintStatus(sprint_id).then(function (sprint) 
+		{
+			console.log("got sprint for status::"+sprint_id);
+			//console.log(sprints.length);
+			var sprint_data = sprint;
+			console.log(sprint_data);
+			var sprint_20_status_url = sprint_data[1].sprint_status_img_url;
+			resolve({sprint_status_url: sprint_20_status_url});
+		});
+	});
+}
+
+function compareTeamPerformance() {
+	var mockService = nock("https://api.austinbot.com")
+	.persist() // This will persist mock interception for lifetime of program.
+	.get("/compareTeamPerformance")
+	.reply(200, JSON.stringify(data.teamPerformance_graph_url));
+
+	return new Promise(function (resolve, reject) 
+	{
+		
+		austin.compareTeamPerformance().then(function (teamPerformance_graph_url) 
+		{
+			console.log("got url for team performance graph::"+teamPerformance_graph_url);
+			resolve({teamPerformance_graph_url: teamPerformance_graph_url.url});
+		});
+	});	
+}
+
 exports.findNumberOfSprints = findNumberOfSprints;
 exports.getSprint = getSprint;
 exports.getBurndown = getBurndown;
@@ -218,3 +256,5 @@ exports.getVelocityGraph = getVelocityGraph;
 exports.compareSprintPerformance = compareSprintPerformance;
 exports.getTaskPerformance = getTaskPerformance;
 exports.getSprintBestPerformer = getSprintBestPerformer;
+exports.getSprintStatus = getSprintStatus;
+exports.compareTeamPerformance = compareTeamPerformance;
