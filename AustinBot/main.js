@@ -242,7 +242,7 @@ function compareTeamPerformance() {
 		austin.compareTeamPerformance().then(function (teamPerformance_graph_url) 
 		{
 			console.log("got url for team performance graph::"+teamPerformance_graph_url);
-			resolve({teamPerformance_graph_url: teamPerformance_graph_url.url});
+			resolve({teamPerformance_img_url: teamPerformance_graph_url.url});
 		});
 	});	
 }

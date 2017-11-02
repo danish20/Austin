@@ -163,6 +163,31 @@ controller.hears(
 
 //USE CASE 1.4: Sprint Status
 
+controller.hears('Show status of sprint (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+    //console.log(message);
+    var sprint_one = message.match[1];
+    getSprintStatus(sprint_one,function (w) {
+
+      var imageURL = w;
+      var preText = "Status of Sprint "+sprint_one
+      var titleText = "Sprint Status Chart"
+      var responsiveChart = "link_here"
+      var sprintStatusImage = {
+        "attachments": [
+          {
+            "pretext": preText,
+            "title": titleText,
+            "title_link": responsiveChart,
+            "image_url": imageURL,
+            "color": "#ffa500"
+          }
+        ]
+      };
+      bot.reply(message, sprintStatusImage);
+
+    });
+  });
+
 //USE CASE 2.1: Compare Sprint work done
 controller.hears('Compare work done in sprint (.*) with sprint (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   var sprint_one = message.match[1];
@@ -171,6 +196,36 @@ controller.hears('Compare work done in sprint (.*) with sprint (.*)', ['mention'
     var imageURL = w;
     var preText = "Work comparision of Sprint " + sprint_one + " with Sprint " + sprint_two + " is shown below."
     var titleText = "Work Done Comparision Chart"
+    var responsiveChart = "link_here"
+    var workCompImage = {
+      "attachments": [
+        {
+          "pretext": preText,
+          "title": titleText,
+          "title_link": responsiveChart,
+          "image_url": imageURL,
+          "color": "#ffa500"
+        }
+      ]
+
+    };
+    bot.reply(message,workCompImage);
+  });
+});
+
+//USE CASE 2.2: Compare Team Performance
+controller.hears(
+  [
+    'How is team performing',
+    'Performance of team',
+    'Team Performance',
+    'Show team performance'
+  ], ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+
+  compareTeamPerformance(function (w) {
+    var imageURL = w;
+    var preText = "Team performance compared to previous Sprints"
+    var titleText = "Team Sprint Performance Comparision Chart"
     var responsiveChart = "link_here"
     var workCompImage = {
       "attachments": [
@@ -456,7 +511,7 @@ controller.hears(['help', 'what can you do', 'help me', 'how to do (.*)'],
             },
             {
               "title": "Sprint Status",
-              "value": "_What is current Sprint status_",
+              "value": "_Show status of `<sprintName>` or `<sprintID>`_",
               "short": false
             },
           ],
@@ -472,8 +527,8 @@ controller.hears(['help', 'what can you do', 'help me', 'how to do (.*)'],
               "short": false
             },
             {
-              "title": "Velocity Graph",
-              "value": "_Show velocity graph_",
+              "title": "Performance of team with respect to previous sprint performance.",
+              "value": "_Show team performance_",
               "short": false
             },
 
@@ -499,17 +554,13 @@ controller.hears(['help', 'what can you do', 'help me', 'how to do (.*)'],
               "value": "_Who has made most number of commits_",
               "short": false
             },
-            
           ],
           "mrkdwn_in": ["fields"],
           "color": colors[(count++) % 3],
         }
-
       ]
     }
-
     bot.reply(message, helpMessage);
-
   });
 
 function formatUptime(uptime) {
@@ -581,7 +632,7 @@ function getVelocityGraph(callback) {
   });
 }
 
-//Service for getting the sprint performance comparison graph for two sprints - usecase 2.1
+//Service for getting the sprint performance comparison graph for two sprints
 function compareSprintPerformance(sprintId1, sprintId2, callback) {
   Main.compareSprintPerformance(sprintId1, sprintId2).then(function (results) {
     var compare_sprint_perf_url = results.compare_sprint_perf_url;
@@ -589,7 +640,7 @@ function compareSprintPerformance(sprintId1, sprintId2, callback) {
   });
 }
 
-//Service for getting the performance based on each task and time spent on it - usecase 2.4
+//Service for getting the performance based on each task and time spent on it
 function getTaskPerformance(sprint_id, callback) {
   Main.getTaskPerformance(sprint_id).then(function (results) {
     var task_performance_url = results.task_performance_img_url;
@@ -597,18 +648,17 @@ function getTaskPerformance(sprint_id, callback) {
   });
 }
 
-//Service for getting the best performer in a sprint - usecase 2.3
+//Service for getting the best performer in a sprint
 function getSprintBestPerformer(sprint_id, callback) {
   Main.getSprintBestPerformer(sprint_id).then(function (results) {
     var sprintBestPerformer_url = results.best_performer_img_url;
     return callback(sprintBestPerformer_url);
   });
 }
-
 //Service for getting the sprint status - usecase 1.4
 function getSprintStatus(sprint_id, callback) {
   Main.getSprintStatus(sprint_id).then(function (results) {
-    var getSprintStatus_url = results.getSprintStatus_img_url;
+    var getSprintStatus_url = results.sprint_status_url;
     return callback(getSprintStatus_url);
   });
 }
