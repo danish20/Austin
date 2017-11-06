@@ -26,24 +26,12 @@ controller.spawn({
 //BOT HOOKS
 // give the bot something to listen for.
 //controller.hears('string or regex',['direct_message','direct_mention','mention'],function(bot,message) {
-controller.hears('setup sprint', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
-  //console.log(message);
-
-
-  //var process = spawn('python', ["path/to/script.py",]);
-  getResponse(function (w) {
-
+controller.hears(['setup sprint','new sprint','create sprint'], ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+  //redirect to a webpage for milestone 3 will create form inside slack after deploying
+  getResponse(function (w) 
+  {
     bot.reply(message, w + "");
-
   });
-});
-controller.hears('new sprint', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
-  console.log(message);
-  // getResponse(function (w) {
-
-  //   bot.reply(message, w);
-
-  // });
 });
 
 // Dummy Functions
