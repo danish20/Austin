@@ -6,8 +6,15 @@ from boto.s3.key import Key
 
 def save_file_to_s3_tinys3(file_name):
     current_path = os.path.dirname(os.path.realpath("__file__"))
+    os.chdir(current_path)
+    #Traverse to the Project Root
+    #This is done by checking whether the folder AustinBot exits in the current path
+    while(not os.path.exists('AustinBot')):
+        current_path = os.path.join(current_path, '..')
+        os.chdir('..')
+
     conn = tinys3.Connection('AKIAI6KJYT4ZD4QRHDRA','8Qu21SHYC+dy//n23smDHXqMDkA5oafV9xuoOGhn',tls=True)
-    f = open(os.path.join(current_path,'../Plots/' + file_name),'rb')
+    f = open(os.path.join(current_path,'Milestone3/Python/Plots/' + file_name),'rb')
     conn.upload(file_name, f, 'austinbot')
              
 def save_file_to_s3(file_name):
@@ -23,6 +30,13 @@ def save_file_to_s3(file_name):
     key_name = file_name
     path = '' #Directory Under which file should get upload
     current_path = os.path.dirname(os.path.realpath("__file__"))
+    os.chdir(current_path)
+    #Traverse to the Project Root
+    #This is done by checking whether the folder AustinBot exits in the current path
+    while(not os.path.exists('AustinBot')):
+        current_path = os.path.join(current_path, '..')
+        os.chdir('..')
+
     full_key_name = os.path.join(path, key_name)
     k = bucket.new_key(full_key_name)
-    k.set_contents_from_filename(os.path.join(current_path, '../Plots/' + key_name))
+    k.set_contents_from_filename(os.path.join(current_path, 'Milestone3/Python/Plots/' + key_name))

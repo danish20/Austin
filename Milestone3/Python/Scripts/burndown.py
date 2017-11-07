@@ -11,7 +11,14 @@ current_path = os.path.dirname(os.path.realpath("__file__"))
 
 def parse_json_for_burndown(query_id):
     current_path = os.path.dirname(os.path.realpath("__file__"))
-    file = open(os.path.join(current_path,'../../../AustinBot/mockData.json'), 'r')
+    os.chdir(current_path)
+    #Traverse to the Project Root
+    #This is done by checking whether the folder AustinBot exits in the current path
+    while(not os.path.exists('AustinBot')):
+        current_path = os.path.join(current_path, '..')
+        os.chdir('..')
+    
+    file = open(os.path.join(current_path,'AustinBot/mockData.json'), 'r')
     mock = json.load(file)
     sprints = mock["sprint"]
     for sprint in sprints:
@@ -66,7 +73,15 @@ def plot_burndown(x, y, y_ideal):
     )
     data = [trace1, trace2]
     fig = dict(data=data)
-    py.image.save_as(fig, filename=os.path.join(current_path,'../Milestone2/Python/Plots/burndown.png'))
+    current_path = os.path.dirname(os.path.realpath("__file__"))
+    os.chdir(current_path)
+    #Traverse to the Project Root
+    #This is done by checking whether the folder AustinBot exits in the current path
+    while(not os.path.exists('AustinBot')):
+        current_path = os.path.join(current_path, '..')
+        os.chdir('..')
+
+    py.image.save_as(fig, filename=os.path.join(current_path,'Milestone3/Python/Plots/burndown.png'))
     return fig
 
 def main():
