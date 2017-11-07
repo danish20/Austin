@@ -6,8 +6,48 @@ var nock = require("nock");
 var os = require('os');
 var spawn = require('child_process').spawn;
 
+var express = require('express');
+
+var app = express();
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 
 
+var port = 3000;
+
+var mongoose = require('mongoose');
+
+var mongoDB = 'mongodb://127.0.0.1/AUSTIN';
+mongoose.connect(mongoDB,{useMongoClient: true});
+var db = mongoose.connection;
+db.on('error',console.error.bind(console,'connection_error:'));
+
+db.once('open', function(){
+  console.log("DB connection alive");
+})
+
+var router = express.Router()
+
+var sprint = require('../AustinBot/Model/sprint.js');
+
+router.get('/:id', function(req,res,next){
+    sprint.findById(req.params.id, function(err,post){
+        if(err) return next(err);
+        res.json(post);
+    });
+});
+
+router.post('/',function(req,res,next){
+    sprint.create(req.body, function(err, post){
+        if(err) return next(err);
+        res.json(post);
+    });
+});
+
+app.use('/api',router);
+app.listen(port);
+console.log("Listening port 3000");
 
 //var childProcess = require("child_process");
 
@@ -24,9 +64,11 @@ controller.spawn({
 
 
 //BOT HOOKS
-// give the bot something to listen for.
-//controller.hears('string or regex',['direct_message','direct_mention','mention'],function(bot,message) {
-controller.hears(['setup sprint','new sprint','create sprint'], ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+
+controller.hears(
+  ['setup sprint','new sprint','create sprint'], 
+  ['mention', 'direct_mention', 'direct_message'], 
+  function (bot, message) {
   //redirect to a webpage for milestone 3 will create form inside slack after deploying
   getResponse(function (w) 
   {
@@ -35,12 +77,10 @@ controller.hears(['setup sprint','new sprint','create sprint'], ['mention', 'dir
 });
 
 // Dummy Functions
-controller.hears('get sprint 20', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+controller.hears('get sprint (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   console.log(message);
-  getSprint(20, function (w) {
-
+  getSprint(message.match[1], function (w) {
     bot.reply(message, w + "");
-
   });
 });
 
@@ -591,8 +631,7 @@ function getBurndown(sprint_id, callback) {
 
 function invokeBurndownPy(sprint_id,callback)
 {
-  console.log("Function chala");
-  var py    = spawn('python', ['../Milestone2/Python/Scripts/burndown.py']);
+  var py    = spawn('python', ['../Milestone3/Python/Scripts/burndown.py']);
   callback();
 }
 
