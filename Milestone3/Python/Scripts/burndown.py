@@ -85,12 +85,12 @@ def plot_burndown(x, y, y_ideal):
     return fig
 
 def main():
-    query_id = "20"
+    query_id = sys.argv[1]
 
     [x,y,y_ideal] = parse_json_for_burndown(query_id)
     fig=plot_burndown(x,y,y_ideal)
     s3.save_file_to_s3('burndown.png')
-    print("comp")
+    print("Completed")
 
 if __name__ == '__main__':
     main()   

@@ -77,11 +77,11 @@ def plot_compare_user_performance(x, y_expected, y_actual_work_done):
     s3.save_file_to_s3('compare_user_performance.png')
 
 def main():
-    query_id = "20"
+    query_id = sys.argv[1]
     [x, y_expected, y_actual_work_done] = parse_json_for_compare_user_performance(query_id)
     fig = plot_compare_user_performance(x, y_expected, y_actual_work_done)
     s3.save_file_to_s3('compare_user_performance.png')
-    print("comp")
+    print("Completed")
 
 if __name__ == '__main__':
     main() 
