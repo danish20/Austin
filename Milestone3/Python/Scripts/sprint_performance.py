@@ -7,6 +7,7 @@ import plotly
 import json
 from pprint import pprint
 import os
+import sys
 from burndown import parse_json_for_burndown
 from burndown import plot_burndown
 import s3
@@ -33,8 +34,24 @@ def plot_sprint_performance(query_id1, query_id2):
     )
     data = [trace1, trace2]
     fig = dict(data=data)
-    py.image.save_as(fig, filename=os.path.join(current_path,'../Plots/sprint_performance.png'))
+    current_path = os.path.dirname(os.path.realpath("__file__"))
+    os.chdir(current_path)
+    #Traverse to the Project Root
+    #This is done by checking whether the folder AustinBot exits in the current path
+    while(not os.path.exists('AustinBot')):
+        current_path = os.path.join(current_path, '..')
+        os.chdir('..')
+    
+    file = open(os.path.join(current_path,'AustinBot/mockData.json'), 'r')
+    py.image.save_as(fig, filename=os.path.join(current_path,'Milestone3/Python/Plots/sprint_performance.png'))
     return fig
 
-fig=plot_sprint_performance("20", "21")
-s3.save_file_to_s3('sprint_performance.png')
+
+def main():
+    query_id1 = sys.argv[1]
+    query_id2 = sys.argv[2]
+    fig=plot_sprint_performance(query_id1, query_id2)
+    s3.save_file_to_s3('sprint_performance.png')
+
+if __name__ == '__main__':
+    main()

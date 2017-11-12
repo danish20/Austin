@@ -5,6 +5,7 @@ import plotly.plotly as py
 import plotly.graph_objs as go
 import plotly
 import json
+import sys
 from pprint import pprint
 import os
 import s3
@@ -12,7 +13,15 @@ import s3
 current_path = os.path.dirname(os.path.realpath("__file__"))
 
 def parse_json_for_taskComp(sprintId):
-    file = open(os.path.join(current_path,'../../../AustinBot/mockData.json'), 'r')
+    current_path = os.path.dirname(os.path.realpath("__file__"))
+    os.chdir(current_path)
+    #Traverse to the Project Root
+    #This is done by checking whether the folder AustinBot exits in the current path
+    while(not os.path.exists('AustinBot')):
+        current_path = os.path.join(current_path, '..')
+        os.chdir('..')
+    
+    file = open(os.path.join(current_path,'AustinBot/mockData.json'), 'r')
     mock = json.load(file)
     sprintIdx = 0
     for idx, sprint in enumerate(mock["sprint"]):
@@ -51,12 +60,27 @@ def plot_taskComp(x, y_actual, y_expected):
     barmode='group'
     )
     fig = go.Figure(data=data, layout=layout)
-    py.image.save_as(fig, filename=os.path.join(current_path,'../Plots/performance2_4.png'))
+    current_path = os.path.dirname(os.path.realpath("__file__"))
+    os.chdir(current_path)
+    #Traverse to the Project Root
+    #This is done by checking whether the folder AustinBot exits in the current path
+    while(not os.path.exists('AustinBot')):
+        current_path = os.path.join(current_path, '..')
+        os.chdir('..')
+    
+    file = open(os.path.join(current_path,'AustinBot/mockData.json'), 'r')
+    py.image.save_as(fig, filename=os.path.join(current_path,'Milestone3/Python/Plots/performance2_4.png'))
     return fig
 
-sprintId = "20"
+def main():
+    sprintId = sys.argv[1]
+    [x,y_actual,y_expected] = parse_json_for_taskComp(sprintId)
+    print(x)
+    print(y_actual)
+    print(y_expected)
+    fig=plot_taskComp(x,y_actual,y_expected)
+    #plotly.offline.plot(fig, filename='simple-connectgaps.html', image='png')
+    s3.save_file_to_s3('performance2_4.png')
 
-[x,y_actual,y_expected] = parse_json_for_taskComp(sprintId)
-fig=plot_taskComp(x,y_actual,y_expected)
-plotly.offline.plot(fig, filename='simple-connectgaps.html', image='png')
-s3.save_file_to_s3('performance2_4.png')
+if __name__ == '__main__':
+    main()
