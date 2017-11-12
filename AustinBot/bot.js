@@ -5,9 +5,10 @@ var Main = require('../AustinBot/main');
 var nock = require("nock");
 var os = require('os');
 var spawn = require('child_process').spawn;
-
+var cors = require('cors');
+var path = require('path');
 var express = require('express');
-
+var route = require('./Route/route');
 var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
@@ -18,36 +19,23 @@ var port = 3000;
 
 var mongoose = require('mongoose');
 
-var mongoDB = 'mongodb://127.0.0.1/AUSTIN';
+var mongoDB = 'mongodb://127.0.0.1/test';
 mongoose.connect(mongoDB,{useMongoClient: true});
 var db = mongoose.connection;
 db.on('error',console.error.bind(console,'connection_error:'));
-
+db.on('connected',()=>{
+  console.log('Connected to database mongodb @27017');
+});
 db.once('open', function(){
   console.log("DB connection alive");
-})
+});
+app.use(express.static(path.join(__dirname,'public')));
+app.use('/api',route);
 
-var router = express.Router()
-
-var sprint = require('../AustinBot/Model/sprint.js');
-
-router.get('/:id', function(req,res,next){
-    sprint.findById(req.params.id, function(err,post){
-        if(err) return next(err);
-        res.json(post);
-    });
+app.listen(port,()=>{
+  console.log("Listening port 3000");
 });
 
-router.post('/',function(req,res,next){
-    sprint.create(req.body, function(err, post){
-        if(err) return next(err);
-        res.json(post);
-    });
-});
-
-app.use('/api',router);
-app.listen(port);
-console.log("Listening port 3000");
 
 //var childProcess = require("child_process");
 
