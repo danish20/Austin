@@ -632,7 +632,7 @@ function getBurndown(sprint_id, callback) {
 function invokeBurndownPy(sprint_id,callback)
 {
   var py    = spawn('python', ['../Milestone3/Python/Scripts/burndown.py']);
-  callback();
+  setTimeout(callback,5000);
 }
 
 function getUsersCommits(repo, callback) {
