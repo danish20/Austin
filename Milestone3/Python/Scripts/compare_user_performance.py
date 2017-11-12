@@ -7,6 +7,7 @@ import plotly
 import json
 from pprint import pprint
 import os
+import sys
 import s3
 
 def parse_json_for_compare_user_performance(query_id):
@@ -70,7 +71,24 @@ def plot_compare_user_performance(x, y_expected, y_actual_work_done):
     )
     data = [trace1, trace2]
     layout = go.Layout(
-        barmode='group'
+        title = 'User Performance Comparison',
+        barmode='group',
+        xaxis=dict(
+            title='User IDs',
+            titlefont=dict(
+                family='Courier New, monospace',
+                size=18,
+                color='#7f7f7f'
+            )
+        ),
+        yaxis=dict(
+            title='Hours',
+            titlefont=dict(
+                family='Courier New, monospace',
+                size=18,
+                color='#7f7f7f'
+            )
+        )
     )
     fig = go.Figure(data=data, layout=layout)
     py.image.save_as(fig, filename=os.path.join(current_path,'Milestone3/Python/Plots/compare_user_performance.png'))
