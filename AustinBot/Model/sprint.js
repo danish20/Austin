@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var sprintSchema = new Schema({
-    id: Number,
+    sprintId: String,
     start_date: Date,
     end_date: Date,
     team_member: [{

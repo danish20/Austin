@@ -10,17 +10,16 @@ var data = require("../AustinBot/mockData.json");
 //function to get the number of sprints
 function findNumberOfSprints()
 {
-	var mockService = nock("https://api.austinbot.com")
+/*	var mockService = nock("https://api.austinbot.com")
 	.persist() // This will persist mock interception for lifetime of program.
 	.get("/sprint")
 	.reply(200, JSON.stringify(data.sprint) );
-
+*/
 	return new Promise(function (resolve, reject) 
 	{
 		// mock data needs list of issues.
 		austin.getSprints().then(function (sprints) 
 		{
-			console.log("hi");
 			console.log(sprints.length);
             var sprint_count = sprints.length;
 			
@@ -30,14 +29,13 @@ function findNumberOfSprints()
 }
 
 function getSprint(sprint_id){
-	var mockService = nock("https://api.austinbot.com")
+/*	var mockService = nock("https://api.austinbot.com")
 	.persist() // This will persist mock interception for lifetime of program.
 	.get("/sprint/20")
 	.reply(200, JSON.stringify(data.sprint));
-
+*/
 	return new Promise(function (resolve, reject) 
 	{
-		// mock data needs list of issues.
 		austin.getSprint(sprint_id).then(function (sprint) 
 		{
 			console.log("got sprint::"+sprint_id);
@@ -50,35 +48,54 @@ function getSprint(sprint_id){
 }
 
 function getBurndown(sprint_id){
-	var mockService = nock("https://api.austinbot.com")
+/*	var mockService = nock("https://api.austinbot.com")
 	.persist() // This will persist mock interception for lifetime of program.
 	.get("/sprint/21")
 	.reply(200, JSON.stringify(data.sprint));
-
+*/
 	return new Promise(function (resolve, reject) 
 	{
-		// mock data needs list of issues.
-		austin.getBurndown(sprint_id).then(function (sprint) 
+		austin.getBurndown(sprint_id).then(function (burndown_obj) 
 		{
-			console.log("got sprint for burndown::"+sprint_id);
+			console.log("got burndown for sprint::"+sprint_id);
 			//console.log(sprints.length);
-			var sprint_data = sprint;
-			console.log(sprint_data);
-			var sprint_21_burndown = sprint_data[1].burndown_img_url;
-			resolve({burndown_img_url: sprint_21_burndown});
+			var sprint_burndown_img = burndown_obj[0].sprint_status_img_url;
+			resolve({burndown_img_url: sprint_burndown_img});
 		});
 	});
 }
 
+<<<<<<< HEAD
 function getUsersCommits(repo,owner){
 	// var mockService = nock("https://api.austinbot.com")
 	// .persist() // This will persist mock interception for lifetime of program.
 	// .get("/stats/Austin")
 	// .reply(200, JSON.stringify(data.Austin_repo_stats));
 
+||||||| merged common ancestors
+function getUsersCommits(repo){
+	var mockService = nock("https://api.austinbot.com")
+	.persist() // This will persist mock interception for lifetime of program.
+	.get("/stats/Austin")
+	.reply(200, JSON.stringify(data.Austin_repo_stats));
+
+=======
+function getUsersCommits(owner, repo){
+/*	var mockService = nock("https://api.austinbot.com")
+	.persist() // This will persist mock interception for lifetime of program.
+	.get("/stats/Austin")
+	.reply(200, JSON.stringify(data.Austin_repo_stats));
+*/
+>>>>>>> e823fd9da21a9aa4822b87b608d699b53aa77fb4
 	return new Promise(function (resolve, reject) 
 	{
+<<<<<<< HEAD
 		austin.getUsersCommits(repo,owner).then(function (stats) 
+||||||| merged common ancestors
+		austin.getUsersCommits(repo).then(function (stats) 
+=======
+		austin.getUsersCommits(owner, repo).then(function (stats) 
+>>>>>>> e823fd9da21a9aa4822b87b608d699b53aa77fb4
 		{
 			console.log("got stats::"+repo);
 			
@@ -108,11 +125,11 @@ function getUsersCommits(repo,owner){
 }
 
 function getUserPerformanceForSprint(userId, sprintId) {
-	var mockService = nock("https://api.austinbot.com")
+/*	var mockService = nock("https://api.austinbot.com")
 	.persist() // This will persist mock interception for lifetime of program.
 	.get("/performance/sandeep/20")
 	.reply(200, JSON.stringify(data.sprint));
-
+*/
 	return new Promise(function (resolve, reject) 
 	{
 		// mock data needs list of issues.
@@ -130,11 +147,11 @@ function getUserPerformanceForSprint(userId, sprintId) {
 }
 
 function getVelocityGraph() {
-	var mockService = nock("https://api.austinbot.com")
+/*	var mockService = nock("https://api.austinbot.com")
 	.persist() // This will persist mock interception for lifetime of program.
 	.get("/velocity")
 	.reply(200, JSON.stringify(data.velocity_graph_url));
-
+*/
 	return new Promise(function (resolve, reject) 
 	{
 		
@@ -150,11 +167,11 @@ function getVelocityGraph() {
 }
 
 function compareSprintPerformance(sprintId1, sprintId2) {
-	var mockService = nock("https://api.austinbot.com")
+/*	var mockService = nock("https://api.austinbot.com")
 	.persist() // This will persist mock interception for lifetime of program.
 	.get("/compareSprints?sprintId1=20&sprintId2=21")
 	.reply(200, JSON.stringify(data.sprints_performance_comparison_graph));
-
+*/
 	return new Promise(function (resolve, reject) 
 	{
 		
@@ -168,11 +185,11 @@ function compareSprintPerformance(sprintId1, sprintId2) {
 }
 
 function getTaskPerformance(sprint_id){
-	var mockService = nock("https://api.austinbot.com")
+/*	var mockService = nock("https://api.austinbot.com")
 	.persist() // This will persist mock interception for lifetime of program.
 	.get("/sprintTaskPerformance/20")
 	.reply(200, JSON.stringify(data.sprint));
-
+*/
 	return new Promise(function (resolve, reject) 
 	{
 		
@@ -189,11 +206,11 @@ function getTaskPerformance(sprint_id){
 }
 
 function getSprintBestPerformer(sprint_id){
-	var mockService = nock("https://api.austinbot.com")
+/*	var mockService = nock("https://api.austinbot.com")
 	.persist() // This will persist mock interception for lifetime of program.
 	.get("/bestPerformer/21")
 	.reply(200, JSON.stringify(data.sprint));
-
+*/
 	return new Promise(function (resolve, reject) 
 	{
 		
@@ -210,11 +227,11 @@ function getSprintBestPerformer(sprint_id){
 }
 
 function getSprintStatus(sprint_id){
-	var mockService = nock("https://api.austinbot.com")
+/*	var mockService = nock("https://api.austinbot.com")
 	.persist() // This will persist mock interception for lifetime of program.
 	.get("/sprintStatus/21")
 	.reply(200, JSON.stringify(data.sprint));
-
+*/
 	return new Promise(function (resolve, reject) 
 	{
 		
@@ -231,11 +248,11 @@ function getSprintStatus(sprint_id){
 }
 
 function compareTeamPerformance() {
-	var mockService = nock("https://api.austinbot.com")
+/*	var mockService = nock("https://api.austinbot.com")
 	.persist() // This will persist mock interception for lifetime of program.
 	.get("/compareTeamPerformance")
 	.reply(200, JSON.stringify(data.teamPerformance_graph_url));
-
+*/
 	return new Promise(function (resolve, reject) 
 	{
 		
