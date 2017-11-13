@@ -6,25 +6,19 @@ from pprint import pprint
 import sys
 import s3
 import os
+import urllib3
 
 def parse_json_for_user_performance(username, sprintId):
-    current_path = os.path.dirname(os.path.realpath("__file__"))
-    os.chdir(current_path)
-    #Traverse to the Project Root
-    #This is done by checking whether the folder AustinBot exits in the current path
-    while(not os.path.exists('AustinBot')):
-        current_path = os.path.join(current_path, '..')
-        os.chdir('..')
-    
-    file = open(os.path.join(current_path,'AustinBot/mockData.json'), 'r')
+    http = urllib3.PoolManager()
+    r = http.request('GET', 'https://api.myjson.com/bins/1gqsrn')
+    sprints = json.loads(r.data.decode('utf8'))
 
     #username = "Sandeep"
     #sprintId = "20"
     userPerf = {}
-    data = json.load(file)
     sprintIdx = 0
     userId = 0
-    for idx, sprint in enumerate(data["sprint"]):
+    for idx, sprint in enumerate(sprints):
         if sprint["id"] == sprintId:
             sprintIdx = idx
             for user in sprint["team_member"]:
@@ -32,7 +26,7 @@ def parse_json_for_user_performance(username, sprintId):
                     userId = user["user_id"]
 
 
-    for story in data["sprint"][sprintIdx]["stories"]:
+    for story in sprints[sprintIdx]["stories"]:
         for task in story["task"]:
             if task["user_id"] == userId:
                 if task["task_id"] not in userPerf:

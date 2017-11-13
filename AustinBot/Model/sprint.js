@@ -29,7 +29,7 @@ var sprintSchema = new Schema({
     task_performance_img_url: String,
     best_performance_img_url: String,
     sprint_status_img_url:String
-});
+},{collection: "Sprint"});
 
 var Sprint = mongoose.model('Sprint', sprintSchema);
  module.exports = Sprint;

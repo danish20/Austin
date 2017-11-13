@@ -9,26 +9,19 @@ import sys
 from pprint import pprint
 import os
 import s3
+import urllib3
 
 current_path = os.path.dirname(os.path.realpath("__file__"))
 
 def parse_json_for_taskComp(sprintId):
-    current_path = os.path.dirname(os.path.realpath("__file__"))
-    os.chdir(current_path)
-    #Traverse to the Project Root
-    #This is done by checking whether the folder AustinBot exits in the current path
-    while(not os.path.exists('AustinBot')):
-        current_path = os.path.join(current_path, '..')
-        os.chdir('..')
-    
-    file = open(os.path.join(current_path,'AustinBot/mockData.json'), 'r')
-    mock = json.load(file)
+    http = urllib3.PoolManager()
+    r = http.request('GET', 'https://api.myjson.com/bins/1gqsrn')
+    sprints = json.loads(r.data.decode('utf8'))
     sprintIdx = 0
-    for idx, sprint in enumerate(mock["sprint"]):
+    for idx, sprint in enumerate(sprints):
         if sprint["id"] == sprintId:
             sprintIdx = idx
 
-    sprints = mock["sprint"]
     actual = dict()
     expected = dict()
     for story in sprints[sprintIdx]["stories"]:
