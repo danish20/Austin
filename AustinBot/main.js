@@ -65,37 +65,15 @@ function getBurndown(sprint_id){
 	});
 }
 
-<<<<<<< HEAD
-function getUsersCommits(repo,owner){
-	// var mockService = nock("https://api.austinbot.com")
-	// .persist() // This will persist mock interception for lifetime of program.
-	// .get("/stats/Austin")
-	// .reply(200, JSON.stringify(data.Austin_repo_stats));
-
-||||||| merged common ancestors
-function getUsersCommits(repo){
-	var mockService = nock("https://api.austinbot.com")
-	.persist() // This will persist mock interception for lifetime of program.
-	.get("/stats/Austin")
-	.reply(200, JSON.stringify(data.Austin_repo_stats));
-
-=======
 function getUsersCommits(owner, repo){
 /*	var mockService = nock("https://api.austinbot.com")
 	.persist() // This will persist mock interception for lifetime of program.
 	.get("/stats/Austin")
 	.reply(200, JSON.stringify(data.Austin_repo_stats));
 */
->>>>>>> e823fd9da21a9aa4822b87b608d699b53aa77fb4
 	return new Promise(function (resolve, reject) 
 	{
-<<<<<<< HEAD
-		austin.getUsersCommits(repo,owner).then(function (stats) 
-||||||| merged common ancestors
-		austin.getUsersCommits(repo).then(function (stats) 
-=======
 		austin.getUsersCommits(owner, repo).then(function (stats) 
->>>>>>> e823fd9da21a9aa4822b87b608d699b53aa77fb4
 		{
 			console.log("got stats::"+repo);
 			
