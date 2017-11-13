@@ -71,8 +71,27 @@ def plot_burndown(x, y, y_ideal):
         connectgaps=True,
         line = dict(color = ('rgb(205, 12, 24)'))
     )
+    layout = go.Layout(
+        title='Burndown Chart',
+        xaxis=dict(
+            title='Date',
+            titlefont=dict(
+                family='Courier New, monospace',
+                size=18,
+                color='#7f7f7f'
+            )
+        ),
+        yaxis=dict(
+            title='Hours Left',
+            titlefont=dict(
+                family='Courier New, monospace',
+                size=18,
+                color='#7f7f7f'
+            )
+        )
+    )
     data = [trace1, trace2]
-    fig = dict(data=data)
+    fig = dict(data = data, layout = layout)
     current_path = os.path.dirname(os.path.realpath("__file__"))
     os.chdir(current_path)
     #Traverse to the Project Root
@@ -85,12 +104,12 @@ def plot_burndown(x, y, y_ideal):
     return fig
 
 def main():
-    query_id = "20"
+    query_id = sys.argv[1]
 
     [x,y,y_ideal] = parse_json_for_burndown(query_id)
     fig=plot_burndown(x,y,y_ideal)
     s3.save_file_to_s3('burndown.png')
-    print("comp")
+    print("Completed")
 
 if __name__ == '__main__':
     main()   

@@ -13,7 +13,15 @@ import s3
 current_path = os.path.dirname(os.path.realpath("__file__"))
 
 def parse_json_for_teamTaskStatus():
-    file = open(os.path.join(current_path,'../../../AustinBot/mockData.json'), 'r')
+    current_path = os.path.dirname(os.path.realpath("__file__"))
+    os.chdir(current_path)
+    #Traverse to the Project Root
+    #This is done by checking whether the folder AustinBot exits in the current path
+    while(not os.path.exists('AustinBot')):
+        current_path = os.path.join(current_path, '..')
+        os.chdir('..')
+    
+    file = open(os.path.join(current_path,'AustinBot/mockData.json'), 'r')
     mock = json.load(file)
     sprints = mock["sprint"]
     complete = dict()
@@ -56,7 +64,14 @@ def createTrace_teamTaskStatus(x, y_complete, y_incomplete):
 
 def parse_json_for_dailyworkdone(sprintId):
     current_path = os.path.dirname(os.path.realpath("__file__"))
-    file = open(os.path.join(current_path,'../../../AustinBot/mockData.json'), 'r')
+    os.chdir(current_path)
+    #Traverse to the Project Root
+    #This is done by checking whether the folder AustinBot exits in the current path
+    while(not os.path.exists('AustinBot')):
+        current_path = os.path.join(current_path, '..')
+        os.chdir('..')
+    
+    file = open(os.path.join(current_path,'AustinBot/mockData.json'), 'r')
     mock = json.load(file)
     sprints = mock["sprint"]
     for sprint in sprints:
@@ -84,7 +99,14 @@ def parse_json_for_dailyworkdone(sprintId):
 
 def parse_json_for_allsprintdaily():
     current_path = os.path.dirname(os.path.realpath("__file__"))
-    file = open(os.path.join(current_path,'../../../AustinBot/mockData.json'), 'r')
+    os.chdir(current_path)
+    #Traverse to the Project Root
+    #This is done by checking whether the folder AustinBot exits in the current path
+    while(not os.path.exists('AustinBot')):
+        current_path = os.path.join(current_path, '..')
+        os.chdir('..')
+    
+    file = open(os.path.join(current_path,'AustinBot/mockData.json'), 'r')
     mock = json.load(file)
     sprints = mock["sprint"]
     dailyOutputs = dict()
@@ -93,11 +115,11 @@ def parse_json_for_allsprintdaily():
     return dailyOutputs
 
 def createTrace_dailystatus(dailyOutputs):
-    x = ["Day "+str(i) for i in range(1,len(dailyOutputs.values()[0][0])+1)]
+    x = ["Day "+str(i) for i in range(1,len(list(dailyOutputs.values())[0][0])+1)]
     plotly.tools.set_credentials_file(username='udeshmu', api_key='qIyD3uwDHJdtNvjSsFyS')
     traceList = []
     for i in dailyOutputs.keys():
-        print dailyOutputs[i][1]
+        print(dailyOutputs[i][1])
         traceNo = go.Scatter(
             x = x,
             y = dailyOutputs[i][1],
@@ -123,12 +145,25 @@ def plot_teamPerfComparison(trace1, trace2):
     fig['layout']['xaxis2'].update(title='Days in Sprint')
     fig['layout']['yaxis1'].update(title='Number of tasks')
     fig['layout']['yaxis2'].update(title='Number of hours work done')
-    py.image.save_as(fig, filename=os.path.join(current_path, '../Plots/perf2_2.png'))
-    plotly.offline.plot(fig, filename='simple-connectgaps.html', image='png')
+    current_path = os.path.dirname(os.path.realpath("__file__"))
+    os.chdir(current_path)
+    #Traverse to the Project Root
+    #This is done by checking whether the folder AustinBot exits in the current path
+    while(not os.path.exists('AustinBot')):
+        current_path = os.path.join(current_path, '..')
+        os.chdir('..')
+    
+    file = open(os.path.join(current_path,'AustinBot/mockData.json'), 'r')
+    py.image.save_as(fig, filename=os.path.join(current_path, 'Milestone3/Python/Plots/perf2_2.png'))
+    #plotly.offline.plot(fig, filename='simple-connectgaps.html', image='png')
 
-[x,y_complete,y_incomplete] = parse_json_for_teamTaskStatus()
-trace1 = createTrace_teamTaskStatus(x,y_complete,y_incomplete)
-dailyOutputs =  parse_json_for_allsprintdaily()
-trace2 = createTrace_dailystatus(dailyOutputs)
-plot_teamPerfComparison(trace1,trace2)
-s3.save_file_to_s3('perf2_2.png')
+def main():
+    [x,y_complete,y_incomplete] = parse_json_for_teamTaskStatus()
+    trace1 = createTrace_teamTaskStatus(x,y_complete,y_incomplete)
+    dailyOutputs =  parse_json_for_allsprintdaily()
+    trace2 = createTrace_dailystatus(dailyOutputs)
+    plot_teamPerfComparison(trace1,trace2)
+    s3.save_file_to_s3('perf2_2.png')
+
+if __name__ == '__main__':
+    main() 
