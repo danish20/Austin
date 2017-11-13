@@ -70,15 +70,15 @@ function getBurndown(sprint_id){
 	});
 }
 
-function getUsersCommits(repo){
-	var mockService = nock("https://api.austinbot.com")
-	.persist() // This will persist mock interception for lifetime of program.
-	.get("/stats/Austin")
-	.reply(200, JSON.stringify(data.Austin_repo_stats));
+function getUsersCommits(repo,owner){
+	// var mockService = nock("https://api.austinbot.com")
+	// .persist() // This will persist mock interception for lifetime of program.
+	// .get("/stats/Austin")
+	// .reply(200, JSON.stringify(data.Austin_repo_stats));
 
 	return new Promise(function (resolve, reject) 
 	{
-		austin.getUsersCommits(repo).then(function (stats) 
+		austin.getUsersCommits(repo,owner).then(function (stats) 
 		{
 			console.log("got stats::"+repo);
 			
