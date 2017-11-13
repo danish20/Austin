@@ -9,20 +9,12 @@ from pprint import pprint
 import os
 import sys
 import s3
+import urllib3
 
 def parse_json_for_sprint_status(query_id):
-    current_path = os.path.dirname(os.path.realpath("__file__"))
-    os.chdir(current_path)
-    #Traverse to the Project Root
-    #This is done by checking whether the folder AustinBot exits in the current path
-    while(not os.path.exists('AustinBot')):
-        current_path = os.path.join(current_path, '..')
-        os.chdir('..')
-        
-    file = open(os.path.join(current_path,'AustinBot/mockData.json'), 'r')
-    mock = json.load(file)
-
-    sprints = mock["sprint"]
+    http = urllib3.PoolManager()
+    r = http.request('GET', 'https://api.myjson.com/bins/1gqsrn')
+    sprints = json.loads(r.data.decode('utf8'))
     #query_id="21"
 
     for sprint in sprints:
@@ -186,7 +178,6 @@ def plot_sprint_status(query_id, tasks_complete, tasks_incomplete, tasks, users,
         current_path = os.path.join(current_path, '..')
         os.chdir('..')
         
-    file = open(os.path.join(current_path,'AustinBot/mockData.json'), 'r')
     py.image.save_as(fig, filename=os.path.join(current_path,'Milestone3/Python/Plots/sprint_status.png'))
     return fig
 

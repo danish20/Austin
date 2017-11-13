@@ -42,7 +42,6 @@ def plot_sprint_performance(query_id1, query_id2):
         current_path = os.path.join(current_path, '..')
         os.chdir('..')
     
-    file = open(os.path.join(current_path,'AustinBot/mockData.json'), 'r')
     py.image.save_as(fig, filename=os.path.join(current_path,'Milestone3/Python/Plots/sprint_performance.png'))
     return fig
 
