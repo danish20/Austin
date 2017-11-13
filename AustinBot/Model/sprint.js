@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var sprintSchema = new Schema({
-    id: Number,
+    sprintId: String,
     start_date: Date,
     end_date: Date,
     team_member: [{
@@ -29,7 +29,7 @@ var sprintSchema = new Schema({
     task_performance_img_url: String,
     best_performance_img_url: String,
     sprint_status_img_url:String
-});
+},{collection: "Sprint"});
 
 var Sprint = mongoose.model('Sprint', sprintSchema);
  module.exports = Sprint;

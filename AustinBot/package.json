@@ -15,8 +15,10 @@
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "forecast.io": "0.0.9",
+    "mongoose": "^4.13.1",
     "request": "^2.75.0",
     "slackbots": "^0.5.1",
+    "type-of-is": "^3.5.1",
     "underscore": "^1.8.3"
   }
 }
