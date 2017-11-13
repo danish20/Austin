@@ -4,6 +4,7 @@ var request = require("request");
 var querystring = require('querystring');
 
 var urlRoot = "https://api.austinbot.com";
+var urlGithubRoot = "https://github.ncsu.edu/api/v3";
 
 function getSprints()
 {
@@ -55,7 +56,8 @@ exports.getSprint = getSprint;
 function getBurndown(sprint_id)
 {
     var options = {
-        url: urlRoot + "/sprint/" + sprint_id,
+        //url: urlRoot + "/sprint/" + sprint_id,
+        url: "https://api.myjson.com/bins/yci6b",
         method: "GET",
         headers: {
             "content-type": "application/json"
@@ -73,10 +75,10 @@ function getBurndown(sprint_id)
 }
 
 //get stats for a particular repo
-function getUsersCommits(repo)
+function getUsersCommits(owner, repo)
 {
     var options = {
-        url: urlRoot + "/stats/" + repo,
+        url: urlGithubRoot + "/repos/" + owner + "/" + repo + "/stats/contributors" ,
         method: "GET",
         headers: {
             "content-type": "application/json"
