@@ -9,21 +9,14 @@ import json
 from pprint import pprint
 import os
 import s3
+import urllib3
 
 current_path = os.path.dirname(os.path.realpath("__file__"))
 
 def parse_json_for_teamTaskStatus():
-    current_path = os.path.dirname(os.path.realpath("__file__"))
-    os.chdir(current_path)
-    #Traverse to the Project Root
-    #This is done by checking whether the folder AustinBot exits in the current path
-    while(not os.path.exists('AustinBot')):
-        current_path = os.path.join(current_path, '..')
-        os.chdir('..')
-    
-    file = open(os.path.join(current_path,'AustinBot/mockData.json'), 'r')
-    mock = json.load(file)
-    sprints = mock["sprint"]
+    http = urllib3.PoolManager()
+    r = http.request('GET', 'https://api.myjson.com/bins/1gqsrn')
+    sprints = json.loads(r.data.decode('utf8'))
     complete = dict()
     incomplete = dict()
     for sprint in sprints:
@@ -63,17 +56,9 @@ def createTrace_teamTaskStatus(x, y_complete, y_incomplete):
     return data
 
 def parse_json_for_dailyworkdone(sprintId):
-    current_path = os.path.dirname(os.path.realpath("__file__"))
-    os.chdir(current_path)
-    #Traverse to the Project Root
-    #This is done by checking whether the folder AustinBot exits in the current path
-    while(not os.path.exists('AustinBot')):
-        current_path = os.path.join(current_path, '..')
-        os.chdir('..')
-    
-    file = open(os.path.join(current_path,'AustinBot/mockData.json'), 'r')
-    mock = json.load(file)
-    sprints = mock["sprint"]
+    http = urllib3.PoolManager()
+    r = http.request('GET', 'https://api.myjson.com/bins/1gqsrn')
+    sprints = json.loads(r.data.decode('utf8'))
     for sprint in sprints:
         if sprint["id"]==sprintId:
             current_sprint = sprint
@@ -98,17 +83,9 @@ def parse_json_for_dailyworkdone(sprintId):
     return [x,y]
 
 def parse_json_for_allsprintdaily():
-    current_path = os.path.dirname(os.path.realpath("__file__"))
-    os.chdir(current_path)
-    #Traverse to the Project Root
-    #This is done by checking whether the folder AustinBot exits in the current path
-    while(not os.path.exists('AustinBot')):
-        current_path = os.path.join(current_path, '..')
-        os.chdir('..')
-    
-    file = open(os.path.join(current_path,'AustinBot/mockData.json'), 'r')
-    mock = json.load(file)
-    sprints = mock["sprint"]
+    http = urllib3.PoolManager()
+    r = http.request('GET', 'https://api.myjson.com/bins/1gqsrn')
+    sprints = json.loads(r.data.decode('utf8'))
     dailyOutputs = dict()
     for sprint in sprints:
         dailyOutputs[sprint["id"]] = parse_json_for_dailyworkdone(sprint["id"])
