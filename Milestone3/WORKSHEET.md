@@ -1,5 +1,5 @@
 
-## Milestone 2: BOT
+## Milestone 3: SERVICE
 
 We have used Trello for worksheet and teamwork. Kindly find trello cards at https://trello.com/b/fYZsi3se/austin-bot  
 Credentials are Username : austinbot510@gmail.com Password : 1qazxsw@3
@@ -18,4 +18,4 @@ Credentials are Username : austinbot510@gmail.com Password : 1qazxsw@3
 | Connect bot with MongoDB     | New  | https://trello.com/c/SenSpMJQ     |   Danish, Prashant
 | Make service to add new sprint     | New  | https://trello.com/c/v0ESPpnG     |   Danish, Prashant
 | Handle edge cases and alternate paths for bot conversation     | New  | https://trello.com/c/Io40WQx4     |   Danish
-| Refactor python scripts to connect with node   | Active  | https://trello.com/c/eDldB2Ue  |  Udit
+| Refactor python scripts to connect with node   | Complete  | https://trello.com/c/eDldB2Ue  |  Udit
