@@ -794,7 +794,9 @@ function getUserPerformanceForSprint(userId, sprintId, callback) {
 //invoke python for user performance
 function invokeUserPerformancePy(userId, sprint_id, callback)
 {
+  console.log("User ID: "+userId+" sprint id: "+sprint_id);
   var py    = spawn('python', ['../Milestone3/Python/Scripts/user_performance.py', userId, sprint_id]);
+
   setTimeout(callback,5000);
 } 
 
