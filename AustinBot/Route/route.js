@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var sprint = require('../Model/sprint.js');
-var Type = require('type-of-is');
+// var Type = require('type-of-is');
 var sprintGlobal = require('../Model/sprintGlobal.js');
 
 router.get('/sprint/:id', function(req,res,next){
@@ -108,6 +108,10 @@ router.post('/insertsprint',function(req,res,next){
         if(err) return next(err);
         res.json(post);
     });
+});
+
+router.post('/select',function(req,res,next){
+   console.log(req);
 });
 
 module.exports = router;
