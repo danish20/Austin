@@ -79,7 +79,7 @@ def plot_user_performance(userPerf):
         current_path = os.path.join(current_path, '..')
         os.chdir('..')
 
-    py.image.save_as(fig, filename=os.path.join(current_path,'Milestone3/Python/Plots/user_performance.png'))
+    py.image.save_as(fig, filename=os.path.join(current_path,'Milestone3/Python/Plots/user_performance.jpeg'))
     return fig
 
 def main():
@@ -87,7 +87,7 @@ def main():
     sprintId = sys.argv[2]
     userPerf = parse_json_for_user_performance(username, sprintId)
     fig = plot_user_performance(userPerf)
-    s3.save_file_to_s3('user_performance.png')
+    s3.save_file_to_s3('user_performance.jpeg')
     print("Completed")
 
 if __name__ == '__main__':
