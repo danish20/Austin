@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var sprint = require('../Model/sprint.js');
-// var Type = require('type-of-is');
+var Type = require('type-of-is');
 var sprintGlobal = require('../Model/sprintGlobal.js');
 
 router.get('/sprint/:id', function(req,res,next){
@@ -43,6 +43,7 @@ router.get('/sprintById/:id', function(req,res,next){
 
 router.get('/burnDownChart/:id', function(req,res,next){
     var id = req.params.id;
+    console.log(Type(id));
     sprint.findOne({"sprintId":id},{"_id":false,"burndown_img_url":true}, function(err,post){
         if(err) return next(err);
         res.json(post);
