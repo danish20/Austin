@@ -9,16 +9,15 @@ from pprint import pprint
 import os
 import sys
 import s3
-import urllib3
+import server_connect
 
 def parse_json_for_sprint_status(query_id):
-    http = urllib3.PoolManager()
-    r = http.request('GET', 'https://api.myjson.com/bins/1gqsrn')
+    r = server_connect.fetch_data()
     sprints = json.loads(r.data.decode('utf8'))
     #query_id="21"
 
     for sprint in sprints:
-        if sprint["id"]==query_id:
+        if sprint["sprintId"]==query_id:
             current_sprint = sprint
 
     tasks_complete = 0

@@ -9,7 +9,7 @@ from pprint import pprint
 import os
 import sys
 import s3
-import urllib3
+import server_connect
 
 def parse_json_for_compare_user_performance(query_id):
     '''
@@ -25,15 +25,18 @@ def parse_json_for_compare_user_performance(query_id):
     mock = json.load(file)
     sprints = mock["sprint"]
     '''
-    http = urllib3.PoolManager()
-    r = http.request('GET', 'https://api.myjson.com/bins/1gqsrn')
+    r = server_connect.fetch_data()
     sprints = json.loads(r.data.decode('utf8'))
     for sprint in sprints:
-        if sprint["id"]==query_id:
+        if sprint["sprintId"]==query_id:
             current_sprint = sprint
 
     expected = dict()
     actual_work_done = dict()
+    user_name = dict()
+
+    for user in current_sprint['team_member']:
+        user_name[user['user_id']] = user['user_name']
 
     for story in current_sprint["stories"]:
         for task in story["task"]:
@@ -51,7 +54,8 @@ def parse_json_for_compare_user_performance(query_id):
 
     y_expected=list(expected.values())
     y_actual_work_done=list(actual_work_done.values())
-    x=list(expected.keys())
+    x_ids=list(expected.keys())
+    x = [user_name[user_id] for user_id in x_ids]
     return [x, y_expected, y_actual_work_done]
 
 def plot_compare_user_performance(x, y_expected, y_actual_work_done):

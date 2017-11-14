@@ -9,25 +9,24 @@ import json
 from pprint import pprint
 import os
 import s3
-import urllib3
+import server_connect
 
 current_path = os.path.dirname(os.path.realpath("__file__"))
 
 def parse_json_for_teamTaskStatus():
-    http = urllib3.PoolManager()
-    r = http.request('GET', 'https://api.myjson.com/bins/1gqsrn')
+    r = server_connect.fetch_data()
     sprints = json.loads(r.data.decode('utf8'))
     complete = dict()
     incomplete = dict()
     for sprint in sprints:
-        complete[sprint["id"]] = 0
-        incomplete[sprint["id"]] = 0
+        complete[sprint["sprintId"]] = 0
+        incomplete[sprint["sprintId"]] = 0
         for story in sprint["stories"]:
             for task in story["task"]:
                 if task["status"] == "Complete":
-                    complete[sprint["id"]] += 1
+                    complete[sprint["sprintId"]] += 1
                 elif task["status"] == "Active":
-                    incomplete[sprint["id"]] += 1
+                    incomplete[sprint["sprintId"]] += 1
     x = list(complete.keys())
     x=['Team_Sprint '+i for i in x]
     y_complete = list(complete.values())
@@ -56,11 +55,10 @@ def createTrace_teamTaskStatus(x, y_complete, y_incomplete):
     return data
 
 def parse_json_for_dailyworkdone(sprintId):
-    http = urllib3.PoolManager()
-    r = http.request('GET', 'https://api.myjson.com/bins/1gqsrn')
+    r = server_connect.fetch_data()
     sprints = json.loads(r.data.decode('utf8'))
     for sprint in sprints:
-        if sprint["id"]==sprintId:
+        if sprint["sprintId"]==sprintId:
             current_sprint = sprint
     total_hours = 0
     for story in current_sprint["stories"]:
@@ -83,12 +81,11 @@ def parse_json_for_dailyworkdone(sprintId):
     return [x,y]
 
 def parse_json_for_allsprintdaily():
-    http = urllib3.PoolManager()
-    r = http.request('GET', 'https://api.myjson.com/bins/1gqsrn')
+    r = server_connect.fetch_data()
     sprints = json.loads(r.data.decode('utf8'))
     dailyOutputs = dict()
     for sprint in sprints:
-        dailyOutputs[sprint["id"]] = parse_json_for_dailyworkdone(sprint["id"])
+        dailyOutputs[sprint["sprintId"]] = parse_json_for_dailyworkdone(sprint["sprintId"])
     return dailyOutputs
 
 def createTrace_dailystatus(dailyOutputs):
