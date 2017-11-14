@@ -764,7 +764,7 @@ function getBurndown(sprint_id, callback) {
 
 function invokeBurndownPy(sprint_id,callback)
 {
-  var py    = spawn('python', ['../Milestone3/Python/Scripts/burndown.py ' + sprint_id]);
+  var py    = spawn('python', ['../Milestone3/Python/Scripts/burndown.py']);
   setTimeout(callback,5000);
 }
 
