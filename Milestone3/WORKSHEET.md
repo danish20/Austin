@@ -19,3 +19,6 @@ Credentials are Username : austinbot510@gmail.com Password : 1qazxsw@3
 | Make service to add new sprint     | New  | https://trello.com/c/v0ESPpnG     |   Danish, Prashant
 | Handle edge cases and alternate paths for bot conversation     | New  | https://trello.com/c/Io40WQx4     |   Danish
 | Refactor python scripts to connect with node   | Complete  | https://trello.com/c/eDldB2Ue  |  Udit
+| Create RESTful end points using MongoDB  | Active  | https://trello.com/c/FnZCmTGy | Sandeep
+| Establish connection from Python to access data posted by MongoDB | Active | https://trello.com/c/7YJa0KdR | Udit
+| Replace mock services with actual services | Active | https://trello.com/c/RLVWTKag | Prashant

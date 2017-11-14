@@ -15,8 +15,14 @@
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "forecast.io": "0.0.9",
+<<<<<<< HEAD
+    "mongoose": "^4.13.1",
+=======
+    "materialize-css": "^0.100.2",
+>>>>>>> 89cd0d9b18d94f0163e432eb9699dbc1570f5fd0
     "request": "^2.75.0",
     "slackbots": "^0.5.1",
+    "type-of-is": "^3.5.1",
     "underscore": "^1.8.3"
   }
 }

@@ -81,9 +81,12 @@ function getUsersCommits(owner, repo)
         url: urlGithubRoot + "/repos/" + owner + "/" + repo + "/stats/contributors" ,
         method: "GET",
         headers: {
-            "content-type": "application/json"
+            "content-type": "application/json",
+            "Authorization":"token 5bec6b54b5c542c4b0ff2f393844e70891e5c5bb"
         }
     };
+
+    console.log(options.url+"HELLO "+process.env.GITHUBTOKEN);
 
     return new Promise(function (resolve, reject){
         request(options, function(error, response, body)

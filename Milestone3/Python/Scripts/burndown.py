@@ -6,10 +6,12 @@ import json
 import os
 import s3
 import sys
+import urllib3
 
 current_path = os.path.dirname(os.path.realpath("__file__"))
 
 def parse_json_for_burndown(query_id):
+    '''
     current_path = os.path.dirname(os.path.realpath("__file__"))
     os.chdir(current_path)
     #Traverse to the Project Root
@@ -21,9 +23,15 @@ def parse_json_for_burndown(query_id):
     file = open(os.path.join(current_path,'AustinBot/mockData.json'), 'r')
     mock = json.load(file)
     sprints = mock["sprint"]
+    '''
+
+    http = urllib3.PoolManager()
+    r = http.request('GET', 'https://api.myjson.com/bins/1gqsrn')
+    sprints = json.loads(r.data.decode('utf8'))
     for sprint in sprints:
         if sprint["id"]==query_id:
             current_sprint = sprint
+
     total_hours = 0
     for story in current_sprint["stories"]:
         total_hours += story["story_hours"]

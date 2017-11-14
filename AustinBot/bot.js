@@ -58,10 +58,9 @@ controller.hears(
   ['mention', 'direct_mention', 'direct_message'], 
   function (bot, message) {
   //redirect to a webpage for milestone 3 will create form inside slack after deploying
-  getResponse(function (w) 
-  {
-    bot.reply(message, w + "");
-  });
+  bot.api.users.list({},function(err,response) {
+    console.log(response);
+  })
 });
 
 // Dummy Functions
@@ -318,7 +317,7 @@ controller.hears(
   ], ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
     console.log(message);
     var repo = "Austin"
-    getUsersCommits(repo, function (w) {
+    getUsersCommits(repo,"dsuri", function (w) {
 
       bot.reply(message, w);
 
@@ -623,9 +622,9 @@ function invokeBurndownPy(sprint_id,callback)
   setTimeout(callback,5000);
 }
 
-function getUsersCommits(repo, callback) {
+function getUsersCommits(repo,owner, callback) {
   
-  Main.getUsersCommits(repo).then(function (results) {
+  Main.getUsersCommits(repo,owner).then(function (results) {
     var msg = results.msg;
     return callback(msg);
   });
