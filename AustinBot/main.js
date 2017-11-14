@@ -167,9 +167,9 @@ function getTaskPerformance(sprint_id){
 		
 		austin.getTaskPerformance(sprint_id).then(function (obj) 
 		{
-			console.log("got task performance for sprint::"+obj);
+			console.log("got task performance for sprint::"+obj.task_performance_img_url);
 
-			resolve({task_performance_img_url: obj.teamPerformance_graph_url});
+			resolve({task_performance_img_url: obj.task_performance_img_url});
 		});
 	});
 }
