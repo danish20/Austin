@@ -761,7 +761,7 @@ function getBurndown(sprint_id, callback) {
   });
  
 }
-
+//invoke python for burndown chart
 function invokeBurndownPy(sprint_id,callback)
 {
   var py    = spawn('python', ['../Milestone3/Python/Scripts/burndown.py',sprint_id]);
@@ -783,6 +783,12 @@ function getUserPerformanceForSprint(userId, sprintId, callback) {
     return callback(perfomance_img_url);
   });
 }
+//invoke python for user performance
+function invokeUserPerformancePy(userId, sprint_id, callback)
+{
+  var py    = spawn('python', ['../Milestone3/Python/Scripts/user_performance.py', userId, sprint_id]);
+  setTimeout(callback,5000);
+} 
 
 //Service for getting the velocity graph of past and current sprints
 function getVelocityGraph(callback) {
@@ -790,6 +796,12 @@ function getVelocityGraph(callback) {
     var velocity_graph_url = results.velocity_graph_url;
     return callback(velocity_graph_url);
   });
+}
+//invoke python for velocity graph
+function invokeVelocityPy(callback)
+{
+  var py    = spawn('python', ['../Milestone3/Python/Scripts/velocity.py']);
+  setTimeout(callback,5000);
 }
 
 //Service for getting the sprint performance comparison graph for two sprints
@@ -799,6 +811,12 @@ function compareSprintPerformance(sprintId1, sprintId2, callback) {
     return callback(compare_sprint_perf_url);
   });
 }
+//invoke python for compare sprint performance graph
+function invokeSprintPerformancePy(sprintId1, sprintId2, callback)
+{
+  var py    = spawn('python', ['../Milestone3/Python/Scripts/sprint_performance.py', sprintId1, sprintId2]);
+  setTimeout(callback,5000);
+}
 
 //Service for getting the performance based on each task and time spent on it
 function getTaskPerformance(sprint_id, callback) {
@@ -806,6 +824,12 @@ function getTaskPerformance(sprint_id, callback) {
     var task_performance_url = results.task_performance_img_url;
     return callback(task_performance_url);
   });
+}
+//invoke python for task performance graph
+function invokeTaskPerformancePy(sprint_id, callback)
+{
+  var py    = spawn('python', ['../Milestone3/Python/Scripts/task_performance.py', sprint_id]);
+  setTimeout(callback,5000);
 }
 
 //Service for getting the best performer in a sprint
@@ -815,12 +839,25 @@ function getSprintBestPerformer(sprint_id, callback) {
     return callback(sprintBestPerformer_url);
   });
 }
+//invoke python for compare user performance
+function invokeUserPerformancePy(sprint_id, callback)
+{
+  var py    = spawn('python', ['../Milestone3/Python/Scripts/user_performance.py', sprint_id]);
+  setTimeout(callback,5000);
+}
+
 //Service for getting the sprint status - usecase 1.4
 function getSprintStatus(sprint_id, callback) {
   Main.getSprintStatus(sprint_id).then(function (results) {
     var getSprintStatus_url = results.sprint_status_url;
     return callback(getSprintStatus_url);
   });
+}
+//invoke python for sprint status
+function invokeSprintStatusPy(sprint_id, callback)
+{
+  var py    = spawn('python', ['../Milestone3/Python/Scripts/sprint_status.py', sprint_id]);
+  setTimeout(callback,5000);
 }
 
 //Service for comparing team performance - usecase 2.2
@@ -829,4 +866,10 @@ function compareTeamPerformance( callback) {
     var teamPerformance_url = results.teamPerformance_img_url;
     return callback(teamPerformance_url);
   });
+}
+//invoke python for compare team performance
+function invokeCompareTeamPerformancePy(callback)
+{
+  var py    = spawn('python', ['../Milestone3/Python/Scripts/compare_team_performance.py']);
+  setTimeout(callback,5000);
 }
