@@ -25,6 +25,8 @@ def parse_json_for_user_performance(username, sprintId):
                 if user["user_name"] == username:
                     userId = user["user_id"]
     userId = username
+    userId = userId[2:-1]
+    #print(userId)
 
 
     for story in sprints[sprintIdx]["stories"]:
