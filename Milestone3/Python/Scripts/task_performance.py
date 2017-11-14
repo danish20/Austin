@@ -9,13 +9,12 @@ import sys
 from pprint import pprint
 import os
 import s3
-import urllib3
+import server_connect
 
 current_path = os.path.dirname(os.path.realpath("__file__"))
 
 def parse_json_for_taskComp(sprintId):
-    http = urllib3.PoolManager()
-    r = http.request('GET', 'https://api.myjson.com/bins/1gqsrn')
+    r = server_connect.fetch_data()
     sprints = json.loads(r.data.decode('utf8'))
     sprintIdx = 0
     for idx, sprint in enumerate(sprints):

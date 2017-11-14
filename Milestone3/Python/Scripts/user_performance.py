@@ -6,11 +6,10 @@ from pprint import pprint
 import sys
 import s3
 import os
-import urllib3
+import server_connect
 
 def parse_json_for_user_performance(username, sprintId):
-    http = urllib3.PoolManager()
-    r = http.request('GET', 'https://api.myjson.com/bins/1gqsrn')
+    r = server_connect.fetch_data()
     sprints = json.loads(r.data.decode('utf8'))
 
     #username = "Sandeep"
@@ -19,7 +18,7 @@ def parse_json_for_user_performance(username, sprintId):
     sprintIdx = 0
     userId = 0
     for idx, sprint in enumerate(sprints):
-        if sprint["id"] == sprintId:
+        if sprint["sprintId"] == sprintId:
             sprintIdx = idx
             for user in sprint["team_member"]:
                 if user["user_name"] == username:
