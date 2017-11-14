@@ -31,7 +31,7 @@ function getSprints()
 function getSprint(sprint_id)
 {
     var options = {
-        url: urlRoot + "/sprint/" + sprint_id,
+        url: urlRoot + "/sprintById/" + sprint_id,
         method: "GET",
         headers: {
             "content-type": "application/json"
@@ -85,7 +85,7 @@ function getUsersCommits(owner, repo)
         }
     };
 
-    console.log(options.url+"HELLO "+process.env.GITHUBTOKEN);
+    //console.log(options.url+"HELLO "+process.env.GITHUBTOKEN);
 
     return new Promise(function (resolve, reject){
         request(options, function(error, response, body)
@@ -141,7 +141,7 @@ function getVelocityGraph()
 function compareSprintPerformance(sprintId1, sprintId2) 
 {
     var options = {
-        url: urlRoot + "/compareSprints?sprintId1=" + sprintId1 + "&sprintId2=" + sprintId2,
+        url: urlRoot + "/sprintPerfComparison",
         method: "GET",
         headers: {
             "content-type": "application/json"
@@ -162,7 +162,7 @@ function compareSprintPerformance(sprintId1, sprintId2)
 function getTaskPerformance(sprint_id)
 {
     var options = {
-        url: urlRoot + "/sprintTaskPerformance/" + sprint_id,
+        url: urlRoot + "/taskPerformance/" + sprint_id,
         method: "GET",
         headers: {
             "content-type": "application/json"
@@ -182,7 +182,7 @@ function getTaskPerformance(sprint_id)
 function getSprintBestPerformer(sprint_id)
 {
     var options = {
-        url: urlRoot + "/bestPerformer/" + sprint_id,
+        url: urlRoot + "/bestPerformance/" + sprint_id,
         method: "GET",
         headers: {
             "content-type": "application/json"
@@ -222,7 +222,7 @@ function getSprintStatus(sprint_id)
 function compareTeamPerformance() 
 {
     var options = {
-        url: urlRoot + "/compareTeamPerformance",
+        url: urlRoot + "/teamPerformance",
         method: "GET",
         headers: {
             "content-type": "application/json"
