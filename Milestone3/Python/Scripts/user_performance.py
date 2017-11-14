@@ -21,8 +21,10 @@ def parse_json_for_user_performance(username, sprintId):
         if sprint["sprintId"] == sprintId:
             sprintIdx = idx
             for user in sprint["team_member"]:
+                print(user)
                 if user["user_name"] == username:
                     userId = user["user_id"]
+    userId = username
 
 
     for story in sprints[sprintIdx]["stories"]:
