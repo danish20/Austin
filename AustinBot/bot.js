@@ -233,6 +233,11 @@ controller.hears(
     bot.startConversation(message, function (err, convo) {
       convo.ask('For which Sprint? Please type Sprint ID or Sprint name.', function (answer, convo) {
         var sprint_id = answer.text.slice(-2);
+        if(VALID_SPRINT_ID.indexOf(sprint_id)==-1)
+        {
+          convo.say("This Sprint ID does not exist. Please enter a valid ID");
+          convo.next();
+        }
         console.log(process+"TEST");
         getBurndown(sprint_id, function (w) {
 
@@ -464,7 +469,7 @@ controller.hears(
   ], ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
     console.log(message);
     var repo = "Austin"
-    getUsersCommits(repo,"dsuri", function (w) {
+    getUsersCommits("dsuri",repo, function (w) {
 
       bot.reply(message, w);
 
@@ -769,9 +774,9 @@ function invokeBurndownPy(sprint_id,callback)
   setTimeout(callback,5000);
 }
 
-function getUsersCommits(repo,owner, callback) {
+function getUsersCommits(owner,repo, callback) {
   
-  Main.getUsersCommits(repo,owner).then(function (results) {
+  Main.getUsersCommits(owner,repo).then(function (results) {
     var msg = results.msg;
     return callback(msg);
   });
@@ -811,7 +816,7 @@ function invokeVelocityPy(callback)
 
 //Service for getting the sprint performance comparison graph for two sprints
 function compareSprintPerformance(sprintId1, sprintId2, callback) {
-  invokeSprintPerformancePy(sprintId1m,sprintId2,function(){
+  invokeSprintPerformancePy(sprintId1,sprintId2,function(){
   Main.compareSprintPerformance(sprintId1, sprintId2).then(function (results) {
     var compare_sprint_perf_url = results.compare_sprint_perf_url;
     return callback(compare_sprint_perf_url);
@@ -859,7 +864,7 @@ function invokeBestUserPerformancePy(sprint_id, callback)
 
 //Service for getting the sprint status - usecase 1.4
 function getSprintStatus(sprint_id, callback) {
-  invokeSprintPerformancePy(sprint_id,function(){
+  invokeSprintStatusPy(sprint_id,function(){
   Main.getSprintStatus(sprint_id).then(function (results) {
     var getSprintStatus_url = results.sprint_status_url;
     return callback(getSprintStatus_url);
