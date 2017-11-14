@@ -3,7 +3,7 @@ var _ = require("underscore");
 var request = require("request");
 var querystring = require('querystring');
 
-var urlRoot = "https://api.austinbot.com";
+var urlRoot = "http://f71ecdab.ngrok.io/api";
 var urlGithubRoot = "https://github.ncsu.edu/api/v3";
 
 function getSprints()
@@ -56,8 +56,7 @@ exports.getSprint = getSprint;
 function getBurndown(sprint_id)
 {
     var options = {
-        //url: urlRoot + "/sprint/" + sprint_id,
-        url: "https://api.myjson.com/bins/yci6b",
+        url: urlRoot + '/burnDownChart/'+sprint_id,
         method: "GET",
         headers: {
             "content-type": "application/json"
