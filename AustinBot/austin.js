@@ -3,7 +3,7 @@ var _ = require("underscore");
 var request = require("request");
 var querystring = require('querystring');
 
-var urlRoot = "https://fe22400f.ngrok.io/api";
+var urlRoot = "https://a0e33791.ngrok.io/api";
 var urlGithubRoot = "https://github.ncsu.edu/api/v3";
 
 function getSprints()
