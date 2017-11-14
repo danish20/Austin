@@ -1,15 +1,13 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-
-var sprintSchema = new Schema({
-    sprintId: String,
-    start_date: Date,
-    end_date: Date,
+export class Sprint
+{
+    sprintId: String;
+    start_date: Date;
+    end_date: Date;
     team_member: [{
         user_id: Number, 
         user_name: String,
         performance_chart_url: String
-    }],
+    }];
     stories: [{
         story_id: Number,
         story_name: String,
@@ -24,12 +22,11 @@ var sprintSchema = new Schema({
             }],
             status: String
         }]
-    }],
-    burndown_img_url: String,
-    task_performance_img_url: String,
-    best_performance_img_url: String,
-    sprint_status_img_url:String
-},{collection: "Sprint"});
+    }];
+    burndown_img_url: String;
+    task_performance_img_url: String;
+    best_performance_img_url: String;
+    sprint_status_img_url:String;
 
-var Sprint = mongoose.model('Sprint', sprintSchema);
- module.exports = Sprint;
+}
+

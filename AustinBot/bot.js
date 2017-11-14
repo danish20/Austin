@@ -8,17 +8,22 @@ var spawn = require('child_process').spawn;
 var cors = require('cors');
 var path = require('path');
 var express = require('express');
+var request = require('request');
 var route = require('./Route/route');
 var app = express();
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
+// Store our app's ID and Secret. These we got from Step 1. 
+// For this tutorial, we'll keep your API credentials right here. But for an actual app, you'll want to  store them securely in environment variables. 
+var clientId = '232364447255.272562445206';
+var clientSecret = '4dce130eff7f62b786833534477acc60';
+const PORT=3000;
+const port = 3000;
 
-var port = 3000;
-
+//MONGO DB SETUP
 var mongoose = require('mongoose');
-
 var mongoDB = 'mongodb://127.0.0.1/test';
 mongoose.connect(mongoDB,{useMongoClient: true});
 var db = mongoose.connection;
@@ -32,8 +37,148 @@ db.once('open', function(){
 app.use(express.static(path.join(__dirname,'public')));
 app.use('/api',route);
 
-app.listen(port,()=>{
-  console.log("Listening port 3000");
+// app.listen(port,()=>{
+//   console.log("Listening port 3000");
+// });
+// NgROK Server
+app.listen(PORT, function () {
+  //Callback triggered when server is successfully listening. Hurray!
+  console.log("Austin Bot app listening on port " + PORT);
+});
+
+
+// This route handles GET requests to our root ngrok address and responds with the same "Ngrok is working message" we used before
+app.get('/', function(req, res) {
+  res.send("Ok at"+req.url);
+});
+app.get('/users', function(req, res) {
+  res.send("Finding user"+req.url);
+});
+
+// This route handles get request to a /oauth endpoint. We'll use this endpoint for handling the logic of the Slack oAuth process behind our app.
+app.get('/oauth', function(req, res) {
+  // When a user authorizes an app, a code query parameter is passed on the oAuth endpoint. If that code is not there, we respond with an error message
+  if (!req.query.code) {
+      res.status(500);
+      res.send({"Error": "Looks like we're not getting code."});
+      console.log("Looks like we're not getting code.");
+  } else {
+      // If it's there...
+
+      // We'll do a GET call to Slack's `oauth.access` endpoint, passing our app's client ID, client secret, and the code we just got as query parameters.
+      request({
+          url: 'https://slack.com/api/oauth.access', //URL to hit
+          qs: {code: req.query.code, client_id: clientId, client_secret: clientSecret}, //Query string data
+          method: 'GET', //Specify the method
+
+      }, function (error, response, body) {
+          if (error) {
+              console.log(error);
+          } else {
+              res.json(body);
+
+          }
+      })
+  }
+});
+
+// Route the endpoint that our slash command will point to and send back a simple response to indicate that ngrok is working
+app.post('/command', function(req, res) {
+
+
+
+  var jsonRes = 
+  {
+    "text": "Would you like to play a game?",
+    "attachments": [
+        {
+            "text": "Choose a game to play",
+            "fallback": "You are unable to choose a game",
+            "callback_id": "wopr_game",
+            "color": "#3AA3E3",
+            "attachment_type": "default",
+            "actions": [
+                {
+                    "name": "game",
+                    "text": "Chess",
+                    "type": "button",
+                    "value": "chess"
+                },
+                {
+                    "name": "game",
+                    "text": "Falken's Maze",
+                    "type": "button",
+                    "value": "maze"
+                },
+                {
+                    "name": "game",
+                    "text": "Thermonuclear War",
+                    "style": "danger",
+                    "type": "button",
+                    "value": "war",
+                    "confirm": {
+                        "title": "Are you sure?",
+                        "text": "Wouldn't you prefer a good game of chess?",
+                        "ok_text": "Yes",
+                        "dismiss_text": "No"
+                    }
+                }
+            ]
+        }
+    ]
+};
+
+var jsonRes2 = {
+  "text": "Would you like to play a game?",
+  "response_type": "in_channel",
+  "attachments": [
+      {
+          "text": "Choose a game to play",
+          "fallback": "If you could read this message, you'd be choosing something fun to do right now.",
+          "color": "#3AA3E3",
+          "attachment_type": "default",
+          "callback_id": "game_selection",
+          "actions": [
+              {
+                  "name": "games_list",
+                  "text": "Pick a game...",
+                  "type": "select",
+                  "options": [
+                      {
+                          "text": "Hearts",
+                          "value": "hearts"
+                      },
+                      {
+                          "text": "Bridge",
+                          "value": "bridge"
+                      },
+                      {
+                          "text": "Checkers",
+                          "value": "checkers"
+                      },
+                      {
+                          "text": "Chess",
+                          "value": "chess"
+                      },
+                      {
+                          "text": "Poker",
+                          "value": "poker"
+                      },
+                      {
+                          "text": "Falken's Maze",
+                          "value": "maze"
+                      },
+                      {
+                          "text": "Global Thermonuclear War",
+                          "value": "war"
+                      }
+                  ]
+              }
+          ]
+      }
+  ]
+};
+  res.send(jsonRes2);
 });
 
 
@@ -49,6 +194,7 @@ var controller = Botkit.slackbot({
 controller.spawn({
   token: process.env.SLACKTOKEN,
 }).startRTM()
+
 
 
 //BOT HOOKS
@@ -618,7 +764,7 @@ function getBurndown(sprint_id, callback) {
 
 function invokeBurndownPy(sprint_id,callback)
 {
-  var py    = spawn('python', ['../Milestone3/Python/Scripts/burndown.py']);
+  var py    = spawn('python', ['../Milestone3/Python/Scripts/burndown.py ' + sprint_id]);
   setTimeout(callback,5000);
 }
 

@@ -55,47 +55,25 @@ function getBurndown(sprint_id){
 */
 	return new Promise(function (resolve, reject) 
 	{
-		austin.getBurndown(sprint_id).then(function (burndown_obj) 
+		austin.getBurndown(sprint_id).then(function (obj) 
 		{
 			console.log("got burndown for sprint::"+sprint_id);
 			//console.log(sprints.length);
-			var sprint_burndown_img = burndown_obj[0].sprint_status_img_url;
+			var sprint_burndown_img = obj.burndown_img_url;
 			resolve({burndown_img_url: sprint_burndown_img});
 		});
 	});
 }
 
-<<<<<<< HEAD
-function getUsersCommits(repo,owner){
-	// var mockService = nock("https://api.austinbot.com")
-	// .persist() // This will persist mock interception for lifetime of program.
-	// .get("/stats/Austin")
-	// .reply(200, JSON.stringify(data.Austin_repo_stats));
-
-||||||| merged common ancestors
-function getUsersCommits(repo){
-	var mockService = nock("https://api.austinbot.com")
-	.persist() // This will persist mock interception for lifetime of program.
-	.get("/stats/Austin")
-	.reply(200, JSON.stringify(data.Austin_repo_stats));
-
-=======
 function getUsersCommits(owner, repo){
 /*	var mockService = nock("https://api.austinbot.com")
 	.persist() // This will persist mock interception for lifetime of program.
 	.get("/stats/Austin")
 	.reply(200, JSON.stringify(data.Austin_repo_stats));
 */
->>>>>>> e823fd9da21a9aa4822b87b608d699b53aa77fb4
 	return new Promise(function (resolve, reject) 
 	{
-<<<<<<< HEAD
-		austin.getUsersCommits(repo,owner).then(function (stats) 
-||||||| merged common ancestors
-		austin.getUsersCommits(repo).then(function (stats) 
-=======
 		austin.getUsersCommits(owner, repo).then(function (stats) 
->>>>>>> e823fd9da21a9aa4822b87b608d699b53aa77fb4
 		{
 			console.log("got stats::"+repo);
 			
@@ -107,7 +85,7 @@ function getUsersCommits(owner, repo){
 				var commits = stats_data[i].total;
 				var user = stats_data[i].author.login;
 
-				if(commits > max_commits){
+				if(commits >= max_commits){
 					max_commits = commits;
 					max_user = user;
 				}
@@ -133,15 +111,12 @@ function getUserPerformanceForSprint(userId, sprintId) {
 	return new Promise(function (resolve, reject) 
 	{
 		// mock data needs list of issues.
-		austin.getUserPerformanceForSprint(userId, sprintId).then(function (sprint) 
+		austin.getUserPerformanceForSprint(userId, sprintId).then(function (obj) 
 		{
-			console.log("got sprint for perfomance::"+sprintId);
+			console.log("got perfomance for ::"+userId+"::"+sprintId);
 
-			var sprint_data = sprint;
-			console.log(sprint_data);
-			var sprint_20_sandeep_performance_url = sprint_data[0].team_member[3].performance_chart_url;
-			console.log(sprint_20_sandeep_performance_url+"HelloW");
-			resolve({performance_chart_url: sprint_20_sandeep_performance_url});
+			var performance_chart_url = obj.performance_chart_url;
+			resolve({performance_chart_url: performance_chart_url});
 		});
 	});	
 }
@@ -155,13 +130,10 @@ function getVelocityGraph() {
 	return new Promise(function (resolve, reject) 
 	{
 		
-		austin.getVelocityGraph().then(function (velocity_graph_url) 
+		austin.getVelocityGraph().then(function (obj) 
 		{
-			console.log("got url for velocity graph::"+velocity_graph_url);
-
-			//var velocity_graph_url = "";
-			//console.log(getVelocityGraph+"HelloW");
-			resolve({velocity_graph_url: velocity_graph_url.url});
+			console.log("got url for velocity graph::"+obj.velocity_graph_url);
+			resolve({velocity_graph_url: obj.velocity_graph_url});
 		});
 	});	
 }
@@ -175,11 +147,11 @@ function compareSprintPerformance(sprintId1, sprintId2) {
 	return new Promise(function (resolve, reject) 
 	{
 		
-		austin.compareSprintPerformance(sprintId1, sprintId2).then(function (results) 
+		austin.compareSprintPerformance(sprintId1, sprintId2).then(function (obj) 
 		{
-			console.log("got obj for graph::"+results);
+			console.log("got obj for graph::"+obj);
 
-			resolve({compare_sprint_perf_url: results.url});
+			resolve({compare_sprint_perf_url: obj.sprints_performance_comparison_graph});
 		});
 	});
 }
@@ -193,14 +165,11 @@ function getTaskPerformance(sprint_id){
 	return new Promise(function (resolve, reject) 
 	{
 		
-		austin.getTaskPerformance(sprint_id).then(function (sprint) 
+		austin.getTaskPerformance(sprint_id).then(function (obj) 
 		{
-			console.log("got sprint for task performance::"+sprint_id);
-			//console.log(sprints.length);
-			var sprint_data = sprint;
-			console.log(sprint_data);
-			var sprint_20_taskPerf = sprint_data[0].task_performance_img_url;
-			resolve({task_performance_img_url: sprint_20_taskPerf});
+			console.log("got task performance for sprint::"+obj);
+
+			resolve({task_performance_img_url: obj.teamPerformance_graph_url});
 		});
 	});
 }
@@ -214,14 +183,11 @@ function getSprintBestPerformer(sprint_id){
 	return new Promise(function (resolve, reject) 
 	{
 		
-		austin.getSprintBestPerformer(sprint_id).then(function (sprint) 
+		austin.getSprintBestPerformer(sprint_id).then(function (obj) 
 		{
-			console.log("got sprint for best performer::"+sprint_id);
-			//console.log(sprints.length);
-			var sprint_data = sprint;
-			console.log(sprint_data);
-			var sprint_20_taskPerfbestPerformer = sprint_data[1].best_performer_img_url;
-			resolve({best_performer_img_url: sprint_20_taskPerfbestPerformer});
+			console.log("got sprint best performer::"+obj);
+
+			resolve({best_performer_img_url: obj.best_performer_img_url});
 		});
 	});
 }
@@ -235,14 +201,11 @@ function getSprintStatus(sprint_id){
 	return new Promise(function (resolve, reject) 
 	{
 		
-		austin.getSprintStatus(sprint_id).then(function (sprint) 
+		austin.getSprintStatus(sprint_id).then(function (obj) 
 		{
-			console.log("got sprint for status::"+sprint_id);
-			//console.log(sprints.length);
-			var sprint_data = sprint;
-			console.log(sprint_data);
-			var sprint_20_status_url = sprint_data[1].sprint_status_img_url;
-			resolve({sprint_status_url: sprint_20_status_url});
+			console.log("got status for sprint::"+sprint_id);
+
+			resolve({sprint_status_url: obj.sprint_status_img_url});
 		});
 	});
 }
@@ -256,10 +219,10 @@ function compareTeamPerformance() {
 	return new Promise(function (resolve, reject) 
 	{
 		
-		austin.compareTeamPerformance().then(function (teamPerformance_graph_url) 
+		austin.compareTeamPerformance().then(function (obj) 
 		{
-			console.log("got url for team performance graph::"+teamPerformance_graph_url);
-			resolve({teamPerformance_img_url: teamPerformance_graph_url.url});
+			console.log("got url for team performance graph::"+obj.teamPerformance_graph_url);
+			resolve({teamPerformance_img_url: obj.teamPerformance_graph_url});
 		});
 	});	
 }
