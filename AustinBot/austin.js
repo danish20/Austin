@@ -100,7 +100,7 @@ function getUsersCommits(owner, repo)
 function getUserPerformanceForSprint(userId, sprintId) 
 {
     var options = {
-        url: urlRoot + "/performance/" + userId + "/" + sprintId,
+        url: urlRoot + "/userPerformance/" + sprintId + "/" + userId,
         method: "GET",
         headers: {
             "content-type": "application/json"
@@ -120,7 +120,7 @@ function getUserPerformanceForSprint(userId, sprintId)
 function getVelocityGraph() 
 {
     var options = {
-        url: urlRoot + "/velocity",
+        url: urlRoot + "/velocityGraph",
         method: "GET",
         headers: {
             "content-type": "application/json"
