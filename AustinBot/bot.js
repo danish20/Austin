@@ -640,7 +640,7 @@ function formatUptime(uptime) {
 }
 
 // Help Menu
-controller.hears(['help', 'what can you do', 'help me', 'how to do (.*)'],
+controller.hears(['help', 'what can you do', 'help me', '(.*)'],
   'direct_message,direct_mention,mention', function (bot, message) {
 
     var colors = ['good', 'warning', 'danger'];
@@ -761,10 +761,10 @@ function getBurndown(sprint_id, callback) {
   });
  
 }
-
+//invoke python for burndown chart
 function invokeBurndownPy(sprint_id,callback)
 {
-  var py    = spawn('python', ['../Milestone3/Python/Scripts/burndown.py',sprint_id]);
+  var py = spawn('python', ['../Milestone3/Python/Scripts/burndown.py',sprint_id]);
   setTimeout(callback,5000);
 }
 
@@ -778,55 +778,112 @@ function getUsersCommits(repo,owner, callback) {
 
 //Service for getting the graph of user performance
 function getUserPerformanceForSprint(userId, sprintId, callback) {
+  invokeUserPerformancePy(userId,sprint_id,function(){
   Main.getUserPerformanceForSprint(userId, sprintId).then(function (results) {
     var perfomance_img_url = results.performance_chart_url;
     return callback(perfomance_img_url);
   });
+});
 }
+//invoke python for user performance
+function invokeUserPerformancePy(userId, sprint_id, callback)
+{
+  var py    = spawn('python', ['../Milestone3/Python/Scripts/user_performance.py', userId, sprint_id]);
+  setTimeout(callback,5000);
+} 
 
 //Service for getting the velocity graph of past and current sprints
 function getVelocityGraph(callback) {
+  invokeVelocityPy(function(){
   Main.getVelocityGraph().then(function (results) {
     var velocity_graph_url = results.velocity_graph_url;
     return callback(velocity_graph_url);
   });
+});
+}
+//invoke python for velocity graph
+function invokeVelocityPy(callback)
+{
+  var py    = spawn('python', ['../Milestone3/Python/Scripts/velocity.py']);
+  setTimeout(callback,5000);
 }
 
 //Service for getting the sprint performance comparison graph for two sprints
 function compareSprintPerformance(sprintId1, sprintId2, callback) {
+  invokeSprintPerformancePy(sprintId1m,sprintId2,function(){
   Main.compareSprintPerformance(sprintId1, sprintId2).then(function (results) {
     var compare_sprint_perf_url = results.compare_sprint_perf_url;
     return callback(compare_sprint_perf_url);
   });
+});
+}
+//invoke python for compare sprint performance graph
+function invokeSprintPerformancePy(sprintId1, sprintId2, callback)
+{
+  var py    = spawn('python', ['../Milestone3/Python/Scripts/sprint_performance.py', sprintId1, sprintId2]);
+  setTimeout(callback,5000);
 }
 
 //Service for getting the performance based on each task and time spent on it
 function getTaskPerformance(sprint_id, callback) {
+  invokeTaskPerformancePy(sprint_id,function(){
   Main.getTaskPerformance(sprint_id).then(function (results) {
     var task_performance_url = results.task_performance_img_url;
     return callback(task_performance_url);
   });
+});
+}
+//invoke python for task performance graph
+function invokeTaskPerformancePy(sprint_id, callback)
+{
+  var py    = spawn('python', ['../Milestone3/Python/Scripts/task_performance.py', sprint_id]);
+  setTimeout(callback,5000);
 }
 
 //Service for getting the best performer in a sprint
 function getSprintBestPerformer(sprint_id, callback) {
+  invokeBestUserPerformancePy(sprint_id,function(){
   Main.getSprintBestPerformer(sprint_id).then(function (results) {
     var sprintBestPerformer_url = results.best_performer_img_url;
     return callback(sprintBestPerformer_url);
   });
+});
 }
+//invoke python for compare user performance
+function invokeBestUserPerformancePy(sprint_id, callback)
+{
+  var py    = spawn('python', ['../Milestone3/Python/Scripts/compare_user_performance.py', sprint_id]);
+  setTimeout(callback,5000);
+}
+
 //Service for getting the sprint status - usecase 1.4
 function getSprintStatus(sprint_id, callback) {
+  invokeSprintPerformancePy(sprint_id,function(){
   Main.getSprintStatus(sprint_id).then(function (results) {
     var getSprintStatus_url = results.sprint_status_url;
     return callback(getSprintStatus_url);
   });
+});
+}
+//invoke python for sprint status
+function invokeSprintStatusPy(sprint_id, callback)
+{
+  var py    = spawn('python', ['../Milestone3/Python/Scripts/sprint_status.py', sprint_id]);
+  setTimeout(callback,5000);
 }
 
 //Service for comparing team performance - usecase 2.2
 function compareTeamPerformance( callback) {
+  invokeCompareTeamPerformancePy(function(){
   Main.compareTeamPerformance().then(function (results) {
     var teamPerformance_url = results.teamPerformance_img_url;
     return callback(teamPerformance_url);
   });
+});
+}
+//invoke python for compare team performance
+function invokeCompareTeamPerformancePy(callback)
+{
+  var py    = spawn('python', ['../Milestone3/Python/Scripts/compare_team_performance.py']);
+  setTimeout(callback,5000);
 }
