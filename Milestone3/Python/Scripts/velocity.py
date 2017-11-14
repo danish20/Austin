@@ -18,14 +18,14 @@ def parse_json_for_velocity():
     complete = dict()
     incomplete = dict()
     for sprint in sprints:
-        complete[sprint["id"]] = 0
-        incomplete[sprint["id"]] = 0
+        complete[sprint["sprintId"]] = 0
+        incomplete[sprint["sprintId"]] = 0
         for story in sprint["stories"]:
             for task in story["task"]:
                 if task["status"] == "Complete":
-                    complete[sprint["id"]] += 1
+                    complete[sprint["sprintId"]] += 1
                 elif task["status"] == "Active":
-                    incomplete[sprint["id"]] += 1
+                    incomplete[sprint["sprintId"]] += 1
     x = list(complete.keys())
     x=['Sprint '+i for i in x]
     y_complete = list(complete.values())

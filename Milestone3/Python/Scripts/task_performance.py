@@ -18,7 +18,7 @@ def parse_json_for_taskComp(sprintId):
     sprints = json.loads(r.data.decode('utf8'))
     sprintIdx = 0
     for idx, sprint in enumerate(sprints):
-        if sprint["id"] == sprintId:
+        if sprint["sprintId"] == sprintId:
             sprintIdx = idx
 
     actual = dict()

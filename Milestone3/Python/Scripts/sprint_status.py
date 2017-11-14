@@ -20,6 +20,11 @@ def parse_json_for_sprint_status(query_id):
         if sprint["sprintId"]==query_id:
             current_sprint = sprint
 
+    user_name = dict()
+
+    for user in current_sprint['team_member']:
+        user_name[user['user_id']] = user['user_name']
+
     tasks_complete = 0
     tasks_incomplete = 0
 
@@ -39,8 +44,8 @@ def parse_json_for_sprint_status(query_id):
                 except:
                     actual_work_done[task["user_id"]]=day["work_done"]
 
-    users = list(actual_work_done.keys())
-    users = ['User '+ str(i) for i in users]
+    user_ids = list(actual_work_done.keys())
+    users = ['User '+ user_name[user_id] for user_id in user_ids]
 
     user_hours = list(actual_work_done.values())
 
