@@ -3,15 +3,9 @@ var _ = require("underscore");
 var request = require("request");
 var querystring = require('querystring');
 
-var urlRoot = "https://api.austinbot.com";
-<<<<<<< HEAD
-var urlGithubRoot = "https://github.ncsu.edu/api/v3";
-||||||| merged common ancestors
-
-=======
+var urlRoot = "http://f71ecdab.ngrok.io/api";
 var urlGithubRoot = "https://github.ncsu.edu/api/v3";
 
->>>>>>> e823fd9da21a9aa4822b87b608d699b53aa77fb4
 function getSprints()
 {
     var options = {
@@ -62,8 +56,7 @@ exports.getSprint = getSprint;
 function getBurndown(sprint_id)
 {
     var options = {
-        //url: urlRoot + "/sprint/" + sprint_id,
-        url: "https://api.myjson.com/bins/yci6b",
+        url: urlRoot + '/burnDownChart/'+sprint_id,
         method: "GET",
         headers: {
             "content-type": "application/json"
@@ -81,24 +74,10 @@ function getBurndown(sprint_id)
 }
 
 //get stats for a particular repo
-<<<<<<< HEAD
-function getUsersCommits(repo,owner)
-{   
-||||||| merged common ancestors
-function getUsersCommits(repo)
-{
-=======
 function getUsersCommits(owner, repo)
 {
->>>>>>> e823fd9da21a9aa4822b87b608d699b53aa77fb4
     var options = {
-<<<<<<< HEAD
-        url: urlGithubRoot + "/repos/" + owner + "/" + repo + "/stats/contributors",
-||||||| merged common ancestors
-        url: urlRoot + "/stats/" + repo,
-=======
         url: urlGithubRoot + "/repos/" + owner + "/" + repo + "/stats/contributors" ,
->>>>>>> e823fd9da21a9aa4822b87b608d699b53aa77fb4
         method: "GET",
         headers: {
             "content-type": "application/json",

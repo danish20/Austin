@@ -43,6 +43,7 @@ router.get('/sprintById/:id', function(req,res,next){
 
 router.get('/burnDownChart/:id', function(req,res,next){
     var id = req.params.id;
+    console.log(Type(id));
     sprint.findOne({"sprintId":id},{"_id":false,"burndown_img_url":true}, function(err,post){
         if(err) return next(err);
         res.json(post);
@@ -108,6 +109,10 @@ router.post('/insertsprint',function(req,res,next){
         if(err) return next(err);
         res.json(post);
     });
+});
+
+router.post('/select',function(req,res,next){
+   console.log(req);
 });
 
 module.exports = router;
