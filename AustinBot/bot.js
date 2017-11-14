@@ -22,6 +22,7 @@ var clientSecret = '4dce130eff7f62b786833534477acc60';
 const PORT=3000;
 const port = 3000;
 const VALID_SPRINT_ID = ["20","21","22"];
+const VALID_USER_ID = ["<@U6UBVLJCV>","<@U6U2WMN82>","<@U6T81LY8J>","<@U6SMSH9HP>",]
 
 //MONGO DB SETUP
 // var mongoose = require('mongoose');
@@ -229,7 +230,6 @@ controller.hears(
     'burndown graph'
   ], ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
     console.log(message + "");
-    
     bot.startConversation(message, function (err, convo) {
       convo.ask('For which Sprint? Please type Sprint ID or Sprint name.', function (answer, convo) {
         var sprint_id = answer.text.slice(-2);
@@ -266,12 +266,28 @@ controller.hears(
 //USE CASE 1.2: Show performance of a user in given sprint
 controller.hears('Show performance of (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   var name = message.match[1];
+  if(name == "<@U6XHA4DST>")
+  {
+    bot.reply(message,":face_with_rolling_eyes: I am performing really well as you can see.");
+  }
+  else if(VALID_USER_ID.indexOf(name)==-1)
+  {
+    bot.reply(message,name+" is a nice guy, but unfortunately he is not in our team.:disappointed:");
+  }
+  
+  else
+  {
   //console.log(name + "HelloW");
   bot.startConversation(message, function (err, convo) {
 
     convo.say("Sure");
     convo.ask('For which sprint you want to see the performance? Enter Sprint name or ID.', function (response, convo) {
       var sprint_id = response.text.slice(-2);
+      if(VALID_SPRINT_ID.indexOf(sprint_id)==-1)
+      {
+        convo.say("This Sprint ID does not exist. Please enter a valid ID");
+        convo.next();
+      }
       getUserPerformanceForSprint(name, sprint_id, function (w) {
 
         var imageURL = w;
@@ -295,6 +311,7 @@ controller.hears('Show performance of (.*)', ['mention', 'direct_mention', 'dire
       });
     });
   });
+}
 });
 
 //USE CASE 1.3: Velocity Chart
@@ -333,6 +350,10 @@ controller.hears(
 controller.hears('Show status of sprint (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
     //console.log(message);
     var sprint_one = message.match[1];
+    if(VALID_SPRINT_ID.indexOf(sprint_one)==-1)
+    {
+      bot.reply(message,"Please Enter a valid sprint Id");
+    }
     getSprintStatus(sprint_one,function (w) {
 
       var imageURL = w;
@@ -359,6 +380,12 @@ controller.hears('Show status of sprint (.*)', ['mention', 'direct_mention', 'di
 controller.hears('Compare work done in sprint (.*) with sprint (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   var sprint_one = message.match[1];
   var sprint_two = message.match[2];
+  if(VALID_SPRINT_ID.indexOf(sprint_one)==-1 || VALID_SPRINT_ID.indexOf(sprint_two)==-1)
+  {
+    bot.reply(message,":thinking_face: Oh! One of the sprint id does not exist.Please Enter a valid sprint Id. ");
+  }
+  else
+  {
   compareSprintPerformance(sprint_one, sprint_two, function (w) {
     var imageURL = w;
     var preText = "Work comparision of Sprint " + sprint_one + " with Sprint " + sprint_two + " is shown below."
@@ -378,6 +405,7 @@ controller.hears('Compare work done in sprint (.*) with sprint (.*)', ['mention'
     };
     bot.reply(message,workCompImage);
   });
+}
 });
 
 //USE CASE 2.2: Compare Team Performance
@@ -413,6 +441,12 @@ controller.hears(
 //USE CASE 2.3: Compare Individual Perf/ Best Performer
 controller.hears('Compare individual performance in sprint (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   var sprint_one = message.match[1];
+  if(VALID_SPRINT_ID.indexOf(sprint_one)==-1)
+  {
+    bot.reply(message,":thinking_face: Oh! no this sprint id does not exist.Please Enter a valid sprint Id. ");
+  }
+  else
+  {
   getSprintBestPerformer(sprint_one, function (w) {
     var imageURL = w;
     var preText = "Individual performance comparision of Sprint " + sprint_one + " is shown below."
@@ -432,11 +466,18 @@ controller.hears('Compare individual performance in sprint (.*)', ['mention', 'd
     };
     bot.reply(message,indvPerfCompImage);
   });
+}
 });
 
 //USE CASE 2.4: Compare Task Performance
 controller.hears('Compare task performance in sprint (.*)', ['mention','direct_mention', 'direct_message'], function (bot, message) {
   var sprint_one = message.match[1];
+  if(VALID_SPRINT_ID.indexOf(sprint_one)==-1 )
+  {
+    bot.reply(message,":thinking_face: Oh! no this sprint id does not exist.Please Enter a valid sprint Id. ");
+  }
+  else
+  {
   getTaskPerformance(sprint_one, function (w) {
     var imageURL = w;
     var preText = "Task performance comparision of Sprint " + sprint_one;
@@ -456,6 +497,7 @@ controller.hears('Compare task performance in sprint (.*)', ['mention','direct_m
     };
     bot.reply(message,taskPerfCompImage);
   });
+}
 });
 
 
