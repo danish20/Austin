@@ -21,21 +21,22 @@ var clientId = '232364447255.272562445206';
 var clientSecret = '4dce130eff7f62b786833534477acc60';
 const PORT=3000;
 const port = 3000;
+const VALID_SPRINT_ID = ["20","21","22"];
 
 //MONGO DB SETUP
-var mongoose = require('mongoose');
-var mongoDB = 'mongodb://127.0.0.1/test';
-mongoose.connect(mongoDB,{useMongoClient: true});
-var db = mongoose.connection;
-db.on('error',console.error.bind(console,'connection_error:'));
-db.on('connected',()=>{
-  console.log('Connected to database mongodb @27017');
-});
-db.once('open', function(){
-  console.log("DB connection alive");
-});
-app.use(express.static(path.join(__dirname,'public')));
-app.use('/api',route);
+// var mongoose = require('mongoose');
+// var mongoDB = 'mongodb://127.0.0.1/test';
+// mongoose.connect(mongoDB,{useMongoClient: true});
+// var db = mongoose.connection;
+// db.on('error',console.error.bind(console,'connection_error:'));
+// db.on('connected',()=>{
+//   console.log('Connected to database mongodb @27017');
+// });
+// db.once('open', function(){
+//   console.log("DB connection alive");
+// });
+// app.use(express.static(path.join(__dirname,'public')));
+// app.use('/api',route);
 
 // app.listen(port,()=>{
 //   console.log("Listening port 3000");
@@ -206,7 +207,7 @@ controller.hears(
   //redirect to a webpage for milestone 3 will create form inside slack after deploying
   bot.api.users.list({},function(err,response) {
     console.log(response);
-  })
+  });
 });
 
 // Dummy Functions
@@ -733,7 +734,7 @@ function formatUptime(uptime) {
   if (uptime > 60) {
     uptime = uptime / 60;
     unit = 'hour';
-  }
+  }F
   if (uptime != 1) {
     unit = unit + 's';
   }
@@ -778,7 +779,7 @@ function getUsersCommits(repo,owner, callback) {
 
 //Service for getting the graph of user performance
 function getUserPerformanceForSprint(userId, sprintId, callback) {
-  invokeUserPerformancePy(userId,sprint_id,function(){
+  invokeUserPerformancePy(userId,sprintId,function(){
   Main.getUserPerformanceForSprint(userId, sprintId).then(function (results) {
     var perfomance_img_url = results.performance_chart_url;
     return callback(perfomance_img_url);
