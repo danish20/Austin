@@ -640,7 +640,7 @@ function formatUptime(uptime) {
 }
 
 // Help Menu
-controller.hears(['help', 'what can you do', 'help me', 'how to do (.*)'],
+controller.hears(['help', 'what can you do', 'help me', '(.*)'],
   'direct_message,direct_mention,mention', function (bot, message) {
 
     var colors = ['good', 'warning', 'danger'];
@@ -764,7 +764,7 @@ function getBurndown(sprint_id, callback) {
 
 function invokeBurndownPy(sprint_id,callback)
 {
-  var py    = spawn('python', ['../Milestone3/Python/Scripts/burndown.py',sprint_id]);
+  var py = spawn('python', ['../Milestone3/Python/Scripts/burndown.py',sprint_id]);
   setTimeout(callback,5000);
 }
 
