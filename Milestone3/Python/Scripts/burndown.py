@@ -112,7 +112,10 @@ def plot_burndown(x, y, y_ideal):
     return fig
 
 def main():
-    query_id = sys.argv[1]
+    try:
+        query_id = sys.argv[1]
+    except:
+        query_id = "21"
 
     [x,y,y_ideal] = parse_json_for_burndown(query_id)
     fig=plot_burndown(x,y,y_ideal)
