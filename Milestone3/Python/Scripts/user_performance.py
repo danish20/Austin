@@ -6,11 +6,10 @@ from pprint import pprint
 import sys
 import s3
 import os
-import urllib3
+import server_connect
 
 def parse_json_for_user_performance(username, sprintId):
-    http = urllib3.PoolManager()
-    r = http.request('GET', 'https://api.myjson.com/bins/1gqsrn')
+    r = server_connect.fetch_data()
     sprints = json.loads(r.data.decode('utf8'))
 
     #username = "Sandeep"
@@ -19,11 +18,15 @@ def parse_json_for_user_performance(username, sprintId):
     sprintIdx = 0
     userId = 0
     for idx, sprint in enumerate(sprints):
-        if sprint["id"] == sprintId:
+        if sprint["sprintId"] == sprintId:
             sprintIdx = idx
             for user in sprint["team_member"]:
+                print(user)
                 if user["user_name"] == username:
                     userId = user["user_id"]
+    userId = username
+    userId = userId[2:-1]
+    #print(userId)
 
 
     for story in sprints[sprintIdx]["stories"]:
@@ -76,7 +79,7 @@ def plot_user_performance(userPerf):
         current_path = os.path.join(current_path, '..')
         os.chdir('..')
 
-    py.image.save_as(fig, filename=os.path.join(current_path,'Milestone3/Python/Plots/user_performance.png'))
+    py.image.save_as(fig, filename=os.path.join(current_path,'Milestone3/Python/Plots/user_performance.jpeg'))
     return fig
 
 def main():
@@ -84,7 +87,7 @@ def main():
     sprintId = sys.argv[2]
     userPerf = parse_json_for_user_performance(username, sprintId)
     fig = plot_user_performance(userPerf)
-    s3.save_file_to_s3('user_performance.png')
+    s3.save_file_to_s3('user_performance.jpeg')
     print("Completed")
 
 if __name__ == '__main__':

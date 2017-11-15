@@ -8,25 +8,24 @@ import json
 from pprint import pprint
 import os
 import s3
-import urllib3
+import server_connect
 
 current_path = os.path.dirname(os.path.realpath("__file__"))
 
 def parse_json_for_velocity():
-    http = urllib3.PoolManager()
-    r = http.request('GET', 'https://api.myjson.com/bins/1gqsrn')
+    r = server_connect.fetch_data()
     sprints = json.loads(r.data.decode('utf8'))
     complete = dict()
     incomplete = dict()
     for sprint in sprints:
-        complete[sprint["id"]] = 0
-        incomplete[sprint["id"]] = 0
+        complete[sprint["sprintId"]] = 0
+        incomplete[sprint["sprintId"]] = 0
         for story in sprint["stories"]:
             for task in story["task"]:
                 if task["status"] == "Complete":
-                    complete[sprint["id"]] += 1
+                    complete[sprint["sprintId"]] += 1
                 elif task["status"] == "Active":
-                    incomplete[sprint["id"]] += 1
+                    incomplete[sprint["sprintId"]] += 1
     x = list(complete.keys())
     x=['Sprint '+i for i in x]
     y_complete = list(complete.values())
