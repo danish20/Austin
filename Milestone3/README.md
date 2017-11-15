@@ -28,6 +28,7 @@
 
 ## Screencast
 
-  Please download the screencasts using the links below:
+  The screencast for Milestone 3 :
+  Screencast with all functionalities of all use cases : https://youtu.be/dGRlozqSvBY
   
   
