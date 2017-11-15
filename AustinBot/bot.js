@@ -12,17 +12,17 @@ var request = require('request');
 var route = require('./Route/route');
 var app = express();
 var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Store our app's ID and Secret. These we got from Step 1. 
 // For this tutorial, we'll keep your API credentials right here. But for an actual app, you'll want to  store them securely in environment variables. 
 var clientId = '232364447255.272562445206';
 var clientSecret = '4dce130eff7f62b786833534477acc60';
-const PORT=3000;
+const PORT = 3000;
 const port = 3000;
-const VALID_SPRINT_ID = ["20","21","22"];
-const VALID_USER_ID = ["<@U6UBVLJCV>","<@U6U2WMN82>","<@U6T81LY8J>","<@U6SMSH9HP>",]
+const VALID_SPRINT_ID = ["20", "21", "22"];
+const VALID_USER_ID = ["<@U6UBVLJCV>", "<@U6U2WMN82>", "<@U6T81LY8J>", "<@U6SMSH9HP>",]
 
 //MONGO DB SETUP
 // var mongoose = require('mongoose');
@@ -43,143 +43,143 @@ const VALID_USER_ID = ["<@U6UBVLJCV>","<@U6U2WMN82>","<@U6T81LY8J>","<@U6SMSH9HP
 //   console.log("Listening port 3000");
 // });
 // NgROK Server
-app.listen(PORT, function () {
-  //Callback triggered when server is successfully listening. Hurray!
-  console.log("Austin Bot app listening on port " + PORT);
-});
+// app.listen(PORT, function () {
+//   //Callback triggered when server is successfully listening. Hurray!
+//   console.log("Austin Bot app listening on port " + PORT);
+// });
 
 
-// This route handles GET requests to our root ngrok address and responds with the same "Ngrok is working message" we used before
-app.get('/', function(req, res) {
-  res.send("Ok at"+req.url);
-});
-app.get('/users', function(req, res) {
-  res.send("Finding user"+req.url);
-});
+// // This route handles GET requests to our root ngrok address and responds with the same "Ngrok is working message" we used before
+// app.get('/', function(req, res) {
+//   res.send("Ok at"+req.url);
+// });
+// app.get('/users', function(req, res) {
+//   res.send("Finding user"+req.url);
+// });
 
-// This route handles get request to a /oauth endpoint. We'll use this endpoint for handling the logic of the Slack oAuth process behind our app.
-app.get('/oauth', function(req, res) {
-  // When a user authorizes an app, a code query parameter is passed on the oAuth endpoint. If that code is not there, we respond with an error message
-  if (!req.query.code) {
-      res.status(500);
-      res.send({"Error": "Looks like we're not getting code."});
-      console.log("Looks like we're not getting code.");
-  } else {
-      // If it's there...
+// // This route handles get request to a /oauth endpoint. We'll use this endpoint for handling the logic of the Slack oAuth process behind our app.
+// app.get('/oauth', function(req, res) {
+//   // When a user authorizes an app, a code query parameter is passed on the oAuth endpoint. If that code is not there, we respond with an error message
+//   if (!req.query.code) {
+//       res.status(500);
+//       res.send({"Error": "Looks like we're not getting code."});
+//       console.log("Looks like we're not getting code.");
+//   } else {
+//       // If it's there...
 
-      // We'll do a GET call to Slack's `oauth.access` endpoint, passing our app's client ID, client secret, and the code we just got as query parameters.
-      request({
-          url: 'https://slack.com/api/oauth.access', //URL to hit
-          qs: {code: req.query.code, client_id: clientId, client_secret: clientSecret}, //Query string data
-          method: 'GET', //Specify the method
+//       // We'll do a GET call to Slack's `oauth.access` endpoint, passing our app's client ID, client secret, and the code we just got as query parameters.
+//       request({
+//           url: 'https://slack.com/api/oauth.access', //URL to hit
+//           qs: {code: req.query.code, client_id: clientId, client_secret: clientSecret}, //Query string data
+//           method: 'GET', //Specify the method
 
-      }, function (error, response, body) {
-          if (error) {
-              console.log(error);
-          } else {
-              res.json(body);
+//       }, function (error, response, body) {
+//           if (error) {
+//               console.log(error);
+//           } else {
+//               res.json(body);
 
-          }
-      })
-  }
-});
+//           }
+//       })
+//   }
+// });
 
 // Route the endpoint that our slash command will point to and send back a simple response to indicate that ngrok is working
-app.post('/command', function(req, res) {
+app.post('/command', function (req, res) {
 
 
 
-  var jsonRes = 
-  {
-    "text": "Would you like to play a game?",
-    "attachments": [
+  var jsonRes =
+    {
+      "text": "Would you like to play a game?",
+      "attachments": [
         {
-            "text": "Choose a game to play",
-            "fallback": "You are unable to choose a game",
-            "callback_id": "wopr_game",
-            "color": "#3AA3E3",
-            "attachment_type": "default",
-            "actions": [
-                {
-                    "name": "game",
-                    "text": "Chess",
-                    "type": "button",
-                    "value": "chess"
-                },
-                {
-                    "name": "game",
-                    "text": "Falken's Maze",
-                    "type": "button",
-                    "value": "maze"
-                },
-                {
-                    "name": "game",
-                    "text": "Thermonuclear War",
-                    "style": "danger",
-                    "type": "button",
-                    "value": "war",
-                    "confirm": {
-                        "title": "Are you sure?",
-                        "text": "Wouldn't you prefer a good game of chess?",
-                        "ok_text": "Yes",
-                        "dismiss_text": "No"
-                    }
-                }
-            ]
-        }
-    ]
-};
-
-var jsonRes2 = {
-  "text": "Would you like to play a game?",
-  "response_type": "in_channel",
-  "attachments": [
-      {
           "text": "Choose a game to play",
-          "fallback": "If you could read this message, you'd be choosing something fun to do right now.",
+          "fallback": "You are unable to choose a game",
+          "callback_id": "wopr_game",
           "color": "#3AA3E3",
           "attachment_type": "default",
-          "callback_id": "game_selection",
           "actions": [
-              {
-                  "name": "games_list",
-                  "text": "Pick a game...",
-                  "type": "select",
-                  "options": [
-                      {
-                          "text": "Hearts",
-                          "value": "hearts"
-                      },
-                      {
-                          "text": "Bridge",
-                          "value": "bridge"
-                      },
-                      {
-                          "text": "Checkers",
-                          "value": "checkers"
-                      },
-                      {
-                          "text": "Chess",
-                          "value": "chess"
-                      },
-                      {
-                          "text": "Poker",
-                          "value": "poker"
-                      },
-                      {
-                          "text": "Falken's Maze",
-                          "value": "maze"
-                      },
-                      {
-                          "text": "Global Thermonuclear War",
-                          "value": "war"
-                      }
-                  ]
+            {
+              "name": "game",
+              "text": "Chess",
+              "type": "button",
+              "value": "chess"
+            },
+            {
+              "name": "game",
+              "text": "Falken's Maze",
+              "type": "button",
+              "value": "maze"
+            },
+            {
+              "name": "game",
+              "text": "Thermonuclear War",
+              "style": "danger",
+              "type": "button",
+              "value": "war",
+              "confirm": {
+                "title": "Are you sure?",
+                "text": "Wouldn't you prefer a good game of chess?",
+                "ok_text": "Yes",
+                "dismiss_text": "No"
               }
+            }
           ]
+        }
+      ]
+    };
+
+  var jsonRes2 = {
+    "text": "Would you like to play a game?",
+    "response_type": "in_channel",
+    "attachments": [
+      {
+        "text": "Choose a game to play",
+        "fallback": "If you could read this message, you'd be choosing something fun to do right now.",
+        "color": "#3AA3E3",
+        "attachment_type": "default",
+        "callback_id": "game_selection",
+        "actions": [
+          {
+            "name": "games_list",
+            "text": "Pick a game...",
+            "type": "select",
+            "options": [
+              {
+                "text": "Hearts",
+                "value": "hearts"
+              },
+              {
+                "text": "Bridge",
+                "value": "bridge"
+              },
+              {
+                "text": "Checkers",
+                "value": "checkers"
+              },
+              {
+                "text": "Chess",
+                "value": "chess"
+              },
+              {
+                "text": "Poker",
+                "value": "poker"
+              },
+              {
+                "text": "Falken's Maze",
+                "value": "maze"
+              },
+              {
+                "text": "Global Thermonuclear War",
+                "value": "war"
+              }
+            ]
+          }
+        ]
       }
-  ]
-};
+    ]
+  };
   res.send(jsonRes2);
 });
 
@@ -202,14 +202,14 @@ controller.spawn({
 //BOT HOOKS
 
 controller.hears(
-  ['setup sprint','new sprint','create sprint'], 
-  ['mention', 'direct_mention', 'direct_message'], 
+  ['setup sprint', 'new sprint', 'create sprint'],
+  ['mention', 'direct_mention', 'direct_message'],
   function (bot, message) {
-  //redirect to a webpage for milestone 3 will create form inside slack after deploying
-  bot.api.users.list({},function(err,response) {
-    console.log(response);
+    //redirect to a webpage for milestone 3 will create form inside slack after deploying
+    bot.api.users.list({}, function (err, response) {
+      console.log(response);
+    });
   });
-});
 
 // Dummy Functions
 controller.hears('get sprint (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
@@ -233,12 +233,11 @@ controller.hears(
     bot.startConversation(message, function (err, convo) {
       convo.ask('For which Sprint? Please type Sprint ID or Sprint name.', function (answer, convo) {
         var sprint_id = answer.text.slice(-2);
-        if(VALID_SPRINT_ID.indexOf(sprint_id)==-1)
-        {
+        if (VALID_SPRINT_ID.indexOf(sprint_id) == -1) {
           convo.say("This Sprint ID does not exist. Please enter a valid ID");
           convo.next();
         }
-        console.log(process+"TEST");
+        console.log(process + "TEST");
         getBurndown(sprint_id, function (w) {
 
           var imageURL = w;
@@ -266,52 +265,48 @@ controller.hears(
 //USE CASE 1.2: Show performance of a user in given sprint
 controller.hears('Show performance of (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   var name = message.match[1];
-  if(name == "<@U6XHA4DST>")
-  {
-    bot.reply(message,":face_with_rolling_eyes: I am performing really well as you can see.");
+  if (name == "<@U6XHA4DST>") {
+    bot.reply(message, ":face_with_rolling_eyes: I am performing really well as you can see.");
   }
-  else if(VALID_USER_ID.indexOf(name)==-1)
-  {
-    bot.reply(message,name+" is a nice guy, but unfortunately he is not in our team.:disappointed:");
+  else if (VALID_USER_ID.indexOf(name) == -1) {
+    bot.reply(message, name + " is a nice guy, but unfortunately he is not in our team.:disappointed:");
   }
-  
-  else
-  {
-  //console.log(name + "HelloW");
-  bot.startConversation(message, function (err, convo) {
 
-    convo.say("Sure");
-    convo.ask('For which sprint you want to see the performance? Enter Sprint name or ID.', function (response, convo) {
-      var sprint_id = response.text.slice(-2);
-      if(VALID_SPRINT_ID.indexOf(sprint_id)==-1)
-      {
-        convo.say("This Sprint ID does not exist. Please enter a valid ID");
-        convo.next();
-      }
-      getUserPerformanceForSprint(name, sprint_id, function (w) {
+  else {
+    //console.log(name + "HelloW");
+    bot.startConversation(message, function (err, convo) {
 
-        var imageURL = w;
-        console.log(w + "HelloW");
-        var preText = "Performance of " + name + " for Sprint " + sprint_id + " is shown below"
-        var titleText = "Performance Chart"
-        var responsiveChart = "link_here"
-        var perfImage = {
-          "attachments": [
-            {
-              "pretext": preText,
-              "title": titleText,
-              "title_link": responsiveChart,
-              "image_url": imageURL,
-              "color": "#ffa500"
-            }
-          ]
-        };
-        convo.say(perfImage);
-        convo.next();
+      convo.say("Sure");
+      convo.ask('For which sprint you want to see the performance? Enter Sprint name or ID.', function (response, convo) {
+        var sprint_id = response.text.slice(-2);
+        if (VALID_SPRINT_ID.indexOf(sprint_id) == -1) {
+          convo.say("This Sprint ID does not exist. Please enter a valid ID");
+          convo.next();
+        }
+        getUserPerformanceForSprint(name, sprint_id, function (w) {
+
+          var imageURL = w;
+          console.log(w + "HelloW");
+          var preText = "Performance of " + name + " for Sprint " + sprint_id + " is shown below"
+          var titleText = "Performance Chart"
+          var responsiveChart = "link_here"
+          var perfImage = {
+            "attachments": [
+              {
+                "pretext": preText,
+                "title": titleText,
+                "title_link": responsiveChart,
+                "image_url": imageURL,
+                "color": "#ffa500"
+              }
+            ]
+          };
+          convo.say(perfImage);
+          convo.next();
+        });
       });
     });
-  });
-}
+  }
 });
 
 //USE CASE 1.3: Velocity Chart
@@ -348,50 +343,18 @@ controller.hears(
 //USE CASE 1.4: Sprint Status
 
 controller.hears('Show status of sprint (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
-    //console.log(message);
-    var sprint_one = message.match[1];
-    if(VALID_SPRINT_ID.indexOf(sprint_one)==-1)
-    {
-      bot.reply(message,"Please Enter a valid sprint Id");
-    }
-    getSprintStatus(sprint_one,function (w) {
-
-      var imageURL = w;
-      var preText = "Status of Sprint "+sprint_one
-      var titleText = "Sprint Status Chart"
-      var responsiveChart = "link_here"
-      var sprintStatusImage = {
-        "attachments": [
-          {
-            "pretext": preText,
-            "title": titleText,
-            "title_link": responsiveChart,
-            "image_url": imageURL,
-            "color": "#ffa500"
-          }
-        ]
-      };
-      bot.reply(message, sprintStatusImage);
-
-    });
-  });
-
-//USE CASE 2.1: Compare Sprint work done
-controller.hears('Compare work done in sprint (.*) with sprint (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+  //console.log(message);
   var sprint_one = message.match[1];
-  var sprint_two = message.match[2];
-  if(VALID_SPRINT_ID.indexOf(sprint_one)==-1 || VALID_SPRINT_ID.indexOf(sprint_two)==-1)
-  {
-    bot.reply(message,":thinking_face: Oh! One of the sprint id does not exist.Please Enter a valid sprint Id. ");
+  if (VALID_SPRINT_ID.indexOf(sprint_one) == -1) {
+    bot.reply(message, "Please Enter a valid sprint Id");
   }
-  else
-  {
-  compareSprintPerformance(sprint_one, sprint_two, function (w) {
+  getSprintStatus(sprint_one, function (w) {
+
     var imageURL = w;
-    var preText = "Work comparision of Sprint " + sprint_one + " with Sprint " + sprint_two + " is shown below."
-    var titleText = "Work Done Comparision Chart"
+    var preText = "Status of Sprint " + sprint_one
+    var titleText = "Sprint Status Chart"
     var responsiveChart = "link_here"
-    var workCompImage = {
+    var sprintStatusImage = {
       "attachments": [
         {
           "pretext": preText,
@@ -401,11 +364,40 @@ controller.hears('Compare work done in sprint (.*) with sprint (.*)', ['mention'
           "color": "#ffa500"
         }
       ]
-
     };
-    bot.reply(message,workCompImage);
+    bot.reply(message, sprintStatusImage);
+
   });
-}
+});
+
+//USE CASE 2.1: Compare Sprint work done
+controller.hears('Compare work done in sprint (.*) with sprint (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+  var sprint_one = message.match[1];
+  var sprint_two = message.match[2];
+  if (VALID_SPRINT_ID.indexOf(sprint_one) == -1 || VALID_SPRINT_ID.indexOf(sprint_two) == -1) {
+    bot.reply(message, ":thinking_face: Oh! One of the sprint id does not exist.Please Enter a valid sprint Id. ");
+  }
+  else {
+    compareSprintPerformance(sprint_one, sprint_two, function (w) {
+      var imageURL = w;
+      var preText = "Work comparision of Sprint " + sprint_one + " with Sprint " + sprint_two + " is shown below."
+      var titleText = "Work Done Comparision Chart"
+      var responsiveChart = "link_here"
+      var workCompImage = {
+        "attachments": [
+          {
+            "pretext": preText,
+            "title": titleText,
+            "title_link": responsiveChart,
+            "image_url": imageURL,
+            "color": "#ffa500"
+          }
+        ]
+
+      };
+      bot.reply(message, workCompImage);
+    });
+  }
 });
 
 //USE CASE 2.2: Compare Team Performance
@@ -417,92 +409,115 @@ controller.hears(
     'Show team performance'
   ], ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
 
-  compareTeamPerformance(function (w) {
-    var imageURL = w;
-    var preText = "Team performance compared to previous Sprints"
-    var titleText = "Team Sprint Performance Comparision Chart"
-    var responsiveChart = "link_here"
-    var workCompImage = {
-      "attachments": [
-        {
-          "pretext": preText,
-          "title": titleText,
-          "title_link": responsiveChart,
-          "image_url": imageURL,
-          "color": "#ffa500"
-        }
-      ]
+    compareTeamPerformance(function (w) {
+      var imageURL = w;
+      var preText = "Team performance compared to previous Sprints"
+      var titleText = "Team Sprint Performance Comparision Chart"
+      var responsiveChart = "link_here"
+      var workCompImage = {
+        "attachments": [
+          {
+            "pretext": preText,
+            "title": titleText,
+            "title_link": responsiveChart,
+            "image_url": imageURL,
+            "color": "#ffa500"
+          }
+        ]
 
-    };
-    bot.reply(message,workCompImage);
+      };
+      bot.reply(message, workCompImage);
+    });
   });
-});
 
 //USE CASE 2.3: Compare Individual Perf/ Best Performer
 controller.hears('Compare individual performance in sprint (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   var sprint_one = message.match[1];
-  if(VALID_SPRINT_ID.indexOf(sprint_one)==-1)
-  {
-    bot.reply(message,":thinking_face: Oh! no this sprint id does not exist.Please Enter a valid sprint Id. ");
+  if (VALID_SPRINT_ID.indexOf(sprint_one) == -1) {
+    bot.reply(message, ":thinking_face: Oh! no this sprint id does not exist.Please Enter a valid sprint Id. ");
   }
-  else
-  {
-  getSprintBestPerformer(sprint_one, function (w) {
-    var imageURL = w;
-    var preText = "Individual performance comparision of Sprint " + sprint_one + " is shown below."
-    var titleText = "Individual Performance Comparision Chart"
-    var responsiveChart = "link_here"
-    var indvPerfCompImage = {
-      "attachments": [
-        {
-          "pretext": preText,
-          "title": titleText,
-          "title_link": responsiveChart,
-          "image_url": imageURL,
-          "color": "#ffa500"
-        }
-      ]
+  else {
+    getSprintBestPerformer(sprint_one, function (w) {
+      var imageURL = w;
+      var preText = "Individual performance comparision of Sprint " + sprint_one + " is shown below."
+      var titleText = "Individual Performance Comparision Chart"
+      var responsiveChart = "link_here"
+      var indvPerfCompImage = {
+        "attachments": [
+          {
+            "pretext": preText,
+            "title": titleText,
+            "title_link": responsiveChart,
+            "image_url": imageURL,
+            "color": "#ffa500"
+          }
+        ]
 
-    };
-    bot.reply(message,indvPerfCompImage);
-  });
-}
+      };
+      bot.reply(message, indvPerfCompImage);
+    });
+  }
 });
 
 //USE CASE 2.4: Compare Task Performance
-controller.hears('Compare task performance in sprint (.*)', ['mention','direct_mention', 'direct_message'], function (bot, message) {
+controller.hears('Compare task performance in sprint (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   var sprint_one = message.match[1];
-  if(VALID_SPRINT_ID.indexOf(sprint_one)==-1 )
-  {
-    bot.reply(message,":thinking_face: Oh! no this sprint id does not exist.Please Enter a valid sprint Id. ");
+  if (VALID_SPRINT_ID.indexOf(sprint_one) == -1) {
+    bot.reply(message, ":thinking_face: Oh! no this sprint id does not exist.Please Enter a valid sprint Id. ");
   }
-  else
-  {
-  getTaskPerformance(sprint_one, function (w) {
-    var imageURL = w;
-    var preText = "Task performance comparision of Sprint " + sprint_one;
-    var titleText = "Task Performance Comparision Chart"
-    var responsiveChart = "link_here"
-    var taskPerfCompImage = {
-      "attachments": [
-        {
-          "pretext": preText,
-          "title": titleText,
-          "title_link": responsiveChart,
-          "image_url": imageURL,
-          "color": "#ffa500"
-        }
-      ]
+  else {
+    getTaskPerformance(sprint_one, function (w) {
+      var imageURL = w;
+      var preText = "Task performance comparision of Sprint " + sprint_one;
+      var titleText = "Task Performance Comparision Chart"
+      var responsiveChart = "link_here"
+      var taskPerfCompImage = {
+        "attachments": [
+          {
+            "pretext": preText,
+            "title": titleText,
+            "title_link": responsiveChart,
+            "image_url": imageURL,
+            "color": "#ffa500"
+          }
+        ]
 
-    };
-    bot.reply(message,taskPerfCompImage);
-  });
-}
+      };
+      bot.reply(message, taskPerfCompImage);
+    });
+  }
 });
 
 
 
 //USE CASE 4: Facts about the most number of commits.
+
+controller.hears(
+  [
+    'show recommendations',
+    'provide recommendations',
+    'recommend task hours'
+  ], ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+    console.log(message);
+    convo.ask('How many hours you are planning to assign?', function (answer, convo) {
+      var hours = answer.text;
+
+      getRecommendationOnTaskHours(hours, function (w) {
+        var resText = {
+          "attachments": [
+            {
+              "pretext": w,
+              "title": "Recommendations on task hour assignmen",
+              "color": "#ffa500"
+            }
+          ]
+        };
+        convo.say(resText);
+        convo.next();
+      });
+    });
+  });
+
 controller.hears(
   [
     'Who has made most number of commits?',
@@ -511,7 +526,7 @@ controller.hears(
   ], ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
     console.log(message);
     var repo = "Austin"
-    getUsersCommits("dsuri",repo, function (w) {
+    getUsersCommits("dsuri", repo, function (w) {
 
       bot.reply(message, w);
 
@@ -712,7 +727,7 @@ controller.hears(['help', 'what can you do', 'help me', '(.*)'],
               "value": "_Show performance of `<teamMemberName>`_",
               "short": false
             },
-           
+
             {
               "title": "Velocity Graph",
               "value": "_Show velocity graph_",
@@ -781,7 +796,7 @@ function formatUptime(uptime) {
   if (uptime > 60) {
     uptime = uptime / 60;
     unit = 'hour';
-  }F
+  } F
   if (uptime != 1) {
     unit = unit + 's';
   }
@@ -801,24 +816,23 @@ function getSprint(sprint_id, callback) {
 }
 
 function getBurndown(sprint_id, callback) {
-  invokeBurndownPy(sprint_id,function(){
+  invokeBurndownPy(sprint_id, function () {
     Main.getBurndown(sprint_id).then(function (results) {
       var burndown_img_url = results.burndown_img_url;
       return callback(burndown_img_url);
     });
   });
- 
+
 }
 //invoke python for burndown chart
-function invokeBurndownPy(sprint_id,callback)
-{
-  var py = spawn('python', ['../Milestone3/Python/Scripts/burndown.py',sprint_id]);
-  setTimeout(callback,5000);
+function invokeBurndownPy(sprint_id, callback) {
+  var py = spawn('python', ['../Milestone3/Python/Scripts/burndown.py', sprint_id]);
+  setTimeout(callback, 5000);
 }
 
-function getUsersCommits(owner,repo, callback) {
-  
-  Main.getUsersCommits(owner,repo).then(function (results) {
+function getUsersCommits(owner, repo, callback) {
+
+  Main.getUsersCommits(owner, repo).then(function (results) {
     var msg = results.msg;
     return callback(msg);
   });
@@ -826,130 +840,122 @@ function getUsersCommits(owner,repo, callback) {
 
 //Service for getting the graph of user performance
 function getUserPerformanceForSprint(userId, sprintId, callback) {
-  invokeUserPerformancePy(userId,sprintId,function(){
-  Main.getUserPerformanceForSprint(userId, sprintId).then(function (results) {
-    var perfomance_img_url = results.performance_chart_url;
-    return callback(perfomance_img_url);
+  invokeUserPerformancePy(userId, sprintId, function () {
+    Main.getUserPerformanceForSprint(userId, sprintId).then(function (results) {
+      var perfomance_img_url = results.performance_chart_url;
+      return callback(perfomance_img_url);
+    });
   });
-});
 }
 //invoke python for user performance
-function invokeUserPerformancePy(userId, sprint_id, callback)
-{
-  console.log("User ID: "+userId+" sprint id: "+sprint_id);
-  var py    = spawn('python', ['../Milestone3/Python/Scripts/user_performance.py', userId, sprint_id]);
+function invokeUserPerformancePy(userId, sprint_id, callback) {
+  console.log("User ID: " + userId + " sprint id: " + sprint_id);
+  var py = spawn('python', ['../Milestone3/Python/Scripts/user_performance.py', userId, sprint_id]);
 
-  setTimeout(callback,5000);
-} 
+  setTimeout(callback, 5000);
+}
 
 //Service for getting the velocity graph of past and current sprints
 function getVelocityGraph(callback) {
-  invokeVelocityPy(function(){
-  Main.getVelocityGraph().then(function (results) {
-    var velocity_graph_url = results.velocity_graph_url;
-    return callback(velocity_graph_url);
+  invokeVelocityPy(function () {
+    Main.getVelocityGraph().then(function (results) {
+      var velocity_graph_url = results.velocity_graph_url;
+      return callback(velocity_graph_url);
+    });
   });
-});
 }
 //invoke python for velocity graph
-function invokeVelocityPy(callback)
-{
-  var py    = spawn('python', ['../Milestone3/Python/Scripts/velocity.py']);
-  setTimeout(callback,5000);
+function invokeVelocityPy(callback) {
+  var py = spawn('python', ['../Milestone3/Python/Scripts/velocity.py']);
+  setTimeout(callback, 5000);
 }
 
 //Service for getting the sprint performance comparison graph for two sprints
 function compareSprintPerformance(sprintId1, sprintId2, callback) {
-  invokeSprintPerformancePy(sprintId1,sprintId2,function(){
-  Main.compareSprintPerformance(sprintId1, sprintId2).then(function (results) {
-    var compare_sprint_perf_url = results.compare_sprint_perf_url;
-    return callback(compare_sprint_perf_url);
+  invokeSprintPerformancePy(sprintId1, sprintId2, function () {
+    Main.compareSprintPerformance(sprintId1, sprintId2).then(function (results) {
+      var compare_sprint_perf_url = results.compare_sprint_perf_url;
+      return callback(compare_sprint_perf_url);
+    });
   });
-});
 }
 //invoke python for compare sprint performance graph
-function invokeSprintPerformancePy(sprintId1, sprintId2, callback)
-{
-  var py    = spawn('python', ['../Milestone3/Python/Scripts/sprint_performance.py', sprintId1, sprintId2]);
-  setTimeout(callback,5000);
+function invokeSprintPerformancePy(sprintId1, sprintId2, callback) {
+  var py = spawn('python', ['../Milestone3/Python/Scripts/sprint_performance.py', sprintId1, sprintId2]);
+  setTimeout(callback, 5000);
 }
 
 //Service for getting the performance based on each task and time spent on it
 function getTaskPerformance(sprint_id, callback) {
-  invokeTaskPerformancePy(sprint_id,function(){
-  Main.getTaskPerformance(sprint_id).then(function (results) {
-    var task_performance_url = results.task_performance_img_url;
-    return callback(task_performance_url);
+  invokeTaskPerformancePy(sprint_id, function () {
+    Main.getTaskPerformance(sprint_id).then(function (results) {
+      var task_performance_url = results.task_performance_img_url;
+      return callback(task_performance_url);
+    });
   });
-});
 }
 //invoke python for task performance graph
-function invokeTaskPerformancePy(sprint_id, callback)
-{
-  var py    = spawn('python', ['../Milestone3/Python/Scripts/task_performance.py', sprint_id]);
-  setTimeout(callback,5000);
+function invokeTaskPerformancePy(sprint_id, callback) {
+  var py = spawn('python', ['../Milestone3/Python/Scripts/task_performance.py', sprint_id]);
+  setTimeout(callback, 5000);
 }
 
 //Service for getting the best performer in a sprint
 function getSprintBestPerformer(sprint_id, callback) {
-  invokeBestUserPerformancePy(sprint_id,function(){
-  Main.getSprintBestPerformer(sprint_id).then(function (results) {
-    var sprintBestPerformer_url = results.best_performer_img_url;
-    return callback(sprintBestPerformer_url);
+  invokeBestUserPerformancePy(sprint_id, function () {
+    Main.getSprintBestPerformer(sprint_id).then(function (results) {
+      var sprintBestPerformer_url = results.best_performer_img_url;
+      return callback(sprintBestPerformer_url);
+    });
   });
-});
 }
 //invoke python for compare user performance
-function invokeBestUserPerformancePy(sprint_id, callback)
-{
-  var py    = spawn('python', ['../Milestone3/Python/Scripts/compare_user_performance.py', sprint_id]);
-  setTimeout(callback,5000);
+function invokeBestUserPerformancePy(sprint_id, callback) {
+  var py = spawn('python', ['../Milestone3/Python/Scripts/compare_user_performance.py', sprint_id]);
+  setTimeout(callback, 5000);
 }
 
 //Service for getting the sprint status - usecase 1.4
 function getSprintStatus(sprint_id, callback) {
-  invokeSprintStatusPy(sprint_id,function(){
-  Main.getSprintStatus(sprint_id).then(function (results) {
-    var getSprintStatus_url = results.sprint_status_url;
-    return callback(getSprintStatus_url);
+  invokeSprintStatusPy(sprint_id, function () {
+    Main.getSprintStatus(sprint_id).then(function (results) {
+      var getSprintStatus_url = results.sprint_status_url;
+      return callback(getSprintStatus_url);
+    });
   });
-});
 }
 //invoke python for sprint status
-function invokeSprintStatusPy(sprint_id, callback)
-{
-  var py    = spawn('python', ['../Milestone3/Python/Scripts/sprint_status.py', sprint_id]);
-  setTimeout(callback,5000);
+function invokeSprintStatusPy(sprint_id, callback) {
+  var py = spawn('python', ['../Milestone3/Python/Scripts/sprint_status.py', sprint_id]);
+  setTimeout(callback, 5000);
 }
 
 //Service for comparing team performance - usecase 2.2
-function compareTeamPerformance( callback) {
-  invokeCompareTeamPerformancePy(function(){
-  Main.compareTeamPerformance().then(function (results) {
-    var teamPerformance_url = results.teamPerformance_img_url;
-    return callback(teamPerformance_url);
+function compareTeamPerformance(callback) {
+  invokeCompareTeamPerformancePy(function () {
+    Main.compareTeamPerformance().then(function (results) {
+      var teamPerformance_url = results.teamPerformance_img_url;
+      return callback(teamPerformance_url);
+    });
   });
-});
 }
 //invoke python for compare team performance
-function invokeCompareTeamPerformancePy(callback)
-{
-  var py    = spawn('python', ['../Milestone3/Python/Scripts/compare_team_performance.py']);
-  setTimeout(callback,5000);
+function invokeCompareTeamPerformancePy(callback) {
+  var py = spawn('python', ['../Milestone3/Python/Scripts/compare_team_performance.py']);
+  setTimeout(callback, 5000);
 }
 
 //Service for getting the recommendation
 function getRecommendationOnTaskHours(num_hours, callback) {
-  invokeRecommendHoursPy(num_hours, function(){
-  Main.getRecommendationOnTaskHours().then(function (results) {
-    var recommended_hours = results.task_hours_recom;
-    return callback(recommended_hours);
+  invokeRecommendHoursPy(num_hours, function () {
+    Main.getRecommendationOnTaskHours().then(function (results) {
+      var recommended_hours = results.task_hours_recom;
+      return callback(recommended_hours);
+    });
   });
-});
 }
 //invoke python for hours recommendation
-function invokeRecommendHoursPy(num_hours, callback)
-{
-  var py    = spawn('python', ['../Milestone3/Python/Scripts/recommend_hours.py', num_hours]);
-  setTimeout(callback,5000);
+function invokeRecommendHoursPy(num_hours, callback) {
+  var py = spawn('python', ['../Milestone3/Python/Scripts/recommend_hours.py', num_hours]);
+  setTimeout(callback, 5000);
 }
