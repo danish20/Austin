@@ -17,8 +17,6 @@ app.use(bodyParser.json());
 
 // Store our app's ID and Secret. These we got from Step 1. 
 // For this tutorial, we'll keep your API credentials right here. But for an actual app, you'll want to  store them securely in environment variables. 
-var clientId = '232364447255.272562445206';
-var clientSecret = '4dce130eff7f62b786833534477acc60';
 const PORT = 3000;
 const port = 3000;
 const VALID_SPRINT_ID = ["20", "21", "22"];
@@ -499,6 +497,7 @@ controller.hears(
     'recommend task hours'
   ], ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
     console.log(message);
+    bot.startConversation(message, function (err, convo) {
     convo.ask('How many hours you are planning to assign?', function (answer, convo) {
       var hours = answer.text;
 
@@ -506,8 +505,8 @@ controller.hears(
         var resText = {
           "attachments": [
             {
-              "pretext": w,
-              "title": "Recommendations on task hour assignmen",
+              "pretext":"Recommendations",
+              "title":  w,
               "color": "#ffa500"
             }
           ]
@@ -516,6 +515,7 @@ controller.hears(
         convo.next();
       });
     });
+  });
   });
 
 controller.hears(
@@ -773,6 +773,11 @@ controller.hears(['help', 'what can you do', 'help me', '(.*)'],
         {
           "title": "Recommendations and Facts",
           "fields": [
+            {
+              "title": "Recommend Number of hours to assign a task.",
+              "value": "_Recommend task hours_",
+              "short": false
+            },
             {
               "title": "Most no of commits/additions made by a user",
               "value": "_Who has made most number of commits_",

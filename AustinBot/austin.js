@@ -5,6 +5,7 @@ var querystring = require('querystring');
 
 var urlRoot = "https://a0e33791.ngrok.io/api";
 var urlGithubRoot = "https://github.ncsu.edu/api/v3";
+const GITHUB_TOKEN = "token YOUR_TOKEN_HERE"
 
 function getSprints()
 {
@@ -81,7 +82,7 @@ function getUsersCommits(owner, repo)
         method: "GET",
         headers: {
             "content-type": "application/json",
-            "Authorization":"token 5bec6b54b5c542c4b0ff2f393844e70891e5c5bb"
+            "Authorization": GITHUB_TOKEN
         }
     };
 
