@@ -21,3 +21,4 @@ Credentials are Username : austinbot510@gmail.com Password : 1qazxsw@3
 | Create RESTful end points using MongoDB  | Complete  | https://trello.com/c/FnZCmTGy | Sandeep
 | Establish connection from Python to access data posted by MongoDB | Complete | https://trello.com/c/7YJa0KdR | Udit
 | Replace mock services with actual services | Complete | https://trello.com/c/RLVWTKag | Prashant
+| Handle unmatched cases in services for bot | Complete | https://trello.com/c/z91Xf0R3 | Danish
