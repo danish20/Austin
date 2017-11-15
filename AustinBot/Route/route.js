@@ -19,6 +19,14 @@ router.get('/velocityGraph', function(req,res,next){
     });
 });
 
+router.get('/recommendation', function(req,res,next){
+    //var value = req.params.id;
+    sprintGlobal.findOne({},function(err, post) {
+        if(err) return next(err);
+        res.json(post);
+    });
+});
+
 router.get('/sprintPerfComparison', function(req,res,next){
     sprintGlobal.findOne({},{"_id":false,"sprints_performance_comparison_graph":true}, function(err,post){
         if(err) return next(err);
@@ -52,7 +60,7 @@ router.get('/burnDownChart/:id', function(req,res,next){
 
 router.get('/taskPerformance/:id', function(req,res,next){
     var id = req.params.id;
-    sprint.find({"sprintId":id},{"_id":false,"task_performance_img_url":true}, function(err,post){
+    sprint.findOne({"sprintId":id},{"_id":false,"task_performance_img_url":true}, function(err,post){
         if(err) return next(err);
         res.json(post);
     });
@@ -60,7 +68,7 @@ router.get('/taskPerformance/:id', function(req,res,next){
 
 router.get('/bestPerformance/:id', function(req,res,next){
     var id = req.params.id;
-    sprint.findOne({"sprintId":id},{"_id":false,"best_performance_img_url":true}, function(err,post){
+    sprint.findOne({"sprintId":id},{"_id":false,"best_performer_img_url":true}, function(err,post){
         if(err) return next(err);
         res.json(post);
     });
@@ -77,13 +85,19 @@ router.get('/sprintStatus/:id', function(req,res,next){
 router.get('/userPerformance/:sprintId/:userId', function(req,res,next){
     var sprintId = req.params.sprintId;
     var userId = req.params.userId;
+    userId = userId.substring(2,userId.length-1);
     var performance = "";
+    console.log(sprintId)
+    console.log(userId);
+    console.log(Type(userId));
     sprint.findOne({"sprintId":sprintId, 'team_member.user_id': userId},{"_id":false, "team_member":true}, function(err,post){
         if(err) return next(err);
         var result = {
             performance_chart_url: null
         };
+        console.log(post)
         var output = post.team_member;
+        console.log(output);
         for(var i = 0 ; i <output.length;i++){
             if(output[i].user_id == userId){
                 result.performance_chart_url = output[i].performance_chart_url;
@@ -97,6 +111,15 @@ router.get('/userPerformance/:sprintId/:userId', function(req,res,next){
 router.get('/sprint', function(req,res,next){
     sprint.find({}, function(err,post){
         console.log(post);
+        if(err) return next(err);
+        res.json(post);
+    });
+});
+
+router.put('/recommendation/:value', function(req,res,next){
+    var value = req.params.value;
+
+    sprintGlobal.update({},{$set: {"recommendation": value}},function(err, post) {
         if(err) return next(err);
         res.json(post);
     });

@@ -3,23 +3,23 @@ var Schema = mongoose.Schema;
 
 var sprintSchema = new Schema({
     sprintId: String,
-    start_date: Date,
-    end_date: Date,
+    start_date: String,
+    end_date: String,
     team_member: [{
-        user_id: Number, 
+        user_id: String, 
         user_name: String,
         performance_chart_url: String
     }],
     stories: [{
-        story_id: Number,
+        story_id: String,
         story_name: String,
         story_hours: Number,
         task : [{
-            task_id: Number,
+            task_id: String,
             expected_hours: Number,
-            user_id: Number,
+            user_id: String,
             daily_progress:[{
-                date: Date,
+                date: String,
                 work_done:Number
             }],
             status: String
@@ -29,7 +29,7 @@ var sprintSchema = new Schema({
     task_performance_img_url: String,
     best_performance_img_url: String,
     sprint_status_img_url:String
-},{collection: "Sprint"});
+},{collection: "SprintData"});
 
-var Sprint = mongoose.model('Sprint', sprintSchema);
+var Sprint = mongoose.model('SprintData', sprintSchema);
  module.exports = Sprint;
