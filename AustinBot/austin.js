@@ -240,6 +240,27 @@ function compareTeamPerformance()
     });
 }
 
+function getRecommendationOnTaskHours() 
+{
+    var options = {
+        url: urlRoot + "/recommendation",
+        method: "GET",
+        headers: {
+            "content-type": "application/json"
+        }
+    };
+
+    return new Promise(function (resolve, reject){
+        request(options, function(error, response, body)
+        {
+
+            var obj = JSON.parse(body);
+            //console.log(obj);
+            resolve(obj);
+        });
+    });
+}
+
 exports.getSprints = getSprints;
 exports.getSprint = getSprint;
 exports.getBurndown = getBurndown;
@@ -251,3 +272,4 @@ exports.getTaskPerformance = getTaskPerformance;
 exports.getSprintBestPerformer = getSprintBestPerformer;
 exports.getSprintStatus = getSprintStatus;
 exports.compareTeamPerformance = compareTeamPerformance;
+exports.getRecommendationOnTaskHours = getRecommendationOnTaskHours;

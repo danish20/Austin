@@ -895,3 +895,19 @@ function invokeCompareTeamPerformancePy(callback)
   var py    = spawn('python', ['../Milestone3/Python/Scripts/compare_team_performance.py']);
   setTimeout(callback,5000);
 }
+
+//Service for getting the recommendation
+function getRecommendationOnTaskHours(num_hours, callback) {
+  invokeRecommendHoursPy(num_hours, function(){
+  Main.getRecommendationOnTaskHours().then(function (results) {
+    var recommended_hours = results.task_hours_recom;
+    return callback(recommended_hours);
+  });
+});
+}
+//invoke python for hours recommendation
+function invokeRecommendHoursPy(num_hours, callback)
+{
+  var py    = spawn('python', ['../Milestone3/Python/Scripts/recommend_hours.py', num_hours]);
+  setTimeout(callback,5000);
+}
