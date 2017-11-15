@@ -9,6 +9,7 @@ import os
 import server_connect
 import pandas as pd
 import numpy as np
+import requests
 from sklearn import linear_model
 
 def parse_json_for_recommend_hours():
@@ -59,6 +60,7 @@ def main():
     file.write(recommendation)
     file.close()
     s3.save_file_to_s3('recommend_hours')
+    requests.put('https://a0e33791.ngrok.io/api/recommendation/' + str(recommendation))
     print("Completed")
 
 if __name__ == '__main__':
