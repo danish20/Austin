@@ -167,9 +167,9 @@ function getTaskPerformance(sprint_id){
 		
 		austin.getTaskPerformance(sprint_id).then(function (obj) 
 		{
-			console.log("got task performance for sprint::"+obj);
+			console.log("got task performance for sprint::"+obj.task_performance_img_url);
 
-			resolve({task_performance_img_url: obj.teamPerformance_graph_url});
+			resolve({task_performance_img_url: obj.task_performance_img_url});
 		});
 	});
 }
@@ -227,6 +227,17 @@ function compareTeamPerformance() {
 	});	
 }
 
+function getRecommendationOnTaskHours(){
+	return new Promise(function (resolve, reject) 
+	{
+		austin.getRecommendationOnTaskHours().then(function (obj) 
+		{
+			console.log("got data from api::"+obj.recommendation);
+			resolve({task_hours_recom: obj.recommendation});
+		});
+	});
+}
+
 exports.findNumberOfSprints = findNumberOfSprints;
 exports.getSprint = getSprint;
 exports.getBurndown = getBurndown;
@@ -238,3 +249,4 @@ exports.getTaskPerformance = getTaskPerformance;
 exports.getSprintBestPerformer = getSprintBestPerformer;
 exports.getSprintStatus = getSprintStatus;
 exports.compareTeamPerformance = compareTeamPerformance;
+exports.getRecommendationOnTaskHours = getRecommendationOnTaskHours;
