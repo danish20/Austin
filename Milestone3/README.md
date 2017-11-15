@@ -23,8 +23,7 @@
 
 ## Task Tracking -- WORKSHEET.md
 
-  We have Trello Cards for Task tracking. Kindly find trello cards at https://trello.com/b/fYZsi3se/austin-bot
-Credentials are Username : austinbot510@gmail.com Password : 1qazxsw@3
+  We have Trello Cards for Task tracking.
   Please find worksheet at https://github.ncsu.edu/dsuri/Austin/blob/master/Milestone3/WORKSHEET.md
 
 ## Screencast
