@@ -44,7 +44,7 @@ def predict_hours(data, query_hours):
     return prediction
 
 def main():
-    query_hours = sys.argv[1]
+    query_hours = int(sys.argv[1])
     data = parse_json_for_recommend_hours()
     prediction = predict_hours(data, query_hours)
     current_path = os.path.dirname(os.path.realpath("__file__"))
