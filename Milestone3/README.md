@@ -28,7 +28,7 @@
 
 ## Screencast
 
-  The screencast for Milestone 3 :
+  The screencast for Milestone 3 : https://youtu.be/zfgYCCIvjqI
   
   Screencast with all functionalities of all use cases : https://youtu.be/dGRlozqSvBY
   
