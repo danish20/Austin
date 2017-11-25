@@ -28,16 +28,8 @@
 
 ## Screencast
 
-  Please download the screencasts using the links below:
-
-  Use Case 1: 
+  The screencast for Milestone 3 : https://youtu.be/QkY0H4TN1wE
   
-  YOUTUBE LINK : 
-
-  Use Case 2: 
+  Screencast with all functionalities of all use cases : https://youtu.be/dGRlozqSvBY
   
-  YOUTUBE LINK : 
-
-  Use Case 3: 
   
-  YOUTUBE LINK : 
