@@ -1,31 +1,30 @@
-{ 
-    "sprint" :
+
     [
       {
-        "id": "20",
+        "sprintId": "20",
         "start_date": "07/03/2017",
         "end_date": "07/23/2017",
         "team_member":
         [
             {
-              "user_id": 100,
+              "user_id": "U6UBVLJCV",
               "user_name": "Udit",
-              "performance_chart_url": "https://s3.us-east-2.amazonaws.com/austinbot/user_performance.png"
+              "performance_chart_url": "https://s3.us-east-2.amazonaws.com/austinbot/user_performance.jpeg"
             },
             {
-              "user_id": 101,
+              "user_id": "U6U2WMN82",
               "user_name": "Dsuri",
-              "performance_chart_url": "https://s3.us-east-2.amazonaws.com/austinbot/user_performance.png"
+              "performance_chart_url": "https://s3.us-east-2.amazonaws.com/austinbot/user_performance.jpeg"
             },
             {
-              "user_id": 102,
+              "user_id": "U6SMSH9HP",
               "user_name": "Prashant",
-              "performance_chart_url": "https://s3.us-east-2.amazonaws.com/austinbot/user_performance.png"
+              "performance_chart_url": "https://s3.us-east-2.amazonaws.com/austinbot/user_performance.jpeg"
             },
             {
-              "user_id": 103,
+              "user_id": "U6T81LY8J",
               "user_name": "Sandeep",
-              "performance_chart_url": "https://s3.us-east-2.amazonaws.com/austinbot/user_performance.png"
+              "performance_chart_url": "https://s3.us-east-2.amazonaws.com/austinbot/user_performance.jpeg"
             }
         ],
         "stories":
@@ -39,7 +38,7 @@
                 {
                     "task_id":"20_1_1",
                     "excepted_hours": 50,
-                    "user_id": 100,
+                    "user_id": "U6UBVLJCV",
                     "daily_progress":
                     [
                         {"date": "07/03/2017", "work_done": 8},
@@ -56,7 +55,7 @@
               {
                     "task_id":"20_1_2",
                     "excepted_hours": 60,
-                    "user_id": 102,
+                    "user_id": "U6SMSH9HP",
                     "daily_progress":
                     [
                         {"date": "07/03/2017", "work_done": 8},
@@ -73,7 +72,7 @@
               {
                     "task_id":"20_1_3",
                     "excepted_hours": 70,
-                    "user_id": 101,
+                    "user_id": "U6U2WMN82",
                     "daily_progress":
                     [
                         {"date": "07/03/2017", "work_done": 8},
@@ -91,7 +90,7 @@
               {
                     "task_id":"20_1_4",
                     "excepted_hours": 20,
-                    "user_id": 103,
+                    "user_id": "U6T81LY8J",
                     "daily_progress":
                     [
                         {"date": "07/03/2017", "work_done": 8},
@@ -103,7 +102,7 @@
                 },{
                     "task_id":"20_1_5",
                     "excepted_hours": 40,
-                    "user_id": 103,
+                    "user_id": "U6T81LY8J",
                     "daily_progress":
                     [
                         {"date": "07/05/2017", "work_done": 4},
@@ -126,7 +125,7 @@
                   {
                       "task_id":"20_2_1",
                       "excepted_hours": 40,
-                      "user_id": 100,
+                      "user_id": "U6UBVLJCV",
                       "daily_progress":
                       [
                           {"date": "07/11/2017", "work_done": 6},
@@ -142,7 +141,7 @@
                 {
                       "task_id":"20_2_2",
                       "excepted_hours": 40,
-                      "user_id": 102,
+                      "user_id": "U6SMSH9HP",
                       "daily_progress":
                       [
                         {"date": "07/12/2017", "work_done": 4},
@@ -157,7 +156,7 @@
                 {
                       "task_id":"20_2_3",
                       "excepted_hours": 20,
-                      "user_id": 101,
+                      "user_id": "U6U2WMN82",
                       "daily_progress":
                       [
                           {"date": "07/13/2017", "work_done": 2},
@@ -178,7 +177,7 @@
                   {
                       "task_id":"20_3_1",
                       "excepted_hours": 30,
-                      "user_id": 100,
+                      "user_id": "U6UBVLJCV",
                       "daily_progress":
                       [
                           {"date": "07/18/2017", "work_done": 6},
@@ -191,7 +190,7 @@
                 {
                       "task_id":"20_3_2",
                       "excepted_hours": 20,
-                      "user_id": 102,
+                      "user_id": "U6SMSH9HP",
                       "daily_progress":
                       [
                           {"date": "07/19/2017", "work_done": 4},
@@ -203,7 +202,7 @@
                 {
                       "task_id":"20_3_3",
                       "excepted_hours": 20,
-                      "user_id": 101,
+                      "user_id": "U6U2WMN82",
                       "daily_progress":
                       [
                           {"date": "07/18/2017", "work_done": 6},
@@ -216,7 +215,7 @@
                   {
                     "task_id":"20_3_4",
                     "excepted_hours": 70,
-                    "user_id": 103,
+                    "user_id": "U6T81LY8J",
                     "daily_progress":
                     [
                         {"date": "07/12/2017", "work_done": 4},
@@ -239,26 +238,30 @@
         "sprint_status_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/sprint_status.png"
       },
       {
-        "id": "21",
+        "sprintId": "21",
         "start_date": "07/24/2017",
         "end_date": "08/13/2017",
         "team_member":
         [
             {
-              "user_id": 100,
-              "user_name": "Udit"
+              "user_id": "U6UBVLJCV",
+              "user_name": "Udit",
+			  "performance_chart_url": "https://s3.us-east-2.amazonaws.com/austinbot/user_performance.jpeg"
             },
             {
-              "user_id": 101,
-              "user_name": "Dsuri"
+              "user_id": "U6U2WMN82",
+              "user_name": "Dsuri",
+			  "performance_chart_url": "https://s3.us-east-2.amazonaws.com/austinbot/user_performance.jpeg"
             },
             {
-              "user_id": 104,
-              "user_name": "Sandy"
+              "user_id": "U6T81LY8J",
+              "user_name": "Sandy",
+			  "performance_chart_url": "https://s3.us-east-2.amazonaws.com/austinbot/user_performance.jpeg"
             },
             {
-              "user_id": 105,
-              "user_name": "Prashant"
+              "user_id": "U6SMSH9HP",
+              "user_name": "Prashant",
+			  "performance_chart_url": "https://s3.us-east-2.amazonaws.com/austinbot/user_performance.jpeg"
             }
         ],
         "stories":
@@ -272,7 +275,7 @@
                 {
                     "task_id":"21_1_1",
                     "excepted_hours": 50,
-                    "user_id": 100,
+                    "user_id": "U6UBVLJCV",
                     "daily_progress":
                     [
                         {"date": "07/24/2017", "work_done": 6},
@@ -289,7 +292,7 @@
               {
                     "task_id":"21_1_2",
                     "excepted_hours": 60,
-                    "user_id": 104,
+                    "user_id": "U6T81LY8J",
                     "daily_progress":
                     [
                         {"date": "07/24/2017", "work_done": 8},
@@ -306,7 +309,7 @@
               {
                     "task_id":"21_1_3",
                     "excepted_hours": 70,
-                    "user_id": 101,
+                    "user_id": "U6U2WMN82",
                     "daily_progress":
                     [
                         {"date": "07/24/2017", "work_done": 8},
@@ -324,7 +327,7 @@
               {
                     "task_id":"21_1_4",
                     "excepted_hours": 20,
-                    "user_id": 105,
+                    "user_id": "U6SMSH9HP",
                     "daily_progress":
                     [
                         {"date": "07/24/2017", "work_done": 8},
@@ -336,7 +339,7 @@
                 },{
                     "task_id":"21_1_5",
                     "excepted_hours": 40,
-                    "user_id": 105,
+                    "user_id": "U6SMSH9HP",
                     "daily_progress":
                     [
                         {"date": "07/26/2017", "work_done": 4},
@@ -359,7 +362,7 @@
                   {
                       "task_id":"21_2_1",
                       "excepted_hours": 40,
-                      "user_id": 100,
+                      "user_id": "U6UBVLJCV",
                       "daily_progress":
                       [
                           {"date": "08/1/2017", "work_done": 6},
@@ -375,7 +378,7 @@
                 {
                       "task_id":"21_2_2",
                       "excepted_hours": 40,
-                      "user_id": 104,
+                      "user_id": "U6T81LY8J",
                       "daily_progress":
                       [
                         {"date": "08/2/2017", "work_done": 4},
@@ -390,7 +393,7 @@
                 {
                       "task_id":"21_2_3",
                       "excepted_hours": 20,
-                      "user_id": 101,
+                      "user_id": "U6U2WMN82",
                       "daily_progress":
                       [
                           {"date": "08/3/2017", "work_done": 2},
@@ -411,7 +414,7 @@
                   {
                       "task_id":"21_3_1",
                       "excepted_hours": 30,
-                      "user_id": 100,
+                      "user_id": "U6UBVLJCV",
                       "daily_progress":
                       [
                           {"date": "08/8/2017", "work_done": 6},
@@ -424,7 +427,7 @@
                 {
                       "task_id":"21_3_2",
                       "excepted_hours": 20,
-                      "user_id": 104,
+                      "user_id": "U6T81LY8J",
                       "daily_progress":
                       [
                           {"date": "08/9/2017", "work_done": 4},
@@ -436,7 +439,7 @@
                 {
                       "task_id":"21_3_3",
                       "excepted_hours": 20,
-                      "user_id": 101,
+                      "user_id": "U6U2WMN82",
                       "daily_progress":
                       [
                           {"date": "08/8/2017", "work_done": 6},
@@ -449,7 +452,7 @@
                   {
                     "task_id":"21_3_4",
                     "excepted_hours": 70,
-                    "user_id": 105,
+                    "user_id": "U6SMSH9HP",
                     "daily_progress":
                     [
                         {"date": "08/2/2017", "work_done": 4},
@@ -472,269 +475,5 @@
         "sprint_status_img_url": "https://s3.us-east-2.amazonaws.com/austinbot/sprint_status.png"
     }
       
-    ],
-
-    "velocity_graph_url": 
-    {
-        "url": "https://s3.us-east-2.amazonaws.com/austinbot/velocity.png" 
-    },
-
-    "sprints_performance_comparison_graph": 
-    {
-        "url": "https://s3.us-east-2.amazonaws.com/austinbot/sprint_performance.png" 
-    },
-
-    "teamPerformance_graph_url":
-    {
-        "url": "https://s3.us-east-2.amazonaws.com/austinbot/perf2_2.png"
-    },
-
-    "Austin_repo_stats":
-    [
-        {
-            "total": 9,
-            "weeks": [
-                {
-                    "w": 1505606400,
-                    "a": 31,
-                    "d": 17,
-                    "c": 7
-                },
-                {
-                    "w": 1506211200,
-                    "a": 0,
-                    "d": 0,
-                    "c": 0
-                },
-                {
-                    "w": 1506816000,
-                    "a": 15,
-                    "d": 31,
-                    "c": 2
-                },
-                {
-                    "w": 1507420800,
-                    "a": 0,
-                    "d": 0,
-                    "c": 0
-                },
-                {
-                    "w": 1508025600,
-                    "a": 0,
-                    "d": 0,
-                    "c": 0
-                },
-                {
-                    "w": 1508630400,
-                    "a": 0,
-                    "d": 0,
-                    "c": 0
-                }
-            ],
-            "author": {
-                "login": "udeshmu",
-                "id": 6222,
-                "avatar_url": "https://avatars.github.ncsu.edu/u/6222?",
-                "gravatar_id": "",
-                "url": "https://github.ncsu.edu/api/v3/users/udeshmu",
-                "html_url": "https://github.ncsu.edu/udeshmu",
-                "followers_url": "https://github.ncsu.edu/api/v3/users/udeshmu/followers",
-                "following_url": "https://github.ncsu.edu/api/v3/users/udeshmu/following{/other_user}",
-                "gists_url": "https://github.ncsu.edu/api/v3/users/udeshmu/gists{/gist_id}",
-                "starred_url": "https://github.ncsu.edu/api/v3/users/udeshmu/starred{/owner}{/repo}",
-                "subscriptions_url": "https://github.ncsu.edu/api/v3/users/udeshmu/subscriptions",
-                "organizations_url": "https://github.ncsu.edu/api/v3/users/udeshmu/orgs",
-                "repos_url": "https://github.ncsu.edu/api/v3/users/udeshmu/repos",
-                "events_url": "https://github.ncsu.edu/api/v3/users/udeshmu/events{/privacy}",
-                "received_events_url": "https://github.ncsu.edu/api/v3/users/udeshmu/received_events",
-                "type": "User",
-                "site_admin": false,
-                "ldap_dn": "CN=udeshmu,OU=People,DC=wolftech,DC=ad,DC=ncsu,DC=edu"
-            }
-        },
-        {
-            "total": 11,
-            "weeks": [
-                {
-                    "w": 1505606400,
-                    "a": 0,
-                    "d": 0,
-                    "c": 0
-                },
-                {
-                    "w": 1506211200,
-                    "a": 0,
-                    "d": 0,
-                    "c": 0
-                },
-                {
-                    "w": 1506816000,
-                    "a": 3,
-                    "d": 0,
-                    "c": 6
-                },
-                {
-                    "w": 1507420800,
-                    "a": 210,
-                    "d": 7,
-                    "c": 3
-                },
-                {
-                    "w": 1508025600,
-                    "a": 452,
-                    "d": 190,
-                    "c": 2
-                },
-                {
-                    "w": 1508630400,
-                    "a": 0,
-                    "d": 0,
-                    "c": 0
-                }
-            ],
-            "author": {
-                "login": "spilani",
-                "id": 6120,
-                "avatar_url": "https://avatars.github.ncsu.edu/u/6120?",
-                "gravatar_id": "",
-                "url": "https://github.ncsu.edu/api/v3/users/spilani",
-                "html_url": "https://github.ncsu.edu/spilani",
-                "followers_url": "https://github.ncsu.edu/api/v3/users/spilani/followers",
-                "following_url": "https://github.ncsu.edu/api/v3/users/spilani/following{/other_user}",
-                "gists_url": "https://github.ncsu.edu/api/v3/users/spilani/gists{/gist_id}",
-                "starred_url": "https://github.ncsu.edu/api/v3/users/spilani/starred{/owner}{/repo}",
-                "subscriptions_url": "https://github.ncsu.edu/api/v3/users/spilani/subscriptions",
-                "organizations_url": "https://github.ncsu.edu/api/v3/users/spilani/orgs",
-                "repos_url": "https://github.ncsu.edu/api/v3/users/spilani/repos",
-                "events_url": "https://github.ncsu.edu/api/v3/users/spilani/events{/privacy}",
-                "received_events_url": "https://github.ncsu.edu/api/v3/users/spilani/received_events",
-                "type": "User",
-                "site_admin": false,
-                "ldap_dn": "CN=spilani,OU=People,DC=wolftech,DC=ad,DC=ncsu,DC=edu"
-            }
-        },
-        {
-            "total": 16,
-            "weeks": [
-                {
-                    "w": 1505606400,
-                    "a": 31,
-                    "d": 17,
-                    "c": 14
-                },
-                {
-                    "w": 1506211200,
-                    "a": 0,
-                    "d": 0,
-                    "c": 0
-                },
-                {
-                    "w": 1506816000,
-                    "a": 2,
-                    "d": 0,
-                    "c": 2
-                },
-                {
-                    "w": 1507420800,
-                    "a": 0,
-                    "d": 0,
-                    "c": 0
-                },
-                {
-                    "w": 1508025600,
-                    "a": 0,
-                    "d": 0,
-                    "c": 0
-                },
-                {
-                    "w": 1508630400,
-                    "a": 0,
-                    "d": 0,
-                    "c": 0
-                }
-            ],
-            "author": {
-                "login": "pmsrivas",
-                "id": 5899,
-                "avatar_url": "https://avatars.github.ncsu.edu/u/5899?",
-                "gravatar_id": "",
-                "url": "https://github.ncsu.edu/api/v3/users/pmsrivas",
-                "html_url": "https://github.ncsu.edu/pmsrivas",
-                "followers_url": "https://github.ncsu.edu/api/v3/users/pmsrivas/followers",
-                "following_url": "https://github.ncsu.edu/api/v3/users/pmsrivas/following{/other_user}",
-                "gists_url": "https://github.ncsu.edu/api/v3/users/pmsrivas/gists{/gist_id}",
-                "starred_url": "https://github.ncsu.edu/api/v3/users/pmsrivas/starred{/owner}{/repo}",
-                "subscriptions_url": "https://github.ncsu.edu/api/v3/users/pmsrivas/subscriptions",
-                "organizations_url": "https://github.ncsu.edu/api/v3/users/pmsrivas/orgs",
-                "repos_url": "https://github.ncsu.edu/api/v3/users/pmsrivas/repos",
-                "events_url": "https://github.ncsu.edu/api/v3/users/pmsrivas/events{/privacy}",
-                "received_events_url": "https://github.ncsu.edu/api/v3/users/pmsrivas/received_events",
-                "type": "User",
-                "site_admin": false,
-                "ldap_dn": "CN=pmsrivas,OU=People,DC=wolftech,DC=ad,DC=ncsu,DC=edu"
-            }
-        },
-        {
-            "total": 44,
-            "weeks": [
-                {
-                    "w": 1505606400,
-                    "a": 112,
-                    "d": 48,
-                    "c": 31
-                },
-                {
-                    "w": 1506211200,
-                    "a": 0,
-                    "d": 0,
-                    "c": 0
-                },
-                {
-                    "w": 1506816000,
-                    "a": 25,
-                    "d": 3,
-                    "c": 3
-                },
-                {
-                    "w": 1507420800,
-                    "a": 23,
-                    "d": 40,
-                    "c": 4
-                },
-                {
-                    "w": 1508025600,
-                    "a": 857,
-                    "d": 25,
-                    "c": 6
-                },
-                {
-                    "w": 1508630400,
-                    "a": 0,
-                    "d": 0,
-                    "c": 0
-                }
-            ],
-            "author": {
-                "login": "dsuri",
-                "id": 5970,
-                "avatar_url": "https://avatars.github.ncsu.edu/u/5970?",
-                "gravatar_id": "",
-                "url": "https://github.ncsu.edu/api/v3/users/dsuri",
-                "html_url": "https://github.ncsu.edu/dsuri",
-                "followers_url": "https://github.ncsu.edu/api/v3/users/dsuri/followers",
-                "following_url": "https://github.ncsu.edu/api/v3/users/dsuri/following{/other_user}",
-                "gists_url": "https://github.ncsu.edu/api/v3/users/dsuri/gists{/gist_id}",
-                "starred_url": "https://github.ncsu.edu/api/v3/users/dsuri/starred{/owner}{/repo}",
-                "subscriptions_url": "https://github.ncsu.edu/api/v3/users/dsuri/subscriptions",
-                "organizations_url": "https://github.ncsu.edu/api/v3/users/dsuri/orgs",
-                "repos_url": "https://github.ncsu.edu/api/v3/users/dsuri/repos",
-                "events_url": "https://github.ncsu.edu/api/v3/users/dsuri/events{/privacy}",
-                "received_events_url": "https://github.ncsu.edu/api/v3/users/dsuri/received_events",
-                "type": "User",
-                "site_admin": false,
-                "ldap_dn": "CN=dsuri,OU=People,DC=wolftech,DC=ad,DC=ncsu,DC=edu"
-            }
-        }
     ]
-}
-  
+
