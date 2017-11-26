@@ -12,6 +12,7 @@
     "bluebird": "^3.4.6",
     "body-parser": "^1.18.2",
     "botkit": "^0.5.8",
+    "chai": "^4.1.2",
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "forecast.io": "0.0.9",
