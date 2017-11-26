@@ -15,9 +15,6 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Store our app's ID and Secret. These we got from Step 1. 
-// For this tutorial, we'll keep your API credentials right here. But for an actual app, you'll want to  store them securely in environment variables. 
-const PORT = 3000;
 const port = 3000;
 const VALID_SPRINT_ID = ["20", "21", "22"];
 const VALID_USER_ID = ["<@U6UBVLJCV>", "<@U6U2WMN82>", "<@U6T81LY8J>", "<@U6SMSH9HP>",]
@@ -47,143 +44,6 @@ const VALID_USER_ID = ["<@U6UBVLJCV>", "<@U6U2WMN82>", "<@U6T81LY8J>", "<@U6SMSH
 // });
 
 
-// // This route handles GET requests to our root ngrok address and responds with the same "Ngrok is working message" we used before
-// app.get('/', function(req, res) {
-//   res.send("Ok at"+req.url);
-// });
-// app.get('/users', function(req, res) {
-//   res.send("Finding user"+req.url);
-// });
-
-// // This route handles get request to a /oauth endpoint. We'll use this endpoint for handling the logic of the Slack oAuth process behind our app.
-// app.get('/oauth', function(req, res) {
-//   // When a user authorizes an app, a code query parameter is passed on the oAuth endpoint. If that code is not there, we respond with an error message
-//   if (!req.query.code) {
-//       res.status(500);
-//       res.send({"Error": "Looks like we're not getting code."});
-//       console.log("Looks like we're not getting code.");
-//   } else {
-//       // If it's there...
-
-//       // We'll do a GET call to Slack's `oauth.access` endpoint, passing our app's client ID, client secret, and the code we just got as query parameters.
-//       request({
-//           url: 'https://slack.com/api/oauth.access', //URL to hit
-//           qs: {code: req.query.code, client_id: clientId, client_secret: clientSecret}, //Query string data
-//           method: 'GET', //Specify the method
-
-//       }, function (error, response, body) {
-//           if (error) {
-//               console.log(error);
-//           } else {
-//               res.json(body);
-
-//           }
-//       })
-//   }
-// });
-
-// Route the endpoint that our slash command will point to and send back a simple response to indicate that ngrok is working
-app.post('/command', function (req, res) {
-
-
-
-  var jsonRes =
-    {
-      "text": "Would you like to play a game?",
-      "attachments": [
-        {
-          "text": "Choose a game to play",
-          "fallback": "You are unable to choose a game",
-          "callback_id": "wopr_game",
-          "color": "#3AA3E3",
-          "attachment_type": "default",
-          "actions": [
-            {
-              "name": "game",
-              "text": "Chess",
-              "type": "button",
-              "value": "chess"
-            },
-            {
-              "name": "game",
-              "text": "Falken's Maze",
-              "type": "button",
-              "value": "maze"
-            },
-            {
-              "name": "game",
-              "text": "Thermonuclear War",
-              "style": "danger",
-              "type": "button",
-              "value": "war",
-              "confirm": {
-                "title": "Are you sure?",
-                "text": "Wouldn't you prefer a good game of chess?",
-                "ok_text": "Yes",
-                "dismiss_text": "No"
-              }
-            }
-          ]
-        }
-      ]
-    };
-
-  var jsonRes2 = {
-    "text": "Would you like to play a game?",
-    "response_type": "in_channel",
-    "attachments": [
-      {
-        "text": "Choose a game to play",
-        "fallback": "If you could read this message, you'd be choosing something fun to do right now.",
-        "color": "#3AA3E3",
-        "attachment_type": "default",
-        "callback_id": "game_selection",
-        "actions": [
-          {
-            "name": "games_list",
-            "text": "Pick a game...",
-            "type": "select",
-            "options": [
-              {
-                "text": "Hearts",
-                "value": "hearts"
-              },
-              {
-                "text": "Bridge",
-                "value": "bridge"
-              },
-              {
-                "text": "Checkers",
-                "value": "checkers"
-              },
-              {
-                "text": "Chess",
-                "value": "chess"
-              },
-              {
-                "text": "Poker",
-                "value": "poker"
-              },
-              {
-                "text": "Falken's Maze",
-                "value": "maze"
-              },
-              {
-                "text": "Global Thermonuclear War",
-                "value": "war"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  };
-  res.send(jsonRes2);
-});
-
-
-//var childProcess = require("child_process");
-
 var controller = Botkit.slackbot({
   debug: false
   //include "log: false" to disable logging
@@ -195,27 +55,7 @@ controller.spawn({
   token: process.env.SLACKTOKEN,
 }).startRTM()
 
-
-
 //BOT HOOKS
-
-controller.hears(
-  ['setup sprint', 'new sprint', 'create sprint'],
-  ['mention', 'direct_mention', 'direct_message'],
-  function (bot, message) {
-    //redirect to a webpage for milestone 3 will create form inside slack after deploying
-    bot.api.users.list({}, function (err, response) {
-      console.log(response);
-    });
-  });
-
-// Dummy Functions
-controller.hears('get sprint (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
-  console.log(message);
-  getSprint(message.match[1], function (w) {
-    bot.reply(message, w + "");
-  });
-});
 
 
 //USE CASE 1.1: Show burndown chart of a sprint for given sprint name or id.
@@ -232,10 +72,15 @@ controller.hears(
       convo.ask('For which Sprint? Please type Sprint ID or Sprint name.', function (answer, convo) {
         var sprint_id = answer.text.slice(-2);
         if (VALID_SPRINT_ID.indexOf(sprint_id) == -1) {
-          convo.say("This Sprint ID does not exist. Please enter a valid ID");
+          convo.say(
+            "This Sprint ID does not exist. Please enter a valid ID\nDatabase currently has following Sprint IDs:\nSprint "+
+            VALID_SPRINT_ID[0]+"\nSprint "+VALID_SPRINT_ID[1]+"\nSprint "+VALID_SPRINT_ID[2]+
+            "\nFor more help say 'Help'"
+          );
           convo.next();
         }
-        console.log(process + "TEST");
+        else
+        {
         getBurndown(sprint_id, function (w) {
 
           var imageURL = w;
@@ -256,6 +101,7 @@ controller.hears(
           convo.say(burndownImage);
           convo.next();
         });
+      }
       });
     });
   });
@@ -278,9 +124,15 @@ controller.hears('Show performance of (.*)', ['mention', 'direct_mention', 'dire
       convo.ask('For which sprint you want to see the performance? Enter Sprint name or ID.', function (response, convo) {
         var sprint_id = response.text.slice(-2);
         if (VALID_SPRINT_ID.indexOf(sprint_id) == -1) {
-          convo.say("This Sprint ID does not exist. Please enter a valid ID");
+          convo.say(
+            "This Sprint ID does not exist. Please enter a valid ID\nDatabase currently has following Sprint IDs:\nSprint "+
+            VALID_SPRINT_ID[0]+"\nSprint "+VALID_SPRINT_ID[1]+"\nSprint "+VALID_SPRINT_ID[2]+
+            "\nFor more help say 'Help'"
+          );
           convo.next();
         }
+        else
+        {
         getUserPerformanceForSprint(name, sprint_id, function (w) {
 
           var imageURL = w;
@@ -302,6 +154,7 @@ controller.hears('Show performance of (.*)', ['mention', 'direct_mention', 'dire
           convo.say(perfImage);
           convo.next();
         });
+      }
       });
     });
   }
@@ -344,8 +197,14 @@ controller.hears('Show status of sprint (.*)', ['mention', 'direct_mention', 'di
   //console.log(message);
   var sprint_one = message.match[1];
   if (VALID_SPRINT_ID.indexOf(sprint_one) == -1) {
-    bot.reply(message, "Please Enter a valid sprint Id");
+    bot.reply(
+      "This Sprint ID does not exist. Please enter a valid ID\nDatabase currently has following Sprint IDs:\nSprint "+
+      VALID_SPRINT_ID[0]+"\nSprint "+VALID_SPRINT_ID[1]+"\nSprint "+VALID_SPRINT_ID[2]+
+      "\nFor more help say 'Help'"
+    );
   }
+  else
+  {
   getSprintStatus(sprint_one, function (w) {
 
     var imageURL = w;
@@ -366,6 +225,7 @@ controller.hears('Show status of sprint (.*)', ['mention', 'direct_mention', 'di
     bot.reply(message, sprintStatusImage);
 
   });
+}
 });
 
 //USE CASE 2.1: Compare Sprint work done
@@ -373,7 +233,9 @@ controller.hears('Compare work done in sprint (.*) with sprint (.*)', ['mention'
   var sprint_one = message.match[1];
   var sprint_two = message.match[2];
   if (VALID_SPRINT_ID.indexOf(sprint_one) == -1 || VALID_SPRINT_ID.indexOf(sprint_two) == -1) {
-    bot.reply(message, ":thinking_face: Oh! One of the sprint id does not exist.Please Enter a valid sprint Id. ");
+    bot.reply(message, ":thinking_face: Oh! One of the sprint id does not exist.Please Enter a valid sprint Id.\nDatabase currently has following Sprint IDs:\nSprint "+
+    VALID_SPRINT_ID[0]+"\nSprint "+VALID_SPRINT_ID[1]+"\nSprint "+VALID_SPRINT_ID[2]+
+    "\nFor more help say 'Help'");
   }
   else {
     compareSprintPerformance(sprint_one, sprint_two, function (w) {
@@ -432,7 +294,9 @@ controller.hears(
 controller.hears('Compare individual performance in sprint (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   var sprint_one = message.match[1];
   if (VALID_SPRINT_ID.indexOf(sprint_one) == -1) {
-    bot.reply(message, ":thinking_face: Oh! no this sprint id does not exist.Please Enter a valid sprint Id. ");
+    bot.reply(message, ":thinking_face: Oh! no this sprint id does not exist.Please Enter a valid sprint Id.\nDatabase currently has following Sprint IDs:\nSprint "+
+    VALID_SPRINT_ID[0]+"\nSprint "+VALID_SPRINT_ID[1]+"\nSprint "+VALID_SPRINT_ID[2]+
+    "\nFor more help say 'Help'");
   }
   else {
     getSprintBestPerformer(sprint_one, function (w) {
@@ -461,7 +325,9 @@ controller.hears('Compare individual performance in sprint (.*)', ['mention', 'd
 controller.hears('Compare task performance in sprint (.*)', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
   var sprint_one = message.match[1];
   if (VALID_SPRINT_ID.indexOf(sprint_one) == -1) {
-    bot.reply(message, ":thinking_face: Oh! no this sprint id does not exist.Please Enter a valid sprint Id. ");
+    bot.reply(message, ":thinking_face: Oh! no this sprint id does not exist.Please Enter a valid sprint Id.\nDatabase currently has following Sprint IDs:\nSprint "+
+    VALID_SPRINT_ID[0]+"\nSprint "+VALID_SPRINT_ID[1]+"\nSprint "+VALID_SPRINT_ID[2]+
+    "\nFor more help say 'Help'");
   }
   else {
     getTaskPerformance(sprint_one, function (w) {
@@ -536,140 +402,14 @@ controller.hears(
 
 // Dummy Function
 //TODO: Bot interactions will replace this.
-controller.hears('hello', ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
-  var responseText = {
-    "text": "Would you like to play a game?",
-    "attachments": [
-      {
-        "text": "Choose a game to play",
-        "fallback": "If you could read this message, you'd be choosing something fun to do right now.",
-        "color": "#3AA3E3",
-        // "attachment_type": "default",
-        "callback_id": "game_selection",
-        "actions": [
-          {
-            "name": "games_list",
-            "text": "Pick a game...",
-            "type": "select",
-            "options": [
-              {
-                "text": "Hearts",
-                "value": "hearts"
-              },
-              {
-                "text": "Bridge",
-                "value": "bridge"
-              },
-              {
-                "text": "Checkers",
-                "value": "checkers"
-              },
-              {
-                "text": "Chess",
-                "value": "chess"
-              },
-              {
-                "text": "Poker",
-                "value": "poker"
-              },
-              {
-                "text": "Falken's Maze",
-                "value": "maze"
-              },
-              {
-                "text": "Global Thermonuclear War",
-                "value": "war"
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    // "attachments": [
-    //     {
-    //         "text": "Choose a game to play",
-    //         "fallback": "You are unable to choose a game",
-    //         "callback_id": "wopr_game",
-    //         "color": "#3AA3E3",
-    //         "attachment_type": "default",
-    //         "actions": [
-    //             {
-    //                 "name": "game",
-    //                 "text": "Chess",
-    //                 "type": "button",
-    //                 "value": "chess"
-    //             },
-    //             {
-    //                 "name": "game",
-    //                 "text": "Falken's Maze",
-    //                 "type": "button",
-    //                 "value": "maze"
-    //             },
-    //             {
-    //                 "name": "game",
-    //                 "text": "Thermonuclear War",
-    //                 "style": "danger",
-    //                 "type": "button",
-    //                 "value": "war",
-    //                 "confirm": {
-    //                     "title": "Are you sure?",
-    //                     "text": "Wouldn't you prefer a good game of chess?",
-    //                     "ok_text": "Yes",
-    //                     "dismiss_text": "No"
-    //                 }
-    //             }
-    //         ],
-
-
-    //     }
-    // ]
-  };
-  var jsonData = {
-    "attachments": [
-      {
-        "fallback": "Required plain-text summary of the attachment.",
-        "color": "#36a64f",
-        "pretext": "Optional text that appears above the attachment block",
-        "author_name": "Bobby Tables",
-        "author_link": "http://flickr.com/bobby/",
-        "author_icon": "http://flickr.com/icons/bobby.jpg",
-        "title": "Slack API Documentation",
-        "title_link": "https://api.slack.com/",
-        "text": "Optional text that appears within the attachment",
-        "fields": [
-          {
-            "title": "Priority",
-            "value": "High",
-            "short": false
-          }
-        ],
-        "image_url": "http://my-website.com/path/to/image.jpg",
-        "thumb_url": "http://example.com/path/to/thumb.png",
-        "footer": "Slack API",
-        "footer_icon": "https://platform.slack-edge.com/img/default_application_icon.png",
-        "ts": 123456789
-      }
-    ]
-  };
-
-
-
-  var imageURL = "https://s3.us-east-2.amazonaws.com/austinbot/plot_image.png";
-  var preText = "Your Burndown chart for this sprint is shown below"
-  var titleText = "Burndown Chart"
-  var responsiveChart = "link_here"
-  var burndownImage = {
-    "attachments": [
-      {
-        "pretext": preText,
-        "title": titleText,
-        "title_link": responsiveChart,
-        "image_url": imageURL,
-        "color": "#ffa500"
-      }
-    ]
-  };
-  bot.reply(message, responseText);
+controller.hears(['hello','hi','whats up','Hey'], ['mention', 'direct_mention', 'direct_message'], function (bot, message) {
+  var responseTexts = [
+    "Hey\nI'm having the craziest day\nI just learned that :banana: are curved because they grow towards the sun. :tada: :sun_with_face:",
+    "Hi there :smiley:",
+    "Hi\nWhat can I do for you? :sunglasses:",
+    "Hello :wave:"
+  ];
+  bot.reply(message, responseTexts[Math.floor(Math.random()*4)]);
 });
 
 controller.hears(['uptime', 'identify yourself', 'who are you', 'what is your name'],
@@ -791,24 +531,6 @@ controller.hears(['help', 'what can you do', 'help me', '(.*)'],
     }
     bot.reply(message, helpMessage);
   });
-
-function formatUptime(uptime) {
-  var unit = 'second';
-  if (uptime > 60) {
-    uptime = uptime / 60;
-    unit = 'minute';
-  }
-  if (uptime > 60) {
-    uptime = uptime / 60;
-    unit = 'hour';
-  } F
-  if (uptime != 1) {
-    unit = unit + 's';
-  }
-
-  uptime = uptime + ' ' + unit;
-  return uptime;
-}
 
 
 // Response Functions for mock service
