@@ -60,7 +60,7 @@ def main():
     file.write(recommendation)
     file.close()
     s3.save_file_to_s3('recommend_hours')
-    requests.put('https://a0e33791.ngrok.io/api/recommendation/' + str(recommendation))
+    requests.put(server_connect.URL + 'recommendation/' + str(recommendation))
     print("Completed")
 
 if __name__ == '__main__':
