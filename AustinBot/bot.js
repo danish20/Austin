@@ -67,10 +67,11 @@ controller.hears(
         var sprint_id = answer.text.slice(-2);
         if (VALID_SPRINT_ID.indexOf(sprint_id) == -1) {
           convo.say(
-            "This Sprint ID does not exist. Please enter a valid ID\nDatabase currently has following Sprint IDs:\nSprint "+
-            VALID_SPRINT_ID[0]+"\nSprint "+VALID_SPRINT_ID[1]+"\nSprint "+VALID_SPRINT_ID[2]+
-            "\nFor more help say 'Help'"
+            "This Sprint ID does not exist. Please enter a valid ID"
           );
+          //\nDatabase currently has following Sprint IDs:\nSprint "+
+          //VALID_SPRINT_ID[0]+"\nSprint "+VALID_SPRINT_ID[1]+"\nSprint "+VALID_SPRINT_ID[2]+
+          //"\nFor more help say 'Help'"
           convo.next();
         }
         else
