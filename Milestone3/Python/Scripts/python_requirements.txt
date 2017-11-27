@@ -1,0 +1,8 @@
+plotly
+pprint
+pandas
+numpy
+scikit-learn
+tinys3
+boto
+urllib3
