@@ -67,8 +67,9 @@ function getBurndown(sprint_id)
     return new Promise(function (resolve, reject){
         request(options, function(error, response, body)
         {
-            
+            console.log("Chal Pada");
             var obj = JSON.parse(body);
+            console.log("Ye bhi Chal Pada");
             console.log(obj);
             resolve(obj);
         });
