@@ -46,7 +46,7 @@ var controller = Botkit.slackbot({
 
 // connect the bot to a stream of messages
 controller.spawn({
-  token: process.env.SLACKTOKEN,
+  token: "xoxb-235588149911-MX1vpwmxM4LPSgdaT7qe9XrB"
 }).startRTM()
 
 //BOT HOOKS
