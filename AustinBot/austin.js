@@ -3,7 +3,7 @@ var _ = require("underscore");
 var request = require("request");
 var querystring = require('querystring');
 
-var urlRoot = "https://ffadf0e8.ngrok.io/api";
+var urlRoot = process.env.EXPRESS_URL+"/api";
 var urlGithubRoot = "https://github.ncsu.edu/api/v3";
 const GITHUB_TOKEN = "token YOUR_TOKEN_HERE"
 
@@ -67,6 +67,7 @@ function getBurndown(sprint_id)
     return new Promise(function (resolve, reject){
         request(options, function(error, response, body)
         {
+            
             var obj = JSON.parse(body);
             console.log(obj);
             resolve(obj);
