@@ -32,8 +32,8 @@
       name: webserver
       description: an EC2 webserver group
       region: us-east-1
-      aws_access_key: AKIAIANES3CC5APA5UJA
-      aws_secret_key: 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
+      aws_access_key: aws_access_key_here
+      aws_secret_key: aws_secret_key_here
       state: present
       rules:
         - proto: all
@@ -45,8 +45,8 @@
 
   - name: Create ec2 instance
     ec2: 
-     aws_access_key: AKIAIANES3CC5APA5UJA
-     aws_secret_key: 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
+     aws_access_key: aws_secret_key_here
+     aws_secret_key: aws_secret_key_here
      key_name: AustinBotKeyPair
      instance_type: t2.micro
      region: us-east-1
@@ -151,8 +151,7 @@
     - name: export ENV variables
       shell: "echo hello"
       environment:
-        SLACKTOKEN: "xoxb-235588149911-MX1vpwmxM4LPSgdaT7qe9XrB"
-        EXPRESS_URL: ec2-54-191-240-173.us-west-2.compute.amazonaws.com
+        SLACKTOKEN: "SLACKTOKEN_HERE"
 
     - name: Run bot.js
       command: forever start {{home_dir}}/{{app_dir}}/AustinBot/bot.js
