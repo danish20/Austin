@@ -3,7 +3,7 @@ var _ = require("underscore");
 var request = require("request");
 var querystring = require('querystring');
 
-var urlRoot = "http://ec2-54-191-240-173.us-west-2.compute.amazonaws.com:3001/api";
+var urlRoot = "ec2-54-186-64-204.us-west-2.compute.amazonaws.com:3001/api";
 var urlGithubRoot = "https://github.ncsu.edu/api/v3";
 const GITHUB_TOKEN = "token YOUR_TOKEN_HERE"
 
