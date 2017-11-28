@@ -19,25 +19,6 @@ const port = 3001;
 const VALID_SPRINT_ID = ["20", "21", "22"];
 const VALID_USER_ID = ["<@U6UBVLJCV>", "<@U6U2WMN82>", "<@U6T81LY8J>", "<@U6SMSH9HP>",]
 
-//MONGO DB SETUP
-// var mongoose = require('mongoose');
-// var mongoDB = 'mongodb://127.0.0.1/test';
-// mongoose.connect(mongoDB,{useMongoClient: true});
-// var db = mongoose.connection;
-// db.on('error',console.error.bind(console,'connection_error:'));
-// db.on('connected',()=>{
-//   console.log('Connected to database mongodb @27017');
-// });
-// db.once('open', function(){
-//   console.log("DB connection alive");
-// });
-// app.use(express.static(path.join(__dirname,'public')));
-// app.use('/api',route);
-
-// app.listen(port,()=>{
-//   console.log("Listening port 3000");
-// });
-
 var controller = Botkit.slackbot({
   debug: false
   //include "log: false" to disable logging
@@ -46,7 +27,7 @@ var controller = Botkit.slackbot({
 
 // connect the bot to a stream of messages
 controller.spawn({
-  token: "xoxb-235588149911-MX1vpwmxM4LPSgdaT7qe9XrB"
+  token: process.env.SLACKTOKEN;
 }).startRTM()
 
 //BOT HOOKS
