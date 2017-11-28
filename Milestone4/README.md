@@ -11,9 +11,7 @@ https://github.ncsu.edu/dsuri/Austin/blob/master/Milestone2/use_case.md
 
 In the previous milestone, we implemented the services required for the 3 use cases. In this milestone, we deployed the Austin bot to AWS EC2 instance. Below are the deployment scripts we used:
 
-script1
-
-script2
+[Deployment Script](https://github.ncsu.edu/dsuri/Austin/blob/master/Milestone4/Ansible_Scripts/deploy.yml)
 
 ## Task Tracking -- WORKSHEET.md
 
