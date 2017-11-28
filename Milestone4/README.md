@@ -21,6 +21,10 @@ We have Trello Cards for Task tracking.
 
 Please find worksheet at https://github.ncsu.edu/dsuri/Austin/blob/master/Milestone4/WORKSHEET.md
 
+## Screencast
+
+The screencast for Milestone 4 can be found here: 
+
 ## Acceptance Testing
 
 The purpose of the bot is to provide better insights about the team performance in each sprint and overall, using some analytics on the sprint data. 
