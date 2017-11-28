@@ -547,7 +547,7 @@ function getBurndown(sprint_id, callback) {
 }
 //invoke python for burndown chart
 function invokeBurndownPy(sprint_id, callback) {
-  var py = spawn('python', ['../Milestone3/Python/Scripts/burndown.py', sprint_id]);
+  var py = spawn('sudo python', ['../Milestone3/Python/Scripts/burndown.py', sprint_id]);
   setTimeout(callback, 5000);
 }
 
@@ -571,7 +571,7 @@ function getUserPerformanceForSprint(userId, sprintId, callback) {
 //invoke python for user performance
 function invokeUserPerformancePy(userId, sprint_id, callback) {
   console.log("User ID: " + userId + " sprint id: " + sprint_id);
-  var py = spawn('python', ['../Milestone3/Python/Scripts/user_performance.py', userId, sprint_id]);
+  var py = spawn('sudo python', ['../Milestone3/Python/Scripts/user_performance.py', userId, sprint_id]);
 
   setTimeout(callback, 5000);
 }
@@ -587,7 +587,7 @@ function getVelocityGraph(callback) {
 }
 //invoke python for velocity graph
 function invokeVelocityPy(callback) {
-  var py = spawn('python', ['../Milestone3/Python/Scripts/velocity.py']);
+  var py = spawn('sudo python', ['../Milestone3/Python/Scripts/velocity.py']);
   setTimeout(callback, 5000);
 }
 
@@ -602,7 +602,7 @@ function compareSprintPerformance(sprintId1, sprintId2, callback) {
 }
 //invoke python for compare sprint performance graph
 function invokeSprintPerformancePy(sprintId1, sprintId2, callback) {
-  var py = spawn('python', ['../Milestone3/Python/Scripts/sprint_performance.py', sprintId1, sprintId2]);
+  var py = spawn('sudo python', ['../Milestone3/Python/Scripts/sprint_performance.py', sprintId1, sprintId2]);
   setTimeout(callback, 5000);
 }
 
@@ -617,7 +617,7 @@ function getTaskPerformance(sprint_id, callback) {
 }
 //invoke python for task performance graph
 function invokeTaskPerformancePy(sprint_id, callback) {
-  var py = spawn('python', ['../Milestone3/Python/Scripts/task_performance.py', sprint_id]);
+  var py = spawn('sudo python', ['../Milestone3/Python/Scripts/task_performance.py', sprint_id]);
   setTimeout(callback, 5000);
 }
 
@@ -632,7 +632,7 @@ function getSprintBestPerformer(sprint_id, callback) {
 }
 //invoke python for compare user performance
 function invokeBestUserPerformancePy(sprint_id, callback) {
-  var py = spawn('python', ['../Milestone3/Python/Scripts/compare_user_performance.py', sprint_id]);
+  var py = spawn('sudo python', ['../Milestone3/Python/Scripts/compare_user_performance.py', sprint_id]);
   setTimeout(callback, 5000);
 }
 
@@ -647,7 +647,7 @@ function getSprintStatus(sprint_id, callback) {
 }
 //invoke python for sprint status
 function invokeSprintStatusPy(sprint_id, callback) {
-  var py = spawn('python', ['../Milestone3/Python/Scripts/sprint_status.py', sprint_id]);
+  var py = spawn('sudo python', ['../Milestone3/Python/Scripts/sprint_status.py', sprint_id]);
   setTimeout(callback, 5000);
 }
 
@@ -662,7 +662,7 @@ function compareTeamPerformance(callback) {
 }
 //invoke python for compare team performance
 function invokeCompareTeamPerformancePy(callback) {
-  var py = spawn('python', ['../Milestone3/Python/Scripts/compare_team_performance.py']);
+  var py = spawn('sudo python', ['../Milestone3/Python/Scripts/compare_team_performance.py']);
   setTimeout(callback, 5000);
 }
 
@@ -677,6 +677,6 @@ function getRecommendationOnTaskHours(num_hours, callback) {
 }
 //invoke python for hours recommendation
 function invokeRecommendHoursPy(num_hours, callback) {
-  var py = spawn('python', ['../Milestone3/Python/Scripts/recommend_hours.py', num_hours]);
+  var py = spawn('sudo python', ['../Milestone3/Python/Scripts/recommend_hours.py', num_hours]);
   setTimeout(callback, 5000);
 }
