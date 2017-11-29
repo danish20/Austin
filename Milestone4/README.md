@@ -27,13 +27,13 @@ The screencast for Milestone 4 can be found here: [Screencast-Bot-Deployment](ht
 
 The purpose of the bot is to provide better insights about the team performance in each sprint and overall, using some analytics on the sprint data. 
 
-We have deployed the bot on the slack channel: <enter link>
+We have deployed the bot on the slack team : https://softeng-project-group.slack.com
 
-In order to use the bot, the user needs to be a part of the channel. The credentials for the user account are given below:
+Use the 'acceptance_testing' channel for testing. The credentials for the user account are given below:
 
-username:
+username: test.austin.bot@gmail.com
 
-password:
+password: AustinBot1234#
 
 ### General Instructions
 
