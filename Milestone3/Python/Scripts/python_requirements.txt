@@ -6,3 +6,4 @@ scikit-learn
 tinys3
 boto
 urllib3
+scipy
