@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const port = 3001;
-const VALID_SPRINT_ID = ["20", "21", "22"];
+const VALID_SPRINT_ID = ["20", "21"];
 const VALID_USER_ID = ["<@U6UBVLJCV>", "<@U6U2WMN82>", "<@U6T81LY8J>", "<@U6SMSH9HP>",]
 
 var controller = Botkit.slackbot({
@@ -49,7 +49,7 @@ controller.hears(
         if (VALID_SPRINT_ID.indexOf(sprint_id) == -1) {
           convo.say(
             "This Sprint ID does not exist. Please enter a valid ID\nDatabase currently has following Sprint IDs:\nSprint "+
-            VALID_SPRINT_ID[0]+"\nSprint "+VALID_SPRINT_ID[1]+"\nSprint "+VALID_SPRINT_ID[2]+
+            VALID_SPRINT_ID[0]+"\nSprint "+VALID_SPRINT_ID[1]+"\nSprint "+
             "\nFor more help say 'Help'"
           );
           convo.next();
@@ -101,7 +101,7 @@ controller.hears('Show performance of (.*)', ['mention', 'direct_mention', 'dire
         if (VALID_SPRINT_ID.indexOf(sprint_id) == -1) {
           convo.say(
             "This Sprint ID does not exist. Please enter a valid ID\nDatabase currently has following Sprint IDs:\nSprint "+
-            VALID_SPRINT_ID[0]+"\nSprint "+VALID_SPRINT_ID[1]+"\nSprint "+VALID_SPRINT_ID[2]+
+            VALID_SPRINT_ID[0]+"\nSprint "+VALID_SPRINT_ID[1]+"\nSprint "+
             "\nFor more help say 'Help'"
           );
           convo.next();
@@ -174,7 +174,7 @@ controller.hears('Show status of sprint (.*)', ['mention', 'direct_mention', 'di
   if (VALID_SPRINT_ID.indexOf(sprint_one) == -1) {
     bot.reply(
       "This Sprint ID does not exist. Please enter a valid ID\nDatabase currently has following Sprint IDs:\nSprint "+
-      VALID_SPRINT_ID[0]+"\nSprint "+VALID_SPRINT_ID[1]+"\nSprint "+VALID_SPRINT_ID[2]+
+      VALID_SPRINT_ID[0]+"\nSprint "+VALID_SPRINT_ID[1]+"\nSprint "+
       "\nFor more help say 'Help'"
     );
   }
@@ -209,7 +209,7 @@ controller.hears('Compare work done in sprint (.*) with sprint (.*)', ['mention'
   var sprint_two = message.match[2];
   if (VALID_SPRINT_ID.indexOf(sprint_one) == -1 || VALID_SPRINT_ID.indexOf(sprint_two) == -1) {
     bot.reply(message, ":thinking_face: Oh! One of the sprint id does not exist.Please Enter a valid sprint Id.\nDatabase currently has following Sprint IDs:\nSprint "+
-    VALID_SPRINT_ID[0]+"\nSprint "+VALID_SPRINT_ID[1]+"\nSprint "+VALID_SPRINT_ID[2]+
+    VALID_SPRINT_ID[0]+"\nSprint "+VALID_SPRINT_ID[1]+"\nSprint "+
     "\nFor more help say 'Help'");
   }
   else {
@@ -270,7 +270,7 @@ controller.hears('Compare individual performance in sprint (.*)', ['mention', 'd
   var sprint_one = message.match[1];
   if (VALID_SPRINT_ID.indexOf(sprint_one) == -1) {
     bot.reply(message, ":thinking_face: Oh! no this sprint id does not exist.Please Enter a valid sprint Id.\nDatabase currently has following Sprint IDs:\nSprint "+
-    VALID_SPRINT_ID[0]+"\nSprint "+VALID_SPRINT_ID[1]+"\nSprint "+VALID_SPRINT_ID[2]+
+    VALID_SPRINT_ID[0]+"\nSprint "+VALID_SPRINT_ID[1]+"\nSprint "+
     "\nFor more help say 'Help'");
   }
   else {
