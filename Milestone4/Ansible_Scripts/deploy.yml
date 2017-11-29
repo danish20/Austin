@@ -1,0 +1,157 @@
+- name: AustinBot
+  hosts: localhost
+  connection: local
+  become: yes
+  
+  tasks:
+  - name: check to see if pip is already installed
+    command: "pip --version"
+    ignore_errors: true
+    register: pip_is_installed
+    changed_when: false
+
+  - block:
+
+      - name: download get-pip.py
+        get_url: url=https://bootstrap.pypa.io/get-pip.py  dest=/tmp
+      
+      - name: install pip
+        command: "python /tmp/get-pip.py"
+      
+      - name: delete get-pip.py
+        file: state=absent path=/tmp/get-pip.py
+
+    when: pip_is_installed.rc != 0
+
+  - name: Install boto
+    sudo: yes
+    pip: name=boto
+
+  - name: create ec2 group
+    ec2_group:
+      name: webserver
+      description: an EC2 webserver group
+      region: us-east-1
+      aws_access_key: aws_access_key_here
+      aws_secret_key: aws_secret_key_here
+      state: present
+      rules:
+        - proto: all
+          cidr_ip: 0.0.0.0/0
+      rules_egress:
+        - proto: all
+          cidr_ip: 0.0.0.0/0
+
+
+  - name: Create ec2 instance
+    ec2: 
+     aws_access_key: aws_secret_key_here
+     aws_secret_key: aws_secret_key_here
+     key_name: AustinBotKeyPair
+     instance_type: t2.micro
+     region: us-east-1
+     image: ami-da05a4a0
+     wait: yes
+     group: webserver
+     vpc_subnet_id: subnet-39f73716
+     assign_public_ip: yes
+     wait_timeout: 600
+     count: 1
+     instance_tags:
+      Name: "AustinBot"
+    register: ec2_instances
+
+  - name: Add host to in-memory inventory
+    add_host:
+     hostname: "{{ec2_instances.instances[0].public_ip}}"
+     groupname: ec2_host
+     ansible_ssh_user: ubuntu
+     ansible_ssh_private_key_file: /home/vagrant/AustinBotKeyPair.pem
+
+  - name: Wait for SSH
+    wait_for: 
+     host: "{{ec2_instances.instances[0].public_ip}}"
+     port: 22
+     delay: 60
+     state: started
+
+- name: Setup
+  hosts: ec2_host
+  sudo: yes
+  gather_facts: False
+  user: root
+  
+  vars:
+   - home_dir: /home/ubuntu
+   - app_dir: App
+   - temp_dir: /tmp/
+   
+  vars_prompt: 
+   - name: "githubuser" 
+     prompt: "Enter your github username" 
+     private: no 
+   - name: "githubpassword" 
+     prompt: "Enter your github password" 
+     private: yes 
+
+  pre_tasks:
+    - raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+    - setup:
+
+  tasks:
+  #  - name: Install Git
+  #    apt:  name=git state=installed
+
+    - name: Clone git repo
+      git: 
+        repo: https://{{ githubuser }}:{{ githubpassword }}@github.ncsu.edu/dsuri/Austin.git
+        dest: "{{home_dir}}/{{app_dir}}"
+        version: master
+
+    - name: Change permission
+      command: chmod 777 -R App
+
+    - name: Install Node
+      apt: name={{item}} state=installed
+      with_items:
+        - nodejs
+        - nodejs-legacy
+        - npm
+
+    - name: Install forever
+      npm: name=forever global=yes state=present
+
+    - name: check to see if pip is already installed
+      command: "pip --version"
+      ignore_errors: true
+      register: pip_is_installed
+      changed_when: false
+
+    - block:
+
+        - name: download get-pip.py
+          get_url: url=https://bootstrap.pypa.io/get-pip.py  dest=/tmp
+        
+        - name: install pip
+          command: "python /tmp/get-pip.py"
+        
+        - name: delete get-pip.py
+          file: state=absent path=/tmp/get-pip.py
+
+      when: pip_is_installed.rc != 0
+
+    - name: Install npm packages
+      npm:
+        path: "{{home_dir}}/{{app_dir}}/AustinBot"
+
+    - name: Install python packages
+      pip:
+        requirements: "{{home_dir}}/{{app_dir}}/Milestone3/Python/Scripts/python_requirements.txt"
+
+    - name: export ENV variables
+      shell: "echo hello"
+      environment:
+        SLACKTOKEN: "SLACKTOKEN_HERE"
+
+    - name: Run bot.js
+      command: forever start {{home_dir}}/{{app_dir}}/AustinBot/bot.js
