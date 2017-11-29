@@ -342,6 +342,13 @@ controller.hears(
     convo.ask('How many hours you are planning to assign?', function (answer, convo) {
       var hours = answer.text;
 
+      if(isNaN(hours))
+      {
+        convo.say("Please enter a valid integer value");
+        convo.next();
+      }
+      else
+      {
       getRecommendationOnTaskHours(hours, function (w) {
         var resText = {
           "attachments": [
@@ -355,6 +362,7 @@ controller.hears(
         convo.say(resText);
         convo.next();
       });
+    }
     });
   });
   });
