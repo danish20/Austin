@@ -15,7 +15,7 @@ used to carry out analytics on the sprint data. By providing automated analytics
 on the scrum master and also helps to better track the progress of sprints and efficiently plan future ones.
 
 
-Keeping the role analytics plays in different fields in mind, we decided to create Austin Bot, which provides a visual and 
+Keeping in mind the role analytics plays in different fields, we decided to create Austin Bot, which provides a visual and 
 an analytical insight into the process of sprint. The bot aims at providing the following analytics:
  * Comparison: Compare the work done in this sprint with the work done in previous sprint in terms of tasks completed, compare sprint velocity of the team, find out top performers of the team by calculating the number of tasks completed by the user, evaluate task performance by comparing what the estimated time for the task was with the actual time taken to complete the task.
  * Charts: Provide visual representation of the past and present sprint activities. These include burndown charts, user perfomance charts depicting which stories were assigned to the user and how much time the user took to complete these, velocity graph, current sprint status showing number of active stories, number of completed stories, average velocity, etc.
