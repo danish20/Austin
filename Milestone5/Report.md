@@ -17,9 +17,9 @@ on the scrum master and also helps to better track the progress of sprints and e
 
 Keeping in mind the role analytics plays in different fields, we decided to create Austin Bot, which provides a visual and 
 an analytical insight into the process of sprint. The bot aims at providing the following analytics:
- * Comparison: Compare the work done in this sprint with the work done in previous sprint in terms of tasks completed, compare sprint velocity of the team, find out top performers of the team by calculating the number of tasks completed by the user, evaluate task performance by comparing what the estimated time for the task was with the actual time taken to complete the task.
- * Charts: Provide visual representation of the past and present sprint activities. These include burndown charts, user perfomance charts depicting which stories were assigned to the user and how much time the user took to complete these, velocity graph, current sprint status showing number of active stories, number of completed stories, average velocity, etc.
- * Recommendations: Provide recommendations like how to improve performance by analyzing the past incomplete stories and recommend re-allocating the hours that were assigned to the worst performer.
+ * **Comparison:** Compare the work done in this sprint with the work done in previous sprint in terms of tasks completed, compare sprint velocity of the team, find out top performers of the team by calculating the number of tasks completed by the user, evaluate task performance by comparing what the estimated time for the task was with the actual time taken to complete the task.
+ * **Charts:** Provide visual representation of the past and present sprint activities. These include burndown charts, user perfomance charts depicting which stories were assigned to the user and how much time the user took to complete these, velocity graph, current sprint status showing number of active stories, number of completed stories, average velocity, etc.
+ * **Recommendations:** Provide recommendations like how to improve performance by analyzing the past incomplete stories and recommend re-allocating the hours that were assigned to the worst performer.
  
  Essentially, the bot aims at solving the problem of sprint planning. Often times, it is the case that during sprint planning, 
  we do not know how a particular member will perform the tasks, or how fast a given team completes their stories. It would be very 
@@ -34,6 +34,8 @@ an analytical insight into the process of sprint. The bot aims at providing the 
  
 * **Sprint Summary:** Bot provides the functionality to view summary of each Sprint and see how the team is progressing. Users can ask the bot to show charts based on current and previous sprints, compare different metrics of the sprint and can also see various graphs and charts representing progress of each sprint which can be of following types:
 	* **Burndown Chart:** A burndown chart helps to capture the daily progress made in a sprint. It plots the number of hours left against the days of the sprint. The ideal line in a burndown chart starts at the number of hours allocated for the sprint, on day 1 and ends at 0 on the last day. This line is used as a reference. If the actual line is below the ideal line, it means that progress is achieved at a faster rate than expected. If the actual line crosses the ideal line, it means that the progress is slower than expected.
+	
+	![Burndown Chart](https://github.ncsu.edu/dsuri/Austin/blob/master/Milestone5/Screenshots/burndown.png)
 	
 	* **Individual's performance chart:** The user performance chart displays the number of hours spent by the user on all the tasks in a given sprint. Enter '@Austin show performance of @<team_member>'. The list of members is diplayed when you type '@'. If the member is part of the team, the bot will ask you the sprint number for which the performance is requested.
 	
