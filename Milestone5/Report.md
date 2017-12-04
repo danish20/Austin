@@ -74,6 +74,8 @@ an analytical insight into the process of sprint. The bot aims at providing the 
     * **Most number of commits:** This displays the name of the user who has made the most number of commits and also the number of commits made. Enter '@Austin who has made most number of commits'.
     
     ![Most number of Commits](https://github.ncsu.edu/dsuri/Austin/blob/master/Milestone5/Screenshots/most_number_of_commits.png)
+
+### The above mentioned features have also been demonstrated in a video [here](https://www.youtube.com/watch?v=0Jyr4-vwd-E)
     
 ## Reflection on the Development process and Project
 
