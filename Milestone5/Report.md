@@ -1,4 +1,4 @@
-## REPORT
+# REPORT
 
 ## Problem solved by Austin Bot
 
@@ -54,5 +54,25 @@ an analytical insight into the process of sprint. The bot aims at providing the 
  	* **Recommend Task hours:** While allocating the number of hours to a particular task, it would be helpful to know the past trends and assign hours accordingly. The bot does exactly this. It studies the past trends for task completion and recommends how many hours should be allocated to the task. It takes as input an initial estimate and recommends what the actual number should be.
 	
     * **Most number of commits:** This displays the name of the user who has made the most number of commits and also the number of commits made. Enter '@Austin who has made most number of commits'.
+    
+## Reflection on the Development process and Project
+
+We started this project with an aim of building a bot, in order to solve a software engineering problem. We decided to choose Slack as a platform to deploy our bot keeping in mind its rising popularity among tech companies. We explored a lot of ideas for building our bot. The rising importance of analytics in different streams made us finalize this project idea.
+
+In Milestone 1, we designed use cases which were centred around this issue of using analytics to solve the problem of efficient sprint planning. During this phase, we had to understand the different aspects of the project like problem definition, limiting the scope, requirement gathering.
+
+In Milestone 2, we had to come up with the bot implementation using mocked data. The first step here was to decide the technology stack. We went ahead with NodeJs for building the different processes of the bot and Python in the backend to create the analytics environment. After building the individual modules seperately, the major challenge was how to integrate these different modules. The interfacing betwee
+
+## Limitations and Future Work
+
+Following are the limitations of Austin Bot, on which we would like to work in the future:
+
+* There is no functionality to create a sprint. We would like to create this functionality where a product manager can create a sprint. 
+
+* Austin Bot does not have any functionality to conduct standup meetings. We would like to add this functionality where the bot pings the users at user specified time and ask the three standup questions. The bot would then store the responses in Mongo DB.
+
+* Since Slack is a web based application, it caches data related to pages for a certain period of time. When a user enters the same command, but with different parameters, the returned URL is unfurled to the same cached image which was fetched previously. However, if you will right click on that image and open link in browser you can see the actual image for respective sprints. This is one issue which we would like to eliminate. A temporary solution is to clear the cache before issuing the same command again. 
+
+* Currently, the plots and graphs returned are static. In the future, we would like to integrate more interactive charts using tools like D3.js. Also, currently the plots are generated using the 'plotly' library in python. This library allows a limited number of requests to be made per day. The temporary solution was to use multiple user credentials. However, in order to scale out, we would need a more robust approach.
   
  
