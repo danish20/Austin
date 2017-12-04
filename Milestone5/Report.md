@@ -65,6 +65,10 @@ In Milestone 2, we had to come up with the bot implementation using mocked data.
 
 In Milestone 3, we implemented the service part of the bot. We moved our data to an actual mongo database. The bot used the data directly from MongoDB using REST endpoints published through an Express server. The python scripts were also configured to pull the data from these endpoints.
 
+In Milestone 4, we deployed our bot on AWS EC-2 instance to make the bot run forever. We used ansible server script to deploy this application along with all the dependent packages required to make bot run on Amazon EC2. The dependencies between the different technologies had to be resolved in order to make the bot run successfully on the server.
+
+Overall, the journey has been quite enriching and enjoyable for all of us. We not only learnt new technologies, but also successfully implemented them and solved a real problem. In addition to that, we delivered the project in alignment with the agile methodology, which made us appreciate its principles. Apart from that, the team consisted of people with a varied skillset and technical abilities. We ended up forming a cohesive partnership, with each one contributing to the different technologies we used and ended up learning a lot from each other's expertise as well.
+
 ## Limitations and Future Work
 
 Following are the limitations of Austin Bot, on which we would like to work in the future:
