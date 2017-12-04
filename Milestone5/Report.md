@@ -30,7 +30,7 @@ an analytical insight into the process of sprint. The bot aims at providing the 
  
  ## Primary Features
  
- The primary features of Austin Bot can be divided into three categories:
+ The 'help' command displays the bot features. The primary features of Austin Bot can be divided into three categories:
  
 * **Sprint Summary:** Bot provides the functionality to view summary of each Sprint and see how the team is progressing. Users can ask the bot to show charts based on current and previous sprints, compare different metrics of the sprint and can also see various graphs and charts representing progress of each sprint which can be of following types:
 	* **Burndown Chart:** A burndown chart helps to capture the daily progress made in a sprint. It plots the number of hours left against the days of the sprint. The ideal line in a burndown chart starts at the number of hours allocated for the sprint, on day 1 and ends at 0 on the last day. This line is used as a reference. If the actual line is below the ideal line, it means that progress is achieved at a faster rate than expected. If the actual line crosses the ideal line, it means that the progress is slower than expected.
@@ -39,23 +39,41 @@ an analytical insight into the process of sprint. The bot aims at providing the 
 	
 	* **Individual's performance chart:** The user performance chart displays the number of hours spent by the user on all the tasks in a given sprint. Enter '@Austin show performance of @<team_member>'. The list of members is diplayed when you type '@'. If the member is part of the team, the bot will ask you the sprint number for which the performance is requested.
 	
+	![Individual Performance Chart](https://github.ncsu.edu/dsuri/Austin/blob/master/Milestone5/Screenshots/user_performance.png)
+	
 	* **Velocity Graph:** The velocity graph displays the proportion of complete and incomplete tasks for all the sprints. Enter '@Austin show velocity graph'. The velocity graph for all past sprints is displayed.
 	
+	![Velocity Graph](https://github.ncsu.edu/dsuri/Austin/blob/master/Milestone5/Screenshots/velocity.png)
+	
 	* **Sprint Status:** The sprint status summarizes and visually shows the number of hours expected for task completion, number of hours actually required, the number of tasks complete/incomplete, the number of hours spent by every user. Enter '@Austin show status of sprint <sprint_id>'. The complete sprint status for that sprint is displayed.
+	
+	![Sprint Status](https://github.ncsu.edu/dsuri/Austin/blob/master/Milestone5/Screenshots/sprint_status.png)
  
 * **Comparison:** Bot can also be used to compare various metrics of the sprint and obtain insights on them. Comparisions can be of following types:
 	* **Work done in this sprint with past sprints:** This displays a burndown for 2 sprints which we want to compare. Based on both the burndown lines, we can compare the progress of 2 sprints. Enter '@Austin compare work done in sprint <sprint_id1> with sprint <sprint_id2>'.
 	
+	![Compare Work Done](https://github.ncsu.edu/dsuri/Austin/blob/master/Milestone5/Screenshots/compare_work_done.png)
+	
 	* **Performance of team with respect to previous sprint performance:** This displays a comparison of the number of tasks completed by each team and also compares the daily progress. Enter '@Austin show team performance'.
+	
+	![Compare Task Performance](https://github.ncsu.edu/dsuri/Austin/blob/master/Milestone5/Screenshots/compare_team_performance.png)
 	
 	* **Individual performance:** This displays the number of hours spent by the user as compared to the expected number of hours. Enter '@Austin compare individual performance in sprint <sprint_id>'. We can deduce a comparison based on the given graph.
 	
+	![Compare Individual Performance](https://github.ncsu.edu/dsuri/Austin/blob/master/Milestone5/Screenshots/compare_individual_performance.png)
+	
 	* **Performance based on each task and time spent on it:** This plots a graph for every task in the sprint and displays the actual vs expected hours. Enter '@Austin compare task performance in sprint <sprint_id>'.
+	
+	![Compare Task Performance](https://github.ncsu.edu/dsuri/Austin/blob/master/Milestone5/Screenshots/compare_task_performance.png)
  
 * **Recommendations/Facts:** 
  	* **Recommend Task hours:** While allocating the number of hours to a particular task, it would be helpful to know the past trends and assign hours accordingly. The bot does exactly this. It studies the past trends for task completion and recommends how many hours should be allocated to the task. It takes as input an initial estimate and recommends what the actual number should be.
 	
+	![Recommend Task Hours](https://github.ncsu.edu/dsuri/Austin/blob/master/Milestone5/Screenshots/recommend_task_hours.png)
+	
     * **Most number of commits:** This displays the name of the user who has made the most number of commits and also the number of commits made. Enter '@Austin who has made most number of commits'.
+    
+    ![Most number of Commits](https://github.ncsu.edu/dsuri/Austin/blob/master/Milestone5/Screenshots/most_number_of_commits.png)
     
 ## Reflection on the Development process and Project
 
