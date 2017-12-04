@@ -61,7 +61,9 @@ We started this project with an aim of building a bot, in order to solve a softw
 
 In Milestone 1, we designed use cases which were centred around this issue of using analytics to solve the problem of efficient sprint planning. During this phase, we had to understand the different aspects of the project like problem definition, limiting the scope, requirement gathering.
 
-In Milestone 2, we had to come up with the bot implementation using mocked data. The first step here was to decide the technology stack. We went ahead with NodeJs for building the different processes of the bot and Python in the backend to create the analytics environment. After building the individual modules seperately, the major challenge was how to integrate these different modules. The interfacing betwee
+In Milestone 2, we had to come up with the bot implementation using mocked data. The first step here was to decide the technology stack. We went ahead with NodeJs for building the different processes of the bot, Python in the backend to create the analytics environment and AWS S3 for storing the output images. After building the individual modules seperately, the major challenge was how to integrate these different modules. The interfacing between Slack and python created quite a few problems initially. We explored different solutions and went ahead with the best possible solution we could find. The interfacing between S3 and Slack again created a few issues, with Slack caching the images and showing the same preview for the same command with different parameters. The temporary solutions we could find was to clear the Slack cache before issuing the same command again.
+
+In Milestone 3, we implemented the service part of the bot. We moved our data to an actual mongo database. The bot used the data directly from MongoDB using REST endpoints published through an Express server. The python scripts were also configured to pull the data from these endpoints.
 
 ## Limitations and Future Work
 
