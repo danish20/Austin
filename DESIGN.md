@@ -55,30 +55,30 @@ The entire stand-up meeting record will be saved in a database. The user also ha
 * ### Wireframe
 
 
-![Wireframe Image 1](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/wireframe1.PNG)
+![Wireframe Image 1](https://github.com/danish20/Austin/blob/master/Milestone1/wireframe1.PNG)
 
 
-![Wireframe Image 2](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/wireframe2.PNG) 
+![Wireframe Image 2](https://github.com/danish20/Austin/blob/master/Milestone1/wireframe2.PNG) 
 
 
-![Wireframe Image 3](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/wireframe3.PNG) 
+![Wireframe Image 3](https://github.com/danish20/Austin/blob/master/Milestone1/wireframe3.PNG) 
 
 
 * ### StoryBoard:
 
 
-![Storyboard 1](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/storyboard1.PNG)
+![Storyboard 1](https://github.com/danish20/Austin/blob/master/Milestone1/storyboard1.PNG)
 
-![Storyboard 2](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/storyboard2.PNG)
+![Storyboard 2](https://github.com/danish20/Austin/blob/master/Milestone1/storyboard2.PNG)
 
-![Storyboard 3](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/storyboard3.PNG)
+![Storyboard 3](https://github.com/danish20/Austin/blob/master/Milestone1/storyboard3.PNG)
 
 
 ## Architecture Design
 
 * ### Component Diagram:
 
-![ComponentDiagram](https://github.ncsu.edu/dsuri/CSC510-Project/blob/master/Milestone1/ComponentDiagram.png)
+![ComponentDiagram](https://github.com/danish20/Austin/blob/master/Milestone1/ComponentDiagram.png)
 
 * ### Architectural Components:
 
